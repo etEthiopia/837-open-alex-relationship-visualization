@@ -1,0 +1,386 @@
+[
+    {
+        "id": "https://openalex.org/A5028426177+https://openalex.org/A5043973941",
+        "ids": [
+            "https://openalex.org/A5028426177",
+            "https://openalex.org/A5043973941"
+        ],
+        "names": [
+            "Lei Ren",
+            "Jiabao Dong"
+        ],
+        "ACIs": [
+            25.01,
+            10.01
+        ],
+        "last_known_institutions": [
+            {
+                "id": "https://openalex.org/I82880672",
+                "display_name": "Beihang University",
+                "ror": "https://ror.org/00wk2mp56",
+                "country_code": "CN",
+                "type": "education",
+                "lineage": [
+                    "https://openalex.org/I82880672"
+                ]
+            },
+            {
+                "id": "https://openalex.org/I82880672",
+                "display_name": "Beihang University",
+                "ror": "https://ror.org/00wk2mp56",
+                "country_code": "CN",
+                "type": "education",
+                "lineage": [
+                    "https://openalex.org/I82880672"
+                ]
+            }
+        ],
+        "total_cited_by_count": 75,
+        "total_papers": 1,
+        "total_counts_by_year": [
+            {
+                "year": 2026,
+                "cited_by_count": 8
+            },
+            {
+                "year": 2025,
+                "cited_by_count": 39
+            },
+            {
+                "year": 2024,
+                "cited_by_count": 28
+            }
+        ],
+        "total_fwci": 28.8199,
+        "works": [
+            {
+                "id": "https://openalex.org/W4393033973",
+                "title": "Industrial Metaverse for Smart Manufacturing: Model, Architecture, and Applications",
+                "display_name": "Industrial Metaverse for Smart Manufacturing: Model, Architecture, and Applications",
+                "publication_year": 2024
+            }
+        ],
+        "is_internal": true,
+        "canadian_status": "none"
+    },
+    {
+        "id": "https://openalex.org/A5028426177+https://openalex.org/A5100418969",
+        "ids": [
+            "https://openalex.org/A5028426177",
+            "https://openalex.org/A5100418969"
+        ],
+        "names": [
+            "Lei Ren",
+            "Zhang Li"
+        ],
+        "ACIs": [
+            25.01,
+            10.01
+        ],
+        "last_known_institutions": [
+            {
+                "id": "https://openalex.org/I82880672",
+                "display_name": "Beihang University",
+                "ror": "https://ror.org/00wk2mp56",
+                "country_code": "CN",
+                "type": "education",
+                "lineage": [
+                    "https://openalex.org/I82880672"
+                ]
+            },
+            {
+                "id": "https://openalex.org/I4210142539",
+                "display_name": "Guangdong Institute of Intelligent Manufacturing",
+                "ror": "https://ror.org/049jpjz09",
+                "country_code": "CN",
+                "type": "facility",
+                "lineage": [
+                    "https://openalex.org/I4210142539"
+                ]
+            }
+        ],
+        "total_cited_by_count": 75,
+        "total_papers": 1,
+        "total_counts_by_year": [
+            {
+                "year": 2026,
+                "cited_by_count": 8
+            },
+            {
+                "year": 2025,
+                "cited_by_count": 39
+            },
+            {
+                "year": 2024,
+                "cited_by_count": 28
+            }
+        ],
+        "total_fwci": 28.8199,
+        "works": [
+            {
+                "id": "https://openalex.org/W4393033973",
+                "title": "Industrial Metaverse for Smart Manufacturing: Model, Architecture, and Applications",
+                "display_name": "Industrial Metaverse for Smart Manufacturing: Model, Architecture, and Applications",
+                "publication_year": 2024
+            }
+        ],
+        "is_internal": false,
+        "canadian_status": "none"
+    },
+    {
+        "id": "https://openalex.org/A5017308450+https://openalex.org/A5028426177",
+        "ids": [
+            "https://openalex.org/A5017308450",
+            "https://openalex.org/A5028426177"
+        ],
+        "names": [
+            "Yuanjun Laili",
+            "Lei Ren"
+        ],
+        "ACIs": [
+            10.01,
+            25.01
+        ],
+        "last_known_institutions": [
+            {
+                "id": "https://openalex.org/I4210142539",
+                "display_name": "Guangdong Institute of Intelligent Manufacturing",
+                "ror": "https://ror.org/049jpjz09",
+                "country_code": "CN",
+                "type": "facility",
+                "lineage": [
+                    "https://openalex.org/I4210142539"
+                ]
+            },
+            {
+                "id": "https://openalex.org/I82880672",
+                "display_name": "Beihang University",
+                "ror": "https://ror.org/00wk2mp56",
+                "country_code": "CN",
+                "type": "education",
+                "lineage": [
+                    "https://openalex.org/I82880672"
+                ]
+            }
+        ],
+        "total_cited_by_count": 75,
+        "total_papers": 1,
+        "total_counts_by_year": [
+            {
+                "year": 2026,
+                "cited_by_count": 8
+            },
+            {
+                "year": 2025,
+                "cited_by_count": 39
+            },
+            {
+                "year": 2024,
+                "cited_by_count": 28
+            }
+        ],
+        "total_fwci": 28.8199,
+        "works": [
+            {
+                "id": "https://openalex.org/W4393033973",
+                "title": "Industrial Metaverse for Smart Manufacturing: Model, Architecture, and Applications",
+                "display_name": "Industrial Metaverse for Smart Manufacturing: Model, Architecture, and Applications",
+                "publication_year": 2024
+            }
+        ],
+        "is_internal": false,
+        "canadian_status": "none"
+    },
+    {
+        "id": "https://openalex.org/A5026291016+https://openalex.org/A5028426177",
+        "ids": [
+            "https://openalex.org/A5026291016",
+            "https://openalex.org/A5028426177"
+        ],
+        "names": [
+            "Xiaokang Wang",
+            "Lei Ren"
+        ],
+        "ACIs": [
+            10.01,
+            25.01
+        ],
+        "last_known_institutions": [
+            {
+                "id": "https://openalex.org/I20942203",
+                "display_name": "Hainan University",
+                "ror": "https://ror.org/03q648j11",
+                "country_code": "CN",
+                "type": "education",
+                "lineage": [
+                    "https://openalex.org/I20942203"
+                ]
+            },
+            {
+                "id": "https://openalex.org/I82880672",
+                "display_name": "Beihang University",
+                "ror": "https://ror.org/00wk2mp56",
+                "country_code": "CN",
+                "type": "education",
+                "lineage": [
+                    "https://openalex.org/I82880672"
+                ]
+            }
+        ],
+        "total_cited_by_count": 75,
+        "total_papers": 1,
+        "total_counts_by_year": [
+            {
+                "year": 2026,
+                "cited_by_count": 8
+            },
+            {
+                "year": 2025,
+                "cited_by_count": 39
+            },
+            {
+                "year": 2024,
+                "cited_by_count": 28
+            }
+        ],
+        "total_fwci": 28.8199,
+        "works": [
+            {
+                "id": "https://openalex.org/W4393033973",
+                "title": "Industrial Metaverse for Smart Manufacturing: Model, Architecture, and Applications",
+                "display_name": "Industrial Metaverse for Smart Manufacturing: Model, Architecture, and Applications",
+                "publication_year": 2024
+            }
+        ],
+        "is_internal": false,
+        "canadian_status": "none"
+    },
+    {
+        "id": "https://openalex.org/A5028426177+https://openalex.org/A5101398998",
+        "ids": [
+            "https://openalex.org/A5028426177",
+            "https://openalex.org/A5101398998"
+        ],
+        "names": [
+            "Lei Ren",
+            "Yue Qi"
+        ],
+        "ACIs": [
+            25.01,
+            10.01
+        ],
+        "last_known_institutions": [
+            {
+                "id": "https://openalex.org/I82880672",
+                "display_name": "Beihang University",
+                "ror": "https://ror.org/00wk2mp56",
+                "country_code": "CN",
+                "type": "education",
+                "lineage": [
+                    "https://openalex.org/I82880672"
+                ]
+            },
+            {
+                "id": "https://openalex.org/I82880672",
+                "display_name": "Beihang University",
+                "ror": "https://ror.org/00wk2mp56",
+                "country_code": "CN",
+                "type": "education",
+                "lineage": [
+                    "https://openalex.org/I82880672"
+                ]
+            }
+        ],
+        "total_cited_by_count": 75,
+        "total_papers": 1,
+        "total_counts_by_year": [
+            {
+                "year": 2026,
+                "cited_by_count": 8
+            },
+            {
+                "year": 2025,
+                "cited_by_count": 39
+            },
+            {
+                "year": 2024,
+                "cited_by_count": 28
+            }
+        ],
+        "total_fwci": 28.8199,
+        "works": [
+            {
+                "id": "https://openalex.org/W4393033973",
+                "title": "Industrial Metaverse for Smart Manufacturing: Model, Architecture, and Applications",
+                "display_name": "Industrial Metaverse for Smart Manufacturing: Model, Architecture, and Applications",
+                "publication_year": 2024
+            }
+        ],
+        "is_internal": true,
+        "canadian_status": "none"
+    },
+    {
+        "id": "https://openalex.org/A5028426177+https://openalex.org/A5101431603",
+        "ids": [
+            "https://openalex.org/A5028426177",
+            "https://openalex.org/A5101431603"
+        ],
+        "names": [
+            "Lei Ren",
+            "Bo Hu Li"
+        ],
+        "ACIs": [
+            25.01,
+            10.01
+        ],
+        "last_known_institutions": [
+            {
+                "id": "https://openalex.org/I82880672",
+                "display_name": "Beihang University",
+                "ror": "https://ror.org/00wk2mp56",
+                "country_code": "CN",
+                "type": "education",
+                "lineage": [
+                    "https://openalex.org/I82880672"
+                ]
+            },
+            {
+                "id": "https://openalex.org/I82880672",
+                "display_name": "Beihang University",
+                "ror": "https://ror.org/00wk2mp56",
+                "country_code": "CN",
+                "type": "education",
+                "lineage": [
+                    "https://openalex.org/I82880672"
+                ]
+            }
+        ],
+        "total_cited_by_count": 75,
+        "total_papers": 1,
+        "total_counts_by_year": [
+            {
+                "year": 2026,
+                "cited_by_count": 8
+            },
+            {
+                "year": 2025,
+                "cited_by_count": 39
+            },
+            {
+                "year": 2024,
+                "cited_by_count": 28
+            }
+        ],
+        "total_fwci": 28.8199,
+        "works": [
+            {
+                "id": "https://openalex.org/W4393033973",
+                "title": "Industrial Metaverse for Smart Manufacturing: Model, Architecture, and Applications",
+                "display_name": "Industrial Metaverse for Smart Manufacturing: Model, Architecture, and Applications",
+                "publication_year": 2024
+            }
+        ],
+        "is_internal": true,
+        "canadian_status": "none"
+    }
+]

@@ -1,0 +1,171 @@
+.container {
+  display: flex;
+  height: 100vh;
+  background: #fafafa;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.sidebar {
+  width: 300px;
+  background: white;
+  border-left: 1px solid #e0e0e0;
+  padding: 20px;
+  overflow-y: auto;
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.05);
+  order: 2;
+}
+
+.sidebar h2 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 20px 0;
+  color: #333;
+}
+
+.controls {
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.controlGroup {
+  margin-bottom: 20px;
+}
+
+.controlGroup label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.slider {
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: #e0e0e0;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #2196F3;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #2196F3;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.switchLabel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #555;
+}
+
+.switchLabel input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.universityList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.universityItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+  background: #f5f5f5;
+}
+
+.universityItem:hover {
+  background: #ebebeb;
+  transform: translateX(2px);
+}
+
+.universityItem.selected {
+  background: #e3f2fd;
+  box-shadow: 0 2px 4px rgba(33, 150, 243, 0.2);
+}
+
+.colorBox {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  flex-shrink: 0;
+  border: 2px solid white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.universityName {
+  font-size: 13px;
+  color: #333;
+  font-weight: 500;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.aciValue {
+  font-size: 11px;
+  color: #666;
+  font-weight: 400;
+}
+
+.chartContainer {
+  flex: 1;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  padding: 20px;
+  overflow: hidden;
+  order: 1;
+}
+
+.chartContainer svg {
+  width: 100%;
+  height: 100%;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  .chartContainer {
+    padding: 20px;
+  }
+}
