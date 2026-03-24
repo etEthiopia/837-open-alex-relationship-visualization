@@ -145,3 +145,31 @@
   color: #666;
   font-weight: normal;
 }
+
+.matrixToggle {
+  padding: 4px 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  color: #666;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.matrixToggle:hover {
+  background-color: #f0f0f0;
+  border-color: #999;
+}
+
+.matrixToggle.matrixActive {
+  background-color: #4a90e2;
+  color: white;
+  border-color: #4a90e2;
+}
+
+.matrixToggle.matrixActive:hover {
+  background-color: #357abd;
+  border-color: #357abd;
+}
