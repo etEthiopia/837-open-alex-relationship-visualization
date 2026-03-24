@@ -25,6 +25,7 @@ export default function ScatterplotPage() {
     HTMLElement,
     unknown
   > | null>(null);
+  const zoomBehaviorRef = useRef<d3.ZoomBehavior<SVGSVGElement, unknown> | null>(null);
   const [authors, setAuthors] = useState<Author[]>([]);
   const [maxAuthors, setMaxAuthors] = useState<number>(100);
   const [maxUniversities, setMaxUniversities] = useState<number>(50);
@@ -35,6 +36,7 @@ export default function ScatterplotPage() {
   const [universities, setUniversities] = useState<
     Array<{ name: string; color: string; totalACI: number }>
   >([]);
+  const [hasZoomed, setHasZoomed] = useState<boolean>(false);
 
   // Load data
   useEffect(() => {
@@ -137,20 +139,34 @@ export default function ScatterplotPage() {
     const svg = d3
       .select(svgRef.current)
       .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
+      .attr("height", height + margin.top + margin.bottom);
+
+    // Create a clip path to prevent circles from rendering outside the plot area
+    svg
+      .append("defs")
+      .append("clipPath")
+      .attr("id", "clip")
+      .append("rect")
+      .attr("width", width)
+      .attr("height", height);
+
+    const g = svg
       .append("g")
       .attr("transform", `translate(${margin.left},${margin.top})`);
 
-    // Scales
+    // Scales with padding to prevent marks from being cut off
+    const maxPapers = d3.max(displayAuthors, (d) => d.field_papers) || 10;
+    const maxCitations = d3.max(displayAuthors, (d) => d.field_citations) || 100;
+
     const xScale = d3
       .scaleLinear()
-      .domain([0, d3.max(displayAuthors, (d) => d.field_papers) || 10])
+      .domain([0, maxPapers * 1.1]) // Add 10% padding
       .range([0, width])
       .nice();
 
     const yScale = d3
       .scaleLinear()
-      .domain([0, d3.max(displayAuthors, (d) => d.field_citations) || 100])
+      .domain([0, maxCitations * 1.1]) // Add 10% padding
       .range([height, 0])
       .nice();
 
@@ -164,8 +180,9 @@ export default function ScatterplotPage() {
     const xAxis = d3.axisBottom(xScale);
     const yAxis = d3.axisLeft(yScale);
 
-    const xAxisGroup = svg
+    const xAxisGroup = g
       .append("g")
+      .attr("class", "x-axis")
       .attr("transform", `translate(0,${height})`)
       .call(xAxis);
 
@@ -184,7 +201,9 @@ export default function ScatterplotPage() {
       .text("Publications (field_papers)");
 
     // 2. Update Y Axis
-    const yAxisGroup = svg.append("g").call(yAxis);
+    const yAxisGroup = g.append("g")
+      .attr("class", "y-axis")
+      .call(yAxis);
 
     // Color the y-axis line, ticks, and numbers
     yAxisGroup.selectAll("path, line").attr("stroke", "#333");
@@ -218,8 +237,13 @@ export default function ScatterplotPage() {
     }
     const tooltip = tooltipRef.current;
 
+    // Create a group for circles with clip path
+    const circlesGroup = g
+      .append("g")
+      .attr("clip-path", "url(#clip)");
+
     // Draw circles
-    svg
+    circlesGroup
       .selectAll("circle")
       .data(displayAuthors)
       .enter()
@@ -261,12 +285,82 @@ export default function ScatterplotPage() {
     // Title
     svg
       .append("text")
-      .attr("x", width / 2)
-      .attr("y", -10)
+      .attr("x", width / 2 + margin.left)
+      .attr("y", 30)
       .attr("text-anchor", "middle")
       .style("font-size", "18px")
       .style("font-weight", "bold")
       .text("Canadian Authors: Publications vs Citations");
+
+    // Add zoom behavior
+    const zoom = d3.zoom<SVGSVGElement, unknown>()
+      .scaleExtent([0.5, 10]) // Allow zooming from 0.5x to 10x
+      .extent([[0, 0], [width, height]])
+      .on("zoom", (event) => {
+        const transform = event.transform;
+
+        // Track if user has zoomed or panned
+        if (transform.k !== 1 || transform.x !== 0 || transform.y !== 0) {
+          setHasZoomed(true);
+        } else {
+          setHasZoomed(false);
+        }
+
+        // Create new scales based on the zoom transform
+        let newXScale = transform.rescaleX(xScale);
+        let newYScale = transform.rescaleY(yScale);
+
+        // Constrain domains to never go below 0
+        let [minX, maxX] = newXScale.domain();
+        if (minX < 0) {
+          const range = maxX - minX;
+          minX = 0;
+          maxX = range;
+          newXScale = newXScale.copy().domain([minX, maxX]);
+        }
+
+        let [minY, maxY] = newYScale.domain();
+        if (minY < 0) {
+          const range = maxY - minY;
+          minY = 0;
+          maxY = range;
+          newYScale = newYScale.copy().domain([minY, maxY]);
+        }
+
+        // Get the domain of the x-axis and calculate integer-only tick values
+        const xDomain = newXScale.domain();
+        const xTickValues = [];
+        for (let i = Math.ceil(xDomain[0]); i <= Math.floor(xDomain[1]); i++) {
+          xTickValues.push(i);
+        }
+
+        // Create x-axis with integer-only ticks
+        const xAxisZoom = d3.axisBottom(newXScale)
+          .tickValues(xTickValues)
+          .tickFormat((d) => String(Math.round(Number(d))));
+
+        // Update axes
+        xAxisGroup.call(xAxisZoom);
+        yAxisGroup.call(d3.axisLeft(newYScale));
+
+        // Re-apply axis styling after update
+        xAxisGroup.selectAll("path, line").attr("stroke", "#333");
+        xAxisGroup.selectAll("text").attr("fill", "#333");
+        yAxisGroup.selectAll("path, line").attr("stroke", "#333");
+        yAxisGroup.selectAll("text").attr("fill", "#333");
+
+        // Update circle positions
+        circlesGroup
+          .selectAll<SVGCircleElement, Author>("circle")
+          .attr("cx", (d) => newXScale(d.field_papers))
+          .attr("cy", (d) => newYScale(d.field_citations));
+      });
+
+    // Store zoom behavior in ref
+    zoomBehaviorRef.current = zoom;
+
+    // Apply zoom to the svg
+    svg.call(zoom);
 
     // Cleanup
     return () => {
@@ -282,6 +376,16 @@ export default function ScatterplotPage() {
     useSizeEncoding,
     selectedInstitution,
   ]);
+
+  // Reset zoom to default view
+  const resetZoom = () => {
+    if (svgRef.current && zoomBehaviorRef.current) {
+      d3.select(svgRef.current)
+        .transition()
+        .duration(750)
+        .call(zoomBehaviorRef.current.transform, d3.zoomIdentity);
+    }
+  };
 
   return (
     <div className={styles.container}>
@@ -327,6 +431,13 @@ export default function ScatterplotPage() {
               <span>Use ACI for size</span>
             </label>
           </div>
+          {hasZoomed && (
+            <div className={styles.controlGroup}>
+              <button onClick={resetZoom} className={styles.resetButton}>
+                Reset Zoom
+              </button>
+            </div>
+          )}
         </div>
         <h2>Universities</h2>
         <div className={styles.universityList}>
