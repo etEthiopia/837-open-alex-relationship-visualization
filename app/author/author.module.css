@@ -45,6 +45,7 @@
   flex-shrink: 0;
 }
 
+
 .headerName {
   font-size: 13px;
   font-weight: 500;
@@ -71,6 +72,30 @@
   display: flex;
   align-items: flex-start;
   gap: 24px;
+}
+
+.shortlistBtn {
+  margin-left: auto;
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  padding: 11px 22px;
+  background: #0e0e0c;
+  color: #f2f2ee;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.2s, transform 0.15s;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+.shortlistBtn:hover {
+  background: #1e1e1c;
+  transform: translateY(-1px);
 }
 
 .avatar {

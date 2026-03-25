@@ -337,16 +337,15 @@ export default function NetworkView({
         .select("body")
         .append("div")
         .style("position", "absolute")
-        .style("background", "rgba(0, 0, 0, 0.85)")
+        .style("background", "rgba(0, 0, 0, 0.8)")
         .style("color", "white")
-        .style("padding", "10px 14px")
-        .style("border-radius", "8px")
+        .style("padding", "8px")
+        .style("border-radius", "4px")
         .style("font-size", "12px")
+        .style("font-family", "Outfit, system-ui, sans-serif")
         .style("pointer-events", "none")
         .style("opacity", 0)
-        .style("z-index", "1000")
-        .style("box-shadow", "0 4px 12px rgba(0,0,0,0.3)")
-        .style("max-width", "240px");
+        .style("z-index", "1000");
     }
     const tooltip = tooltipRef.current;
 
@@ -440,17 +439,16 @@ export default function NetworkView({
         tooltip
           .style("opacity", 1)
           .html(
-            `<strong style="color:#4fc3f7">${d.name}</strong><br/>` +
-              `<span style="color:#9aa0b8">${d.institution}</span><br/>` +
-              `Citation Impact: <strong>${d.aci.toFixed(2)}</strong> · ` +
-              `Connections: <strong>${d.linkCount}</strong><br/>` +
-              `<span style="font-size:10px;color:#666">Click to view profile</span>`
+            `<strong>${d.name}</strong><br/>` +
+            `${d.institution}<br/>` +
+            `Citation Impact: ${d.aci.toFixed(2)} · Connections: ${d.linkCount}<br/>` +
+            `<span style="font-size:10px;opacity:0.45;text-decoration:underline;">Click to view profile</span>`
           );
       })
       .on("mousemove", function (event) {
         tooltip
-          .style("left", event.pageX + 14 + "px")
-          .style("top", event.pageY - 14 + "px");
+          .style("left", event.pageX + 10 + "px")
+          .style("top", event.pageY - 10 + "px");
       })
       .on("mouseout", function (_event, d) {
         d3.select(this)

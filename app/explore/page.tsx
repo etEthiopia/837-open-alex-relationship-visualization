@@ -4,10 +4,11 @@ import { useState } from "react";
 import Link from "next/link";
 import ScatterplotView from "../components/ScatterplotView";
 import NetworkView from "../components/NetworkView";
+import NodeTrixView from "../components/NodeTrixView";
 import styles from "./explore.module.css";
 
 type CanadianFilter = "full" | "full_partial";
-type TabType = "scatterplot" | "network";
+type TabType = "scatterplot" | "network" | "nodetrix";
 
 // Field options grouped by domain
 const FIELD_GROUPS = [
@@ -159,8 +160,8 @@ const SUBFIELDS: Record<string, string[]> = {
 
 export default function ExplorePage() {
   const [activeTab, setActiveTab] = useState<TabType>("scatterplot");
-  const [maxAuthors, setMaxAuthors] = useState<number>(100);
-  const [maxUniversities, setMaxUniversities] = useState<number>(20);
+  const [maxAuthors, setMaxAuthors] = useState<number>(10);
+  const [maxUniversities, setMaxUniversities] = useState<number>(5);
   const [canadianFilter, setCanadianFilter] = useState<CanadianFilter>("full");
   const [selectedField, setSelectedField] = useState<string>("");
   const [selectedSubfield, setSelectedSubfield] = useState<string>("");
@@ -282,19 +283,34 @@ export default function ExplorePage() {
         >
           Collaboration Network
         </button>
+        <button
+          className={`${styles.tab} ${activeTab === "nodetrix" ? styles.activeTab : ""}`}
+          onClick={() => setActiveTab("nodetrix")}
+        >
+          NodeTrix
+        </button>
       </div>
 
       {/* ── Visualization ── */}
       <div className={styles.vizContainer}>
-        {activeTab === "scatterplot" ? (
+        {activeTab === "scatterplot" && (
           <ScatterplotView
             maxAuthors={maxAuthors}
             maxUniversities={maxUniversities}
             canadianFilter={canadianFilter}
             domain={domainValue}
           />
-        ) : (
+        )}
+        {activeTab === "network" && (
           <NetworkView
+            maxAuthors={maxAuthors}
+            maxUniversities={maxUniversities}
+            canadianFilter={canadianFilter}
+            domain={domainValue}
+          />
+        )}
+        {activeTab === "nodetrix" && (
+          <NodeTrixView
             maxAuthors={maxAuthors}
             maxUniversities={maxUniversities}
             canadianFilter={canadianFilter}

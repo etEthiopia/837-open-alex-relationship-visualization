@@ -6,6 +6,7 @@ import { Suspense } from "react";
 import Link from "next/link";
 import * as d3 from "d3";
 import styles from "./author.module.css";
+import AuthorEgoNetwork from "../components/AuthorEgoNetwork";
 
 interface Institution {
   id: string;
@@ -347,6 +348,7 @@ function AuthorContent() {
             {initials}
           </div>
           <div className={styles.identityInfo}>
+
             <h1 className={styles.name}>{author.display_name}</h1>
             <p className={styles.institution}>
               {author.last_known_institution?.display_name || "Unknown Institution"}
@@ -373,6 +375,12 @@ function AuthorContent() {
               )}
             </div>
           </div>
+          <button
+            className={styles.shortlistBtn}
+            onClick={() => alert(`Added ${author.display_name} to your shortlist.`)}
+          >
+            + Add to Shortlist
+          </button>
         </section>
 
         {/* Key Stats */}
@@ -394,6 +402,15 @@ function AuthorContent() {
               <div className={styles.fieldLabel}>{s.label}</div>
             </div>
           ))}
+        </section>
+
+        {/* Collaboration Network */}
+        <section className={styles.section}>
+          <p className={styles.sectionEyebrow}>Collaboration Network</p>
+          <AuthorEgoNetwork
+            authorId={author.author_id}
+            authorName={author.display_name}
+          />
         </section>
 
         {/* Charts */}

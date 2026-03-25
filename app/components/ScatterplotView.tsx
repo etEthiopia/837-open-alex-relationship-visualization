@@ -45,7 +45,7 @@ export default function ScatterplotView({
   > | null>(null);
   const zoomBehaviorRef = useRef<d3.ZoomBehavior<SVGSVGElement, unknown> | null>(null);
   const [authors, setAuthors] = useState<Author[]>([]);
-  const [useSizeEncoding, setUseSizeEncoding] = useState<boolean>(true);
+  const [useSizeEncoding, setUseSizeEncoding] = useState<boolean>(false);
   const [hasZoomed, setHasZoomed] = useState<boolean>(false);
   const [selectedInstitution, setSelectedInstitution] = useState<string | null>(
     null
@@ -222,6 +222,7 @@ export default function ScatterplotView({
         .style("padding", "8px")
         .style("border-radius", "4px")
         .style("font-size", "12px")
+        .style("font-family", "Outfit, system-ui, sans-serif")
         .style("pointer-events", "none")
         .style("opacity", 0)
         .style("z-index", "1000");
@@ -260,7 +261,7 @@ export default function ScatterplotView({
             Publications: ${d.field_papers}<br/>
             Citations: ${d.field_citations}<br/>
             Citation Impact: ${d.aci.toFixed(2)}<br/>
-            <em>Click to view profile</em>
+            <span style="font-size:10px;opacity:0.45;text-decoration:underline;">Click to view profile</span>
           `);
       })
       .on("mousemove", function (event) {
