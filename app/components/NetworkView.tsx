@@ -7,17 +7,6 @@ import * as d3 from "d3";
 import styles from "./NetworkView.module.css";
 import { distinctColors } from "../lib/colors";
 
-function pointInPolygon(pt: [number, number], poly: [number, number][]): boolean {
-  if (poly.length < 3) return false;
-  let inside = false;
-  for (let i = 0, j = poly.length - 1; i < poly.length; j = i++) {
-    const [xi, yi] = poly[i], [xj, yj] = poly[j];
-    if ((yi > pt[1]) !== (yj > pt[1]) && pt[0] < ((xj - xi) * (pt[1] - yi)) / (yj - yi) + xi)
-      inside = !inside;
-  }
-  return inside;
-}
-
 interface Institution {
   id: string;
   display_name: string;
@@ -95,9 +84,6 @@ export default function NetworkView({
   const [universities, setUniversities] = useState<
     Array<{ name: string; color: string; totalACI: number }>
   >([]);
-  const [lassoActive, setLassoActive] = useState(false);
-  const [matrixCount, setMatrixCount] = useState(0);
-  const lassoRef = useRef(false);
 
   useEffect(() => {
     fetch("/data/authorships.json")
@@ -297,7 +283,6 @@ export default function NetworkView({
     const zoom = d3
       .zoom<SVGSVGElement, unknown>()
       .scaleExtent([0.2, 6])
-      .filter((event) => !lassoRef.current)
       .on("zoom", (event) => {
         g.attr("transform", event.transform);
       });
@@ -493,159 +478,6 @@ export default function NetworkView({
       nodeGroup.attr("transform", (d) => `translate(${d.x},${d.y})`);
     });
 
-    /* ── Adjacency Matrix ── */
-    interface NTMatrix {
-      id: string; nodeIds: string[]; adjacency: boolean[][];
-      x: number; y: number; cellSize: number; size: number;
-    }
-    const matrices: NTMatrix[] = [];
-    const matrixLayer = g.append("g");
-    const lassoLayer = svgEl.append("g"); // above zoom group
-
-    function renderMatrix(mat: NTMatrix) {
-      const mg = matrixLayer.append("g")
-        .attr("class", "nt-matrix")
-        .attr("transform", `translate(${mat.x},${mat.y})`);
-
-      mg.append("rect")
-        .attr("width", mat.size).attr("height", mat.size)
-        .attr("fill", "#f0f0ec").attr("stroke", "rgba(0,0,0,0.1)")
-        .attr("stroke-width", 1).attr("rx", 4);
-
-      const n = mat.nodeIds.length;
-      for (let row = 0; row < n; row++) {
-        for (let col = 0; col < n; col++) {
-          const isDiag = row === col;
-          const nodeColor = colorScale(
-            displayAuthors.find((a) => a.id === mat.nodeIds[row])?.institution || ""
-          );
-          mg.append("rect")
-            .attr("class", "mat-cell")
-            .attr("data-row", row).attr("data-col", col)
-            .attr("x", col * mat.cellSize).attr("y", row * mat.cellSize)
-            .attr("width", mat.cellSize - 0.5).attr("height", mat.cellSize - 0.5)
-            .attr("fill", isDiag ? nodeColor : mat.adjacency[row][col] ? "rgba(0,0,0,0.22)" : "rgba(255,255,255,0.45)")
-            .attr("stroke", "rgba(0,0,0,0.04)").attr("stroke-width", 0.5);
-        }
-      }
-
-      // Row labels
-      mat.nodeIds.forEach((id, i) => {
-        const nd = displayAuthors.find((a) => a.id === id);
-        if (!nd) return;
-        const lastName = nd.name.split(" ").slice(-1)[0];
-        mg.append("text")
-          .attr("x", -4).attr("y", i * mat.cellSize + mat.cellSize / 2)
-          .attr("text-anchor", "end").attr("dominant-baseline", "middle")
-          .style("font-size", "8px").style("fill", "rgba(0,0,0,0.4)")
-          .style("font-family", "var(--font-geist-sans), system-ui, sans-serif")
-          .text(lastName);
-      });
-
-      // Cell hover highlight
-      mg.selectAll<SVGRectElement, unknown>("rect.mat-cell")
-        .on("mouseover", function () {
-          const r = +(this.getAttribute("data-row")!);
-          const c = +(this.getAttribute("data-col")!);
-          mg.selectAll<SVGRectElement, unknown>("rect.mat-cell").attr("opacity", function () {
-            const tr = +(this.getAttribute("data-row")!);
-            const tc = +(this.getAttribute("data-col")!);
-            return tr === r || tc === c || tr === c || tc === r ? 1 : 0.25;
-          });
-        })
-        .on("mouseout", () => mg.selectAll("rect.mat-cell").attr("opacity", 1));
-
-      // Drag matrix
-      mg.call(
-        d3.drag<SVGGElement, unknown>()
-          .on("drag", function (event) {
-            const m = matrices.find((m) => m.id === mat.id);
-            if (m) { m.x += event.dx; m.y += event.dy; }
-            d3.select(this).attr("transform", `translate(${mat.x},${mat.y})`);
-          })
-      );
-
-      // Double-click to dismiss
-      mg.on("dblclick", () => {
-        matrices.splice(matrices.indexOf(mat), 1);
-        mg.remove();
-        setMatrixCount(matrices.length);
-      });
-    }
-
-    function createMatrix(selectedIds: string[]) {
-      if (selectedIds.length < 2) return;
-      const n = selectedIds.length;
-      const cellSize = Math.max(14, Math.min(28, Math.floor(280 / n)));
-      const size = n * cellSize;
-
-      let cx = 0, cy = 0;
-      selectedIds.forEach((id) => {
-        const nd = displayAuthors.find((a) => a.id === id);
-        cx += nd?.x ?? 0; cy += nd?.y ?? 0;
-      });
-      cx /= n; cy /= n;
-
-      const idxMap = new Map(selectedIds.map((id, i) => [id, i]));
-      const adj: boolean[][] = Array.from({ length: n }, () => Array(n).fill(false));
-      links.forEach((l) => {
-        const sid = typeof l.source === "string" ? l.source : (l.source as Node).id;
-        const tid = typeof l.target === "string" ? l.target : (l.target as Node).id;
-        if (idxMap.has(sid) && idxMap.has(tid)) {
-          const i = idxMap.get(sid)!, j = idxMap.get(tid)!;
-          adj[i][j] = adj[j][i] = true;
-        }
-      });
-
-      const mat: NTMatrix = {
-        id: `m-${Date.now()}`, nodeIds: selectedIds, adjacency: adj,
-        x: cx - size / 2, y: cy - size / 2, cellSize, size,
-      };
-      matrices.push(mat);
-      setMatrixCount(matrices.length);
-      renderMatrix(mat);
-    }
-
-    /* ── Lasso ── */
-    let lassoPoints: [number, number][] = [];
-    let lassoPath: d3.Selection<SVGPathElement, unknown, null, undefined> | null = null;
-    const lassoLine = d3.line<[number, number]>().curve(d3.curveBasisClosed);
-
-    svgEl
-      .on("mousedown.lasso", (event) => {
-        if (!lassoRef.current) return;
-        event.preventDefault();
-        lassoPoints = [d3.pointer(event) as [number, number]];
-        lassoPath = lassoLayer.append("path")
-          .attr("fill", "rgba(0,0,0,0.04)")
-          .attr("stroke", "rgba(0,0,0,0.25)")
-          .attr("stroke-width", 1.5)
-          .attr("stroke-dasharray", "5,3");
-      })
-      .on("mousemove.lasso", (event) => {
-        if (!lassoRef.current || !lassoPath || lassoPoints.length === 0) return;
-        const pt = d3.pointer(event) as [number, number];
-        const last = lassoPoints[lassoPoints.length - 1];
-        if (Math.hypot(pt[0] - last[0], pt[1] - last[1]) > 8) {
-          lassoPoints.push(pt);
-          lassoPath.attr("d", lassoLine(lassoPoints) || "");
-        }
-      })
-      .on("mouseup.lasso", () => {
-        if (!lassoRef.current || !lassoPath) return;
-        const transform = d3.zoomTransform(svgEl.node()!);
-        const selected: string[] = [];
-        displayAuthors.forEach((nd) => {
-          if (nd.x == null || nd.y == null) return;
-          const [sx, sy] = transform.apply([nd.x, nd.y]);
-          if (pointInPolygon([sx, sy], lassoPoints)) selected.push(nd.id);
-        });
-        lassoPath.remove(); lassoPath = null; lassoPoints = [];
-        lassoRef.current = false;
-        setLassoActive(false);
-        if (selected.length >= 2) createMatrix(selected);
-      });
-
     // Drag handlers
     function dragstarted(event: any, d: Node) {
       if (!event.active) simulation.alphaTarget(0.3).restart();
@@ -664,8 +496,6 @@ export default function NetworkView({
 
     return () => {
       simulation.stop();
-      svgEl.on("mousedown.lasso", null).on("mousemove.lasso", null).on("mouseup.lasso", null);
-      setMatrixCount(0);
       if (tooltipRef.current) {
         tooltipRef.current.remove();
         tooltipRef.current = null;
@@ -683,12 +513,6 @@ export default function NetworkView({
     router,
   ]);
 
-  const toggleLasso = () => {
-    const next = !lassoActive;
-    setLassoActive(next);
-    lassoRef.current = next;
-  };
-
   return (
     <div className={styles.container}>
       <div className={styles.chartContainer}>
@@ -705,20 +529,6 @@ export default function NetworkView({
             />
             <span>Use Citation Impact for node size</span>
           </label>
-          <div className={styles.controlGroup}>
-            <button
-              className={`${styles.lassoBtn} ${lassoActive ? styles.lassoBtnActive : ""}`}
-              onClick={toggleLasso}
-            >
-              {lassoActive ? "✕ Cancel" : "⌖ Lasso Select"}
-            </button>
-            {lassoActive && (
-              <p className={styles.lassoHint}>Draw around nodes to create a matrix</p>
-            )}
-            {matrixCount > 0 && !lassoActive && (
-              <p className={styles.lassoHint}>{matrixCount} matrix{matrixCount !== 1 ? "es" : ""} · double-click to remove</p>
-            )}
-          </div>
           <div className={styles.controlGroup}>
             <label htmlFor="edgeStrength">Edge Strength:</label>
             <select

@@ -115,50 +115,6 @@
   color: #0e0e0c;
 }
 
-/* ─── Lasso ─── */
-.lassoBtn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  padding: 7px 12px;
-  background: transparent;
-  color: rgba(0, 0, 0, 0.5);
-  font-size: 11px;
-  font-weight: 500;
-  border-radius: 5px;
-  border: 1px solid rgba(0, 0, 0, 0.14);
-  cursor: pointer;
-  transition: background 0.2s, border-color 0.2s, color 0.2s;
-  font-family: var(--font-geist-sans), system-ui, sans-serif;
-}
-
-.lassoBtn:hover {
-  background: rgba(0, 0, 0, 0.05);
-  border-color: rgba(0, 0, 0, 0.25);
-  color: #0e0e0c;
-}
-
-.lassoBtnActive {
-  background: #0e0e0c;
-  color: #f2f2ee;
-  border-color: #0e0e0c;
-}
-
-.lassoBtnActive:hover {
-  background: #1e1e1c;
-  border-color: #1e1e1c;
-  color: #f2f2ee;
-}
-
-.lassoHint {
-  font-size: 10px;
-  color: rgba(0, 0, 0, 0.35);
-  margin: 0;
-  line-height: 1.5;
-  font-family: var(--font-geist-mono), monospace;
-}
-
 /* ─── University List ─── */
 .universityList {
   display: flex;
