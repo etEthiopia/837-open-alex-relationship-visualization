@@ -4,11 +4,10 @@ import { useState } from "react";
 import Link from "next/link";
 import ScatterplotView from "../components/ScatterplotView";
 import NetworkView from "../components/NetworkView";
-import NodeTrixView from "../components/NodeTrixView";
 import styles from "./explore.module.css";
 
 type CanadianFilter = "full" | "full_partial";
-type TabType = "scatterplot" | "network" | "nodetrix";
+type TabType = "scatterplot" | "network";
 
 // Field options grouped by domain
 const FIELD_GROUPS = [
@@ -283,34 +282,19 @@ export default function ExplorePage() {
         >
           Collaboration Network
         </button>
-        <button
-          className={`${styles.tab} ${activeTab === "nodetrix" ? styles.activeTab : ""}`}
-          onClick={() => setActiveTab("nodetrix")}
-        >
-          NodeTrix
-        </button>
       </div>
 
       {/* ── Visualization ── */}
       <div className={styles.vizContainer}>
-        {activeTab === "scatterplot" && (
+        {activeTab === "scatterplot" ? (
           <ScatterplotView
             maxAuthors={maxAuthors}
             maxUniversities={maxUniversities}
             canadianFilter={canadianFilter}
             domain={domainValue}
           />
-        )}
-        {activeTab === "network" && (
+        ) : (
           <NetworkView
-            maxAuthors={maxAuthors}
-            maxUniversities={maxUniversities}
-            canadianFilter={canadianFilter}
-            domain={domainValue}
-          />
-        )}
-        {activeTab === "nodetrix" && (
-          <NodeTrixView
             maxAuthors={maxAuthors}
             maxUniversities={maxUniversities}
             canadianFilter={canadianFilter}
