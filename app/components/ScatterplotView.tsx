@@ -43,8 +43,10 @@ export default function ScatterplotView({
     HTMLElement,
     unknown
   > | null>(null);
+  const zoomBehaviorRef = useRef<d3.ZoomBehavior<SVGSVGElement, unknown> | null>(null);
   const [authors, setAuthors] = useState<Author[]>([]);
   const [useSizeEncoding, setUseSizeEncoding] = useState<boolean>(true);
+  const [hasZoomed, setHasZoomed] = useState<boolean>(false);
   const [selectedInstitution, setSelectedInstitution] = useState<string | null>(
     null
   );
@@ -134,22 +136,36 @@ export default function ScatterplotView({
     const width = containerWidth - margin.left - margin.right;
     const height = containerHeight - margin.top - margin.bottom;
 
-    const svg = d3
+    const svgEl = d3
       .select(svgRef.current)
       .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
+      .attr("height", height + margin.top + margin.bottom);
+
+    // Clip path so circles don't render outside the plot area
+    svgEl
+      .append("defs")
+      .append("clipPath")
+      .attr("id", "scatter-clip")
+      .append("rect")
+      .attr("width", width)
+      .attr("height", height);
+
+    const svg = svgEl
       .append("g")
       .attr("transform", `translate(${margin.left},${margin.top})`);
 
+    const maxPapers = d3.max(displayAuthors, (d) => d.field_papers) || 10;
+    const maxCitations = d3.max(displayAuthors, (d) => d.field_citations) || 100;
+
     const xScale = d3
       .scaleLinear()
-      .domain([0, d3.max(displayAuthors, (d) => d.field_papers) || 10])
+      .domain([0, maxPapers * 1.1])
       .range([0, width])
       .nice();
 
     const yScale = d3
       .scaleLinear()
-      .domain([0, d3.max(displayAuthors, (d) => d.field_citations) || 100])
+      .domain([0, maxCitations * 1.1])
       .range([height, 0])
       .nice();
 
@@ -163,6 +179,7 @@ export default function ScatterplotView({
 
     const xAxisGroup = svg
       .append("g")
+      .attr("class", "x-axis")
       .attr("transform", `translate(0,${height})`)
       .call(xAxis);
     xAxisGroup.selectAll("path, line").attr("stroke", "rgba(0,0,0,0.15)");
@@ -179,7 +196,7 @@ export default function ScatterplotView({
       .style("text-transform", "uppercase")
       .text("Publications");
 
-    const yAxisGroup = svg.append("g").call(yAxis);
+    const yAxisGroup = svg.append("g").attr("class", "y-axis").call(yAxis);
     yAxisGroup.selectAll("path, line").attr("stroke", "rgba(0,0,0,0.15)");
     yAxisGroup.selectAll("text").attr("fill", "rgba(0,0,0,0.4)");
     yAxisGroup
@@ -211,7 +228,11 @@ export default function ScatterplotView({
     }
     const tooltip = tooltipRef.current;
 
-    svg
+    const circlesGroup = svg
+      .append("g")
+      .attr("clip-path", "url(#scatter-clip)");
+
+    circlesGroup
       .selectAll("circle")
       .data(displayAuthors)
       .enter()
@@ -256,6 +277,46 @@ export default function ScatterplotView({
         router.push(`/author?id=${shortId}`);
       });
 
+    // Zoom behaviour
+    const zoom = d3.zoom<SVGSVGElement, unknown>()
+      .scaleExtent([0.5, 10])
+      .extent([[0, 0], [width, height]])
+      .on("zoom", (event) => {
+        const t = event.transform;
+        setHasZoomed(t.k !== 1 || t.x !== 0 || t.y !== 0);
+
+        let newX = t.rescaleX(xScale);
+        let newY = t.rescaleY(yScale);
+
+        // Clamp to avoid negative axis values
+        let [minX, maxX] = newX.domain();
+        if (minX < 0) newX = newX.copy().domain([0, maxX - minX]);
+        let [minY, maxY] = newY.domain();
+        if (minY < 0) newY = newY.copy().domain([0, maxY - minY]);
+
+        const xTicks = [];
+        const [x0, x1] = newX.domain();
+        for (let i = Math.ceil(x0); i <= Math.floor(x1); i++) xTicks.push(i);
+
+        xAxisGroup.call(
+          d3.axisBottom(newX).tickValues(xTicks).tickFormat((d) => String(Math.round(Number(d))))
+        );
+        yAxisGroup.call(d3.axisLeft(newY));
+
+        xAxisGroup.selectAll("path, line").attr("stroke", "rgba(0,0,0,0.15)");
+        xAxisGroup.selectAll("text").attr("fill", "rgba(0,0,0,0.4)");
+        yAxisGroup.selectAll("path, line").attr("stroke", "rgba(0,0,0,0.15)");
+        yAxisGroup.selectAll("text").attr("fill", "rgba(0,0,0,0.4)");
+
+        circlesGroup
+          .selectAll<SVGCircleElement, Author>("circle")
+          .attr("cx", (d) => newX(d.field_papers))
+          .attr("cy", (d) => newY(d.field_citations));
+      });
+
+    zoomBehaviorRef.current = zoom;
+    svgEl.call(zoom);
+
     svg
       .append("text")
       .attr("x", width / 2)
@@ -276,6 +337,15 @@ export default function ScatterplotView({
     };
   }, [authors, maxAuthors, maxUniversities, useSizeEncoding, selectedInstitution, router]);
 
+  const resetZoom = () => {
+    if (svgRef.current && zoomBehaviorRef.current) {
+      d3.select(svgRef.current)
+        .transition()
+        .duration(750)
+        .call(zoomBehaviorRef.current.transform, d3.zoomIdentity);
+    }
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.chartContainer}>
@@ -292,6 +362,11 @@ export default function ScatterplotView({
             />
             <span>Use Citation Impact for bubble size</span>
           </label>
+          {hasZoomed && (
+            <button onClick={resetZoom} className={styles.resetButton}>
+              Reset Zoom
+            </button>
+          )}
         </div>
         <h3>Universities</h3>
         <div className={styles.universityList}>
