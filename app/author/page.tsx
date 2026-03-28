@@ -308,20 +308,22 @@ function AuthorContent() {
     );
   }
 
-  const stats = [
-    { icon: <IconDoc />, value: author.works_count.toLocaleString(), label: "Total Works" },
-    { icon: <IconCite />, value: author.cited_by_count.toLocaleString(), label: "Total Citations" },
-    { icon: <IconH />, value: String(author.summary_stats.h_index), label: "h-index" },
-    { icon: <IconI10 />, value: String(author.summary_stats.i10_index), label: "i10-index" },
+  // Field-specific stats — primary, shown prominently first
+  const fieldStats = [
     { icon: <IconBolt />, value: author.aci.toFixed(1), label: "Citation Impact" },
-    { icon: <IconTrend />, value: author.summary_stats["2yr_mean_citedness"].toFixed(2), label: "2yr Mean Citedness" },
+    { icon: <IconDoc />, value: String(author.field_papers), label: "Field Papers" },
+    { icon: <IconCite />, value: author.field_citations.toLocaleString(), label: "Field Citations" },
+    { icon: <IconDoc />, value: String(author.field_papers_first_authorship), label: "1st Author Papers" },
+    { icon: <IconCite />, value: author.field_citations_first_authorship.toLocaleString(), label: "1st Author Citations" },
   ];
 
-  const fieldStats = [
-    { value: author.field_papers, label: "Field Papers" },
-    { value: author.field_citations.toLocaleString(), label: "Field Citations" },
-    { value: author.field_papers_first_authorship, label: "1st Author Papers" },
-    { value: author.field_citations_first_authorship.toLocaleString(), label: "1st Author Citations" },
+  // General stats — secondary, compact row below
+  const stats = [
+    { value: author.works_count.toLocaleString(), label: "Total Works" },
+    { value: author.cited_by_count.toLocaleString(), label: "Total Citations" },
+    { value: String(author.summary_stats.h_index), label: "h-index" },
+    { value: String(author.summary_stats.i10_index), label: "i10-index" },
+    { value: author.summary_stats["2yr_mean_citedness"].toFixed(2), label: "2yr Mean Citedness" },
   ];
 
   return (
@@ -383,23 +385,23 @@ function AuthorContent() {
           </button>
         </section>
 
-        {/* Key Stats */}
-        <section className={styles.statsGrid}>
-          {stats.map((s) => (
-            <div key={s.label} className={styles.statCard}>
-              <div className={styles.statIcon}>{s.icon}</div>
-              <div className={styles.statValue}>{s.value}</div>
-              <div className={styles.statLabel}>{s.label}</div>
+        {/* Field Performance — primary stats */}
+        <section className={styles.fieldStatsGrid}>
+          {fieldStats.map((s) => (
+            <div key={s.label} className={styles.fieldStatCard}>
+              <div className={styles.fieldStatIcon}>{s.icon}</div>
+              <div className={styles.fieldStatValue}>{s.value}</div>
+              <div className={styles.fieldStatLabel}>{s.label}</div>
             </div>
           ))}
         </section>
 
-        {/* Field Performance */}
-        <section className={styles.fieldRow}>
-          {fieldStats.map((s) => (
-            <div key={s.label} className={styles.fieldItem}>
-              <div className={styles.fieldValue}>{s.value}</div>
-              <div className={styles.fieldLabel}>{s.label}</div>
+        {/* General Stats — secondary, compact */}
+        <section className={styles.generalStatsRow}>
+          {stats.map((s) => (
+            <div key={s.label} className={styles.generalStatItem}>
+              <div className={styles.generalStatValue}>{s.value}</div>
+              <div className={styles.generalStatLabel}>{s.label}</div>
             </div>
           ))}
         </section>
