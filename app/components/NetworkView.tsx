@@ -63,6 +63,7 @@ export default function NetworkView({
   maxAuthors,
   maxUniversities,
   canadianFilter,
+  domain,
 }: NetworkViewProps) {
   const router = useRouter();
   const svgRef = useRef<SVGSVGElement>(null);
@@ -464,7 +465,8 @@ export default function NetworkView({
         setSelectedNode((prev) => (prev === d.id ? null : d.id));
 
         const shortId = d.id.replace("https://openalex.org/", "");
-        router.push(`/author?id=${shortId}`);
+        const fieldParam = domain && domain !== "All Domains" ? `&field=${encodeURIComponent(domain.split(":")[1] || domain)}` : "";
+        router.push(`/author?id=${shortId}${fieldParam}`);
       });
 
     // Tick handler

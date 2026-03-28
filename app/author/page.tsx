@@ -243,6 +243,7 @@ function buildChart(
 function AuthorContent() {
   const searchParams = useSearchParams();
   const authorId = searchParams.get("id") || "";
+  const fieldContext = searchParams.get("field") || "";
   const [author, setAuthor] = useState<Author | null>(null);
   const [loading, setLoading] = useState(true);
   const citationsRef = useRef<SVGSVGElement>(null);
@@ -359,6 +360,15 @@ function AuthorContent() {
               )}
             </p>
             <div className={styles.tags}>
+              {fieldContext && (
+                <span className={styles.fieldContextTag}>
+                  <svg width="9" height="9" viewBox="0 0 9 9" fill="none" aria-hidden style={{marginRight: 4, opacity: 0.6}}>
+                    <circle cx="4.5" cy="4.5" r="3.5" stroke="currentColor" strokeWidth="1.2"/>
+                    <circle cx="4.5" cy="4.5" r="1.2" fill="currentColor"/>
+                  </svg>
+                  {fieldContext}
+                </span>
+              )}
               {primaryDomain && (
                 <span className={styles.tag}>{primaryDomain}</span>
               )}

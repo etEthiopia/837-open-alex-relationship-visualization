@@ -275,7 +275,8 @@ export default function ScatterplotView({
       })
       .on("click", function (_event, d) {
         const shortId = d.author_id.replace("https://openalex.org/", "");
-        router.push(`/author?id=${shortId}`);
+        const fieldParam = domain && domain !== "All Domains" ? `&field=${encodeURIComponent(domain.split(":")[1] || domain)}` : "";
+        router.push(`/author?id=${shortId}${fieldParam}`);
       });
 
     // Zoom behaviour
