@@ -75,6 +75,7 @@ export default function NetworkView({
   > | null>(null);
 
   const [authorships, setAuthorships] = useState<Authorship[]>([]);
+  const [domainAuthorIds, setDomainAuthorIds] = useState<Set<string> | null>(null);
   const [useSizeEncoding, setUseSizeEncoding] = useState<boolean>(true);
   const [edgeStrength, setEdgeStrength] =
     useState<EdgeStrengthMetric>("none");
@@ -92,8 +93,35 @@ export default function NetworkView({
       .then((data: Authorship[]) => setAuthorships(data));
   }, []);
 
+  // Build domain-filtered author ID set from authors.json whenever domain changes
+  useEffect(() => {
+    if (domain === "All Domains") {
+      setDomainAuthorIds(null);
+      return;
+    }
+    fetch("/data/authors.json")
+      .then((res) => res.json())
+      .then((data: Array<{ author_id: string; topics?: Array<{ domain?: { display_name: string }; field?: { display_name: string }; subfield?: { display_name: string } }> }>) => {
+        const [level, value] = domain.split(":") as [string, string];
+        const ids = new Set(
+          data
+            .filter((a) =>
+              (a.topics || []).some((t) => {
+                if (level === "domain") return t.domain?.display_name === value;
+                if (level === "field") return t.field?.display_name === value;
+                if (level === "subfield") return t.subfield?.display_name === value;
+                return false;
+              })
+            )
+            .map((a) => a.author_id)
+        );
+        setDomainAuthorIds(ids);
+      });
+  }, [domain]);
+
   useEffect(() => {
     if (!svgRef.current || authorships.length === 0) return;
+    if (domain !== "All Domains" && domainAuthorIds === null) return;
 
     d3.select(svgRef.current).selectAll("*").remove();
 
@@ -106,7 +134,7 @@ export default function NetworkView({
     const authorMap = new Map<string, Node>();
     filteredAuthorships.forEach((authorship) => {
       authorship.ids.forEach((authorId, idx) => {
-        if (!authorMap.has(authorId)) {
+        if (!authorMap.has(authorId) && (domainAuthorIds === null || domainAuthorIds.has(authorId))) {
           const institution = authorship.last_known_institutions[idx];
           authorMap.set(authorId, {
             id: authorId,
@@ -505,6 +533,8 @@ export default function NetworkView({
     };
   }, [
     authorships,
+    domainAuthorIds,
+    domain,
     maxAuthors,
     maxUniversities,
     useSizeEncoding,
