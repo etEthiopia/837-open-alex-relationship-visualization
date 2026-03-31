@@ -499,7 +499,7 @@ export default function NetworkView({
             `${d.institution}<br/>` +
             `Citation Impact: ${d.aci.toFixed(2)} · Connections: ${d.linkCount}<br/>` +
             (isPinned
-              ? `<span style="font-size:10px;opacity:0.45;text-decoration:underline;">Click to unpin</span>`
+              ? `<span style="font-size:10px;opacity:0.45;text-decoration:underline;">Click to view profile · Double-click to unpin</span>`
               : `<span style="font-size:10px;opacity:0.45;text-decoration:underline;">Click to view profile</span>`)
           );
       })
@@ -518,19 +518,19 @@ export default function NetworkView({
       })
       .on("click", function (event, d) {
         event.stopPropagation();
-        if (pinnedSet.has(d.id)) {
-          // Unpin
-          d.fx = null;
-          d.fy = null;
-          pinnedSet.delete(d.id);
-          setPinVisual(d.id, false);
-          simulation.alpha(0.15).restart();
-          return;
-        }
         setSelectedNode((prev) => (prev === d.id ? null : d.id));
         const shortId = d.id.replace("https://openalex.org/", "");
         const fieldParam = domain && domain !== "All Domains" ? `&field=${encodeURIComponent(domain.split(":")[1] || domain)}` : "";
         router.push(`/author?id=${shortId}${fieldParam}`);
+      })
+      .on("dblclick", function (event, d) {
+        event.stopPropagation();
+        if (!pinnedSet.has(d.id)) return;
+        d.fx = null;
+        d.fy = null;
+        pinnedSet.delete(d.id);
+        setPinVisual(d.id, false);
+        simulation.alpha(0.15).restart();
       });
 
     // Tick handler
