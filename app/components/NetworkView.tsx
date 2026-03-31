@@ -38,6 +38,8 @@ interface Node {
   y?: number;
   vx?: number;
   vy?: number;
+  fx?: number | null;
+  fy?: number | null;
 }
 
 interface Link {
@@ -357,8 +359,8 @@ export default function NetworkView({
           .radius((d) => (useSizeEncoding ? sizeScale(d.aci) : 6) + 3)
           .strength(0.7)
       )
-      .alphaDecay(0.02)
-      .velocityDecay(0.4);
+      .alphaDecay(0.028)
+      .velocityDecay(0.45);
 
     // Tooltip
     if (!tooltipRef.current) {
@@ -407,6 +409,18 @@ export default function NetworkView({
         edgeStrength === "none" ? 1 : linkWidthScale(d.value)
       );
 
+    // Track pinned nodes locally (reset when filters change)
+    const pinnedSet = new Set<string>();
+
+    function setPinVisual(id: string, pinned: boolean) {
+      const grp = nodeGroup.filter((d) => d.id === id);
+      grp.select<SVGCircleElement>("circle.node-circle")
+        .attr("stroke", pinned ? "rgba(0,0,0,0.55)" : "rgba(255,255,255,0.5)")
+        .attr("stroke-width", pinned ? 2 : 0.8);
+      grp.select<SVGCircleElement>("circle.pin-dot")
+        .style("opacity", pinned ? 1 : 0);
+    }
+
     // Draw nodes
     const nodeGroup = g
       .append("g")
@@ -427,6 +441,7 @@ export default function NetworkView({
     // Node circles
     nodeGroup
       .append("circle")
+      .attr("class", "node-circle")
       .attr("r", (d) => (useSizeEncoding ? sizeScale(d.aci) : 6))
       .attr("fill", (d) => colorScale(d.institution))
       .attr("stroke", "rgba(255,255,255,0.5)")
@@ -435,6 +450,17 @@ export default function NetworkView({
         if (!selectedInstitution) return 0.85;
         return d.institution === selectedInstitution ? 1.0 : 0.15;
       });
+
+    // Pin dot indicator (hidden by default, shown when pinned)
+    nodeGroup
+      .append("circle")
+      .attr("class", "pin-dot")
+      .attr("r", 2.8)
+      .attr("fill", "white")
+      .attr("stroke", "rgba(0,0,0,0.55)")
+      .attr("stroke-width", 1)
+      .style("opacity", 0)
+      .style("pointer-events", "none");
 
     // Node labels (only for connected or larger nodes)
     nodeGroup
@@ -461,17 +487,20 @@ export default function NetworkView({
     // Interaction: hover
     nodeGroup
       .on("mouseover", function (event, d) {
+        const isPinned = pinnedSet.has(d.id);
         d3.select(this)
-          .select("circle")
-          .attr("stroke-width", 1.5)
-          .attr("stroke", "rgba(0,0,0,0.3)");
+          .select("circle.node-circle")
+          .attr("stroke-width", isPinned ? 2 : 1.5)
+          .attr("stroke", isPinned ? "rgba(0,0,0,0.55)" : "rgba(0,0,0,0.3)");
         tooltip
           .style("opacity", 1)
           .html(
             `<strong>${d.name}</strong><br/>` +
             `${d.institution}<br/>` +
             `Citation Impact: ${d.aci.toFixed(2)} · Connections: ${d.linkCount}<br/>` +
-            `<span style="font-size:10px;opacity:0.45;text-decoration:underline;">Click to view profile</span>`
+            (isPinned
+              ? `<span style="font-size:10px;opacity:0.45;text-decoration:underline;">Click to unpin</span>`
+              : `<span style="font-size:10px;opacity:0.45;text-decoration:underline;">Click to view profile</span>`)
           );
       })
       .on("mousemove", function (event) {
@@ -480,18 +509,25 @@ export default function NetworkView({
           .style("top", event.pageY - 10 + "px");
       })
       .on("mouseout", function (_event, d) {
+        const isPinned = pinnedSet.has(d.id);
         d3.select(this)
-          .select("circle")
-          .attr("stroke-width", 0.8)
-          .attr("stroke", "rgba(255,255,255,0.5)");
+          .select("circle.node-circle")
+          .attr("stroke-width", isPinned ? 2 : 0.8)
+          .attr("stroke", isPinned ? "rgba(0,0,0,0.55)" : "rgba(255,255,255,0.5)");
         tooltip.style("opacity", 0);
       })
       .on("click", function (event, d) {
         event.stopPropagation();
-
-        // Highlight selected node and its connections
+        if (pinnedSet.has(d.id)) {
+          // Unpin
+          d.fx = null;
+          d.fy = null;
+          pinnedSet.delete(d.id);
+          setPinVisual(d.id, false);
+          simulation.alpha(0.15).restart();
+          return;
+        }
         setSelectedNode((prev) => (prev === d.id ? null : d.id));
-
         const shortId = d.id.replace("https://openalex.org/", "");
         const fieldParam = domain && domain !== "All Domains" ? `&field=${encodeURIComponent(domain.split(":")[1] || domain)}` : "";
         router.push(`/author?id=${shortId}${fieldParam}`);
@@ -508,20 +544,35 @@ export default function NetworkView({
       nodeGroup.attr("transform", (d) => `translate(${d.x},${d.y})`);
     });
 
-    // Drag handlers
+    // Drag handlers — use fx/fy for proper D3 force pinning
+    let dragMoved = false;
+
     function dragstarted(event: any, d: Node) {
+      dragMoved = false;
       if (!event.active) simulation.alphaTarget(0.3).restart();
-      d.x = event.x;
-      d.y = event.y;
+      d.fx = d.x;
+      d.fy = d.y;
     }
 
     function dragged(event: any, d: Node) {
-      d.x = event.x;
-      d.y = event.y;
+      dragMoved = true;
+      d.fx = event.x;
+      d.fy = event.y;
     }
 
-    function dragended(event: any) {
+    function dragended(event: any, d: Node) {
       if (!event.active) simulation.alphaTarget(0);
+      if (dragMoved) {
+        // Pin node in place
+        pinnedSet.add(d.id);
+        setPinVisual(d.id, true);
+      } else {
+        // Was just a click — release so click handler can fire
+        if (!pinnedSet.has(d.id)) {
+          d.fx = null;
+          d.fy = null;
+        }
+      }
     }
 
     return () => {
