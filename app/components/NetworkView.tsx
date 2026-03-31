@@ -499,7 +499,7 @@ export default function NetworkView({
             `${d.institution}<br/>` +
             `Citation Impact: ${d.aci.toFixed(2)} · Connections: ${d.linkCount}<br/>` +
             (isPinned
-              ? `<span style="font-size:10px;opacity:0.45;text-decoration:underline;">Click to view profile · Double-click to unpin</span>`
+              ? `<span style="font-size:10px;opacity:0.45;text-decoration:underline;">Click to view profile · Right-click to unpin</span>`
               : `<span style="font-size:10px;opacity:0.45;text-decoration:underline;">Click to view profile</span>`)
           );
       })
@@ -523,7 +523,8 @@ export default function NetworkView({
         const fieldParam = domain && domain !== "All Domains" ? `&field=${encodeURIComponent(domain.split(":")[1] || domain)}` : "";
         router.push(`/author?id=${shortId}${fieldParam}`);
       })
-      .on("dblclick", function (event, d) {
+      .on("contextmenu", function (event, d) {
+        event.preventDefault();
         event.stopPropagation();
         if (!pinnedSet.has(d.id)) return;
         d.fx = null;
