@@ -244,6 +244,8 @@ function AuthorContent() {
   const searchParams = useSearchParams();
   const authorId = searchParams.get("id") || "";
   const fieldContext = searchParams.get("field") || "";
+  const fromNetwork = searchParams.get("from") === "network";
+  const backHref = fromNetwork ? "/explore?tab=network" : "/explore";
   const [author, setAuthor] = useState<Author | null>(null);
   const [loading, setLoading] = useState(true);
   const citationsRef = useRef<SVGSVGElement>(null);
@@ -332,7 +334,7 @@ function AuthorContent() {
 
       {/* ── Header ── */}
       <header className={styles.header}>
-        <Link href="/explore" className={styles.backLink}>
+        <Link href={backHref} className={styles.backLink}>
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden>
             <path d="M11 6H1M1 6L5.5 1.5M1 6L5.5 10.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>

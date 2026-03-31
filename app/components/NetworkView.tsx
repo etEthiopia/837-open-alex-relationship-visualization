@@ -521,7 +521,7 @@ export default function NetworkView({
         setSelectedNode((prev) => (prev === d.id ? null : d.id));
         const shortId = d.id.replace("https://openalex.org/", "");
         const fieldParam = domain && domain !== "All Domains" ? `&field=${encodeURIComponent(domain.split(":")[1] || domain)}` : "";
-        router.push(`/author?id=${shortId}${fieldParam}`);
+        router.push(`/author?id=${shortId}${fieldParam}&from=network`);
       })
       .on("contextmenu", function (event, d) {
         event.preventDefault();

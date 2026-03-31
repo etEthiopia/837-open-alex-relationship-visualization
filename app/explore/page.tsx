@@ -1,6 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 import Link from "next/link";
 import ScatterplotView from "../components/ScatterplotView";
 import NetworkView from "../components/NetworkView";
@@ -157,8 +159,11 @@ const SUBFIELDS: Record<string, string[]> = {
   ],
 };
 
-export default function ExplorePage() {
-  const [activeTab, setActiveTab] = useState<TabType>("scatterplot");
+function ExploreContent() {
+  const searchParams = useSearchParams();
+  const [activeTab, setActiveTab] = useState<TabType>(
+    searchParams.get("tab") === "network" ? "network" : "scatterplot"
+  );
   const [maxAuthors, setMaxAuthors] = useState<number>(10);
   const [maxUniversities, setMaxUniversities] = useState<number>(5);
   const [canadianFilter, setCanadianFilter] = useState<CanadianFilter>("full");
@@ -303,5 +308,13 @@ export default function ExplorePage() {
         )}
       </div>
     </div>
+  );
+}
+
+export default function ExplorePage() {
+  return (
+    <Suspense fallback={<div style={{ height: "100vh", background: "#f2f2ee" }} />}>
+      <ExploreContent />
+    </Suspense>
   );
 }
