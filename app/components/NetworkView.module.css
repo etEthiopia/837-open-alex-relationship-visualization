@@ -164,6 +164,40 @@
   color: rgba(0, 0, 0, 0.8);
 }
 
+/* ─── Matrix Toggle Button ─── */
+.matrixToggle {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  background: #eaeae6;
+  color: rgba(0, 0, 0, 0.45);
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+  padding: 0;
+}
+
+.matrixToggle:hover {
+  background: rgba(0, 0, 0, 0.08);
+  border-color: rgba(0, 0, 0, 0.25);
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.matrixToggle.matrixActive {
+  background: #0e0e0c;
+  color: white;
+  border-color: #0e0e0c;
+}
+
+.matrixToggle.matrixActive:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
 @media (max-width: 1024px) {
   .container {
     flex-direction: column;
