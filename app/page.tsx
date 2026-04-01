@@ -11,7 +11,7 @@ export default function Home() {
 
   // Cursor spotlight
   useEffect(() => {
-    setMounted(true);
+    // setMounted(true);
     const hero = heroRef.current;
     const glow = cursorGlowRef.current;
     if (!hero || !glow) return;
@@ -72,12 +72,12 @@ export default function Home() {
         </div>
 
         {/* Scroll indicator */}
-        {mounted && (
+        {/* {mounted && (
           <div className={styles.scrollHint}>
             <span>Scroll</span>
             <div className={styles.scrollLine} />
           </div>
-        )}
+        )} */}
       </section>
 
       {/* ── Features ── */}
