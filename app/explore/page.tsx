@@ -164,8 +164,8 @@ function ExploreContent() {
   const [activeTab, setActiveTab] = useState<TabType>(
     searchParams.get("tab") === "network" ? "network" : "scatterplot"
   );
-  const [maxAuthors, setMaxAuthors] = useState<number>(10);
-  const [maxUniversities, setMaxUniversities] = useState<number>(5);
+  const [maxAuthors, setMaxAuthors] = useState<number>(30);
+  const [maxUniversities, setMaxUniversities] = useState<number>(10);
   const [canadianFilter, setCanadianFilter] = useState<CanadianFilter>("full");
   const [selectedField, setSelectedField] = useState<string>("");
   const [selectedSubfield, setSelectedSubfield] = useState<string>("");
