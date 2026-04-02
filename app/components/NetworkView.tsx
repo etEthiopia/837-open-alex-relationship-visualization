@@ -640,7 +640,7 @@ export default function NetworkView({
             `${d.institution}<br/>` +
             `Citation Impact: ${d.aci.toFixed(2)} · Connections: ${d.linkCount}<br/>` +
             (isPinned
-              ? `<span style="font-size:10px;opacity:0.45;text-decoration:underline;">Click to view profile · Right-click to unpin</span>`
+              ? `<span style="font-size:10px;opacity:0.45;text-decoration:underline;">Click to view profile</span><br/><span style="font-size:10px;opacity:0.45;text-decoration:underline;">Right-click to unpin</span>`
               : `<span style="font-size:10px;opacity:0.45;text-decoration:underline;">Click to view profile</span>`)
           );
       })
