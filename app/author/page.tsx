@@ -282,38 +282,45 @@ function AuthorContent() {
       });
   }, [authorId]);
 
-  const renderCharts = useCallback(() => {
-    if (!author) return;
+  const renderCitationsChart = useCallback(() => {
+    if (!author || !citationsRef.current) return;
     const spy = author.stats_per_year || {};
-    const base = [...author.counts_by_year]
+    const data: YearPoint[] = [...author.counts_by_year]
       .filter((d) => d.year >= 2010)
-      .sort((a, b) => a.year - b.year);
-    if (!base.length) return;
+      .sort((a, b) => a.year - b.year)
+      .map((d) => ({
+        year: d.year,
+        total: d.cited_by_count,
+        field: spy[String(d.year)]?.field_citations ?? 0,
+      }));
+    if (!data.length) return;
+    buildChart(citationsRef.current, data, citationsMode, { total: "#3b82f6", field: "#6366f1" }, "tt-citations");
+  }, [author, citationsMode]);
 
-    const citData: YearPoint[] = base.map((d) => ({
-      year: d.year,
-      total: d.cited_by_count,
-      field: spy[String(d.year)]?.field_citations ?? 0,
-    }));
-    const worksData: YearPoint[] = base.map((d) => ({
-      year: d.year,
-      total: d.works_count,
-      field: spy[String(d.year)]?.field_papers ?? 0,
-    }));
-
-    if (citationsRef.current)
-      buildChart(citationsRef.current, citData, citationsMode, { total: "#3b82f6", field: "#6366f1" }, "tt-citations");
-    if (worksRef.current)
-      buildChart(worksRef.current, worksData, worksMode, { total: "#10b981", field: "#059669" }, "tt-works");
-  }, [author, citationsMode, worksMode]);
+  const renderWorksChart = useCallback(() => {
+    if (!author || !worksRef.current) return;
+    const spy = author.stats_per_year || {};
+    const data: YearPoint[] = [...author.counts_by_year]
+      .filter((d) => d.year >= 2010)
+      .sort((a, b) => a.year - b.year)
+      .map((d) => ({
+        year: d.year,
+        total: d.works_count,
+        field: spy[String(d.year)]?.field_papers ?? 0,
+      }));
+    if (!data.length) return;
+    buildChart(worksRef.current, data, worksMode, { total: "#10b981", field: "#059669" }, "tt-works");
+  }, [author, worksMode]);
 
   useEffect(() => {
-    renderCharts();
-    return () => {
-      d3.select("#tt-citations").remove();
-      d3.select("#tt-works").remove();
-    };
-  }, [renderCharts]);
+    renderCitationsChart();
+    return () => { d3.select("#tt-citations").remove(); };
+  }, [renderCitationsChart]);
+
+  useEffect(() => {
+    renderWorksChart();
+    return () => { d3.select("#tt-works").remove(); };
+  }, [renderWorksChart]);
 
   const initials = author?.display_name
     .split(" ")
