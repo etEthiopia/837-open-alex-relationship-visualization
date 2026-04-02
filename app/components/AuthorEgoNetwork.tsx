@@ -181,6 +181,20 @@ export default function AuthorEgoNetwork({ authorId, authorName }: Props) {
           .attr("stroke", "rgba(0,0,0,0.08)")
           .attr("stroke-width", (d) => d.strokeWidth);
 
+        // Pin tracking
+        const pinnedSet = new Set<string>();
+        let dragMoved = false;
+
+        function setPinVisual(id: string, pinned: boolean) {
+          nodeSel.filter((d) => d.id === id)
+            .select<SVGCircleElement>("circle.node-circle")
+            .attr("stroke", pinned ? "rgba(0,0,0,0.5)" : "rgba(0,0,0,0.18)")
+            .attr("stroke-width", pinned ? 1.8 : 1);
+          nodeSel.filter((d) => d.id === id)
+            .select<SVGCircleElement>("circle.pin-dot")
+            .style("opacity", pinned ? 1 : 0);
+        }
+
         // Node groups
         const nodeSel = svg
           .append("g")
@@ -193,32 +207,48 @@ export default function AuthorEgoNetwork({ authorId, authorName }: Props) {
             d3
               .drag<SVGGElement, Node>()
               .on("start", (event, d) => {
+                dragMoved = false;
                 if (!event.active) sim!.alphaTarget(0.3).restart();
                 d.fx = d.x;
                 d.fy = d.y;
               })
               .on("drag", (event, d) => {
+                dragMoved = true;
                 d.fx = event.x;
                 d.fy = event.y;
               })
               .on("end", (event, d) => {
                 if (!event.active) sim!.alphaTarget(0);
-                d.fx = null;
-                d.fy = null;
+                if (dragMoved && !d.isCenter) {
+                  pinnedSet.add(d.id);
+                  setPinVisual(d.id, true);
+                } else if (!pinnedSet.has(d.id)) {
+                  d.fx = null;
+                  d.fy = null;
+                }
               })
           );
 
         // Circles
         nodeSel
           .append("circle")
+          .attr("class", "node-circle")
           .attr("r", (d) => d.r)
-          .attr("fill", (d) =>
-            d.isCenter ? "#0e0e0c" : "rgba(0,0,0,0.1)"
-          )
-          .attr("stroke", (d) =>
-            d.isCenter ? "none" : "rgba(0,0,0,0.18)"
-          )
+          .attr("fill", (d) => (d.isCenter ? "#0e0e0c" : "rgba(0,0,0,0.1)"))
+          .attr("stroke", (d) => (d.isCenter ? "none" : "rgba(0,0,0,0.18)"))
           .attr("stroke-width", 1);
+
+        // Pin dot indicator
+        nodeSel
+          .filter((d) => !d.isCenter)
+          .append("circle")
+          .attr("class", "pin-dot")
+          .attr("r", 2.5)
+          .attr("fill", "white")
+          .attr("stroke", "rgba(0,0,0,0.5)")
+          .attr("stroke-width", 1)
+          .style("opacity", 0)
+          .style("pointer-events", "none");
 
         // Center label (last name below node)
         nodeSel
@@ -236,32 +266,39 @@ export default function AuthorEgoNetwork({ authorId, authorName }: Props) {
         nodeSel
           .filter((d) => !d.isCenter)
           .on("mouseover", function (event, d) {
-            d3.select(this)
-              .select("circle")
-              .attr("fill", "rgba(0,0,0,0.22)");
+            const isPinned = pinnedSet.has(d.id);
+            if (!isPinned) d3.select(this).select("circle.node-circle").attr("fill", "rgba(0,0,0,0.22)");
             tooltip
               .style("opacity", 1)
               .html(
                 `<strong>${d.name}</strong><br/>` +
-                  `${d.institution}<br/>` +
-                  `${d.sharedPapers} shared paper${d.sharedPapers !== 1 ? "s" : ""}<br/>` +
-                  `<span style="font-size:10px;opacity:0.45;text-decoration:underline;">Click to view profile</span>`
+                `${d.institution}<br/>` +
+                `${d.sharedPapers} shared paper${d.sharedPapers !== 1 ? "s" : ""}<br/>` +
+                (isPinned
+                  ? `<span style="font-size:10px;opacity:0.45;text-decoration:underline;">Click to view profile</span><br/><span style="font-size:10px;opacity:0.45;text-decoration:underline;">Right-click to unpin</span>`
+                  : `<span style="font-size:10px;opacity:0.45;text-decoration:underline;">Click to view profile</span>`)
               );
           })
           .on("mousemove", function (event) {
-            tooltip
-              .style("left", event.pageX + 10 + "px")
-              .style("top", event.pageY - 10 + "px");
+            tooltip.style("left", event.pageX + 10 + "px").style("top", event.pageY - 10 + "px");
           })
-          .on("mouseout", function () {
-            d3.select(this)
-              .select("circle")
-              .attr("fill", "rgba(0,0,0,0.1)");
+          .on("mouseout", function (_, d) {
+            if (!pinnedSet.has(d.id))
+              d3.select(this).select("circle.node-circle").attr("fill", "rgba(0,0,0,0.1)");
             tooltip.style("opacity", 0);
           })
           .on("click", function (_event, d) {
             const shortId = d.id.replace("https://openalex.org/", "");
             router.push(`/author?id=${shortId}`);
+          })
+          .on("contextmenu", function (event, d) {
+            event.preventDefault();
+            if (!pinnedSet.has(d.id)) return;
+            d.fx = null;
+            d.fy = null;
+            pinnedSet.delete(d.id);
+            setPinVisual(d.id, false);
+            sim!.alpha(0.15).restart();
           });
 
         // Tick
