@@ -45,7 +45,7 @@ export default function ScatterplotView({
   > | null>(null);
   const zoomBehaviorRef = useRef<d3.ZoomBehavior<SVGSVGElement, unknown> | null>(null);
   const [authors, setAuthors] = useState<Author[]>([]);
-  const [useSizeEncoding, setUseSizeEncoding] = useState<boolean>(false);
+  const [useSizeEncoding, setUseSizeEncoding] = useState<boolean>(true);
   const [hasZoomed, setHasZoomed] = useState<boolean>(false);
   const [selectedInstitution, setSelectedInstitution] = useState<string | null>(
     null
