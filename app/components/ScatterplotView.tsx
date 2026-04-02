@@ -132,7 +132,7 @@ export default function ScatterplotView({
       (svgRef.current.parentElement?.clientWidth || 1000) - 50;
     const containerHeight =
       (svgRef.current.parentElement?.clientHeight || 800) - 50;
-    const margin = { top: 80, right: 100, bottom: 160, left: 200 };
+    const margin = { top: 80, right: 100, bottom: 100, left: 100 };
     const width = containerWidth - margin.left - margin.right;
     const height = containerHeight - margin.top - margin.bottom;
 
