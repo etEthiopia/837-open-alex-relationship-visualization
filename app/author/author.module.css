@@ -292,6 +292,13 @@
   padding: 20px 20px 12px;
 }
 
+.chartHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
 .chartLabel {
   font-size: 10px;
   font-weight: 500;
@@ -299,7 +306,38 @@
   letter-spacing: 2px;
   color: rgba(0, 0, 0, 0.3);
   font-family: var(--font-geist-mono), monospace;
-  margin: 0 0 12px 0;
+  margin: 0;
+}
+
+.chartToggle {
+  display: flex;
+  gap: 2px;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 6px;
+  padding: 2px;
+}
+
+.chartToggleBtn {
+  font-size: 10px;
+  font-weight: 500;
+  padding: 3px 10px;
+  border: none;
+  background: transparent;
+  color: rgba(0, 0, 0, 0.4);
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  transition: background 0.15s, color 0.15s;
+}
+
+.chartToggleBtn:hover {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.chartToggleBtnActive {
+  background: #ffffff;
+  color: #0e0e0c;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .chartSvg {

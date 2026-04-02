@@ -31,6 +31,21 @@ interface CountsByYear {
   cited_by_count: number;
 }
 
+interface StatsPerYear {
+  field_citations: number;
+  field_papers: number;
+  field_citations_first_authorship: number;
+  field_papers_first_authorship: number;
+}
+
+interface YearPoint {
+  year: number;
+  total: number;
+  field: number;
+}
+
+type ChartMode = "total" | "field" | "compare";
+
 interface Author {
   author_id: string;
   orcid: string | null;
@@ -51,6 +66,7 @@ interface Author {
   };
   topics: Topic[];
   counts_by_year: CountsByYear[];
+  stats_per_year?: Record<string, StatsPerYear>;
   works_api_url: string;
   last_known_institution: {
     id: string;
@@ -104,15 +120,16 @@ const IconTrend = () => (
 
 function buildChart(
   svgEl: SVGSVGElement,
-  yearData: CountsByYear[],
-  key: "cited_by_count" | "works_count",
-  color: string
+  data: YearPoint[],
+  mode: ChartMode,
+  colors: { total: string; field: string },
+  tooltipId: string
 ) {
   d3.select(svgEl).selectAll("*").remove();
 
   const width = 480;
   const height = 220;
-  const margin = { top: 16, right: 16, bottom: 32, left: 48 };
+  const margin = { top: 20, right: 16, bottom: 32, left: 48 };
   const innerW = width - margin.left - margin.right;
   const innerH = height - margin.top - margin.bottom;
 
@@ -125,51 +142,36 @@ function buildChart(
 
   const x = d3
     .scaleBand()
-    .domain(yearData.map((d) => String(d.year)))
+    .domain(data.map((d) => String(d.year)))
     .range([0, innerW])
-    .padding(0.35);
+    .padding(mode === "compare" ? 0.25 : 0.35);
 
-  const y = d3
-    .scaleLinear()
-    .domain([0, d3.max(yearData, (d) => d[key]) || 1])
-    .range([innerH, 0])
-    .nice();
+  const maxVal =
+    mode === "total" ? d3.max(data, (d) => d.total) || 1
+    : mode === "field" ? d3.max(data, (d) => d.field) || 1
+    : Math.max(d3.max(data, (d) => d.total) || 1, d3.max(data, (d) => d.field) || 1);
 
-  // Grid lines
-  svg
-    .append("g")
-    .attr("class", "grid")
-    .call(
-      d3.axisLeft(y).ticks(4).tickSize(-innerW).tickFormat(() => "")
-    )
+  const y = d3.scaleLinear().domain([0, maxVal]).range([innerH, 0]).nice();
+
+  // Grid
+  svg.append("g")
+    .call(d3.axisLeft(y).ticks(4).tickSize(-innerW).tickFormat(() => ""))
     .call((g) => g.select(".domain").remove())
-    .call((g) =>
-      g.selectAll(".tick line")
-        .attr("stroke", "rgba(0,0,0,0.06)")
-        .attr("stroke-dasharray", "3,3")
-    );
+    .call((g) => g.selectAll(".tick line").attr("stroke", "rgba(0,0,0,0.06)").attr("stroke-dasharray", "3,3"));
 
   // X axis
-  svg
-    .append("g")
+  svg.append("g")
     .attr("transform", `translate(0,${innerH})`)
-    .call(
-      d3.axisBottom(x).tickValues(
-        yearData.filter((_, i) => i % 2 === 0).map((d) => String(d.year))
-      )
-    )
+    .call(d3.axisBottom(x).tickValues(data.filter((_, i) => i % 2 === 0).map((d) => String(d.year))))
     .call((g) => g.select(".domain").attr("stroke", "rgba(0,0,0,0.1)"))
-    .call((g) =>
-      g.selectAll(".tick line").attr("stroke", "rgba(0,0,0,0.1)")
-    )
+    .call((g) => g.selectAll(".tick line").attr("stroke", "rgba(0,0,0,0.1)"))
     .selectAll("text")
     .attr("fill", "rgba(0,0,0,0.38)")
     .style("font-size", "10px")
     .style("font-family", "var(--font-geist-mono), monospace");
 
   // Y axis
-  svg
-    .append("g")
+  svg.append("g")
     .call(d3.axisLeft(y).ticks(4))
     .call((g) => g.select(".domain").remove())
     .call((g) => g.selectAll(".tick line").remove())
@@ -178,12 +180,9 @@ function buildChart(
     .style("font-size", "10px")
     .style("font-family", "var(--font-geist-mono), monospace");
 
-  // Tooltip div (shared, appended to body once per chart render scope)
-  const tooltipId = `tt-${key}`;
+  // Tooltip
   d3.select(`#${tooltipId}`).remove();
-  const tooltip = d3
-    .select("body")
-    .append("div")
+  const tooltip = d3.select("body").append("div")
     .attr("id", tooltipId)
     .style("position", "absolute")
     .style("background", "#0e0e0c")
@@ -197,47 +196,66 @@ function buildChart(
     .style("z-index", "1000")
     .style("white-space", "nowrap");
 
-  // Bars
-  const bars = svg
-    .selectAll("rect.bar")
-    .data(yearData)
-    .enter()
-    .append("rect")
-    .attr("class", "bar")
-    .attr("x", (d) => x(String(d.year))!)
-    .attr("y", innerH)
-    .attr("width", x.bandwidth())
-    .attr("height", 0)
-    .attr("fill", color)
-    .attr("rx", 3)
-    .style("cursor", "pointer");
+  if (mode === "compare") {
+    const half = x.bandwidth() / 2 - 1;
 
-  // Animate in
-  bars
-    .transition()
-    .duration(600)
-    .delay((_, i) => i * 30)
-    .ease(d3.easeCubicOut)
-    .attr("y", (d) => y(d[key]))
-    .attr("height", (d) => innerH - y(d[key]));
+    // Total bars
+    const totalBars = svg.selectAll("rect.bar-total").data(data).enter()
+      .append("rect").attr("class", "bar-total")
+      .attr("x", (d) => x(String(d.year))!)
+      .attr("y", innerH).attr("width", half).attr("height", 0)
+      .attr("fill", colors.total).attr("rx", 2).attr("opacity", 0.7);
+    totalBars.transition().duration(600).delay((_, i) => i * 30).ease(d3.easeCubicOut)
+      .attr("y", (d) => y(d.total)).attr("height", (d) => innerH - y(d.total));
+    totalBars
+      .on("mouseover", function (event, d) {
+        d3.select(this).attr("opacity", 1);
+        tooltip.style("opacity", "1").html(`<strong>${d.year}</strong> &nbsp; Total: ${d.total.toLocaleString()}`);
+      })
+      .on("mousemove", (event) => tooltip.style("left", event.pageX + 12 + "px").style("top", event.pageY - 32 + "px"))
+      .on("mouseout", function () { d3.select(this).attr("opacity", 0.7); tooltip.style("opacity", "0"); });
 
-  // Hover interaction
-  bars
-    .on("mouseover", function (event, d) {
-      d3.select(this).attr("fill", d3.color(color)!.darker(0.4).toString());
-      tooltip
-        .style("opacity", "1")
-        .html(`<strong>${d.year}</strong> &nbsp; ${d[key].toLocaleString()}`);
-    })
-    .on("mousemove", function (event) {
-      tooltip
-        .style("left", event.pageX + 12 + "px")
-        .style("top", event.pageY - 32 + "px");
-    })
-    .on("mouseout", function () {
-      d3.select(this).attr("fill", color);
-      tooltip.style("opacity", "0");
-    });
+    // Field bars
+    const fieldBars = svg.selectAll("rect.bar-field").data(data).enter()
+      .append("rect").attr("class", "bar-field")
+      .attr("x", (d) => x(String(d.year))! + half + 2)
+      .attr("y", innerH).attr("width", half).attr("height", 0)
+      .attr("fill", colors.field).attr("rx", 2);
+    fieldBars.transition().duration(600).delay((_, i) => i * 30).ease(d3.easeCubicOut)
+      .attr("y", (d) => y(d.field)).attr("height", (d) => innerH - y(d.field));
+    fieldBars
+      .on("mouseover", function (event, d) {
+        d3.select(this).attr("fill", d3.color(colors.field)!.darker(0.3).toString());
+        tooltip.style("opacity", "1").html(`<strong>${d.year}</strong> &nbsp; Field: ${d.field.toLocaleString()}`);
+      })
+      .on("mousemove", (event) => tooltip.style("left", event.pageX + 12 + "px").style("top", event.pageY - 32 + "px"))
+      .on("mouseout", function () { d3.select(this).attr("fill", colors.field); tooltip.style("opacity", "0"); });
+
+    // Legend
+    const leg = svg.append("g").attr("transform", `translate(${innerW - 110}, -14)`);
+    leg.append("rect").attr("width", 10).attr("height", 10).attr("fill", colors.total).attr("opacity", 0.7).attr("rx", 2);
+    leg.append("text").attr("x", 14).attr("y", 9).style("font-size", "9px").style("fill", "rgba(0,0,0,0.45)").style("font-family", "var(--font-geist-mono), monospace").text("Total");
+    leg.append("rect").attr("x", 46).attr("width", 10).attr("height", 10).attr("fill", colors.field).attr("rx", 2);
+    leg.append("text").attr("x", 60).attr("y", 9).style("font-size", "9px").style("fill", "rgba(0,0,0,0.45)").style("font-family", "var(--font-geist-mono), monospace").text("Field");
+  } else {
+    const val = (d: YearPoint) => mode === "total" ? d.total : d.field;
+    const color = mode === "total" ? colors.total : colors.field;
+
+    const bars = svg.selectAll("rect.bar").data(data).enter()
+      .append("rect").attr("class", "bar")
+      .attr("x", (d) => x(String(d.year))!)
+      .attr("y", innerH).attr("width", x.bandwidth()).attr("height", 0)
+      .attr("fill", color).attr("rx", 3).style("cursor", "pointer");
+    bars.transition().duration(600).delay((_, i) => i * 30).ease(d3.easeCubicOut)
+      .attr("y", (d) => y(val(d))).attr("height", (d) => innerH - y(val(d)));
+    bars
+      .on("mouseover", function (event, d) {
+        d3.select(this).attr("fill", d3.color(color)!.darker(0.4).toString());
+        tooltip.style("opacity", "1").html(`<strong>${d.year}</strong> &nbsp; ${val(d).toLocaleString()}`);
+      })
+      .on("mousemove", (event) => tooltip.style("left", event.pageX + 12 + "px").style("top", event.pageY - 32 + "px"))
+      .on("mouseout", function () { d3.select(this).attr("fill", color); tooltip.style("opacity", "0"); });
+  }
 }
 
 function AuthorContent() {
@@ -248,6 +266,8 @@ function AuthorContent() {
   const backHref = fromNetwork ? "/explore?tab=network" : "/explore";
   const [author, setAuthor] = useState<Author | null>(null);
   const [loading, setLoading] = useState(true);
+  const [citationsMode, setCitationsMode] = useState<ChartMode>("total");
+  const [worksMode, setWorksMode] = useState<ChartMode>("total");
   const citationsRef = useRef<SVGSVGElement>(null);
   const worksRef = useRef<SVGSVGElement>(null);
 
@@ -264,19 +284,34 @@ function AuthorContent() {
 
   const renderCharts = useCallback(() => {
     if (!author) return;
-    const yearData = [...author.counts_by_year]
+    const spy = author.stats_per_year || {};
+    const base = [...author.counts_by_year]
       .filter((d) => d.year >= 2010)
       .sort((a, b) => a.year - b.year);
-    if (!yearData.length) return;
-    if (citationsRef.current) buildChart(citationsRef.current, yearData, "cited_by_count", "#3b82f6");
-    if (worksRef.current) buildChart(worksRef.current, yearData, "works_count", "#10b981");
-  }, [author]);
+    if (!base.length) return;
+
+    const citData: YearPoint[] = base.map((d) => ({
+      year: d.year,
+      total: d.cited_by_count,
+      field: spy[String(d.year)]?.field_citations ?? 0,
+    }));
+    const worksData: YearPoint[] = base.map((d) => ({
+      year: d.year,
+      total: d.works_count,
+      field: spy[String(d.year)]?.field_papers ?? 0,
+    }));
+
+    if (citationsRef.current)
+      buildChart(citationsRef.current, citData, citationsMode, { total: "#3b82f6", field: "#6366f1" }, "tt-citations");
+    if (worksRef.current)
+      buildChart(worksRef.current, worksData, worksMode, { total: "#10b981", field: "#059669" }, "tt-works");
+  }, [author, citationsMode, worksMode]);
 
   useEffect(() => {
     renderCharts();
     return () => {
-      d3.select("#tt-cited_by_count").remove();
-      d3.select("#tt-works_count").remove();
+      d3.select("#tt-citations").remove();
+      d3.select("#tt-works").remove();
     };
   }, [renderCharts]);
 
@@ -430,11 +465,37 @@ function AuthorContent() {
         {/* Charts */}
         <div className={styles.chartsRow}>
           <div className={styles.chartCard}>
-            <p className={styles.chartLabel}>Citations per Year</p>
+            <div className={styles.chartHeader}>
+              <p className={styles.chartLabel}>Citations per Year</p>
+              <div className={styles.chartToggle}>
+                {(["total", "field", "compare"] as ChartMode[]).map((m) => (
+                  <button
+                    key={m}
+                    className={`${styles.chartToggleBtn} ${citationsMode === m ? styles.chartToggleBtnActive : ""}`}
+                    onClick={() => setCitationsMode(m)}
+                  >
+                    {m.charAt(0).toUpperCase() + m.slice(1)}
+                  </button>
+                ))}
+              </div>
+            </div>
             <svg ref={citationsRef} className={styles.chartSvg} />
           </div>
           <div className={styles.chartCard}>
-            <p className={styles.chartLabel}>Publications per Year</p>
+            <div className={styles.chartHeader}>
+              <p className={styles.chartLabel}>Publications per Year</p>
+              <div className={styles.chartToggle}>
+                {(["total", "field", "compare"] as ChartMode[]).map((m) => (
+                  <button
+                    key={m}
+                    className={`${styles.chartToggleBtn} ${worksMode === m ? styles.chartToggleBtnActive : ""}`}
+                    onClick={() => setWorksMode(m)}
+                  >
+                    {m.charAt(0).toUpperCase() + m.slice(1)}
+                  </button>
+                ))}
+              </div>
+            </div>
             <svg ref={worksRef} className={styles.chartSvg} />
           </div>
         </div>
