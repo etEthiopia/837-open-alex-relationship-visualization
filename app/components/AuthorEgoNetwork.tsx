@@ -181,53 +181,15 @@ export default function AuthorEgoNetwork({ authorId, authorName }: Props) {
           .attr("stroke", "rgba(0,0,0,0.08)")
           .attr("stroke-width", (d) => d.strokeWidth);
 
-        // Pin tracking
-        const pinnedSet = new Set<string>();
-        let dragMoved = false;
-
-        function setPinVisual(id: string, pinned: boolean) {
-          nodeSel.filter((d) => d.id === id)
-            .select<SVGCircleElement>("circle.node-circle")
-            .attr("stroke", pinned ? "rgba(0,0,0,0.5)" : "rgba(0,0,0,0.18)")
-            .attr("stroke-width", pinned ? 1.8 : 1);
-          nodeSel.filter((d) => d.id === id)
-            .select<SVGCircleElement>("circle.pin-dot")
-            .style("opacity", pinned ? 1 : 0);
-        }
-
-        // Node groups
+        // Node groups — built first so setPinVisual can reference nodeSel cleanly
         const nodeSel = svg
           .append("g")
           .selectAll<SVGGElement, Node>("g")
           .data(nodes)
           .enter()
           .append("g")
-          .style("cursor", (d) => (d.isCenter ? "default" : "pointer"))
-          .call(
-            d3
-              .drag<SVGGElement, Node>()
-              .on("start", (event, d) => {
-                dragMoved = false;
-                if (!event.active) sim!.alphaTarget(0.3).restart();
-                d.fx = d.x;
-                d.fy = d.y;
-              })
-              .on("drag", (event, d) => {
-                dragMoved = true;
-                d.fx = event.x;
-                d.fy = event.y;
-              })
-              .on("end", (event, d) => {
-                if (!event.active) sim!.alphaTarget(0);
-                if (dragMoved && !d.isCenter) {
-                  pinnedSet.add(d.id);
-                  setPinVisual(d.id, true);
-                } else if (!pinnedSet.has(d.id)) {
-                  d.fx = null;
-                  d.fy = null;
-                }
-              })
-          );
+          .attr("class", "ego-node")
+          .style("cursor", (d) => (d.isCenter ? "default" : "pointer"));
 
         // Circles
         nodeSel
@@ -249,6 +211,46 @@ export default function AuthorEgoNetwork({ authorId, authorName }: Props) {
           .attr("stroke-width", 1)
           .style("opacity", 0)
           .style("pointer-events", "none");
+
+        // Pin tracking — defined after nodeSel so setPinVisual has full access
+        const pinnedSet = new Set<string>();
+        let dragMoved = false;
+
+        function setPinVisual(id: string, pinned: boolean) {
+          nodeSel.filter((d) => d.id === id)
+            .select<SVGCircleElement>("circle.node-circle")
+            .attr("stroke", pinned ? "rgba(0,0,0,0.5)" : "rgba(0,0,0,0.18)")
+            .attr("stroke-width", pinned ? 1.8 : 1);
+          nodeSel.filter((d) => d.id === id)
+            .select<SVGCircleElement>("circle.pin-dot")
+            .style("opacity", pinned ? 1 : 0);
+        }
+
+        // Attach drag after nodeSel and setPinVisual are ready
+        nodeSel.call(
+          d3.drag<SVGGElement, Node>()
+            .on("start", (event, d) => {
+              dragMoved = false;
+              if (!event.active) sim!.alphaTarget(0.3).restart();
+              d.fx = d.x;
+              d.fy = d.y;
+            })
+            .on("drag", (event, d) => {
+              dragMoved = true;
+              d.fx = event.x;
+              d.fy = event.y;
+            })
+            .on("end", (event, d) => {
+              if (!event.active) sim!.alphaTarget(0);
+              if (dragMoved && !d.isCenter) {
+                pinnedSet.add(d.id);
+                setPinVisual(d.id, true);
+              } else if (!pinnedSet.has(d.id)) {
+                d.fx = null;
+                d.fy = null;
+              }
+            })
+        );
 
         // Center label (last name below node)
         nodeSel
