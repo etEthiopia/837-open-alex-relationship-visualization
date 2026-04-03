@@ -92,7 +92,7 @@
 .universityItem {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
   padding: 7px 8px;
   border-radius: 5px;
   cursor: pointer;
@@ -108,17 +108,20 @@
 }
 
 .colorBox {
-  width: 10px;
-  height: 10px;
+  width: 20px;
+  height: 20px;
   border-radius: 2px;
   flex-shrink: 0;
 }
 
 .universityName {
-  font-size: 12px;
+  font-size: 14px;
   color: rgba(0, 0, 0, 0.45);
   line-height: 1.4;
-  word-break: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
   transition: color 0.2s;
 }
 
@@ -128,12 +131,8 @@
 }
 
 @media (max-width: 1024px) {
-  .container {
-    flex-direction: column;
-  }
-
   .sidebar {
-    width: 100%;
+    width: 25%;
     border-left: none;
     border-top: 1px solid rgba(0, 0, 0, 0.07);
     max-height: 220px;

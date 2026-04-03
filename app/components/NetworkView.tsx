@@ -6,10 +6,12 @@ import { useRouter } from "next/navigation";
 import * as d3 from "d3";
 import styles from "./NetworkView.module.css";
 import { distinctColors } from "../lib/colors";
+import NetworkUniversityView from "./NetworkUniversityView";
 
 interface Institution {
   id: string;
   display_name: string;
+  label_name: string;
   country_code: string;
   type: string;
 }
@@ -59,6 +61,7 @@ interface MatrixNode {
   fy?: number | null;
   width: number;
   height: number;
+  labelPadding?: number;
 }
 
 interface Link {
@@ -83,6 +86,7 @@ interface NetworkViewProps {
   maxUniversities: number;
   canadianFilter: "full" | "full_partial";
   domain: string;
+  onViewModeChange?: (viewMode: "author" | "university") => void;
 }
 
 export default function NetworkView({
@@ -90,6 +94,7 @@ export default function NetworkView({
   maxUniversities,
   canadianFilter,
   domain,
+  onViewModeChange,
 }: NetworkViewProps) {
   const router = useRouter();
   const svgRef = useRef<SVGSVGElement>(null);
@@ -100,21 +105,51 @@ export default function NetworkView({
     unknown
   > | null>(null);
 
+  const [viewMode, setViewMode] = useState<"author" | "university">("author");
   const [authorships, setAuthorships] = useState<Authorship[]>([]);
-  const [domainAuthorIds, setDomainAuthorIds] = useState<Set<string> | null>(null);
+  const [domainAuthorIds, setDomainAuthorIds] = useState<Set<string> | null>(
+    null,
+  );
   const [useSizeEncoding, setUseSizeEncoding] = useState<boolean>(true);
+  const [nodeLabelMode, setNodeLabelMode] = useState<"major" | "all" | "none">(
+    maxAuthors > 40 ? "major" : "all",
+  );
   const [edgeStrength, setEdgeStrength] =
-    useState<EdgeStrengthMetric>("none");
-  const [selectedInstitution, setSelectedInstitution] = useState<
-    string | null
-  >(null);
+    useState<EdgeStrengthMetric>("total_fwci");
+  const [selectedInstitution, setSelectedInstitution] = useState<string | null>(
+    null,
+  );
   const [selectedNode, setSelectedNode] = useState<string | null>(null);
   const [universities, setUniversities] = useState<
-    Array<{ name: string; color: string; totalACI: number }>
+    Array<{ name: string; color: string; totalACI: number; count: number }>
   >([]);
-  const [matrixUniversities, setMatrixUniversities] = useState<Set<string>>(new Set());
+  const [matrixUniversities, setMatrixUniversities] = useState<Set<string>>(
+    new Set(),
+  );
+
+  // State for university view
+  const [universityViewUniversities, setUniversityViewUniversities] = useState<
+    Array<{ name: string; color: string; totalACI: number; count: number }>
+  >([]);
+  const [universityLabelMode, setUniversityLabelMode] = useState<"major" | "all" | "none">(
+    maxUniversities > 20 ? "major" : "all"
+  );
+  const [matrixUniversity, setMatrixUniversity] = useState<string | null>(null);
+
+  // Update university label mode when maxUniversities crosses the 20 threshold
+  useEffect(() => {
+    if (maxUniversities > 20) {
+      setUniversityLabelMode("major");
+    } else {
+      setUniversityLabelMode("all");
+    }
+  }, [maxUniversities]);
 
   // Toggle matrix mode for a university
+  const toggleUniversityMatrix = (universityName: string) => {
+    setMatrixUniversity((prev) => (prev === universityName ? null : universityName));
+  };
+
   const toggleMatrixMode = (institutionName: string) => {
     setMatrixUniversities((prev) => {
       const newSet = new Set(prev);
@@ -128,12 +163,19 @@ export default function NetworkView({
   };
 
   useEffect(() => {
+    if (maxAuthors > 40) {
+      setNodeLabelMode("major");
+    } else {
+      setNodeLabelMode("all");
+    }
+  }, [maxAuthors]);
+
+  useEffect(() => {
     fetch("/data/authorships.json")
       .then((res) => res.json())
       .then((data: Authorship[]) => setAuthorships(data));
   }, []);
 
-  // Build domain-filtered author ID set from authors.json whenever domain changes
   useEffect(() => {
     if (domain === "All Domains") {
       setDomainAuthorIds(null);
@@ -141,31 +183,46 @@ export default function NetworkView({
     }
     fetch("/data/authors.json")
       .then((res) => res.json())
-      .then((data: Array<{ author_id: string; topics?: Array<{ domain?: { display_name: string }; field?: { display_name: string }; subfield?: { display_name: string } }> }>) => {
-        const [level, value] = domain.split(":") as [string, string];
-        const ids = new Set(
-          data
-            .filter((a) =>
-              (a.topics || []).some((t) => {
-                if (level === "domain") return t.domain?.display_name === value;
-                if (level === "field") return t.field?.display_name === value;
-                if (level === "subfield") return t.subfield?.display_name === value;
-                return false;
-              })
-            )
-            .map((a) => a.author_id)
-        );
-        setDomainAuthorIds(ids);
-      });
+      .then(
+        (
+          data: Array<{
+            author_id: string;
+            topics?: Array<{
+              domain?: { display_name: string };
+              field?: { display_name: string };
+              subfield?: { display_name: string };
+            }>;
+          }>,
+        ) => {
+          const [level, value] = domain.split(":") as [string, string];
+          const ids = new Set(
+            data
+              .filter((a) =>
+                (a.topics || []).some((t) => {
+                  if (level === "domain")
+                    return t.domain?.display_name === value;
+                  if (level === "field") return t.field?.display_name === value;
+                  if (level === "subfield")
+                    return t.subfield?.display_name === value;
+                  return false;
+                }),
+              )
+              .map((a) => a.author_id),
+          );
+          setDomainAuthorIds(ids);
+        },
+      );
   }, [domain]);
 
   useEffect(() => {
+    // Skip author view rendering when in university mode
+    if (viewMode === "university") return;
+
     if (!svgRef.current || authorships.length === 0) return;
     if (domain !== "All Domains" && domainAuthorIds === null) return;
 
     d3.select(svgRef.current).selectAll("*").remove();
 
-    // --- Data processing ---
     const filteredAuthorships = authorships.filter((a) => {
       if (canadianFilter === "full") return a.canadian_status === "full";
       return a.canadian_status === "full" || a.canadian_status === "partial";
@@ -174,7 +231,10 @@ export default function NetworkView({
     const authorMap = new Map<string, Node>();
     filteredAuthorships.forEach((authorship) => {
       authorship.ids.forEach((authorId, idx) => {
-        if (!authorMap.has(authorId) && (domainAuthorIds === null || domainAuthorIds.has(authorId))) {
+        if (
+          !authorMap.has(authorId) &&
+          (domainAuthorIds === null || domainAuthorIds.has(authorId))
+        ) {
           const institution = authorship.last_known_institutions[idx];
           authorMap.set(authorId, {
             id: authorId,
@@ -182,7 +242,8 @@ export default function NetworkView({
             aci: authorship.ACIs[idx],
             field_citations: authorship.field_citations[idx],
             field_papers: authorship.field_papers[idx],
-            institution: institution?.display_name || "Unknown",
+            institution:
+              institution?.label_name || institution?.display_name || "Unknown",
             institutionId: institution?.id || "unknown",
             cluster: 0,
             linkCount: 0,
@@ -191,7 +252,6 @@ export default function NetworkView({
       });
     });
 
-    // Group by institution
     const institutionGroups = new Map<
       string,
       { authors: Node[]; totalACI: number }
@@ -213,20 +273,18 @@ export default function NetworkView({
       .slice(0, maxUniversities);
 
     const topInstitutionNames = new Set(
-      sortedInstitutions.map(([name]) => name)
+      sortedInstitutions.map(([name]) => name),
     );
 
-    // Assign cluster index to each institution
     const institutionToCluster = new Map<string, number>();
     sortedInstitutions.forEach(([name], idx) => {
       institutionToCluster.set(name, idx);
     });
 
-    const filteredAuthors = Array.from(authorMap.values()).filter((author) =>
-      topInstitutionNames.has(author.institution)
-    );
+    const filteredAuthors = Array.from(authorMap.values())
+      .filter((author) => topInstitutionNames.has(author.institution))
+      .sort((a, b) => b.aci - a.aci);
 
-    // Assign cluster to each author
     filteredAuthors.forEach((author) => {
       author.cluster = institutionToCluster.get(author.institution) || 0;
     });
@@ -234,13 +292,10 @@ export default function NetworkView({
     const displayAuthors = filteredAuthors.slice(0, maxAuthors);
     const displayAuthorIds = new Set(displayAuthors.map((a) => a.id));
 
-    // Build links
     const links: Link[] = [];
     const linkMap = new Map<string, Link>();
     filteredAuthorships.forEach((authorship) => {
-      const authorIds = authorship.ids.filter((id) =>
-        displayAuthorIds.has(id)
-      );
+      const authorIds = authorship.ids.filter((id) => displayAuthorIds.has(id));
       for (let i = 0; i < authorIds.length; i++) {
         for (let j = i + 1; j < authorIds.length; j++) {
           const key = [authorIds[i], authorIds[j]].sort().join("+");
@@ -248,16 +303,17 @@ export default function NetworkView({
             edgeStrength === "none"
               ? 1
               : edgeStrength === "total_fwci"
-              ? authorship.total_fwci
-              : edgeStrength === "total_cited_by_count"
-              ? authorship.total_cited_by_count
-              : authorship.total_papers;
+                ? authorship.total_fwci
+                : edgeStrength === "total_cited_by_count"
+                  ? authorship.total_cited_by_count
+                  : authorship.total_papers;
 
           if (linkMap.has(key)) {
             const existing = linkMap.get(key)!;
             existing.value += value;
             existing.fwci = (existing.fwci || 0) + authorship.total_fwci;
-            existing.citations = (existing.citations || 0) + authorship.total_cited_by_count;
+            existing.citations =
+              (existing.citations || 0) + authorship.total_cited_by_count;
             existing.papers = (existing.papers || 0) + authorship.total_papers;
           } else {
             const link = {
@@ -275,7 +331,6 @@ export default function NetworkView({
       }
     });
 
-    // Count links per node
     const linkCountMap = new Map<string, number>();
     links.forEach((l) => {
       const sid = typeof l.source === "string" ? l.source : l.source.id;
@@ -287,9 +342,8 @@ export default function NetworkView({
       a.linkCount = linkCountMap.get(a.id) || 0;
     });
 
-    // --- NodeTrix: Separate nodes and matrix nodes ---
     const cellSize = 15;
-    const labelPadding = 80;
+    const labelPadding = 50;
 
     const matrixNodes: MatrixNode[] = [];
     const regularNodes: Node[] = [];
@@ -297,7 +351,9 @@ export default function NetworkView({
 
     displayAuthors.forEach((author) => {
       if (matrixUniversities.has(author.institution)) {
-        let matrixNode = matrixNodes.find((m) => m.institution === author.institution);
+        let matrixNode = matrixNodes.find(
+          (m) => m.institution === author.institution,
+        );
         if (!matrixNode) {
           matrixNode = {
             id: `matrix-${author.institution}`,
@@ -322,15 +378,16 @@ export default function NetworkView({
       matrix.height = size;
     });
 
-    // Separate links into internal (within matrix) and external (bridge) links
     const internalLinks: Link[] = [];
     const externalLinks: Link[] = [];
     const authorIdToNode = new Map<string, Node>();
     displayAuthors.forEach((author) => authorIdToNode.set(author.id, author));
 
     links.forEach((link) => {
-      const sourceId = typeof link.source === 'string' ? link.source : link.source.id;
-      const targetId = typeof link.target === 'string' ? link.target : link.target.id;
+      const sourceId =
+        typeof link.source === "string" ? link.source : link.source.id;
+      const targetId =
+        typeof link.target === "string" ? link.target : link.target.id;
 
       const sourceAuthor = authorIdToNode.get(sourceId);
       const targetAuthor = authorIdToNode.get(targetId);
@@ -354,44 +411,51 @@ export default function NetworkView({
       }
     });
 
-    // Color scale — golden-angle HCL for maximum perceptual separation
     const topInstArray = Array.from(topInstitutionNames);
     const colorScale = d3
       .scaleOrdinal<string>()
       .domain(topInstArray)
       .range(distinctColors(topInstArray.length));
 
+    const displayedUniversityCounts = new Map<string, number>();
+    displayAuthors.forEach((author) => {
+      displayedUniversityCounts.set(
+        author.institution,
+        (displayedUniversityCounts.get(author.institution) || 0) + 1,
+      );
+    });
+
     const uniList = sortedInstitutions.map(([name, group]) => ({
       name,
       color: colorScale(name),
       totalACI: group.totalACI,
+      count: displayedUniversityCounts.get(name) || 0,
     }));
     setUniversities(uniList);
 
-    // --- Layout ---
-    const containerWidth =
-      svgRef.current.parentElement?.clientWidth || 1200;
-    const containerHeight =
-      svgRef.current.parentElement?.clientHeight || 800;
+    // --- Layout Rectangular Logic ---
+    const containerWidth = svgRef.current.parentElement?.clientWidth || 1200;
+    const containerHeight = svgRef.current.parentElement?.clientHeight || 800;
     const width = containerWidth;
     const height = containerHeight;
     const cx = width / 2;
     const cy = height / 2;
 
-    // Sector-based pre-positioning: place each cluster in a wedge around center
     const numClusters = sortedInstitutions.length;
     const clusterCentroids: { x: number; y: number }[] = [];
-    const orbitRadius = Math.min(width, height) * 0.32;
+
+    // Use elliptical radii to fit rectangular canvas
+    const radiusX = width * 0.38;
+    const radiusY = height * 0.32;
 
     for (let i = 0; i < numClusters; i++) {
       const angle = (2 * Math.PI * i) / numClusters - Math.PI / 2;
       clusterCentroids.push({
-        x: cx + orbitRadius * Math.cos(angle),
-        y: cy + orbitRadius * Math.sin(angle),
+        x: cx + radiusX * Math.cos(angle),
+        y: cy + radiusY * Math.sin(angle),
       });
     }
 
-    // Pre-position regular nodes near their cluster centroid with jitter
     regularNodes.forEach((d) => {
       const centroid = clusterCentroids[d.cluster];
       const jitter = 30 + Math.random() * 40;
@@ -400,7 +464,6 @@ export default function NetworkView({
       d.y = centroid.y + jitter * Math.sin(angle);
     });
 
-    // Pre-position matrix nodes near their cluster centroid
     matrixNodes.forEach((d) => {
       const centroid = clusterCentroids[d.cluster];
       const jitter = 40 + Math.random() * 50;
@@ -409,7 +472,6 @@ export default function NetworkView({
       d.y = centroid.y + jitter * Math.sin(angle);
     });
 
-    // Scales
     const sizeScale = d3
       .scaleSqrt()
       .domain([0, d3.max(displayAuthors, (d) => d.aci) || 1])
@@ -425,7 +487,6 @@ export default function NetworkView({
       .domain([0, d3.max(links, (d) => d.value) || 1])
       .range([0.15, 0.6]);
 
-    // --- SVG setup with zoom ---
     const svgEl = d3
       .select(svgRef.current)
       .attr("width", containerWidth)
@@ -442,59 +503,113 @@ export default function NetworkView({
 
     svgEl.call(zoom);
 
-    // Click on background to deselect
     svgEl.on("click", () => {
       setSelectedNode(null);
     });
 
-    // Custom cluster force: pull nodes toward their cluster centroid
     type SimulationNode = Node | MatrixNode;
     const allNodes: SimulationNode[] = [...regularNodes, ...matrixNodes];
 
     function clusterForce(alpha: number) {
-      const strength = 0.3;
+      const strength = 0.25; // Slightly increased for tighter clusters
       allNodes.forEach((d) => {
         const centroid = clusterCentroids[d.cluster];
-        d.vx = (d.vx || 0) + (centroid.x - (d.x || 0)) * strength * alpha;
-        d.vy = (d.vy || 0) + (centroid.y - (d.y || 0)) * strength * alpha;
+        if (centroid) {
+          d.vx = (d.vx || 0) + (centroid.x - (d.x || 0)) * strength * alpha;
+          d.vy = (d.vy || 0) + (centroid.y - (d.y || 0)) * strength * alpha;
+        }
       });
     }
 
-    // Force simulation with combined nodes
+    // New Box Force to prevent exiting the screen
+    // function boxForce() {
+    //     const margin = 60;
+    //     allNodes.forEach(d => {
+    //         const nodeW = 'authors' in d ? d.width : 20;
+    //         const nodeH = 'authors' in d ? d.height : 20;
+
+    //         if (d.x! < margin) d.vx! += (margin - d.x!) * 0.1;
+    //         if (d.x! > width - margin - nodeW) d.vx! -= (d.x! - (width - margin - nodeW)) * 0.1;
+    //         if (d.y! < margin) d.vy! += (margin - d.y!) * 0.1;
+    //         if (d.y! > height - margin - nodeH) d.vy! -= (d.y! - (height - margin - nodeH)) * 0.1;
+    //     });
+    // }
+
+    // Rounded Rectangle Force (Super-ellipse)
+    function boxForce() {
+      const margin = 70;
+      const rx = width / 2 - margin;
+      const ry = height / 2 - margin;
+      const exponent = 4; // Higher = sharper corners (closer to a true rectangle)
+
+      allNodes.forEach((d) => {
+        const dx = Math.abs(d.x! - cx);
+        const dy = Math.abs(d.y! - cy);
+
+        // Super-ellipse formula: (|x|/rx)^n + (|y|/ry)^n <= 1
+        const distance =
+          Math.pow(dx / rx, exponent) + Math.pow(dy / ry, exponent);
+
+        if (distance > 1) {
+          // Calculate the scaling factor to bring the node back to the boundary
+          const scale = Math.pow(distance, -1 / exponent);
+          const targetX = cx + (d.x! - cx) * scale;
+          const targetY = cy + (d.y! - cy) * scale;
+
+          const pullStrength = 0.2; // Slightly higher to keep them out of the "dead zones"
+          d.vx! += (targetX - d.x!) * pullStrength;
+          d.vy! += (targetY - d.y!) * pullStrength;
+        }
+      });
+    }
+
     const simulation = d3
       .forceSimulation<SimulationNode>(allNodes)
       .force(
         "link",
         d3
           .forceLink<SimulationNode, Link>(externalLinks)
-          .id((d: any) => ('authors' in d ? d.id : d.id))
-          .distance(150)
-          .strength((d) => (edgeStrength === "none" ? 0.1 : d.value / 1000))
+          .id((d: any) => ("authors" in d ? d.id : d.id))
+          .distance(120)
+          .strength((d: any) => {
+            const sourceInst =
+              "authors" in d.source
+                ? d.source.institution
+                : d.source.institution;
+            const targetInst =
+              "authors" in d.target
+                ? d.target.institution
+                : d.target.institution;
+
+            // If they are from different institutions, give them a stronger pull
+            // to counteract the cluster force
+            const base = edgeStrength === "none" ? 0.1 : d.value / 500;
+            return sourceInst !== targetInst ? base * 2 : base;
+          }),
       )
-      .force(
-        "charge",
-        d3.forceManyBody().strength(-300).distanceMax(300)
-      )
-      .force("center", d3.forceCenter(cx, cy).strength(0.05))
+      .force("charge", d3.forceManyBody().strength(-500).distanceMax(150))
+      .force("x", d3.forceX(cx).strength(0.015)) // Keep slightly horizontal
+      .force("y", d3.forceY(cy).strength(0.04)) // Stronger vertical pull to combat drift
+      .force("center", d3.forceCenter(cx, cy).strength(0.2))
       .force("cluster", clusterForce as any)
+      .force("bounds", boxForce)
       .force(
         "collision",
         d3
           .forceCollide<SimulationNode>()
           .radius((d: any) => {
-            if ('authors' in d) {
-              const visualWidth = d.width + labelPadding;
-              return Math.max(visualWidth, d.height) / 2 + 20;
+            if ("authors" in d) {
+              const visualWidth = d.width + (d.labelPadding || labelPadding);
+              return Math.max(visualWidth, d.height) / 2 + 25;
             } else {
-              return (useSizeEncoding ? sizeScale(d.aci) : 6) + 3;
+              return (useSizeEncoding ? sizeScale(d.aci) : 6) + 4;
             }
           })
-          .strength(0.7)
+          .strength(0.8),
       )
-      .alphaDecay(0.028)
-      .velocityDecay(0.45);
+      .alphaDecay(0.025)
+      .velocityDecay(0.55); // Increased friction to stop the drift
 
-    // Tooltip
     if (!tooltipRef.current) {
       tooltipRef.current = d3
         .select("body")
@@ -512,9 +627,10 @@ export default function NetworkView({
     }
     const tooltip = tooltipRef.current;
 
-    // Helper function to calculate anchor point on matrix edge (top edge for columns)
     const getMatrixAnchor = (matrixNode: MatrixNode, author: Node) => {
-      const authorIndex = matrixNode.authors.findIndex((a) => a.id === author.id);
+      const authorIndex = matrixNode.authors.findIndex(
+        (a) => a.id === author.id,
+      );
       if (authorIndex === -1) return { x: matrixNode.x!, y: matrixNode.y! };
 
       const halfHeight = matrixNode.height / 2;
@@ -525,7 +641,6 @@ export default function NetworkView({
       return { x: anchorX, y: anchorY };
     };
 
-    // Draw external/bridge links (using paths to support matrix anchors)
     const linkEl = g
       .append("g")
       .attr("class", "links")
@@ -534,35 +649,55 @@ export default function NetworkView({
       .enter()
       .append("path")
       .attr("stroke", (d: any) => {
-        // Check if both source and target are from same institution
-        const sourceInst = 'authors' in d.source ? d.source.institution : d.source.institution;
-        const targetInst = 'authors' in d.target ? d.target.institution : d.target.institution;
-        if (sourceInst === targetInst) {
-          return colorScale(sourceInst);
-        }
+        const sourceInst =
+          "authors" in d.source ? d.source.institution : d.source.institution;
+        const targetInst =
+          "authors" in d.target ? d.target.institution : d.target.institution;
+        if (sourceInst === targetInst) return colorScale(sourceInst);
         return "#9aa0b8";
       })
-      .attr("stroke-opacity", (d) =>
-        edgeStrength === "none" ? 0.25 : linkOpacityScale(d.value)
-      )
+      .attr("stroke-opacity", (d: any) => {
+        const baseOpacity =
+          edgeStrength === "none" ? 0.25 : linkOpacityScale(d.value);
+        if (!selectedInstitution) return baseOpacity;
+        const sourceInst =
+          "authors" in d.source ? d.source.institution : d.source.institution;
+        const targetInst =
+          "authors" in d.target ? d.target.institution : d.target.institution;
+        if (
+          sourceInst === selectedInstitution ||
+          targetInst === selectedInstitution
+        )
+          return baseOpacity;
+        return baseOpacity * 0.2;
+      })
       .attr("stroke-width", (d) =>
-        edgeStrength === "none" ? 1 : linkWidthScale(d.value)
+        edgeStrength === "none" ? 1 : linkWidthScale(d.value),
       )
       .attr("fill", "none");
 
-    // Track pinned nodes locally (reset when filters change)
     const pinnedSet = new Set<string>();
+    const pinnedMatrixSet = new Set<string>();
 
     function setPinVisual(id: string, pinned: boolean) {
       const grp = nodeGroup.filter((d) => d.id === id);
-      grp.select<SVGCircleElement>("circle.node-circle")
+      grp
+        .select<SVGCircleElement>("circle.node-circle")
         .attr("stroke", pinned ? "rgba(0,0,0,0.55)" : "rgba(255,255,255,0.5)")
         .attr("stroke-width", pinned ? 2 : 0.8);
-      grp.select<SVGCircleElement>("circle.pin-dot")
+      grp
+        .select<SVGCircleElement>("circle.pin-dot")
         .style("opacity", pinned ? 1 : 0);
     }
 
-    // Draw regular nodes FIRST (so they appear below matrices)
+    function setPinVisualMatrix(id: string, pinned: boolean) {
+      const grp = matrixGroup.filter((d) => d.id === id);
+      grp
+        .select<SVGRectElement>("rect.matrix-bg")
+        .attr("stroke-width", pinned ? 5 : 3)
+        .attr("stroke-dasharray", pinned ? "5,3" : "0");
+    }
+
     const nodeGroup = g
       .append("g")
       .attr("class", "nodes")
@@ -576,10 +711,9 @@ export default function NetworkView({
           .drag<SVGGElement, Node>()
           .on("start", dragstarted)
           .on("drag", dragged)
-          .on("end", dragended)
+          .on("end", dragended),
       );
 
-    // Node circles
     nodeGroup
       .append("circle")
       .attr("class", "node-circle")
@@ -592,7 +726,6 @@ export default function NetworkView({
         return d.institution === selectedInstitution ? 1.0 : 0.15;
       });
 
-    // Pin dot indicator (hidden by default, shown when pinned)
     nodeGroup
       .append("circle")
       .attr("class", "pin-dot")
@@ -603,29 +736,32 @@ export default function NetworkView({
       .style("opacity", 0)
       .style("pointer-events", "none");
 
-    // Node labels (only for connected or larger nodes)
+    const top20PercentCount = Math.ceil(regularNodes.length * 0.2);
+    const top20PercentIds = new Set(
+      regularNodes.slice(0, top20PercentCount).map((n) => n.id),
+    );
+
     nodeGroup
       .append("text")
       .text((d) => {
         if (d.linkCount === 0 && d.aci < 5) return "";
         const parts = d.name.split(" ");
-        if (parts.length >= 2) {
-          return parts[parts.length - 1];
-        }
-        return d.name.length > 10 ? d.name.slice(0, 10) : d.name;
+        const label = parts.length >= 2 ? parts[parts.length - 1] : d.name;
+        return label.length > 12 ? label.slice(0, 12) + "..." : label;
       })
       .attr("dy", (d) => (useSizeEncoding ? sizeScale(d.aci) : 6) + 12)
       .attr("text-anchor", "middle")
-      .style("font-size", "9px")
-      .style("fill", "rgba(0,0,0,0.45)")
+      .style("font-size", "10px")
+      .style("fill", "rgba(0,0,0,0.55)")
       .style("pointer-events", "none")
       .style("font-weight", "500")
       .style("opacity", (d) => {
+        if (nodeLabelMode === "none") return 0;
+        if (nodeLabelMode === "major" && !top20PercentIds.has(d.id)) return 0;
         if (!selectedInstitution) return 0.8;
         return d.institution === selectedInstitution ? 1.0 : 0.1;
       });
 
-    // Interaction: hover
     nodeGroup
       .on("mouseover", function (event, d) {
         const isPinned = pinnedSet.has(d.id);
@@ -637,14 +773,14 @@ export default function NetworkView({
           .style("opacity", 1)
           .html(
             `<strong>${d.name}</strong><br/>` +
-            `${d.institution}<br/>` +
-            `Citation Impact: ${d.aci.toFixed(2)} · Connections: ${d.linkCount}<br/>` +
-            (isPinned
-              ? `<span style="font-size:10px;opacity:0.45;text-decoration:underline;">Click to view profile</span><br/><span style="font-size:10px;opacity:0.45;text-decoration:underline;">Right-click to unpin</span>`
-              : `<span style="font-size:10px;opacity:0.45;text-decoration:underline;">Click to view profile</span>`)
+              `${d.institution}<br/>` +
+              `Impact: ${d.aci.toFixed(2)} · Conn: ${d.linkCount}<br/>` +
+              (isPinned
+                ? `<span style="font-size:10px;opacity:0.6;">Right-click to unpin</span>`
+                : ""),
           );
       })
-      .on("mousemove", function (event) {
+      .on("mousemove", (event) => {
         tooltip
           .style("left", event.pageX + 10 + "px")
           .style("top", event.pageY - 10 + "px");
@@ -654,15 +790,17 @@ export default function NetworkView({
         d3.select(this)
           .select("circle.node-circle")
           .attr("stroke-width", isPinned ? 2 : 0.8)
-          .attr("stroke", isPinned ? "rgba(0,0,0,0.55)" : "rgba(255,255,255,0.5)");
+          .attr(
+            "stroke",
+            isPinned ? "rgba(0,0,0,0.55)" : "rgba(255,255,255,0.5)",
+          );
         tooltip.style("opacity", 0);
       })
       .on("click", function (event, d) {
         event.stopPropagation();
         setSelectedNode((prev) => (prev === d.id ? null : d.id));
         const shortId = d.id.replace("https://openalex.org/", "");
-        const fieldParam = domain && domain !== "All Domains" ? `&field=${encodeURIComponent(domain.split(":")[1] || domain)}` : "";
-        router.push(`/author?id=${shortId}${fieldParam}&from=network`);
+        router.push(`/author?id=${shortId}&from=network`);
       })
       .on("contextmenu", function (event, d) {
         event.preventDefault();
@@ -675,7 +813,6 @@ export default function NetworkView({
         simulation.alpha(0.15).restart();
       });
 
-    // Draw matrix groups LAST (so they appear on top with labels visible)
     const matrixGroup = g
       .append("g")
       .attr("class", "matrices")
@@ -689,10 +826,19 @@ export default function NetworkView({
           .drag<SVGGElement, MatrixNode>()
           .on("start", dragstartedMatrix)
           .on("drag", draggedMatrix)
-          .on("end", dragendedMatrix)
-      );
+          .on("end", dragendedMatrix),
+      )
+      .on("contextmenu", function (event, d) {
+        event.preventDefault();
+        event.stopPropagation();
+        if (!pinnedMatrixSet.has(d.id)) return;
+        d.fx = null;
+        d.fy = null;
+        pinnedMatrixSet.delete(d.id);
+        setPinVisualMatrix(d.id, false);
+        simulation.alpha(0.15).restart();
+      });
 
-    // Draw matrix background
     matrixGroup
       .append("rect")
       .attr("class", "matrix-bg")
@@ -701,22 +847,38 @@ export default function NetworkView({
       .attr("height", (d) => d.height)
       .attr("fill", (d) => {
         const color = d3.color(colorScale(d.institution));
-        if (color) {
-          color.opacity = 0.1;
-          return color.toString();
-        }
-        return "white";
+        return color ? color.copy({ opacity: 0.1 }).toString() : "white";
       })
       .attr("stroke", (d) => colorScale(d.institution))
       .attr("stroke-width", 3)
-      .attr("rx", 5);
+      .attr("rx", 4)
+      .attr("ry", 4);
 
-    // Draw adjacency matrix cells
     matrixGroup.each(function (matrixNode) {
       const matrix = d3.select(this);
-      const authors = matrixNode.authors;
+      const getLastName = (name: string) => {
+        const parts = name.split(" ");
+        return parts.length >= 2 ? parts[parts.length - 1] : name;
+      };
 
-      // Add background rectangles for row labels
+      const authors = [...matrixNode.authors].sort((a, b) =>
+        getLastName(a.name)
+          .toLowerCase()
+          .localeCompare(getLastName(b.name).toLowerCase()),
+      );
+
+      const maxLabelWidth = Math.max(
+        ...authors.map(
+          (d) =>
+            (getLastName(d.name).length > 12
+              ? 12
+              : getLastName(d.name).length) * 6,
+        ),
+      );
+      const dynamicLabelPadding = maxLabelWidth + 10;
+      matrixNode.labelPadding = dynamicLabelPadding;
+      matrix.select("rect.matrix-bg").attr("x", dynamicLabelPadding);
+
       matrix
         .selectAll("rect.label-bg")
         .data(authors)
@@ -724,34 +886,101 @@ export default function NetworkView({
         .append("rect")
         .attr("class", "label-bg")
         .attr("x", 0)
-        .attr("y", (d, i) => i * cellSize)
-        .attr("width", labelPadding - 5)
+        .attr("y", (_d, i) => i * cellSize)
+        .attr("width", dynamicLabelPadding - 5)
         .attr("height", cellSize)
         .attr("fill", "white")
-        .attr("opacity", 0.5)
+        .attr("opacity", 0.8)
         .style("pointer-events", "none");
 
-      // Add row labels
       matrix
         .selectAll("text.row-label")
         .data(authors)
         .enter()
         .append("text")
-        .attr("class", "row-label")
-        .attr("x", labelPadding - 5)
-        .attr("y", (d, i) => i * cellSize + cellSize / 2)
+        .attr("x", dynamicLabelPadding - 5)
+        .attr("y", (_d, i) => i * cellSize + cellSize / 2)
         .attr("text-anchor", "end")
         .attr("dominant-baseline", "middle")
         .attr("font-size", "10px")
-        .attr("fill", "#333")
-        .attr("font-weight", "500")
+        .style("fill", "rgba(0,0,0,0.75)")
         .text((d) => {
-          const maxLength = 12;
-          return d.name.length > maxLength ? d.name.substring(0, maxLength) + "..." : d.name;
-        })
+          const ln = getLastName(d.name);
+          return ln.length > 12 ? ln.slice(0, 12) + "..." : ln;
+        });
+
+      matrix
+        .append("rect")
+        .attr("class", "col-labels-unified-bg")
+        // Start at the first column
+        .attr("x", dynamicLabelPadding)
+        // Position it above the matrix cells
+        .attr("y", -dynamicLabelPadding + 5)
+        // Width = (number of authors * cell size) + your extra extension pixels
+        .attr("width", authors.length * cellSize + 15)
+        .attr("height", dynamicLabelPadding - 7)
+        .attr("fill", "white")
+        .attr("opacity", 0.8)
         .style("pointer-events", "none");
 
-      // Create adjacency matrix data with link information
+      // 2. Draw your labels as usual (without individual backgrounds)
+      matrix.selectAll("text.col-label").data(authors).enter();
+
+      matrix
+        .selectAll("text.col-label")
+        .data(authors)
+        .enter()
+        .append("text")
+        .attr("x", (_d, i) => dynamicLabelPadding + i * cellSize + cellSize / 2)
+        .attr("y", -5)
+        .attr("text-anchor", "start")
+        .attr("dominant-baseline", "middle")
+        .attr("font-size", "10px")
+        .style("fill", "rgba(0,0,0,0.75)")
+        .attr(
+          "transform",
+          (_d, i) =>
+            `rotate(-60, ${dynamicLabelPadding + i * cellSize + cellSize / 2}, -5)`,
+        )
+        .text((d) => {
+          const ln = getLastName(d.name);
+          return ln.length > 12 ? ln.slice(0, 12) + "..." : ln;
+        });
+
+      //  // Add background rectangles for column labels
+      // matrix
+      //   .selectAll("rect.col-label-bg")
+      //   .data(authors)
+      //   .enter()
+      //   .append("rect")
+      //   .attr("class", "col-label-bg")
+      //   .attr("x", (_d, i) => dynamicLabelPadding + i * cellSize)
+      //   .attr("y", -dynamicLabelPadding + 5)
+      //   .attr("width", cellSize + 20)
+      //   .attr("height", dynamicLabelPadding - 5)
+      //   .attr("fill", "white")
+      //   .attr("opacity", 0.6)
+      //   .style("pointer-events", "none");
+
+      // // Add column labels (rotated)
+      // matrix
+      //   .selectAll("text.col-label")
+      //   .data(authors)
+      //   .enter()
+      //   .append("text")
+      //   .attr("class", "col-label")
+      //   .attr("x", (_d, i) => dynamicLabelPadding + i * cellSize + cellSize / 2)
+      //   .attr("y", -5)
+      //   .attr("text-anchor", "start")
+      //   .attr("dominant-baseline", "middle")
+      //   .attr("font-size", "10px")
+      //   .style("fill", "rgba(0,0,0,0.75)")
+      //   .attr("font-weight", "500")
+      //   .attr("transform", (_d, i) => `rotate(-60, ${dynamicLabelPadding + i * cellSize + cellSize / 2}, -5)`)
+      //   .text(getLabelText)
+      //   .style("pointer-events", "none");
+
+// Create adjacency matrix data with link information
       const matrixData: {
         row: number;
         col: number;
@@ -768,8 +997,10 @@ export default function NetworkView({
 
           if (i !== j) {
             const link = internalLinks.find((l) => {
-              const srcId = typeof l.source === 'string' ? l.source : l.source.id;
-              const tgtId = typeof l.target === 'string' ? l.target : l.target.id;
+              const srcId =
+                typeof l.source === "string" ? l.source : l.source.id;
+              const tgtId =
+                typeof l.target === "string" ? l.target : l.target.id;
               return (
                 (srcId === rowAuthor.id && tgtId === colAuthor.id) ||
                 (tgtId === rowAuthor.id && srcId === colAuthor.id)
@@ -783,7 +1014,14 @@ export default function NetworkView({
             value = 1; // Diagonal
           }
 
-          matrixData.push({ row: i, col: j, value, rowAuthor, colAuthor, linkData });
+          matrixData.push({
+            row: i,
+            col: j,
+            value,
+            rowAuthor,
+            colAuthor,
+            linkData,
+          });
         });
       });
 
@@ -793,7 +1031,8 @@ export default function NetworkView({
         .map((d) => {
           if (edgeStrength === "none") return 1;
           if (edgeStrength === "total_fwci") return d.linkData!.fwci || 0;
-          if (edgeStrength === "total_cited_by_count") return d.linkData!.citations || 0;
+          if (edgeStrength === "total_cited_by_count")
+            return d.linkData!.citations || 0;
           return d.linkData!.papers || 0;
         });
 
@@ -823,7 +1062,7 @@ export default function NetworkView({
         .enter()
         .append("rect")
         .attr("class", "cell")
-        .attr("x", (d) => labelPadding + d.col * cellSize)
+        .attr("x", (d) => dynamicLabelPadding + d.col * cellSize)
         .attr("y", (d) => d.row * cellSize)
         .attr("width", cellSize - 1)
         .attr("height", cellSize - 1)
@@ -857,7 +1096,9 @@ export default function NetworkView({
             if (!selectedInstitution) {
               return aciOpacityScale(d.rowAuthor.aci);
             }
-            return matrixNode.institution === selectedInstitution ? aciOpacityScale(d.rowAuthor.aci) : 0.2;
+            return matrixNode.institution === selectedInstitution
+              ? aciOpacityScale(d.rowAuthor.aci)
+              : 0.2;
           } else {
             // Connection cells
             if (!selectedInstitution) return 0.6;
@@ -867,7 +1108,9 @@ export default function NetworkView({
         .on("mouseover", function (event, d) {
           if (d.row === d.col) {
             // Find author's total connections and metrics
-            const authorNode = displayAuthors.find(a => a.id === d.rowAuthor.id);
+            const authorNode = displayAuthors.find(
+              (a) => a.id === d.rowAuthor.id,
+            );
             const authorConnections = authorNode?.linkCount || 0;
 
             tooltip.style("opacity", 1).html(`
@@ -877,8 +1120,8 @@ export default function NetworkView({
               <strong>Metrics:</strong><br/>
               ACI: ${d.rowAuthor.aci.toFixed(2)}<br/>
               Connections: ${authorConnections}<br/>
-              Citations: ${authorNode?.field_citations || '-'}<br/>
-              Papers: ${authorNode?.field_papers || '-'}<br/>
+              Citations: ${authorNode?.field_citations || "-"}<br/>
+              Papers: ${authorNode?.field_papers || "-"}<br/>
             `);
           } else if (d.value > 0 && d.linkData) {
             tooltip.style("opacity", 1).html(`
@@ -888,10 +1131,10 @@ export default function NetworkView({
               ${d.colAuthor.name}<br/>
               <br/>
               <strong>Metrics:</strong><br/>
-              FWCI: ${d.linkData.fwci?.toFixed(2) || 'N/A'}<br/>
+              FWCI: ${d.linkData.fwci?.toFixed(2) || "N/A"}<br/>
               Citations: ${d.linkData.citations || 0}<br/>
               Papers: ${d.linkData.papers || 0}<br/>
-              ${edgeStrength !== "none" ? `<br/><strong>Selected Strength:</strong> ${d.linkData.value.toFixed(2)}` : ''}
+              ${edgeStrength !== "none" ? `<br/><strong>Selected Strength:</strong> ${d.linkData.value.toFixed(2)}` : ""}
             `);
           }
         })
@@ -906,92 +1149,84 @@ export default function NetworkView({
     });
 
 
-    // Tick handler
+    
+
     simulation.on("tick", () => {
-      // Update bridge link positions (with matrix anchor support)
       linkEl.attr("d", (d: any) => {
-        const source = d.source;
-        const target = d.target;
-
-        let x1: number, y1: number, x2: number, y2: number;
-
-        // Calculate source position
-        if ('authors' in source && d.originalSource) {
-          const anchor = getMatrixAnchor(source, d.originalSource);
-          x1 = anchor.x;
-          y1 = anchor.y;
+        const s = d.source;
+        const t = d.target;
+        let x1, y1, x2, y2;
+        if ("authors" in s && d.originalSource) {
+          const a = getMatrixAnchor(s, d.originalSource);
+          x1 = a.x;
+          y1 = a.y;
         } else {
-          x1 = source.x!;
-          y1 = source.y!;
+          x1 = s.x!;
+          y1 = s.y!;
         }
-
-        // Calculate target position
-        if ('authors' in target && d.originalTarget) {
-          const anchor = getMatrixAnchor(target, d.originalTarget);
-          x2 = anchor.x;
-          y2 = anchor.y;
+        if ("authors" in t && d.originalTarget) {
+          const a = getMatrixAnchor(t, d.originalTarget);
+          x2 = a.x;
+          y2 = a.y;
         } else {
-          x2 = target.x!;
-          y2 = target.y!;
+          x2 = t.x!;
+          y2 = t.y!;
         }
-
         return `M${x1},${y1} L${x2},${y2}`;
       });
 
-      // Update regular node positions
       nodeGroup.attr("transform", (d) => `translate(${d.x},${d.y})`);
-
-      // Update matrix positions
-      matrixGroup.attr("transform", (d) => `translate(${d.x! - d.width / 2 - labelPadding}, ${d.y! - d.height / 2})`);
+      matrixGroup.attr(
+        "transform",
+        (d) =>
+          `translate(${d.x! - d.width / 2 - (d.labelPadding || labelPadding)}, ${d.y! - d.height / 2})`,
+      );
     });
 
-    // Drag handlers — use fx/fy for proper D3 force pinning
     let dragMoved = false;
-
     function dragstarted(event: any, d: Node) {
       dragMoved = false;
       if (!event.active) simulation.alphaTarget(0.3).restart();
       d.fx = d.x;
       d.fy = d.y;
     }
-
     function dragged(event: any, d: Node) {
       dragMoved = true;
       d.fx = event.x;
       d.fy = event.y;
     }
-
     function dragended(event: any, d: Node) {
       if (!event.active) simulation.alphaTarget(0);
       if (dragMoved) {
-        // Pin node in place
         pinnedSet.add(d.id);
         setPinVisual(d.id, true);
-      } else {
-        // Was just a click — release so click handler can fire
-        if (!pinnedSet.has(d.id)) {
-          d.fx = null;
-          d.fy = null;
-        }
+      } else if (!pinnedSet.has(d.id)) {
+        d.fx = null;
+        d.fy = null;
       }
     }
 
-    // Drag handlers for matrix nodes
+    let dragMovedMatrix = false;
     function dragstartedMatrix(event: any, d: MatrixNode) {
+      dragMovedMatrix = false;
       if (!event.active) simulation.alphaTarget(0.3).restart();
       d.fx = d.x;
       d.fy = d.y;
     }
-
     function draggedMatrix(event: any, d: MatrixNode) {
+      dragMovedMatrix = true;
       d.fx = event.x;
       d.fy = event.y;
     }
-
     function dragendedMatrix(event: any, d: MatrixNode) {
       if (!event.active) simulation.alphaTarget(0);
-      d.fx = null;
-      d.fy = null;
+      if (dragMovedMatrix) {
+        pinnedMatrixSet.add(d.id);
+        setPinVisualMatrix(d.id, true);
+      } else if (!pinnedMatrixSet.has(d.id)) {
+        d.fx = null;
+        d.fy = null;
+      }
     }
 
     return () => {
@@ -1002,12 +1237,14 @@ export default function NetworkView({
       }
     };
   }, [
+    viewMode,
     authorships,
     domainAuthorIds,
     domain,
     maxAuthors,
     maxUniversities,
     useSizeEncoding,
+    nodeLabelMode,
     edgeStrength,
     canadianFilter,
     selectedInstitution,
@@ -1016,12 +1253,123 @@ export default function NetworkView({
     router,
   ]);
 
+  const ViewModeToggle = () => (
+    <div className={styles.viewModeToggle}>
+      <button
+        className={`${styles.viewModeButton} ${viewMode === "author" ? styles.active : ""}`}
+        onClick={() => {
+          setViewMode("author");
+          onViewModeChange?.("author");
+        }}
+      >
+        Author
+      </button>
+      <button
+        className={`${styles.viewModeButton} ${viewMode === "university" ? styles.active : ""}`}
+        onClick={() => {
+          setViewMode("university");
+          onViewModeChange?.("university");
+        }}
+      >
+        University
+      </button>
+    </div>
+  );
+
+  if (viewMode === "university") {
+    return (
+      <div className={styles.container}>
+        <div className={styles.chartContainer}>
+          <NetworkUniversityView
+            maxUniversities={maxUniversities}
+            canadianFilter={canadianFilter}
+            domain={domain}
+            edgeStrength={edgeStrength}
+            selectedUniversity={selectedInstitution}
+            nodeLabelMode={universityLabelMode}
+            matrixUniversity={matrixUniversity}
+            onUniversitiesChange={setUniversityViewUniversities}
+          />
+        </div>
+        <div className={styles.sidebar}>
+          <ViewModeToggle />
+          <h3>Chart Controls</h3>
+          <div className={styles.controls}>
+            <div className={styles.controlGroup}>
+              <label htmlFor="universityLabelMode">Node Labels:</label>
+              <select
+                id="universityLabelMode"
+                value={universityLabelMode}
+                onChange={(e) => setUniversityLabelMode(e.target.value as "major" | "all" | "none")}
+                className={styles.select}
+              >
+                <option value="major">Show major node labels</option>
+                <option value="all">Show all node labels</option>
+                <option value="none">Do not show labels</option>
+              </select>
+            </div>
+            <div className={styles.controlGroup}>
+              <label htmlFor="edgeStrengthUniversity">Edge Strength:</label>
+              <select
+                id="edgeStrengthUniversity"
+                value={edgeStrength}
+                onChange={(e) => setEdgeStrength(e.target.value as EdgeStrengthMetric)}
+                className={styles.select}
+              >
+                <option value="none">None (Equal)</option>
+                <option value="total_fwci">Total FWCI</option>
+                <option value="total_cited_by_count">Total Citations</option>
+                <option value="total_papers">Total Papers</option>
+              </select>
+            </div>
+          </div>
+          <h3>Universities</h3>
+          <div className={styles.universityList}>
+            {universityViewUniversities.map((uni) => (
+              <div
+                key={uni.name}
+                className={`${styles.universityItem} ${selectedInstitution === uni.name ? styles.selected : ""}`}
+              >
+                <div
+                  className={styles.colorBox}
+                  style={{ backgroundColor: uni.color }}
+                  onClick={() =>
+                    setSelectedInstitution(selectedInstitution === uni.name ? null : uni.name)
+                  }
+                />
+                <span
+                  className={styles.universityName}
+                  onClick={() =>
+                    setSelectedInstitution(selectedInstitution === uni.name ? null : uni.name)
+                  }
+                >
+                  {uni.name} ({uni.count})
+                </span>
+                <button
+                  className={`${styles.matrixToggle} ${matrixUniversity === uni.name ? styles.matrixActive : ""}`}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    toggleUniversityMatrix(uni.name);
+                  }}
+                  title={matrixUniversity === uni.name ? "Hide matrix view" : "Show matrix view"}
+                >
+                  ▦
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.chartContainer}>
         <svg ref={svgRef}></svg>
       </div>
       <div className={styles.sidebar}>
+        <ViewModeToggle />
         <h3>Chart Controls</h3>
         <div className={styles.controls}>
           <label className={styles.switchLabel}>
@@ -1033,13 +1381,24 @@ export default function NetworkView({
             <span>Use Citation Impact for node size</span>
           </label>
           <div className={styles.controlGroup}>
+            <label htmlFor="nodeLabelMode">Node Labels:</label>
+            <select
+              id="nodeLabelMode"
+              value={nodeLabelMode}
+              onChange={(e) => setNodeLabelMode(e.target.value as any)}
+              className={styles.select}
+            >
+              <option value="major">Show major node labels</option>
+              <option value="all">Show all node labels</option>
+              <option value="none">Do not show labels</option>
+            </select>
+          </div>
+          <div className={styles.controlGroup}>
             <label htmlFor="edgeStrength">Edge Strength:</label>
             <select
               id="edgeStrength"
               value={edgeStrength}
-              onChange={(e) =>
-                setEdgeStrength(e.target.value as EdgeStrengthMetric)
-              }
+              onChange={(e) => setEdgeStrength(e.target.value as any)}
               className={styles.select}
             >
               <option value="none">None (Equal)</option>
@@ -1054,16 +1413,14 @@ export default function NetworkView({
           {universities.map((uni) => (
             <div
               key={uni.name}
-              className={`${styles.universityItem} ${
-                selectedInstitution === uni.name ? styles.selected : ""
-              }`}
+              className={`${styles.universityItem} ${selectedInstitution === uni.name ? styles.selected : ""}`}
             >
               <div
                 className={styles.colorBox}
                 style={{ backgroundColor: uni.color }}
                 onClick={() =>
                   setSelectedInstitution(
-                    selectedInstitution === uni.name ? null : uni.name
+                    selectedInstitution === uni.name ? null : uni.name,
                   )
                 }
               />
@@ -1071,21 +1428,18 @@ export default function NetworkView({
                 className={styles.universityName}
                 onClick={() =>
                   setSelectedInstitution(
-                    selectedInstitution === uni.name ? null : uni.name
+                    selectedInstitution === uni.name ? null : uni.name,
                   )
                 }
               >
-                {uni.name}
+                {uni.name} {uni.count > 0 ? `(${uni.count})` : ""}
               </span>
               <button
-                className={`${styles.matrixToggle} ${
-                  matrixUniversities.has(uni.name) ? styles.matrixActive : ""
-                }`}
+                className={`${styles.matrixToggle} ${matrixUniversities.has(uni.name) ? styles.matrixActive : ""}`}
                 onClick={(e) => {
                   e.stopPropagation();
                   toggleMatrixMode(uni.name);
                 }}
-                title={matrixUniversities.has(uni.name) ? "Switch to node view" : "Switch to matrix view"}
               >
                 {matrixUniversities.has(uni.name) ? "▦" : "●"}
               </button>

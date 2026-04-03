@@ -311,7 +311,8 @@
       "lineage": [
         "https://openalex.org/I82880672"
       ],
-      "shortand_name": "Beihang"
+      "shortand_name": "Beihang",
+      "label_name": "Beihang U."
     },
     "aci": 25.01
   },
@@ -542,7 +543,8 @@
       "lineage": [
         "https://openalex.org/I82880672"
       ],
-      "shortand_name": "Beihang"
+      "shortand_name": "Beihang",
+      "label_name": "Beihang U."
     },
     "aci": 10.01
   },
@@ -947,7 +949,8 @@
       "lineage": [
         "https://openalex.org/I19880235"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 10.01
   },
@@ -1233,7 +1236,8 @@
       "lineage": [
         "https://openalex.org/I82880672"
       ],
-      "shortand_name": "Beihang"
+      "shortand_name": "Beihang",
+      "label_name": "Beihang U."
     },
     "aci": 10.01
   },
@@ -1519,7 +1523,8 @@
       "lineage": [
         "https://openalex.org/I157773358"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 10.01
   },
@@ -1734,7 +1739,8 @@
         "https://openalex.org/I19820366",
         "https://openalex.org/I4210165038"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 10.01
   },
@@ -1959,7 +1965,8 @@
       "lineage": [
         "https://openalex.org/I162868743"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 10.01
   },
@@ -2401,7 +2408,8 @@
       "lineage": [
         "https://openalex.org/I4210167189"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 10.01
   },
@@ -2741,7 +2749,8 @@
       "lineage": [
         "https://openalex.org/I197191942"
       ],
-      "shortand_name": "StFX"
+      "shortand_name": "StFX",
+      "label_name": "St. Francis Xavier U."
     },
     "aci": 10.01
   },
@@ -3171,7 +3180,8 @@
       "lineage": [
         "https://openalex.org/I98251732"
       ],
-      "shortand_name": "Mac"
+      "shortand_name": "Mac",
+      "label_name": "McMaster U."
     },
     "aci": 20.01
   },
@@ -3443,7 +3453,8 @@
       "lineage": [
         "https://openalex.org/I185261750"
       ],
-      "shortand_name": "U of T"
+      "shortand_name": "U of T",
+      "label_name": "U. of Toronto"
     },
     "aci": 23.79
   },
@@ -3718,7 +3729,8 @@
         "https://openalex.org/I4210119109",
         "https://openalex.org/I592451"
       ],
-      "shortand_name": "IU Bloomington"
+      "shortand_name": "IU Bloomington",
+      "label_name": "Indiana U. Bloomington"
     },
     "aci": 8.43
   },
@@ -3920,7 +3932,8 @@
       "lineage": [
         "https://openalex.org/I27837315"
       ],
-      "shortand_name": "UMich"
+      "shortand_name": "UMich",
+      "label_name": "U. of Michigan"
     },
     "aci": 16.85
   },
@@ -4070,7 +4083,8 @@
       "lineage": [
         "https://openalex.org/I151746483"
       ],
-      "shortand_name": "UW"
+      "shortand_name": "UW",
+      "label_name": "U. of Waterloo"
     },
     "aci": 13.85
   },
@@ -4284,7 +4298,8 @@
       "lineage": [
         "https://openalex.org/I184843921"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 5.54
   },
@@ -4560,7 +4575,8 @@
       "lineage": [
         "https://openalex.org/I151746483"
       ],
-      "shortand_name": "UW"
+      "shortand_name": "UW",
+      "label_name": "U. of Waterloo"
     },
     "aci": 12.75
   },
@@ -4780,7 +4796,8 @@
       "lineage": [
         "https://openalex.org/I75381157"
       ],
-      "shortand_name": "Laurier"
+      "shortand_name": "Laurier",
+      "label_name": "Wilfrid Laurier U."
     },
     "aci": 14.94
   },
@@ -5042,7 +5059,8 @@
       "lineage": [
         "https://openalex.org/I56590836"
       ],
-      "shortand_name": "Monash"
+      "shortand_name": "Monash",
+      "label_name": "Monash U."
     },
     "aci": 5.98
   },
@@ -5304,7 +5322,8 @@
       "lineage": [
         "https://openalex.org/I151746483"
       ],
-      "shortand_name": "UW"
+      "shortand_name": "UW",
+      "label_name": "U. of Waterloo"
     },
     "aci": 5.98
   },
@@ -5512,7 +5531,8 @@
       "lineage": [
         "https://openalex.org/I200183955"
       ],
-      "shortand_name": "UTP"
+      "shortand_name": "UTP",
+      "label_name": "Tech. U. of Pereira"
     },
     "aci": 5.98
   },
@@ -5750,7 +5770,8 @@
       "lineage": [
         "https://openalex.org/I200183955"
       ],
-      "shortand_name": "UTP"
+      "shortand_name": "UTP",
+      "label_name": "Tech. U. of Pereira"
     },
     "aci": 5.98
   },
@@ -6042,7 +6063,8 @@
       "lineage": [
         "https://openalex.org/I200183955"
       ],
-      "shortand_name": "UTP"
+      "shortand_name": "UTP",
+      "label_name": "Tech. U. of Pereira"
     },
     "aci": 5.98
   },
@@ -6322,7 +6344,8 @@
       "lineage": [
         "https://openalex.org/I200183955"
       ],
-      "shortand_name": "UTP"
+      "shortand_name": "UTP",
+      "label_name": "Tech. U. of Pereira"
     },
     "aci": 11.95
   },
@@ -6632,7 +6655,8 @@
       "lineage": [
         "https://openalex.org/I98358874"
       ],
-      "shortand_name": "TU Delft"
+      "shortand_name": "TU Delft",
+      "label_name": "TU Delft"
     },
     "aci": 16.13
   },
@@ -6853,7 +6877,8 @@
       "lineage": [
         "https://openalex.org/I79272384"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 11.09
   },
@@ -7067,7 +7092,8 @@
       "lineage": [
         "https://openalex.org/I91045830"
       ],
-      "shortand_name": "TAMU"
+      "shortand_name": "TAMU",
+      "label_name": "Texas A&M U."
     },
     "aci": 4.06
   },
@@ -7293,7 +7319,8 @@
       "lineage": [
         "https://openalex.org/I205783295"
       ],
-      "shortand_name": "Cornell"
+      "shortand_name": "Cornell",
+      "label_name": "Cornell U."
     },
     "aci": 4.06
   },
@@ -7483,7 +7510,8 @@
       "lineage": [
         "https://openalex.org/I18014758"
       ],
-      "shortand_name": "SFU"
+      "shortand_name": "SFU",
+      "label_name": "Simon Fraser U."
     },
     "aci": 4.06
   },
@@ -7758,7 +7786,8 @@
       "lineage": [
         "https://openalex.org/I188538660"
       ],
-      "shortand_name": "CU Boulder"
+      "shortand_name": "CU Boulder",
+      "label_name": "U. of Colorado Boulder"
     },
     "aci": 7.48
   },
@@ -8063,7 +8092,8 @@
       "lineage": [
         "https://openalex.org/I169521973"
       ],
-      "shortand_name": "UNM"
+      "shortand_name": "UNM",
+      "label_name": "U. of New Mexico"
     },
     "aci": 9.89
   },
@@ -8397,7 +8427,8 @@
       "lineage": [
         "https://openalex.org/I74973139"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 4.06
   },
@@ -8659,7 +8690,8 @@
       "lineage": [
         "https://openalex.org/I205490536"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 4.06
   },
@@ -9025,7 +9057,8 @@
       "lineage": [
         "https://openalex.org/I95457486"
       ],
-      "shortand_name": "UC Berkeley"
+      "shortand_name": "UC Berkeley",
+      "label_name": "UC Berkeley"
     },
     "aci": 6.05
   },
@@ -9266,7 +9299,8 @@
       "lineage": [
         "https://openalex.org/I185261750"
       ],
-      "shortand_name": "U of T"
+      "shortand_name": "U of T",
+      "label_name": "U. of Toronto"
     },
     "aci": 6.23
   },
@@ -9618,7 +9652,8 @@
       "lineage": [
         "https://openalex.org/I18014758"
       ],
-      "shortand_name": "SFU"
+      "shortand_name": "SFU",
+      "label_name": "Simon Fraser U."
     },
     "aci": 22.31
   },
@@ -9814,7 +9849,8 @@
       "lineage": [
         "https://openalex.org/I185261750"
       ],
-      "shortand_name": "U of T"
+      "shortand_name": "U of T",
+      "label_name": "U. of Toronto"
     },
     "aci": 6.76
   },
@@ -10010,7 +10046,8 @@
       "lineage": [
         "https://openalex.org/I183697816"
       ],
-      "shortand_name": "BUET"
+      "shortand_name": "BUET",
+      "label_name": "Bangladesh U. of Eng. & Tech"
     },
     "aci": 2.71
   },
@@ -10183,7 +10220,8 @@
       "lineage": [
         "https://openalex.org/I183697816"
       ],
-      "shortand_name": "BUET"
+      "shortand_name": "BUET",
+      "label_name": "Bangladesh U. of Eng. & Tech"
     },
     "aci": 2.71
   },
@@ -10356,7 +10394,8 @@
       "lineage": [
         "https://openalex.org/I83328450"
       ],
-      "shortand_name": "MiamiU"
+      "shortand_name": "MiamiU",
+      "label_name": "Miami U."
     },
     "aci": 2.71
   },
@@ -10648,7 +10687,8 @@
       "lineage": [
         "https://openalex.org/I185261750"
       ],
-      "shortand_name": "U of T"
+      "shortand_name": "U of T",
+      "label_name": "U. of Toronto"
     },
     "aci": 5.41
   },
@@ -10922,7 +10962,8 @@
       "lineage": [
         "https://openalex.org/I4210105686"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 7.62
   },
@@ -11154,7 +11195,8 @@
       "lineage": [
         "https://openalex.org/I6469544"
       ],
-      "shortand_name": "CityU"
+      "shortand_name": "CityU",
+      "label_name": "City U. of Macau"
     },
     "aci": 3.05
   },
@@ -11512,7 +11554,8 @@
       "lineage": [
         "https://openalex.org/I197869895"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 3.05
   },
@@ -11991,7 +12034,8 @@
       "lineage": [
         "https://openalex.org/I154425047"
       ],
-      "shortand_name": "U of A"
+      "shortand_name": "U of A",
+      "label_name": "U. of Alberta"
     },
     "aci": 6.1
   },
@@ -12224,7 +12268,8 @@
       "lineage": [
         "https://openalex.org/I136199984"
       ],
-      "shortand_name": "Harvard"
+      "shortand_name": "Harvard",
+      "label_name": "Harvard U."
     },
     "aci": 5.86
   },
@@ -12468,7 +12513,8 @@
       "lineage": [
         "https://openalex.org/I70931966"
       ],
-      "shortand_name": "UdeM"
+      "shortand_name": "UdeM",
+      "label_name": "U. de Montréal"
     },
     "aci": 2.34
   },
@@ -12754,7 +12800,8 @@
       "lineage": [
         "https://openalex.org/I136199984"
       ],
-      "shortand_name": "Harvard"
+      "shortand_name": "Harvard",
+      "label_name": "Harvard U."
     },
     "aci": 4.68
   },
@@ -13004,7 +13051,8 @@
       "lineage": [
         "https://openalex.org/I192455969"
       ],
-      "shortand_name": "York"
+      "shortand_name": "York",
+      "label_name": "York U."
     },
     "aci": 9.64
   },
@@ -13155,7 +13203,8 @@
       "lineage": [
         "https://openalex.org/I4210147161"
       ],
-      "shortand_name": "MICA"
+      "shortand_name": "MICA",
+      "label_name": "MICA Ahmedabad"
     },
     "aci": 6.44
   },
@@ -13448,7 +13497,8 @@
       "lineage": [
         "https://openalex.org/I91720666"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 2.58
   },
@@ -13963,7 +14013,8 @@
       "lineage": [
         "https://openalex.org/I192455969"
       ],
-      "shortand_name": "York"
+      "shortand_name": "York",
+      "label_name": "York U."
     },
     "aci": 5.15
   },
@@ -14214,7 +14265,8 @@
       "lineage": [
         "https://openalex.org/I98251732"
       ],
-      "shortand_name": "Mac"
+      "shortand_name": "Mac",
+      "label_name": "McMaster U."
     },
     "aci": 5.86
   },
@@ -14518,7 +14570,8 @@
       "lineage": [
         "https://openalex.org/I4210104429"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 2.35
   },
@@ -14840,7 +14893,8 @@
       "lineage": [
         "https://openalex.org/I98251732"
       ],
-      "shortand_name": "Mac"
+      "shortand_name": "Mac",
+      "label_name": "McMaster U."
     },
     "aci": 4.69
   },
@@ -15073,7 +15127,8 @@
       "lineage": [
         "https://openalex.org/I67031392"
       ],
-      "shortand_name": "Carleton"
+      "shortand_name": "Carleton",
+      "label_name": "Carleton U."
     },
     "aci": 2.41
   },
@@ -15294,7 +15349,8 @@
       "lineage": [
         "https://openalex.org/I86987016"
       ],
-      "shortand_name": "KTH"
+      "shortand_name": "KTH",
+      "label_name": "KTH Royal Inst. of Tech."
     },
     "aci": 2.9
   },
@@ -15527,7 +15583,8 @@
       "lineage": [
         "https://openalex.org/I188538660"
       ],
-      "shortand_name": "CU Boulder"
+      "shortand_name": "CU Boulder",
+      "label_name": "U. of Colorado Boulder"
     },
     "aci": 2.41
   },
@@ -15851,7 +15908,8 @@
       "lineage": [
         "https://openalex.org/I18014758"
       ],
-      "shortand_name": "SFU"
+      "shortand_name": "SFU",
+      "label_name": "Simon Fraser U."
     },
     "aci": 11.81
   },
@@ -16137,7 +16195,8 @@
       "lineage": [
         "https://openalex.org/I18014758"
       ],
-      "shortand_name": "SFU"
+      "shortand_name": "SFU",
+      "label_name": "Simon Fraser U."
     },
     "aci": 4.09
   },
@@ -16377,7 +16436,8 @@
       "lineage": [
         "https://openalex.org/I18014758"
       ],
-      "shortand_name": "SFU"
+      "shortand_name": "SFU",
+      "label_name": "Simon Fraser U."
     },
     "aci": 5.62
   },
@@ -16699,7 +16759,8 @@
       "lineage": [
         "https://openalex.org/I18014758"
       ],
-      "shortand_name": "SFU"
+      "shortand_name": "SFU",
+      "label_name": "Simon Fraser U."
     },
     "aci": 3.27
   },
@@ -17000,7 +17061,8 @@
       "lineage": [
         "https://openalex.org/I18014758"
       ],
-      "shortand_name": "SFU"
+      "shortand_name": "SFU",
+      "label_name": "Simon Fraser U."
     },
     "aci": 4.03
   },
@@ -17246,7 +17308,8 @@
       "lineage": [
         "https://openalex.org/I18014758"
       ],
-      "shortand_name": "SFU"
+      "shortand_name": "SFU",
+      "label_name": "Simon Fraser U."
     },
     "aci": 7.62
   },
@@ -17442,7 +17505,8 @@
       "lineage": [
         "https://openalex.org/I18014758"
       ],
-      "shortand_name": "SFU"
+      "shortand_name": "SFU",
+      "label_name": "Simon Fraser U."
     },
     "aci": 4.91
   },
@@ -17638,7 +17702,8 @@
       "lineage": [
         "https://openalex.org/I141945490"
       ],
-      "shortand_name": "UBC"
+      "shortand_name": "UBC",
+      "label_name": "U. of British Columbia"
     },
     "aci": 5.0
   },
@@ -17987,7 +18052,8 @@
       "lineage": [
         "https://openalex.org/I141945490"
       ],
-      "shortand_name": "UBC"
+      "shortand_name": "UBC",
+      "label_name": "U. of British Columbia"
     },
     "aci": 4.46
   },
@@ -18268,7 +18334,8 @@
       "lineage": [
         "https://openalex.org/I141945490"
       ],
-      "shortand_name": "UBC"
+      "shortand_name": "UBC",
+      "label_name": "U. of British Columbia"
     },
     "aci": 5.27
   },
@@ -18501,7 +18568,8 @@
       "lineage": [
         "https://openalex.org/I74973139"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 7.34
   },
@@ -18733,7 +18801,8 @@
       "lineage": [
         "https://openalex.org/I130238516"
       ],
-      "shortand_name": "UMN"
+      "shortand_name": "UMN",
+      "label_name": "U. of Minnesota"
     },
     "aci": 1.45
   },
@@ -18989,7 +19058,8 @@
       "lineage": [
         "https://openalex.org/I130238516"
       ],
-      "shortand_name": "UMN"
+      "shortand_name": "UMN",
+      "label_name": "U. of Minnesota"
     },
     "aci": 1.45
   },
@@ -19250,7 +19320,8 @@
       "lineage": [
         "https://openalex.org/I98251732"
       ],
-      "shortand_name": "Mac"
+      "shortand_name": "Mac",
+      "label_name": "McMaster U."
     },
     "aci": 3.69
   },
@@ -19549,7 +19620,8 @@
       "lineage": [
         "https://openalex.org/I2800817003"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 5.93
   },
@@ -19877,7 +19949,8 @@
       "lineage": [
         "https://openalex.org/I197869895"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 4.96
   },
@@ -20097,7 +20170,8 @@
       "lineage": [
         "https://openalex.org/I1284762954"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 1.99
   },
@@ -20299,7 +20373,8 @@
       "lineage": [
         "https://openalex.org/I16609230"
       ],
-      "shortand_name": "HNU"
+      "shortand_name": "HNU",
+      "label_name": "Hunan U."
     },
     "aci": 1.99
   },
@@ -20495,7 +20570,8 @@
       "lineage": [
         "https://openalex.org/I16609230"
       ],
-      "shortand_name": "HNU"
+      "shortand_name": "HNU",
+      "label_name": "Hunan U."
     },
     "aci": 1.99
   },
@@ -20829,7 +20905,8 @@
       "lineage": [
         "https://openalex.org/I165690674"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 1.99
   },
@@ -21073,7 +21150,8 @@
       "lineage": [
         "https://openalex.org/I170215575"
       ],
-      "shortand_name": "NUDT"
+      "shortand_name": "NUDT",
+      "label_name": "Nat. U. of Defense Technology"
     },
     "aci": 3.97
   },
@@ -21287,7 +21365,8 @@
       "lineage": [
         "https://openalex.org/I157485424"
       ],
-      "shortand_name": "KAIST"
+      "shortand_name": "KAIST",
+      "label_name": "KAIST"
     },
     "aci": 4.85
   },
@@ -21483,7 +21562,8 @@
       "lineage": [
         "https://openalex.org/I157485424"
       ],
-      "shortand_name": "KAIST"
+      "shortand_name": "KAIST",
+      "label_name": "KAIST"
     },
     "aci": 1.94
   },
@@ -21800,7 +21880,8 @@
       "lineage": [
         "https://openalex.org/I168635309"
       ],
-      "shortand_name": "U of C"
+      "shortand_name": "U of C",
+      "label_name": "U. of Calgary"
     },
     "aci": 3.43
   },
@@ -22104,7 +22185,8 @@
       "lineage": [
         "https://openalex.org/I157485424"
       ],
-      "shortand_name": "KAIST"
+      "shortand_name": "KAIST",
+      "label_name": "KAIST"
     },
     "aci": 3.88
   },
@@ -22475,7 +22557,8 @@
       "lineage": [
         "https://openalex.org/I205783295"
       ],
-      "shortand_name": "Cornell"
+      "shortand_name": "Cornell",
+      "label_name": "Cornell U."
     },
     "aci": 1.99
   },
@@ -22762,7 +22845,8 @@
       "lineage": [
         "https://openalex.org/I183111857"
       ],
-      "shortand_name": "Malmö"
+      "shortand_name": "Malmö",
+      "label_name": "Malmö U."
     },
     "aci": 1.99
   },
@@ -23103,7 +23187,8 @@
       "lineage": [
         "https://openalex.org/I223464139"
       ],
-      "shortand_name": "LNU"
+      "shortand_name": "LNU",
+      "label_name": "Linnaeus U."
     },
     "aci": 1.99
   },
@@ -23353,7 +23438,8 @@
       "lineage": [
         "https://openalex.org/I151746483"
       ],
-      "shortand_name": "UW"
+      "shortand_name": "UW",
+      "label_name": "U. of Waterloo"
     },
     "aci": 16.59
   },
@@ -23568,7 +23654,8 @@
       "lineage": [
         "https://openalex.org/I151746483"
       ],
-      "shortand_name": "UW"
+      "shortand_name": "UW",
+      "label_name": "U. of Waterloo"
     },
     "aci": 2.71
   },
@@ -23805,7 +23892,8 @@
       "lineage": [
         "https://openalex.org/I42934936"
       ],
-      "shortand_name": "DCU"
+      "shortand_name": "DCU",
+      "label_name": "Dublin City U."
     },
     "aci": 3.64
   },
@@ -24020,7 +24108,8 @@
       "lineage": [
         "https://openalex.org/I151746483"
       ],
-      "shortand_name": "UW"
+      "shortand_name": "UW",
+      "label_name": "U. of Waterloo"
     },
     "aci": 2.71
   },
@@ -24349,7 +24438,8 @@
       "lineage": [
         "https://openalex.org/I151746483"
       ],
-      "shortand_name": "UW"
+      "shortand_name": "UW",
+      "label_name": "U. of Waterloo"
     },
     "aci": 10.79
   },
@@ -24595,7 +24685,8 @@
       "lineage": [
         "https://openalex.org/I67031392"
       ],
-      "shortand_name": "Carleton"
+      "shortand_name": "Carleton",
+      "label_name": "Carleton U."
     },
     "aci": 3.86
   },
@@ -24887,7 +24978,8 @@
       "lineage": [
         "https://openalex.org/I67031392"
       ],
-      "shortand_name": "Carleton"
+      "shortand_name": "Carleton",
+      "label_name": "Carleton U."
     },
     "aci": 2.94
   },
@@ -25113,7 +25205,8 @@
       "lineage": [
         "https://openalex.org/I18014758"
       ],
-      "shortand_name": "SFU"
+      "shortand_name": "SFU",
+      "label_name": "Simon Fraser U."
     },
     "aci": 5.18
   },
@@ -25315,7 +25408,8 @@
       "lineage": [
         "https://openalex.org/I151746483"
       ],
-      "shortand_name": "UW"
+      "shortand_name": "UW",
+      "label_name": "U. of Waterloo"
     },
     "aci": 2.73
   },
@@ -25579,7 +25673,8 @@
       "lineage": [
         "https://openalex.org/I151746483"
       ],
-      "shortand_name": "UW"
+      "shortand_name": "UW",
+      "label_name": "U. of Waterloo"
     },
     "aci": 5.44
   },
@@ -25966,7 +26061,8 @@
       "lineage": [
         "https://openalex.org/I107077323"
       ],
-      "shortand_name": "WPI"
+      "shortand_name": "WPI",
+      "label_name": "Worcester Poly. Inst."
     },
     "aci": 1.0
   },
@@ -26234,7 +26330,8 @@
       "lineage": [
         "https://openalex.org/I98251732"
       ],
-      "shortand_name": "Mac"
+      "shortand_name": "Mac",
+      "label_name": "McMaster U."
     },
     "aci": 1.0
   },
@@ -26430,7 +26527,8 @@
       "lineage": [
         "https://openalex.org/I98251732"
       ],
-      "shortand_name": "Mac"
+      "shortand_name": "Mac",
+      "label_name": "McMaster U."
     },
     "aci": 2.0
   },
@@ -26632,7 +26730,8 @@
       "lineage": [
         "https://openalex.org/I205783295"
       ],
-      "shortand_name": "Cornell"
+      "shortand_name": "Cornell",
+      "label_name": "Cornell U."
     },
     "aci": 2.5
   },
@@ -26912,7 +27011,8 @@
       "lineage": [
         "https://openalex.org/I2803209242"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 1.0
   },
@@ -27162,7 +27262,8 @@
       "lineage": [
         "https://openalex.org/I168635309"
       ],
-      "shortand_name": "U of C"
+      "shortand_name": "U of C",
+      "label_name": "U. of Calgary"
     },
     "aci": 1.0
   },
@@ -27430,7 +27531,8 @@
       "lineage": [
         "https://openalex.org/I205783295"
       ],
-      "shortand_name": "Cornell"
+      "shortand_name": "Cornell",
+      "label_name": "Cornell U."
     },
     "aci": 2.0
   },
@@ -27675,7 +27777,8 @@
       "lineage": [
         "https://openalex.org/I204722609"
       ],
-      "shortand_name": "Queen's"
+      "shortand_name": "Queen's",
+      "label_name": "Queen's U."
     },
     "aci": 3.18
   },
@@ -27873,7 +27976,8 @@
       "lineage": [
         "https://openalex.org/I204722609"
       ],
-      "shortand_name": "Queen's"
+      "shortand_name": "Queen's",
+      "label_name": "Queen's U."
     },
     "aci": 3.55
   },
@@ -28141,7 +28245,8 @@
       "lineage": [
         "https://openalex.org/I204722609"
       ],
-      "shortand_name": "Queen's"
+      "shortand_name": "Queen's",
+      "label_name": "Queen's U."
     },
     "aci": 10.87
   },
@@ -28425,7 +28530,8 @@
       "lineage": [
         "https://openalex.org/I204722609"
       ],
-      "shortand_name": "Queen's"
+      "shortand_name": "Queen's",
+      "label_name": "Queen's U."
     },
     "aci": 8.37
   },
@@ -28806,7 +28912,8 @@
       "lineage": [
         "https://openalex.org/I74753095"
       ],
-      "shortand_name": "OCAD U"
+      "shortand_name": "OCAD U",
+      "label_name": "Ontario College of Art & Design"
     },
     "aci": 2.12
   },
@@ -29038,7 +29145,8 @@
       "lineage": [
         "https://openalex.org/I102451721"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 2.12
   },
@@ -29252,7 +29360,8 @@
       "lineage": [
         "https://openalex.org/I102451721"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 2.12
   },
@@ -29509,7 +29618,8 @@
       "lineage": [
         "https://openalex.org/I83467386"
       ],
-      "shortand_name": "ITU"
+      "shortand_name": "ITU",
+      "label_name": "IT U. of Copenhagen"
     },
     "aci": 6.22
   },
@@ -29877,7 +29987,8 @@
       "lineage": [
         "https://openalex.org/I18014758"
       ],
-      "shortand_name": "SFU"
+      "shortand_name": "SFU",
+      "label_name": "Simon Fraser U."
     },
     "aci": 9.52
   },
@@ -30056,7 +30167,8 @@
       "lineage": [
         "https://openalex.org/I86501945"
       ],
-      "shortand_name": "UDel"
+      "shortand_name": "UDel",
+      "label_name": "U. of Delaware"
     },
     "aci": 5.33
   },
@@ -30298,7 +30410,8 @@
       "lineage": [
         "https://openalex.org/I95793202"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 2.13
   },
@@ -30500,7 +30613,8 @@
       "lineage": [
         "https://openalex.org/I86501945"
       ],
-      "shortand_name": "UDel"
+      "shortand_name": "UDel",
+      "label_name": "U. of Delaware"
     },
     "aci": 2.13
   },
@@ -30828,7 +30942,8 @@
       "lineage": [
         "https://openalex.org/I87445476"
       ],
-      "shortand_name": "XJTU"
+      "shortand_name": "XJTU",
+      "label_name": "Xi'an Jiaotong U."
     },
     "aci": 2.13
   },
@@ -31177,7 +31292,8 @@
       "lineage": [
         "https://openalex.org/I168635309"
       ],
-      "shortand_name": "U of C"
+      "shortand_name": "U of C",
+      "label_name": "U. of Calgary"
     },
     "aci": 2.13
   },
@@ -31439,7 +31555,8 @@
       "lineage": [
         "https://openalex.org/I86501945"
       ],
-      "shortand_name": "UDel"
+      "shortand_name": "UDel",
+      "label_name": "U. of Delaware"
     },
     "aci": 4.26
   },
@@ -31660,7 +31777,8 @@
       "lineage": [
         "https://openalex.org/I83019370"
       ],
-      "shortand_name": "TU/e"
+      "shortand_name": "TU/e",
+      "label_name": "Eindhoven U. of Tech."
     },
     "aci": 4.66
   },
@@ -31898,7 +32016,8 @@
       "lineage": [
         "https://openalex.org/I154099455"
       ],
-      "shortand_name": "SDU"
+      "shortand_name": "SDU",
+      "label_name": "Shandong U."
     },
     "aci": 1.86
   },
@@ -32210,7 +32329,8 @@
         "https://openalex.org/I49663120",
         "https://openalex.org/I9736820"
       ],
-      "shortand_name": "ÉTS"
+      "shortand_name": "ÉTS",
+      "label_name": "ÉTS"
     },
     "aci": 1.86
   },
@@ -32532,7 +32652,8 @@
       "lineage": [
         "https://openalex.org/I154099455"
       ],
-      "shortand_name": "SDU"
+      "shortand_name": "SDU",
+      "label_name": "Shandong U."
     },
     "aci": 3.73
   },
@@ -32758,7 +32879,8 @@
       "lineage": [
         "https://openalex.org/I185261750"
       ],
-      "shortand_name": "U of T"
+      "shortand_name": "U of T",
+      "label_name": "U. of Toronto"
     },
     "aci": 4.57
   },
@@ -33044,7 +33166,8 @@
       "lineage": [
         "https://openalex.org/I3123346794"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 2.83
   },
@@ -33287,7 +33410,8 @@
       "lineage": [
         "https://openalex.org/I185261750"
       ],
-      "shortand_name": "U of T"
+      "shortand_name": "U of T",
+      "label_name": "U. of Toronto"
     },
     "aci": 9.47
   },
@@ -33635,7 +33759,8 @@
       "lineage": [
         "https://openalex.org/I185261750"
       ],
-      "shortand_name": "U of T"
+      "shortand_name": "U of T",
+      "label_name": "U. of Toronto"
     },
     "aci": 5.02
   },
@@ -33825,7 +33950,8 @@
       "lineage": [
         "https://openalex.org/I83019370"
       ],
-      "shortand_name": "TU/e"
+      "shortand_name": "TU/e",
+      "label_name": "Eindhoven U. of Tech."
     },
     "aci": 3.94
   },
@@ -34093,7 +34219,8 @@
       "lineage": [
         "https://openalex.org/I83019370"
       ],
-      "shortand_name": "TU/e"
+      "shortand_name": "TU/e",
+      "label_name": "Eindhoven U. of Tech."
     },
     "aci": 1.58
   },
@@ -34349,7 +34476,8 @@
       "lineage": [
         "https://openalex.org/I83019370"
       ],
-      "shortand_name": "TU/e"
+      "shortand_name": "TU/e",
+      "label_name": "Eindhoven U. of Tech."
     },
     "aci": 1.58
   },
@@ -34581,7 +34709,8 @@
       "lineage": [
         "https://openalex.org/I7882870"
       ],
-      "shortand_name": "U of G"
+      "shortand_name": "U of G",
+      "label_name": "U. of Glasgow"
     },
     "aci": 4.17
   },
@@ -34933,7 +35062,8 @@
       "lineage": [
         "https://openalex.org/I7882870"
       ],
-      "shortand_name": "U of G"
+      "shortand_name": "U of G",
+      "label_name": "U. of Glasgow"
     },
     "aci": 2.45
   },
@@ -35249,7 +35379,8 @@
       "lineage": [
         "https://openalex.org/I4210163363"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 1.45
   },
@@ -35511,7 +35642,8 @@
       "lineage": [
         "https://openalex.org/I7882870"
       ],
-      "shortand_name": "U of G"
+      "shortand_name": "U of G",
+      "label_name": "U. of Glasgow"
     },
     "aci": 2.99
   },
@@ -36051,7 +36183,8 @@
       "lineage": [
         "https://openalex.org/I7882870"
       ],
-      "shortand_name": "U of G"
+      "shortand_name": "U of G",
+      "label_name": "U. of Glasgow"
     },
     "aci": 5.99
   },
@@ -36235,7 +36368,8 @@
       "lineage": [
         "https://openalex.org/I5023651"
       ],
-      "shortand_name": "McGill"
+      "shortand_name": "McGill",
+      "label_name": "McGill U."
     },
     "aci": 4.49
   },
@@ -36497,7 +36631,8 @@
       "lineage": [
         "https://openalex.org/I5023651"
       ],
-      "shortand_name": "McGill"
+      "shortand_name": "McGill",
+      "label_name": "McGill U."
     },
     "aci": 3.59
   },
@@ -36704,7 +36839,8 @@
       "lineage": [
         "https://openalex.org/I121296143"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 4.11
   },
@@ -37037,7 +37173,8 @@
       "lineage": [
         "https://openalex.org/I154425047"
       ],
-      "shortand_name": "U of A"
+      "shortand_name": "U of A",
+      "label_name": "U. of Alberta"
     },
     "aci": 1.65
   },
@@ -37263,7 +37400,8 @@
       "lineage": [
         "https://openalex.org/I154425047"
       ],
-      "shortand_name": "U of A"
+      "shortand_name": "U of A",
+      "label_name": "U. of Alberta"
     },
     "aci": 1.65
   },
@@ -37560,7 +37698,8 @@
       "lineage": [
         "https://openalex.org/I130474213"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 1.65
   },
@@ -37876,7 +38015,8 @@
       "lineage": [
         "https://openalex.org/I20231570"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 1.65
   },
@@ -38252,7 +38392,8 @@
       "lineage": [
         "https://openalex.org/I154130895"
       ],
-      "shortand_name": "UoA"
+      "shortand_name": "UoA",
+      "label_name": "U. of Auckland"
     },
     "aci": 3.29
   },
@@ -38454,7 +38595,8 @@
       "lineage": [
         "https://openalex.org/I204337017"
       ],
-      "shortand_name": "AU"
+      "shortand_name": "AU",
+      "label_name": "Aarhus U."
     },
     "aci": 6.43
   },
@@ -38736,7 +38878,8 @@
       "lineage": [
         "https://openalex.org/I204337017"
       ],
-      "shortand_name": "AU"
+      "shortand_name": "AU",
+      "label_name": "Aarhus U."
     },
     "aci": 3.39
   },
@@ -39128,7 +39271,8 @@
       "lineage": [
         "https://openalex.org/I204337017"
       ],
-      "shortand_name": "AU"
+      "shortand_name": "AU",
+      "label_name": "Aarhus U."
     },
     "aci": 13.22
   },
@@ -39384,7 +39528,8 @@
       "lineage": [
         "https://openalex.org/I85922643"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 3.67
   },
@@ -39740,7 +39885,8 @@
       "lineage": [
         "https://openalex.org/I18014758"
       ],
-      "shortand_name": "SFU"
+      "shortand_name": "SFU",
+      "label_name": "Simon Fraser U."
     },
     "aci": 7.58
   },
@@ -39942,7 +40088,8 @@
       "lineage": [
         "https://openalex.org/I56590836"
       ],
-      "shortand_name": "Monash"
+      "shortand_name": "Monash",
+      "label_name": "Monash U."
     },
     "aci": 4.9
   },
@@ -40204,7 +40351,8 @@
       "lineage": [
         "https://openalex.org/I56590836"
       ],
-      "shortand_name": "Monash"
+      "shortand_name": "Monash",
+      "label_name": "Monash U."
     },
     "aci": 1.96
   },
@@ -40400,7 +40548,8 @@
       "lineage": [
         "https://openalex.org/I56590836"
       ],
-      "shortand_name": "Monash"
+      "shortand_name": "Monash",
+      "label_name": "Monash U."
     },
     "aci": 1.96
   },
@@ -40704,7 +40853,8 @@
       "lineage": [
         "https://openalex.org/I86695891"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 1.96
   },
@@ -41038,7 +41188,8 @@
       "lineage": [
         "https://openalex.org/I56590836"
       ],
-      "shortand_name": "Monash"
+      "shortand_name": "Monash",
+      "label_name": "Monash U."
     },
     "aci": 1.96
   },
@@ -41399,7 +41550,8 @@
       "lineage": [
         "https://openalex.org/I822440"
       ],
-      "shortand_name": "OUC"
+      "shortand_name": "OUC",
+      "label_name": "Okanagan U. College"
     },
     "aci": 5.57
   },
@@ -41707,7 +41859,8 @@
       "lineage": [
         "https://openalex.org/I822440"
       ],
-      "shortand_name": "OUC"
+      "shortand_name": "OUC",
+      "label_name": "Okanagan U. College"
     },
     "aci": 3.92
   },
@@ -41979,7 +42132,8 @@
         "https://openalex.org/I205703379",
         "https://openalex.org/I4210145102"
       ],
-      "shortand_name": "Telecom"
+      "shortand_name": "Telecom",
+      "label_name": "Télécom Paris"
     },
     "aci": 2.5
   },
@@ -42266,7 +42420,8 @@
       "lineage": [
         "https://openalex.org/I41156924"
       ],
-      "shortand_name": "VUW"
+      "shortand_name": "VUW",
+      "label_name": "Victoria U. of Wellington"
     },
     "aci": 1.0
   },
@@ -42456,7 +42611,8 @@
       "lineage": [
         "https://openalex.org/I7882870"
       ],
-      "shortand_name": "U of G"
+      "shortand_name": "U of G",
+      "label_name": "U. of Glasgow"
     },
     "aci": 1.0
   },
@@ -42796,7 +42952,8 @@
       "lineage": [
         "https://openalex.org/I60053951"
       ],
-      "shortand_name": "UPV"
+      "shortand_name": "UPV",
+      "label_name": "U. Politècnica de València"
     },
     "aci": 3.86
   },
@@ -43184,7 +43341,8 @@
       "lineage": [
         "https://openalex.org/I56590836"
       ],
-      "shortand_name": "Monash"
+      "shortand_name": "Monash",
+      "label_name": "Monash U."
     },
     "aci": 1.55
   },
@@ -43584,7 +43742,8 @@
       "lineage": [
         "https://openalex.org/I57201433"
       ],
-      "shortand_name": "USI"
+      "shortand_name": "USI",
+      "label_name": "U. della Svizzera italiana"
     },
     "aci": 1.55
   },
@@ -43936,7 +44095,8 @@
       "lineage": [
         "https://openalex.org/I212119943"
       ],
-      "shortand_name": "UVic"
+      "shortand_name": "UVic",
+      "label_name": "U. of Victoria"
     },
     "aci": 1.55
   },
@@ -44228,7 +44388,8 @@
       "lineage": [
         "https://openalex.org/I16337185"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 3.09
   },
@@ -44440,7 +44601,8 @@
       "lineage": [
         "https://openalex.org/I83019370"
       ],
-      "shortand_name": "TU/e"
+      "shortand_name": "TU/e",
+      "label_name": "Eindhoven U. of Tech."
     },
     "aci": 2.27
   },
@@ -44702,7 +44864,8 @@
       "lineage": [
         "https://openalex.org/I83019370"
       ],
-      "shortand_name": "TU/e"
+      "shortand_name": "TU/e",
+      "label_name": "Eindhoven U. of Tech."
     },
     "aci": 0.91
   },
@@ -45036,7 +45199,8 @@
       "lineage": [
         "https://openalex.org/I32625721"
       ],
-      "shortand_name": "USask"
+      "shortand_name": "USask",
+      "label_name": "U. of Saskatchewan"
     },
     "aci": 4.7
   },
@@ -45261,7 +45425,8 @@
       "lineage": [
         "https://openalex.org/I87182695"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 2.27
   },
@@ -45499,7 +45664,8 @@
       "lineage": [
         "https://openalex.org/I4210133201"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 0.91
   },
@@ -45719,7 +45885,8 @@
       "lineage": [
         "https://openalex.org/I32394136"
       ],
-      "shortand_name": "Northumbria"
+      "shortand_name": "Northumbria",
+      "label_name": "Northumbria U."
     },
     "aci": 0.91
   },
@@ -46059,7 +46226,8 @@
       "lineage": [
         "https://openalex.org/I212119943"
       ],
-      "shortand_name": "UVic"
+      "shortand_name": "UVic",
+      "label_name": "U. of Victoria"
     },
     "aci": 1.82
   },
@@ -46261,7 +46429,8 @@
       "lineage": [
         "https://openalex.org/I185261750"
       ],
-      "shortand_name": "U of T"
+      "shortand_name": "U of T",
+      "label_name": "U. of Toronto"
     },
     "aci": 3.26
   },
@@ -46517,7 +46686,8 @@
       "lineage": [
         "https://openalex.org/I185261750"
       ],
-      "shortand_name": "U of T"
+      "shortand_name": "U of T",
+      "label_name": "U. of Toronto"
     },
     "aci": 1.3
   },
@@ -46719,7 +46889,8 @@
       "lineage": [
         "https://openalex.org/I185261750"
       ],
-      "shortand_name": "U of T"
+      "shortand_name": "U of T",
+      "label_name": "U. of Toronto"
     },
     "aci": 1.3
   },
@@ -46909,7 +47080,8 @@
       "lineage": [
         "https://openalex.org/I185261750"
       ],
-      "shortand_name": "U of T"
+      "shortand_name": "U of T",
+      "label_name": "U. of Toronto"
     },
     "aci": 1.3
   },
@@ -47105,7 +47277,8 @@
       "lineage": [
         "https://openalex.org/I185261750"
       ],
-      "shortand_name": "U of T"
+      "shortand_name": "U of T",
+      "label_name": "U. of Toronto"
     },
     "aci": 1.3
   },
@@ -47325,7 +47498,8 @@
       "lineage": [
         "https://openalex.org/I219193219"
       ],
-      "shortand_name": "Purdue"
+      "shortand_name": "Purdue",
+      "label_name": "Purdue U."
     },
     "aci": 1.3
   },
@@ -47563,7 +47737,8 @@
       "lineage": [
         "https://openalex.org/I185261750"
       ],
-      "shortand_name": "U of T"
+      "shortand_name": "U of T",
+      "label_name": "U. of Toronto"
     },
     "aci": 1.3
   },
@@ -47885,7 +48060,8 @@
       "lineage": [
         "https://openalex.org/I185261750"
       ],
-      "shortand_name": "U of T"
+      "shortand_name": "U of T",
+      "label_name": "U. of Toronto"
     },
     "aci": 2.61
   },
@@ -48111,7 +48287,8 @@
       "lineage": [
         "https://openalex.org/I151746483"
       ],
-      "shortand_name": "UW"
+      "shortand_name": "UW",
+      "label_name": "U. of Waterloo"
     },
     "aci": 3.79
   },
@@ -48342,7 +48519,8 @@
       "lineage": [
         "https://openalex.org/I98635879"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 1.52
   },
@@ -48550,7 +48728,8 @@
       "lineage": [
         "https://openalex.org/I70931966"
       ],
-      "shortand_name": "UdeM"
+      "shortand_name": "UdeM",
+      "label_name": "U. de Montréal"
     },
     "aci": 1.52
   },
@@ -48848,7 +49027,8 @@
       "lineage": [
         "https://openalex.org/I151746483"
       ],
-      "shortand_name": "UW"
+      "shortand_name": "UW",
+      "label_name": "U. of Waterloo"
     },
     "aci": 1.52
   },
@@ -49128,7 +49308,8 @@
       "lineage": [
         "https://openalex.org/I151746483"
       ],
-      "shortand_name": "UW"
+      "shortand_name": "UW",
+      "label_name": "U. of Waterloo"
     },
     "aci": 1.52
   },
@@ -49408,7 +49589,8 @@
       "lineage": [
         "https://openalex.org/I151746483"
       ],
-      "shortand_name": "UW"
+      "shortand_name": "UW",
+      "label_name": "U. of Waterloo"
     },
     "aci": 1.52
   },
@@ -49862,7 +50044,8 @@
       "lineage": [
         "https://openalex.org/I151746483"
       ],
-      "shortand_name": "UW"
+      "shortand_name": "UW",
+      "label_name": "U. of Waterloo"
     },
     "aci": 1.52
   },
@@ -50232,7 +50415,8 @@
       "lineage": [
         "https://openalex.org/I8078737"
       ],
-      "shortand_name": "Clemson"
+      "shortand_name": "Clemson",
+      "label_name": "Clemson U."
     },
     "aci": 3.03
   },
@@ -50483,7 +50667,8 @@
       "lineage": [
         "https://openalex.org/I18014758"
       ],
-      "shortand_name": "SFU"
+      "shortand_name": "SFU",
+      "label_name": "Simon Fraser U."
     },
     "aci": 5.46
   },
@@ -50733,7 +50918,8 @@
       "lineage": [
         "https://openalex.org/I48825208"
       ],
-      "shortand_name": "Paris 8"
+      "shortand_name": "Paris 8",
+      "label_name": "U. Paris 8"
     },
     "aci": 1.52
   },
@@ -51013,7 +51199,8 @@
       "lineage": [
         "https://openalex.org/I86987016"
       ],
-      "shortand_name": "KTH"
+      "shortand_name": "KTH",
+      "label_name": "KTH Royal Inst. of Tech."
     },
     "aci": 1.97
   },
@@ -51240,7 +51427,8 @@
       "lineage": [
         "https://openalex.org/I151746483"
       ],
-      "shortand_name": "UW"
+      "shortand_name": "UW",
+      "label_name": "U. of Waterloo"
     },
     "aci": 3.41
   },
@@ -51527,7 +51715,8 @@
       "lineage": [
         "https://openalex.org/I212119943"
       ],
-      "shortand_name": "UVic"
+      "shortand_name": "UVic",
+      "label_name": "U. of Victoria"
     },
     "aci": 0.82
   },
@@ -51982,7 +52171,8 @@
       "lineage": [
         "https://openalex.org/I4210167232"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 0.82
   },
@@ -52315,7 +52505,8 @@
       "lineage": [
         "https://openalex.org/I151746483"
       ],
-      "shortand_name": "UW"
+      "shortand_name": "UW",
+      "label_name": "U. of Waterloo"
     },
     "aci": 7.39
   },
@@ -52522,7 +52713,8 @@
       "lineage": [
         "https://openalex.org/I32246829"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 3.53
   },
@@ -52718,7 +52910,8 @@
       "lineage": [
         "https://openalex.org/I69356397"
       ],
-      "shortand_name": "XJTLU"
+      "shortand_name": "XJTLU",
+      "label_name": "Xi’an Jiaotong-Liverpool U."
     },
     "aci": 1.41
   },
@@ -52926,7 +53119,8 @@
       "lineage": [
         "https://openalex.org/I28615091"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 1.41
   },
@@ -53218,7 +53412,8 @@
       "lineage": [
         "https://openalex.org/I50760025"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 1.41
   },
@@ -53575,7 +53770,8 @@
       "lineage": [
         "https://openalex.org/I200769079"
       ],
-      "shortand_name": "HKUST"
+      "shortand_name": "HKUST",
+      "label_name": "Hong Kong U. of Science & Tech"
     },
     "aci": 4.94
   },
@@ -53778,7 +53974,8 @@
       "lineage": [
         "https://openalex.org/I60158472"
       ],
-      "shortand_name": "Concordia"
+      "shortand_name": "Concordia",
+      "label_name": "Concordia U."
     },
     "aci": 2.23
   },
@@ -53963,11 +54160,11 @@
       "lineage": [
         "https://openalex.org/I132286405"
       ],
-      "shortand_name": "KHAS"
+      "shortand_name": "KHAS",
+      "label_name": "Kadir Has U."
     },
     "aci": 1.27
   },
-
   {
     "author_id": "https://openalex.org/A5005072681",
     "orcid": "https://orcid.org/0000-0001-7948-8093",
@@ -54228,7 +54425,8 @@
       "lineage": [
         "https://openalex.org/I60158472"
       ],
-      "shortand_name": "Concordia"
+      "shortand_name": "Concordia",
+      "label_name": "Concordia U."
     },
     "aci": 4.26
   },
@@ -54780,7 +54978,8 @@
       "lineage": [
         "https://openalex.org/I132286405"
       ],
-      "shortand_name": "KHAS"
+      "shortand_name": "KHAS",
+      "label_name": "Kadir Has U."
     },
     "aci": 1.73
   },
@@ -55038,7 +55237,8 @@
       "lineage": [
         "https://openalex.org/I129902397"
       ],
-      "shortand_name": "Dal"
+      "shortand_name": "Dal",
+      "label_name": "Dalhousie U."
     },
     "aci": 3.33
   },
@@ -55248,7 +55448,8 @@
       "lineage": [
         "https://openalex.org/I185261750"
       ],
-      "shortand_name": "U of T"
+      "shortand_name": "U of T",
+      "label_name": "U. of Toronto"
     },
     "aci": 2.5
   },
@@ -55451,7 +55652,8 @@
       "lineage": [
         "https://openalex.org/I185261750"
       ],
-      "shortand_name": "U of T"
+      "shortand_name": "U of T",
+      "label_name": "U. of Toronto"
     },
     "aci": 1.73
   },
@@ -55719,7 +55921,8 @@
       "lineage": [
         "https://openalex.org/I185261750"
       ],
-      "shortand_name": "U of T"
+      "shortand_name": "U of T",
+      "label_name": "U. of Toronto"
     },
     "aci": 0.82
   },
@@ -55933,7 +56136,8 @@
       "lineage": [
         "https://openalex.org/I67415387"
       ],
-      "shortand_name": "Lancaster"
+      "shortand_name": "Lancaster",
+      "label_name": "Lancaster U."
     },
     "aci": 2.54
   },
@@ -56178,7 +56382,8 @@
       "lineage": [
         "https://openalex.org/I67415387"
       ],
-      "shortand_name": "Lancaster"
+      "shortand_name": "Lancaster",
+      "label_name": "Lancaster U."
     },
     "aci": 2.23
   },
@@ -56416,7 +56621,8 @@
       "lineage": [
         "https://openalex.org/I157485424"
       ],
-      "shortand_name": "KAIST"
+      "shortand_name": "KAIST",
+      "label_name": "KAIST"
     },
     "aci": 1.02
   },
@@ -56736,7 +56942,8 @@
         "https://openalex.org/I104914703",
         "https://openalex.org/I49663120"
       ],
-      "shortand_name": "UQAC"
+      "shortand_name": "UQAC",
+      "label_name": "UQAC"
     },
     "aci": 6.03
   },
@@ -57025,7 +57232,8 @@
       "lineage": [
         "https://openalex.org/I3129292944"
       ],
-      "shortand_name": "Cégep Chicoutimi"
+      "shortand_name": "Cégep Chicoutimi",
+      "label_name": "Cégep de Chicoutimi"
     },
     "aci": 2.41
   },
@@ -57260,7 +57468,8 @@
         "https://openalex.org/I104914703",
         "https://openalex.org/I49663120"
       ],
-      "shortand_name": "UQAC"
+      "shortand_name": "UQAC",
+      "label_name": "UQAC"
     },
     "aci": 3.12
   },
@@ -57468,7 +57677,8 @@
       "lineage": [
         "https://openalex.org/I67415387"
       ],
-      "shortand_name": "Lancaster"
+      "shortand_name": "Lancaster",
+      "label_name": "Lancaster U."
     },
     "aci": 3.03
   },
@@ -57712,7 +57922,8 @@
       "lineage": [
         "https://openalex.org/I7882870"
       ],
-      "shortand_name": "U of G"
+      "shortand_name": "U of G",
+      "label_name": "U. of Glasgow"
     },
     "aci": 2.14
   },
@@ -57945,7 +58156,8 @@
       "lineage": [
         "https://openalex.org/I185261750"
       ],
-      "shortand_name": "U of T"
+      "shortand_name": "U of T",
+      "label_name": "U. of Toronto"
     },
     "aci": 3.18
   },
@@ -58184,7 +58396,8 @@
       "lineage": [
         "https://openalex.org/I185261750"
       ],
-      "shortand_name": "U of T"
+      "shortand_name": "U of T",
+      "label_name": "U. of Toronto"
     },
     "aci": 1.27
   },
@@ -58380,7 +58593,8 @@
       "lineage": [
         "https://openalex.org/I185261750"
       ],
-      "shortand_name": "U of T"
+      "shortand_name": "U of T",
+      "label_name": "U. of Toronto"
     },
     "aci": 0.82
   },
@@ -58576,7 +58790,8 @@
       "lineage": [
         "https://openalex.org/I185261750"
       ],
-      "shortand_name": "U of T"
+      "shortand_name": "U of T",
+      "label_name": "U. of Toronto"
     },
     "aci": 0.82
   },
@@ -58924,7 +59139,8 @@
       "lineage": [
         "https://openalex.org/I185261750"
       ],
-      "shortand_name": "U of T"
+      "shortand_name": "U of T",
+      "label_name": "U. of Toronto"
     },
     "aci": 1.45
   },
@@ -59187,7 +59403,8 @@
       "lineage": [
         "https://openalex.org/I185261750"
       ],
-      "shortand_name": "U of T"
+      "shortand_name": "U of T",
+      "label_name": "U. of Toronto"
     },
     "aci": 2.55
   },
@@ -59441,7 +59658,8 @@
       "lineage": [
         "https://openalex.org/I141945490"
       ],
-      "shortand_name": "UBC"
+      "shortand_name": "UBC",
+      "label_name": "U. of British Columbia"
     },
     "aci": 2.9
   },
@@ -59742,7 +59960,8 @@
       "lineage": [
         "https://openalex.org/I822440"
       ],
-      "shortand_name": "OUC"
+      "shortand_name": "OUC",
+      "label_name": "Okanagan U. College"
     },
     "aci": 4.11
   },
@@ -59944,7 +60163,8 @@
       "lineage": [
         "https://openalex.org/I2800817003"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 1.37
   },
@@ -60266,7 +60486,8 @@
       "lineage": [
         "https://openalex.org/I162714631"
       ],
-      "shortand_name": "GMU"
+      "shortand_name": "GMU",
+      "label_name": "George Mason U."
     },
     "aci": 1.37
   },
@@ -60630,7 +60851,8 @@
       "lineage": [
         "https://openalex.org/I24201400"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 1.37
   },
@@ -60832,7 +61054,8 @@
       "lineage": [
         "https://openalex.org/I67415387"
       ],
-      "shortand_name": "Lancaster"
+      "shortand_name": "Lancaster",
+      "label_name": "Lancaster U."
     },
     "aci": 2.31
   },
@@ -60982,7 +61205,8 @@
       "lineage": [
         "https://openalex.org/I32625721"
       ],
-      "shortand_name": "USask"
+      "shortand_name": "USask",
+      "label_name": "U. of Saskatchewan"
     },
     "aci": 3.43
   },
@@ -61353,7 +61577,8 @@
       "lineage": [
         "https://openalex.org/I32625721"
       ],
-      "shortand_name": "USask"
+      "shortand_name": "USask",
+      "label_name": "U. of Saskatchewan"
     },
     "aci": 1.37
   },
@@ -61730,7 +61955,8 @@
       "lineage": [
         "https://openalex.org/I185492890"
       ],
-      "shortand_name": "UC"
+      "shortand_name": "UC",
+      "label_name": "U. of Canterbury"
     },
     "aci": 2.75
   },
@@ -61951,7 +62177,8 @@
       "lineage": [
         "https://openalex.org/I151746483"
       ],
-      "shortand_name": "UW"
+      "shortand_name": "UW",
+      "label_name": "U. of Waterloo"
     },
     "aci": 1.2
   },
@@ -62190,7 +62417,8 @@
       "lineage": [
         "https://openalex.org/I151746483"
       ],
-      "shortand_name": "UW"
+      "shortand_name": "UW",
+      "label_name": "U. of Waterloo"
     },
     "aci": 1.59
   },
@@ -62386,7 +62614,8 @@
       "lineage": [
         "https://openalex.org/I212119943"
       ],
-      "shortand_name": "UVic"
+      "shortand_name": "UVic",
+      "label_name": "U. of Victoria"
     },
     "aci": 2.8
   },
@@ -62777,7 +63006,8 @@
       "lineage": [
         "https://openalex.org/I212119943"
       ],
-      "shortand_name": "UVic"
+      "shortand_name": "UVic",
+      "label_name": "U. of Victoria"
     },
     "aci": 1.3
   },
@@ -62973,7 +63203,8 @@
       "lineage": [
         "https://openalex.org/I212119943"
       ],
-      "shortand_name": "UVic"
+      "shortand_name": "UVic",
+      "label_name": "U. of Victoria"
     },
     "aci": 2.24
   },
@@ -63290,7 +63521,8 @@
       "lineage": [
         "https://openalex.org/I83019370"
       ],
-      "shortand_name": "TU/e"
+      "shortand_name": "TU/e",
+      "label_name": "Eindhoven U. of Tech."
     },
     "aci": 2.73
   },
@@ -63510,7 +63742,8 @@
       "lineage": [
         "https://openalex.org/I83019370"
       ],
-      "shortand_name": "TU/e"
+      "shortand_name": "TU/e",
+      "label_name": "Eindhoven U. of Tech."
     },
     "aci": 0.73
   },
@@ -63779,7 +64012,8 @@
       "lineage": [
         "https://openalex.org/I188538660"
       ],
-      "shortand_name": "CU Boulder"
+      "shortand_name": "CU Boulder",
+      "label_name": "U. of Colorado Boulder"
     },
     "aci": 0.73
   },
@@ -63988,7 +64222,8 @@
       "lineage": [
         "https://openalex.org/I83019370"
       ],
-      "shortand_name": "TU/e"
+      "shortand_name": "TU/e",
+      "label_name": "Eindhoven U. of Tech."
     },
     "aci": 3.0
   },
@@ -64178,7 +64413,8 @@
       "lineage": [
         "https://openalex.org/I4210115111"
       ],
-      "shortand_name": "Kunstuni Linz"
+      "shortand_name": "Kunstuni Linz",
+      "label_name": "U. of Arts Linz"
     },
     "aci": 0.73
   },
@@ -64379,7 +64615,8 @@
       "lineage": [
         "https://openalex.org/I187531555"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 0.73
   },
@@ -64701,7 +64938,8 @@
       "lineage": [
         "https://openalex.org/I1174212"
       ],
-      "shortand_name": "USC"
+      "shortand_name": "USC",
+      "label_name": "U. of Southern California"
     },
     "aci": 0.73
   },
@@ -64975,7 +65213,8 @@
       "lineage": [
         "https://openalex.org/I182212641"
       ],
-      "shortand_name": "Uni Salzburg"
+      "shortand_name": "Uni Salzburg",
+      "label_name": "U. of Salzburg"
     },
     "aci": 0.73
   },
@@ -65267,7 +65506,8 @@
       "lineage": [
         "https://openalex.org/I204337017"
       ],
-      "shortand_name": "AU"
+      "shortand_name": "AU",
+      "label_name": "Aarhus U."
     },
     "aci": 0.73
   },
@@ -65492,7 +65732,8 @@
       "lineage": [
         "https://openalex.org/I188538660"
       ],
-      "shortand_name": "CU Boulder"
+      "shortand_name": "CU Boulder",
+      "label_name": "U. of Colorado Boulder"
     },
     "aci": 1.45
   },
@@ -65734,7 +65975,8 @@
       "lineage": [
         "https://openalex.org/I530967"
       ],
-      "shortand_name": "TMU"
+      "shortand_name": "TMU",
+      "label_name": "Toronto Metropolitan U."
     },
     "aci": 2.31
   },
@@ -66057,7 +66299,8 @@
       "lineage": [
         "https://openalex.org/I530967"
       ],
-      "shortand_name": "TMU"
+      "shortand_name": "TMU",
+      "label_name": "Toronto Metropolitan U."
     },
     "aci": 0.93
   },
@@ -66390,7 +66633,8 @@
       "lineage": [
         "https://openalex.org/I530967"
       ],
-      "shortand_name": "TMU"
+      "shortand_name": "TMU",
+      "label_name": "Toronto Metropolitan U."
     },
     "aci": 6.11
   },
@@ -66586,7 +66830,8 @@
       "lineage": [
         "https://openalex.org/I151746483"
       ],
-      "shortand_name": "UW"
+      "shortand_name": "UW",
+      "label_name": "U. of Waterloo"
     },
     "aci": 3.18
   },
@@ -66794,7 +67039,8 @@
       "lineage": [
         "https://openalex.org/I118803816"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 1.27
   },
@@ -67200,7 +67446,8 @@
       "lineage": [
         "https://openalex.org/I66946132"
       ],
-      "shortand_name": "UMD"
+      "shortand_name": "UMD",
+      "label_name": "U. of Maryland"
     },
     "aci": 1.27
   },
@@ -67484,7 +67731,8 @@
       "lineage": [
         "https://openalex.org/I151746483"
       ],
-      "shortand_name": "UW"
+      "shortand_name": "UW",
+      "label_name": "U. of Waterloo"
     },
     "aci": 7.12
   },
@@ -67734,7 +67982,8 @@
       "lineage": [
         "https://openalex.org/I168635309"
       ],
-      "shortand_name": "U of C"
+      "shortand_name": "U of C",
+      "label_name": "U. of Calgary"
     },
     "aci": 2.58
   },
@@ -68224,7 +68473,8 @@
       "lineage": [
         "https://openalex.org/I168635309"
       ],
-      "shortand_name": "U of C"
+      "shortand_name": "U of C",
+      "label_name": "U. of Calgary"
     },
     "aci": 2.06
   },
@@ -68438,7 +68688,8 @@
       "lineage": [
         "https://openalex.org/I204722609"
       ],
-      "shortand_name": "Queen's"
+      "shortand_name": "Queen's",
+      "label_name": "Queen's U."
     },
     "aci": 4.84
   },
@@ -68671,7 +68922,8 @@
       "lineage": [
         "https://openalex.org/I204722609"
       ],
-      "shortand_name": "Queen's"
+      "shortand_name": "Queen's",
+      "label_name": "Queen's U."
     },
     "aci": 1.94
   },
@@ -68903,7 +69155,8 @@
       "lineage": [
         "https://openalex.org/I204722609"
       ],
-      "shortand_name": "Queen's"
+      "shortand_name": "Queen's",
+      "label_name": "Queen's U."
     },
     "aci": 3.87
   },
@@ -69121,7 +69374,8 @@
       "lineage": [
         "https://openalex.org/I530967"
       ],
-      "shortand_name": "TMU"
+      "shortand_name": "TMU",
+      "label_name": "Toronto Metropolitan U."
     },
     "aci": 3.2
   },
@@ -69537,7 +69791,8 @@
       "lineage": [
         "https://openalex.org/I530967"
       ],
-      "shortand_name": "TMU"
+      "shortand_name": "TMU",
+      "label_name": "Toronto Metropolitan U."
     },
     "aci": 1.28
   },
@@ -69747,7 +70002,8 @@
       "lineage": [
         "https://openalex.org/I141945490"
       ],
-      "shortand_name": "UBC"
+      "shortand_name": "UBC",
+      "label_name": "U. of British Columbia"
     },
     "aci": 1.59
   },
@@ -69991,7 +70247,8 @@
       "lineage": [
         "https://openalex.org/I70983195"
       ],
-      "shortand_name": "Syracuse"
+      "shortand_name": "Syracuse",
+      "label_name": "Syracuse U."
     },
     "aci": 1.59
   },
@@ -70247,7 +70504,8 @@
       "lineage": [
         "https://openalex.org/I185261750"
       ],
-      "shortand_name": "U of T"
+      "shortand_name": "U of T",
+      "label_name": "U. of Toronto"
     },
     "aci": 1.27
   },
@@ -70490,7 +70748,8 @@
       "lineage": [
         "https://openalex.org/I178535277"
       ],
-      "shortand_name": "UWE"
+      "shortand_name": "UWE",
+      "label_name": "U. of the West of England"
     },
     "aci": 3.93
   },
@@ -70716,7 +70975,8 @@
       "lineage": [
         "https://openalex.org/I83019370"
       ],
-      "shortand_name": "TU/e"
+      "shortand_name": "TU/e",
+      "label_name": "Eindhoven U. of Tech."
     },
     "aci": 1.38
   },
@@ -70924,7 +71184,8 @@
       "lineage": [
         "https://openalex.org/I51441396"
       ],
-      "shortand_name": "Bauhaus"
+      "shortand_name": "Bauhaus",
+      "label_name": "Bauhaus-U. Weimar"
     },
     "aci": 1.38
   },
@@ -71151,7 +71412,8 @@
       "lineage": [
         "https://openalex.org/I18014758"
       ],
-      "shortand_name": "SFU"
+      "shortand_name": "SFU",
+      "label_name": "Simon Fraser U."
     },
     "aci": 1.56
   },
@@ -71461,7 +71723,8 @@
       "lineage": [
         "https://openalex.org/I83019370"
       ],
-      "shortand_name": "TU/e"
+      "shortand_name": "TU/e",
+      "label_name": "Eindhoven U. of Tech."
     },
     "aci": 1.38
   },
@@ -71843,7 +72106,8 @@
       "lineage": [
         "https://openalex.org/I166073570"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 2.76
   },
@@ -72135,7 +72399,8 @@
       "lineage": [
         "https://openalex.org/I141945490"
       ],
-      "shortand_name": "UBC"
+      "shortand_name": "UBC",
+      "label_name": "U. of British Columbia"
     },
     "aci": 3.07
   },
@@ -72445,7 +72710,8 @@
       "lineage": [
         "https://openalex.org/I193531525"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 1.23
   },
@@ -72659,7 +72925,8 @@
       "lineage": [
         "https://openalex.org/I201448701"
       ],
-      "shortand_name": "UW"
+      "shortand_name": "UW",
+      "label_name": "U. of Washington"
     },
     "aci": 1.23
   },
@@ -72945,7 +73212,8 @@
       "lineage": [
         "https://openalex.org/I58610484"
       ],
-      "shortand_name": "SeattleU"
+      "shortand_name": "SeattleU",
+      "label_name": "Seattle U."
     },
     "aci": 2.46
   },
@@ -73148,7 +73416,8 @@
       "lineage": [
         "https://openalex.org/I4210090971"
       ],
-      "shortand_name": "SEU"
+      "shortand_name": "SEU",
+      "label_name": "Southeast U."
     },
     "aci": 2.58
   },
@@ -73375,7 +73644,8 @@
       "lineage": [
         "https://openalex.org/I167027274"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 1.03
   },
@@ -73584,7 +73854,8 @@
       "lineage": [
         "https://openalex.org/I185261750"
       ],
-      "shortand_name": "U of T"
+      "shortand_name": "U of T",
+      "label_name": "U. of Toronto"
     },
     "aci": 1.03
   },
@@ -73925,7 +74196,8 @@
       "lineage": [
         "https://openalex.org/I163340411"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 1.03
   },
@@ -74188,7 +74460,8 @@
       "lineage": [
         "https://openalex.org/I139024713"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 2.06
   },
@@ -74433,7 +74706,8 @@
       "lineage": [
         "https://openalex.org/I178232147"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 2.58
   },
@@ -74659,7 +74933,8 @@
       "lineage": [
         "https://openalex.org/I183067930"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 1.03
   },
@@ -74855,7 +75130,8 @@
       "lineage": [
         "https://openalex.org/I168719708"
       ],
-      "shortand_name": "CityU HK"
+      "shortand_name": "CityU HK",
+      "label_name": "City U. of Hong Kong"
     },
     "aci": 1.03
   },
@@ -75087,7 +75363,8 @@
       "lineage": [
         "https://openalex.org/I143593769"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 1.03
   },
@@ -75295,7 +75572,8 @@
       "lineage": [
         "https://openalex.org/I3045169105"
       ],
-      "shortand_name": "SUSTech"
+      "shortand_name": "SUSTech",
+      "label_name": "Southern U. of Science & Tech"
     },
     "aci": 1.03
   },
@@ -75735,7 +76013,8 @@
       "lineage": [
         "https://openalex.org/I26092322"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 3.07
   },
@@ -75937,7 +76216,8 @@
       "lineage": [
         "https://openalex.org/I151746483"
       ],
-      "shortand_name": "UW"
+      "shortand_name": "UW",
+      "label_name": "U. of Waterloo"
     },
     "aci": 2.58
   },
@@ -76133,7 +76413,8 @@
       "lineage": [
         "https://openalex.org/I204722609"
       ],
-      "shortand_name": "Queen's"
+      "shortand_name": "Queen's",
+      "label_name": "Queen's U."
     },
     "aci": 2.35
   },
@@ -76449,7 +76730,8 @@
       "lineage": [
         "https://openalex.org/I190082696"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 0.94
   },
@@ -76657,7 +76939,8 @@
       "lineage": [
         "https://openalex.org/I204722609"
       ],
-      "shortand_name": "Queen's"
+      "shortand_name": "Queen's",
+      "label_name": "Queen's U."
     },
     "aci": 0.94
   },
@@ -76853,7 +77136,8 @@
       "lineage": [
         "https://openalex.org/I192455969"
       ],
-      "shortand_name": "York"
+      "shortand_name": "York",
+      "label_name": "York U."
     },
     "aci": 0.94
   },
@@ -77043,7 +77327,8 @@
       "lineage": [
         "https://openalex.org/I192455969"
       ],
-      "shortand_name": "York"
+      "shortand_name": "York",
+      "label_name": "York U."
     },
     "aci": 0.94
   },
@@ -77431,7 +77716,8 @@
       "lineage": [
         "https://openalex.org/I204722609"
       ],
-      "shortand_name": "Queen's"
+      "shortand_name": "Queen's",
+      "label_name": "Queen's U."
     },
     "aci": 1.88
   },
@@ -77675,7 +77961,8 @@
       "lineage": [
         "https://openalex.org/I83019370"
       ],
-      "shortand_name": "TU/e"
+      "shortand_name": "TU/e",
+      "label_name": "Eindhoven U. of Tech."
     },
     "aci": 2.42
   },
@@ -77973,7 +78260,8 @@
       "lineage": [
         "https://openalex.org/I83019370"
       ],
-      "shortand_name": "TU/e"
+      "shortand_name": "TU/e",
+      "label_name": "Eindhoven U. of Tech."
     },
     "aci": 3.21
   },
@@ -78163,7 +78451,8 @@
       "lineage": [
         "https://openalex.org/I18014758"
       ],
-      "shortand_name": "SFU"
+      "shortand_name": "SFU",
+      "label_name": "Simon Fraser U."
     },
     "aci": 1.09
   },
@@ -78347,7 +78636,8 @@
       "lineage": [
         "https://openalex.org/I83019370"
       ],
-      "shortand_name": "TU/e"
+      "shortand_name": "TU/e",
+      "label_name": "Eindhoven U. of Tech."
     },
     "aci": 2.18
   },
@@ -78567,7 +78857,8 @@
       "lineage": [
         "https://openalex.org/I154425047"
       ],
-      "shortand_name": "U of A"
+      "shortand_name": "U of A",
+      "label_name": "U. of Alberta"
     },
     "aci": 2.35
   },
@@ -78913,7 +79204,8 @@
       "lineage": [
         "https://openalex.org/I29894533"
       ],
-      "shortand_name": "CDU"
+      "shortand_name": "CDU",
+      "label_name": "Charles Darwin U."
     },
     "aci": 0.94
   },
@@ -79331,7 +79623,8 @@
       "lineage": [
         "https://openalex.org/I3143791293"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 0.94
   },
@@ -79612,7 +79905,8 @@
       "lineage": [
         "https://openalex.org/I154425047"
       ],
-      "shortand_name": "U of A"
+      "shortand_name": "U of A",
+      "label_name": "U. of Alberta"
     },
     "aci": 3.47
   },
@@ -79843,7 +80137,8 @@
       "lineage": [
         "https://openalex.org/I177969490"
       ],
-      "shortand_name": "SDU"
+      "shortand_name": "SDU",
+      "label_name": "U. of Southern Denmark"
     },
     "aci": 2.62
   },
@@ -80268,7 +80563,8 @@
       "lineage": [
         "https://openalex.org/I319074055"
       ],
-      "shortand_name": "Cégep Outaouais"
+      "shortand_name": "Cégep Outaouais",
+      "label_name": "Cégep de l'Outaouais"
     },
     "aci": 1.23
   },
@@ -80584,7 +80880,8 @@
       "lineage": [
         "https://openalex.org/I177969490"
       ],
-      "shortand_name": "SDU"
+      "shortand_name": "SDU",
+      "label_name": "U. of Southern Denmark"
     },
     "aci": 1.05
   },
@@ -80822,7 +81119,8 @@
       "lineage": [
         "https://openalex.org/I177969490"
       ],
-      "shortand_name": "SDU"
+      "shortand_name": "SDU",
+      "label_name": "U. of Southern Denmark"
     },
     "aci": 1.05
   },
@@ -81061,7 +81359,8 @@
       "lineage": [
         "https://openalex.org/I177969490"
       ],
-      "shortand_name": "SDU"
+      "shortand_name": "SDU",
+      "label_name": "U. of Southern Denmark"
     },
     "aci": 1.05
   },
@@ -81353,7 +81652,8 @@
       "lineage": [
         "https://openalex.org/I177969490"
       ],
-      "shortand_name": "SDU"
+      "shortand_name": "SDU",
+      "label_name": "U. of Southern Denmark"
     },
     "aci": 2.09
   },
@@ -81639,7 +81939,8 @@
       "lineage": [
         "https://openalex.org/I70931966"
       ],
-      "shortand_name": "UdeM"
+      "shortand_name": "UdeM",
+      "label_name": "U. de Montréal"
     },
     "aci": 2.12
   },
@@ -81859,7 +82160,8 @@
       "lineage": [
         "https://openalex.org/I66946132"
       ],
-      "shortand_name": "UMD"
+      "shortand_name": "UMD",
+      "label_name": "U. of Maryland"
     },
     "aci": 1.21
   },
@@ -82171,7 +82473,8 @@
       "lineage": [
         "https://openalex.org/I899635006"
       ],
-      "shortand_name": "UGA"
+      "shortand_name": "UGA",
+      "label_name": "U. Grenoble Alpes"
     },
     "aci": 2.79
   },
@@ -82432,7 +82735,8 @@
       "lineage": [
         "https://openalex.org/I822440"
       ],
-      "shortand_name": "OUC"
+      "shortand_name": "OUC",
+      "label_name": "Okanagan U. College"
     },
     "aci": 1.89
   },
@@ -82633,7 +82937,8 @@
       "lineage": [
         "https://openalex.org/I181631907"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 0.76
   },
@@ -82848,7 +83153,8 @@
       "lineage": [
         "https://openalex.org/I63548447"
       ],
-      "shortand_name": "LUT"
+      "shortand_name": "LUT",
+      "label_name": "LUT University"
     },
     "aci": 1.52
   },
@@ -82998,7 +83304,8 @@
       "lineage": [
         "https://openalex.org/I204722609"
       ],
-      "shortand_name": "Queen's"
+      "shortand_name": "Queen's",
+      "label_name": "Queen's U."
     },
     "aci": 0.76
   },
@@ -83224,7 +83531,8 @@
       "lineage": [
         "https://openalex.org/I5023651"
       ],
-      "shortand_name": "McGill"
+      "shortand_name": "McGill",
+      "label_name": "McGill U."
     },
     "aci": 2.27
   },
@@ -83427,7 +83735,8 @@
       "lineage": [
         "https://openalex.org/I18014758"
       ],
-      "shortand_name": "SFU"
+      "shortand_name": "SFU",
+      "label_name": "Simon Fraser U."
     },
     "aci": 1.89
   },
@@ -83636,7 +83945,8 @@
       "lineage": [
         "https://openalex.org/I18014758"
       ],
-      "shortand_name": "SFU"
+      "shortand_name": "SFU",
+      "label_name": "Simon Fraser U."
     },
     "aci": 0.76
   },
@@ -83966,7 +84276,8 @@
       "lineage": [
         "https://openalex.org/I18014758"
       ],
-      "shortand_name": "SFU"
+      "shortand_name": "SFU",
+      "label_name": "Simon Fraser U."
     },
     "aci": 3.52
   },
@@ -84212,7 +84523,8 @@
       "lineage": [
         "https://openalex.org/I18014758"
       ],
-      "shortand_name": "SFU"
+      "shortand_name": "SFU",
+      "label_name": "Simon Fraser U."
     },
     "aci": 3.53
   },
@@ -84439,7 +84751,8 @@
       "lineage": [
         "https://openalex.org/I60158472"
       ],
-      "shortand_name": "Concordia"
+      "shortand_name": "Concordia",
+      "label_name": "Concordia U."
     },
     "aci": 1.67
   },
@@ -84755,7 +85068,8 @@
       "lineage": [
         "https://openalex.org/I91047523"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 0.76
   },
@@ -85072,7 +85386,8 @@
       "lineage": [
         "https://openalex.org/I34574549"
       ],
-      "shortand_name": "NTCU"
+      "shortand_name": "NTCU",
+      "label_name": "Nat. Taichung U. of Education"
     },
     "aci": 1.67
   },
@@ -85311,7 +85626,8 @@
       "lineage": [
         "https://openalex.org/I43406934"
       ],
-      "shortand_name": "Laval"
+      "shortand_name": "Laval",
+      "label_name": "U. Laval"
     },
     "aci": 0.67
   },
@@ -85547,7 +85863,8 @@
       "lineage": [
         "https://openalex.org/I201841394"
       ],
-      "shortand_name": "UniCA"
+      "shortand_name": "UniCA",
+      "label_name": "U. Côte d'Azur"
     },
     "aci": 0.67
   },
@@ -85744,7 +86061,8 @@
       "lineage": [
         "https://openalex.org/I43406934"
       ],
-      "shortand_name": "Laval"
+      "shortand_name": "Laval",
+      "label_name": "U. Laval"
     },
     "aci": 1.33
   },
@@ -86018,7 +86336,8 @@
       "lineage": [
         "https://openalex.org/I883357"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 2.0
   },
@@ -86243,7 +86562,8 @@
       "lineage": [
         "https://openalex.org/I135117807"
       ],
-      "shortand_name": "UdeS"
+      "shortand_name": "UdeS",
+      "label_name": "U. de Sherbrooke"
     },
     "aci": 1.67
   },
@@ -86692,7 +87012,8 @@
       "lineage": [
         "https://openalex.org/I135117807"
       ],
-      "shortand_name": "UdeS"
+      "shortand_name": "UdeS",
+      "label_name": "U. de Sherbrooke"
     },
     "aci": 0.67
   },
@@ -86917,7 +87238,8 @@
       "lineage": [
         "https://openalex.org/I70931966"
       ],
-      "shortand_name": "UdeM"
+      "shortand_name": "UdeM",
+      "label_name": "U. de Montréal"
     },
     "aci": 0.67
   },
@@ -87178,7 +87500,8 @@
       "lineage": [
         "https://openalex.org/I70931966"
       ],
-      "shortand_name": "UdeM"
+      "shortand_name": "UdeM",
+      "label_name": "U. de Montréal"
     },
     "aci": 0.67
   },
@@ -87494,7 +87817,8 @@
       "lineage": [
         "https://openalex.org/I70931966"
       ],
-      "shortand_name": "UdeM"
+      "shortand_name": "UdeM",
+      "label_name": "U. de Montréal"
     },
     "aci": 0.67
   },
@@ -87821,7 +88145,8 @@
       "lineage": [
         "https://openalex.org/I70931966"
       ],
-      "shortand_name": "UdeM"
+      "shortand_name": "UdeM",
+      "label_name": "U. de Montréal"
     },
     "aci": 1.33
   },
@@ -88005,7 +88330,8 @@
       "lineage": [
         "https://openalex.org/I129902397"
       ],
-      "shortand_name": "Dal"
+      "shortand_name": "Dal",
+      "label_name": "Dalhousie U."
     },
     "aci": 1.67
   },
@@ -88261,7 +88587,8 @@
       "lineage": [
         "https://openalex.org/I129902397"
       ],
-      "shortand_name": "Dal"
+      "shortand_name": "Dal",
+      "label_name": "Dalhousie U."
     },
     "aci": 0.67
   },
@@ -88547,7 +88874,8 @@
       "lineage": [
         "https://openalex.org/I151746483"
       ],
-      "shortand_name": "UW"
+      "shortand_name": "UW",
+      "label_name": "U. of Waterloo"
     },
     "aci": 0.67
   },
@@ -88876,7 +89204,8 @@
       "lineage": [
         "https://openalex.org/I18014758"
       ],
-      "shortand_name": "SFU"
+      "shortand_name": "SFU",
+      "label_name": "Simon Fraser U."
     },
     "aci": 1.48
   },
@@ -89302,7 +89631,8 @@
       "lineage": [
         "https://openalex.org/I103635307"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 1.67
   },
@@ -89573,7 +89903,8 @@
       "lineage": [
         "https://openalex.org/I67031392"
       ],
-      "shortand_name": "Carleton"
+      "shortand_name": "Carleton",
+      "label_name": "Carleton U."
     },
     "aci": 1.67
   },
@@ -89843,7 +90174,8 @@
       "lineage": [
         "https://openalex.org/I67031392"
       ],
-      "shortand_name": "Carleton"
+      "shortand_name": "Carleton",
+      "label_name": "Carleton U."
     },
     "aci": 1.33
   },
@@ -90069,7 +90401,8 @@
       "lineage": [
         "https://openalex.org/I98251732"
       ],
-      "shortand_name": "Mac"
+      "shortand_name": "Mac",
+      "label_name": "McMaster U."
     },
     "aci": 1.67
   },
@@ -90439,7 +90772,8 @@
       "lineage": [
         "https://openalex.org/I79817857"
       ],
-      "shortand_name": "U of G"
+      "shortand_name": "U of G",
+      "label_name": "U. of Guelph"
     },
     "aci": 1.33
   },
@@ -90691,7 +91025,8 @@
       "lineage": [
         "https://openalex.org/I154099455"
       ],
-      "shortand_name": "SDU"
+      "shortand_name": "SDU",
+      "label_name": "Shandong U."
     },
     "aci": 1.67
   },
@@ -90895,7 +91230,8 @@
       "lineage": [
         "https://openalex.org/I154099455"
       ],
-      "shortand_name": "SDU"
+      "shortand_name": "SDU",
+      "label_name": "Shandong U."
     },
     "aci": 0.67
   },
@@ -91153,7 +91489,8 @@
       "lineage": [
         "https://openalex.org/I108688024"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 0.67
   },
@@ -91351,7 +91688,8 @@
       "lineage": [
         "https://openalex.org/I154099455"
       ],
-      "shortand_name": "SDU"
+      "shortand_name": "SDU",
+      "label_name": "Shandong U."
     },
     "aci": 0.67
   },
@@ -91669,7 +92007,8 @@
       "lineage": [
         "https://openalex.org/I17747738"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 0.67
   },
@@ -92011,7 +92350,8 @@
       "lineage": [
         "https://openalex.org/I111599522"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 1.33
   },
@@ -92429,7 +92769,8 @@
       "lineage": [
         "https://openalex.org/I192455969"
       ],
-      "shortand_name": "York"
+      "shortand_name": "York",
+      "label_name": "York U."
     },
     "aci": 3.2
   },
@@ -92776,7 +93117,8 @@
       "lineage": [
         "https://openalex.org/I185852735"
       ],
-      "shortand_name": "UCLan"
+      "shortand_name": "UCLan",
+      "label_name": "U. of Central Lancashire"
     },
     "aci": 1.17
   },
@@ -93093,7 +93435,8 @@
       "lineage": [
         "https://openalex.org/I185852735"
       ],
-      "shortand_name": "UCLan"
+      "shortand_name": "UCLan",
+      "label_name": "U. of Central Lancashire"
     },
     "aci": 1.24
   },
@@ -93331,7 +93674,8 @@
       "lineage": [
         "https://openalex.org/I192455969"
       ],
-      "shortand_name": "York"
+      "shortand_name": "York",
+      "label_name": "York U."
     },
     "aci": 1.21
   },
@@ -93797,7 +94141,8 @@
       "lineage": [
         "https://openalex.org/I192455969"
       ],
-      "shortand_name": "York"
+      "shortand_name": "York",
+      "label_name": "York U."
     },
     "aci": 0.97
   },
@@ -94017,7 +94362,8 @@
       "lineage": [
         "https://openalex.org/I4210134562"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 1.21
   },
@@ -94413,7 +94759,8 @@
         "https://openalex.org/I159129438",
         "https://openalex.org/I49663120"
       ],
-      "shortand_name": "UQAM"
+      "shortand_name": "UQAM",
+      "label_name": "UQAM"
     },
     "aci": 0.48
   },
@@ -94717,7 +95064,8 @@
       "lineage": [
         "https://openalex.org/I70931966"
       ],
-      "shortand_name": "UdeM"
+      "shortand_name": "UdeM",
+      "label_name": "U. de Montréal"
     },
     "aci": 0.97
   },
@@ -94925,7 +95273,8 @@
       "lineage": [
         "https://openalex.org/I18014758"
       ],
-      "shortand_name": "SFU"
+      "shortand_name": "SFU",
+      "label_name": "Simon Fraser U."
     },
     "aci": 1.45
   },
@@ -95127,7 +95476,8 @@
       "lineage": [
         "https://openalex.org/I193223587"
       ],
-      "shortand_name": "UniTrento"
+      "shortand_name": "UniTrento",
+      "label_name": "U. of Trento"
     },
     "aci": 0.48
   },
@@ -95317,7 +95667,8 @@
       "lineage": [
         "https://openalex.org/I151746483"
       ],
-      "shortand_name": "UW"
+      "shortand_name": "UW",
+      "label_name": "U. of Waterloo"
     },
     "aci": 0.48
   },
@@ -95628,7 +95979,8 @@
       "lineage": [
         "https://openalex.org/I70983195"
       ],
-      "shortand_name": "Syracuse"
+      "shortand_name": "Syracuse",
+      "label_name": "Syracuse U."
     },
     "aci": 0.48
   },
@@ -95963,7 +96315,8 @@
       "lineage": [
         "https://openalex.org/I100930933"
       ],
-      "shortand_name": "UCD"
+      "shortand_name": "UCD",
+      "label_name": "U. College Dublin"
     },
     "aci": 0.48
   },
@@ -96165,7 +96518,8 @@
       "lineage": [
         "https://openalex.org/I69356397"
       ],
-      "shortand_name": "XJTLU"
+      "shortand_name": "XJTLU",
+      "label_name": "Xi’an Jiaotong-Liverpool U."
     },
     "aci": 1.21
   },
@@ -96469,7 +96823,8 @@
       "lineage": [
         "https://openalex.org/I25757504"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 0.48
   },
@@ -96780,7 +97135,8 @@
       "lineage": [
         "https://openalex.org/I141945490"
       ],
-      "shortand_name": "UBC"
+      "shortand_name": "UBC",
+      "label_name": "U. of British Columbia"
     },
     "aci": 0.48
   },
@@ -97060,7 +97416,8 @@
       "lineage": [
         "https://openalex.org/I146655781"
       ],
-      "shortand_name": "UoL"
+      "shortand_name": "UoL",
+      "label_name": "U. of Liverpool"
     },
     "aci": 0.48
   },
@@ -97377,7 +97734,8 @@
       "lineage": [
         "https://openalex.org/I4210089758"
       ],
-      "shortand_name": "HS Anhalt"
+      "shortand_name": "HS Anhalt",
+      "label_name": "Anhalt U. of Applied Sciences"
     },
     "aci": 2.86
   },
@@ -97603,7 +97961,8 @@
       "lineage": [
         "https://openalex.org/I4210089758"
       ],
-      "shortand_name": "HS Anhalt"
+      "shortand_name": "HS Anhalt",
+      "label_name": "Anhalt U. of Applied Sciences"
     },
     "aci": 0.48
   },
@@ -97853,7 +98212,8 @@
       "lineage": [
         "https://openalex.org/I2610724"
       ],
-      "shortand_name": "TU Chemnitz"
+      "shortand_name": "TU Chemnitz",
+      "label_name": "Chemnitz U. of Tech."
     },
     "aci": 0.48
   },
@@ -98193,7 +98553,8 @@
       "lineage": [
         "https://openalex.org/I83467386"
       ],
-      "shortand_name": "ITU"
+      "shortand_name": "ITU",
+      "label_name": "IT U. of Copenhagen"
     },
     "aci": 0.48
   },
@@ -98587,7 +98948,8 @@
       "lineage": [
         "https://openalex.org/I201448701"
       ],
-      "shortand_name": "UW"
+      "shortand_name": "UW",
+      "label_name": "U. of Washington"
     },
     "aci": 0.48
   },
@@ -98861,7 +99223,8 @@
       "lineage": [
         "https://openalex.org/I84884186"
       ],
-      "shortand_name": "Newcastle"
+      "shortand_name": "Newcastle",
+      "label_name": "Newcastle U."
     },
     "aci": 0.48
   },
@@ -99213,7 +99576,8 @@
       "lineage": [
         "https://openalex.org/I32394136"
       ],
-      "shortand_name": "Northumbria"
+      "shortand_name": "Northumbria",
+      "label_name": "Northumbria U."
     },
     "aci": 0.48
   },
@@ -99613,7 +99977,8 @@
       "lineage": [
         "https://openalex.org/I32394136"
       ],
-      "shortand_name": "Northumbria"
+      "shortand_name": "Northumbria",
+      "label_name": "Northumbria U."
     },
     "aci": 0.97
   },
@@ -99858,7 +100223,8 @@
       "lineage": [
         "https://openalex.org/I151746483"
       ],
-      "shortand_name": "UW"
+      "shortand_name": "UW",
+      "label_name": "U. of Waterloo"
     },
     "aci": 1.67
   },
@@ -100200,7 +100566,8 @@
       "lineage": [
         "https://openalex.org/I151746483"
       ],
-      "shortand_name": "UW"
+      "shortand_name": "UW",
+      "label_name": "U. of Waterloo"
     },
     "aci": 1.21
   },
@@ -100402,7 +100769,8 @@
       "lineage": [
         "https://openalex.org/I130701444"
       ],
-      "shortand_name": "Georgia Tech"
+      "shortand_name": "Georgia Tech",
+      "label_name": "Georgia Tech"
     },
     "aci": 1.21
   },
@@ -100628,7 +100996,8 @@
       "lineage": [
         "https://openalex.org/I130701444"
       ],
-      "shortand_name": "Georgia Tech"
+      "shortand_name": "Georgia Tech",
+      "label_name": "Georgia Tech"
     },
     "aci": 0.48
   },
@@ -100848,7 +101217,8 @@
       "lineage": [
         "https://openalex.org/I9927081"
       ],
-      "shortand_name": "Aalto"
+      "shortand_name": "Aalto",
+      "label_name": "Aalto U."
     },
     "aci": 0.48
   },
@@ -101104,7 +101474,8 @@
       "lineage": [
         "https://openalex.org/I130701444"
       ],
-      "shortand_name": "Georgia Tech"
+      "shortand_name": "Georgia Tech",
+      "label_name": "Georgia Tech"
     },
     "aci": 0.48
   },
@@ -101391,7 +101762,8 @@
       "lineage": [
         "https://openalex.org/I151746483"
       ],
-      "shortand_name": "UW"
+      "shortand_name": "UW",
+      "label_name": "U. of Waterloo"
     },
     "aci": 1.15
   },
@@ -101593,7 +101965,8 @@
       "lineage": [
         "https://openalex.org/I12870472"
       ],
-      "shortand_name": "BCU"
+      "shortand_name": "BCU",
+      "label_name": "Birmingham City U."
     },
     "aci": 1.21
   },
@@ -101807,7 +102180,8 @@
       "lineage": [
         "https://openalex.org/I98358874"
       ],
-      "shortand_name": "TU Delft"
+      "shortand_name": "TU Delft",
+      "label_name": "TU Delft"
     },
     "aci": 0.48
   },
@@ -102111,7 +102485,8 @@
       "lineage": [
         "https://openalex.org/I111088046"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 0.48
   },
@@ -102331,7 +102706,8 @@
       "lineage": [
         "https://openalex.org/I102134673"
       ],
-      "shortand_name": "LiU"
+      "shortand_name": "LiU",
+      "label_name": "Linköping U."
     },
     "aci": 0.48
   },
@@ -102696,7 +103072,8 @@
       "lineage": [
         "https://openalex.org/I60158472"
       ],
-      "shortand_name": "Concordia"
+      "shortand_name": "Concordia",
+      "label_name": "Concordia U."
     },
     "aci": 0.48
   },
@@ -102976,7 +103353,8 @@
       "lineage": [
         "https://openalex.org/I90267481"
       ],
-      "shortand_name": "UmU"
+      "shortand_name": "UmU",
+      "label_name": "Umeå U."
     },
     "aci": 0.48
   },
@@ -103387,7 +103765,8 @@
       "lineage": [
         "https://openalex.org/I141945490"
       ],
-      "shortand_name": "UBC"
+      "shortand_name": "UBC",
+      "label_name": "U. of British Columbia"
     },
     "aci": 1.21
   },
@@ -103621,7 +104000,8 @@
       "lineage": [
         "https://openalex.org/I141945490"
       ],
-      "shortand_name": "UBC"
+      "shortand_name": "UBC",
+      "label_name": "U. of British Columbia"
     },
     "aci": 0.94
   },
@@ -103827,7 +104207,8 @@
       "lineage": [
         "https://openalex.org/I822440"
       ],
-      "shortand_name": "OUC"
+      "shortand_name": "OUC",
+      "label_name": "Okanagan U. College"
     },
     "aci": 0.48
   },
@@ -104077,7 +104458,8 @@
       "lineage": [
         "https://openalex.org/I159176309"
       ],
-      "shortand_name": "UHH"
+      "shortand_name": "UHH",
+      "label_name": "U. Hamburg"
     },
     "aci": 1.21
   },
@@ -104578,7 +104960,8 @@
       "lineage": [
         "https://openalex.org/I4210141715"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 0.48
   },
@@ -104913,7 +105296,8 @@
       "lineage": [
         "https://openalex.org/I159176309"
       ],
-      "shortand_name": "UHH"
+      "shortand_name": "UHH",
+      "label_name": "U. Hamburg"
     },
     "aci": 0.85
   },
@@ -105312,7 +105696,8 @@
       "lineage": [
         "https://openalex.org/I159176309"
       ],
-      "shortand_name": "UHH"
+      "shortand_name": "UHH",
+      "label_name": "U. Hamburg"
     },
     "aci": 0.48
   },
@@ -105508,7 +105893,8 @@
       "lineage": [
         "https://openalex.org/I192455969"
       ],
-      "shortand_name": "York"
+      "shortand_name": "York",
+      "label_name": "York U."
     },
     "aci": 1.21
   },
@@ -105921,7 +106307,8 @@
       "lineage": [
         "https://openalex.org/I2800817003"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 1.21
   },
@@ -106225,7 +106612,8 @@
       "lineage": [
         "https://openalex.org/I39470171"
       ],
-      "shortand_name": "Ontario Tech"
+      "shortand_name": "Ontario Tech",
+      "label_name": "U. of Ontario IT"
     },
     "aci": 0.97
   },
@@ -106438,7 +106826,8 @@
       "lineage": [
         "https://openalex.org/I200769079"
       ],
-      "shortand_name": "HKUST"
+      "shortand_name": "HKUST",
+      "label_name": "Hong Kong U. of Science & Tech"
     },
     "aci": 1.21
   },
@@ -106663,7 +107052,8 @@
       "lineage": [
         "https://openalex.org/I37987034"
       ],
-      "shortand_name": "GZHU"
+      "shortand_name": "GZHU",
+      "label_name": "Guangzhou U."
     },
     "aci": 0.48
   },
@@ -107002,7 +107392,8 @@
       "lineage": [
         "https://openalex.org/I80626142"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 0.48
   },
@@ -107281,7 +107672,8 @@
       "lineage": [
         "https://openalex.org/I133731052"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 0.48
   },
@@ -107513,7 +107905,8 @@
       "lineage": [
         "https://openalex.org/I129902397"
       ],
-      "shortand_name": "Dal"
+      "shortand_name": "Dal",
+      "label_name": "Dalhousie U."
     },
     "aci": 4.62
   },
@@ -107710,11 +108103,12 @@
       "lineage": [
         "https://openalex.org/I530967"
       ],
-      "shortand_name": "TMU"
+      "shortand_name": "TMU",
+      "label_name": "Toronto Metropolitan U."
     },
     "aci": 1.85
   },
-    {
+  {
     "author_id": "https://openalex.org/A5081424184",
     "orcid": "https://orcid.org/0000-0001-7490-8749",
     "display_name": "Carla Rice",
@@ -108056,7 +108450,8 @@
       "lineage": [
         "https://openalex.org/I79817857"
       ],
-      "shortand_name": "U of G"
+      "shortand_name": "U of G",
+      "label_name": "U. of Guelph"
     },
     "aci": 3.7
   },
@@ -108293,7 +108688,8 @@
       "lineage": [
         "https://openalex.org/I8204097"
       ],
-      "shortand_name": "LMU Munich"
+      "shortand_name": "LMU Munich",
+      "label_name": "LMU Munich"
     },
     "aci": 2.58
   },
@@ -108442,7 +108838,8 @@
       "lineage": [
         "https://openalex.org/I8204097"
       ],
-      "shortand_name": "LMU Munich"
+      "shortand_name": "LMU Munich",
+      "label_name": "LMU Munich"
     },
     "aci": 1.03
   },
@@ -108673,7 +109070,8 @@
       "lineage": [
         "https://openalex.org/I8204097"
       ],
-      "shortand_name": "LMU Munich"
+      "shortand_name": "LMU Munich",
+      "label_name": "LMU Munich"
     },
     "aci": 1.03
   },
@@ -108811,7 +109209,8 @@
       "lineage": [
         "https://openalex.org/I189712700"
       ],
-      "shortand_name": "Konstanz"
+      "shortand_name": "Konstanz",
+      "label_name": "U. of Konstanz"
     },
     "aci": 1.03
   },
@@ -109061,7 +109460,8 @@
       "lineage": [
         "https://openalex.org/I189712700"
       ],
-      "shortand_name": "Konstanz"
+      "shortand_name": "Konstanz",
+      "label_name": "U. of Konstanz"
     },
     "aci": 1.03
   },
@@ -109370,7 +109770,8 @@
       "lineage": [
         "https://openalex.org/I200332995"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 2.06
   },
@@ -109573,7 +109974,8 @@
       "lineage": [
         "https://openalex.org/I67415387"
       ],
-      "shortand_name": "Lancaster"
+      "shortand_name": "Lancaster",
+      "label_name": "Lancaster U."
     },
     "aci": 2.22
   },
@@ -109763,7 +110165,8 @@
       "lineage": [
         "https://openalex.org/I18014758"
       ],
-      "shortand_name": "SFU"
+      "shortand_name": "SFU",
+      "label_name": "Simon Fraser U."
     },
     "aci": 1.11
   },
@@ -110014,7 +110417,8 @@
       "lineage": [
         "https://openalex.org/I18014758"
       ],
-      "shortand_name": "SFU"
+      "shortand_name": "SFU",
+      "label_name": "Simon Fraser U."
     },
     "aci": 1.29
   },
@@ -110211,7 +110615,8 @@
       "lineage": [
         "https://openalex.org/I18014758"
       ],
-      "shortand_name": "SFU"
+      "shortand_name": "SFU",
+      "label_name": "Simon Fraser U."
     },
     "aci": 0.83
   },
@@ -110463,7 +110868,8 @@
       "lineage": [
         "https://openalex.org/I18014758"
       ],
-      "shortand_name": "SFU"
+      "shortand_name": "SFU",
+      "label_name": "Simon Fraser U."
     },
     "aci": 0.83
   },
@@ -110677,7 +111083,8 @@
       "lineage": [
         "https://openalex.org/I185261750"
       ],
-      "shortand_name": "U of T"
+      "shortand_name": "U of T",
+      "label_name": "U. of Toronto"
     },
     "aci": 1.67
   },
@@ -110934,7 +111341,8 @@
       "lineage": [
         "https://openalex.org/I18014758"
       ],
-      "shortand_name": "SFU"
+      "shortand_name": "SFU",
+      "label_name": "Simon Fraser U."
     },
     "aci": 2.9
   },
@@ -111231,7 +111639,8 @@
       "lineage": [
         "https://openalex.org/I165733156"
       ],
-      "shortand_name": "UGA"
+      "shortand_name": "UGA",
+      "label_name": "U. of Georgia"
     },
     "aci": 0.89
   },
@@ -111488,7 +111897,8 @@
       "lineage": [
         "https://openalex.org/I58610484"
       ],
-      "shortand_name": "SeattleU"
+      "shortand_name": "SeattleU",
+      "label_name": "Seattle U."
     },
     "aci": 0.89
   },
@@ -111709,7 +112119,8 @@
       "lineage": [
         "https://openalex.org/I137902535"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 0.89
   },
@@ -112061,7 +112472,8 @@
       "lineage": [
         "https://openalex.org/I185103710"
       ],
-      "shortand_name": "UCSC"
+      "shortand_name": "UCSC",
+      "label_name": "UC Santa Cruz"
     },
     "aci": 0.89
   },
@@ -112336,7 +112748,8 @@
       "lineage": [
         "https://openalex.org/I58610484"
       ],
-      "shortand_name": "SeattleU"
+      "shortand_name": "SeattleU",
+      "label_name": "Seattle U."
     },
     "aci": 1.78
   },
@@ -112598,7 +113011,8 @@
       "lineage": [
         "https://openalex.org/I8078737"
       ],
-      "shortand_name": "Clemson"
+      "shortand_name": "Clemson",
+      "label_name": "Clemson U."
     },
     "aci": 3.02
   },
@@ -112854,7 +113268,8 @@
       "lineage": [
         "https://openalex.org/I193662353"
       ],
-      "shortand_name": "UU"
+      "shortand_name": "UU",
+      "label_name": "Utrecht U."
     },
     "aci": 0.89
   },
@@ -113142,7 +113557,8 @@
       "lineage": [
         "https://openalex.org/I31512782"
       ],
-      "shortand_name": "TU Darmstadt"
+      "shortand_name": "TU Darmstadt",
+      "label_name": "TU Darmstadt"
     },
     "aci": 0.89
   },
@@ -113440,7 +113856,8 @@
       "lineage": [
         "https://openalex.org/I173899330"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 0.89
   },
@@ -113894,7 +114311,8 @@
       "lineage": [
         "https://openalex.org/I160993911"
       ],
-      "shortand_name": "QUT"
+      "shortand_name": "QUT",
+      "label_name": "Queensland U. of Tech."
     },
     "aci": 3.37
   },
@@ -114096,7 +114514,8 @@
       "lineage": [
         "https://openalex.org/I18014758"
       ],
-      "shortand_name": "SFU"
+      "shortand_name": "SFU",
+      "label_name": "Simon Fraser U."
     },
     "aci": 1.36
   },
@@ -114333,7 +114752,8 @@
       "lineage": [
         "https://openalex.org/I168635309"
       ],
-      "shortand_name": "U of C"
+      "shortand_name": "U of C",
+      "label_name": "U. of Calgary"
     },
     "aci": 0.27
   },
@@ -114655,7 +115075,8 @@
       "lineage": [
         "https://openalex.org/I185261750"
       ],
-      "shortand_name": "U of T"
+      "shortand_name": "U of T",
+      "label_name": "U. of Toronto"
     },
     "aci": 0.0
   },
@@ -114899,7 +115320,8 @@
       "lineage": [
         "https://openalex.org/I168635309"
       ],
-      "shortand_name": "U of C"
+      "shortand_name": "U of C",
+      "label_name": "U. of Calgary"
     },
     "aci": 0.0
   },
@@ -115101,7 +115523,8 @@
       "lineage": [
         "https://openalex.org/I168635309"
       ],
-      "shortand_name": "U of C"
+      "shortand_name": "U of C",
+      "label_name": "U. of Calgary"
     },
     "aci": 0.0
   },
@@ -115328,7 +115751,8 @@
       "lineage": [
         "https://openalex.org/I159176309"
       ],
-      "shortand_name": "UHH"
+      "shortand_name": "UHH",
+      "label_name": "U. Hamburg"
     },
     "aci": 0.45
   },
@@ -115578,7 +116002,8 @@
       "lineage": [
         "https://openalex.org/I83019370"
       ],
-      "shortand_name": "TU/e"
+      "shortand_name": "TU/e",
+      "label_name": "Eindhoven U. of Tech."
     },
     "aci": 0.18
   },
@@ -115775,7 +116200,8 @@
       "lineage": [
         "https://openalex.org/I60158472"
       ],
-      "shortand_name": "Concordia"
+      "shortand_name": "Concordia",
+      "label_name": "Concordia U."
     },
     "aci": 0.0
   },
@@ -115989,7 +116415,8 @@
       "lineage": [
         "https://openalex.org/I60158472"
       ],
-      "shortand_name": "Concordia"
+      "shortand_name": "Concordia",
+      "label_name": "Concordia U."
     },
     "aci": 1.14
   },
@@ -116224,7 +116651,8 @@
       "lineage": [
         "https://openalex.org/I63966007"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 0.0
   },
@@ -116426,7 +116854,8 @@
       "lineage": [
         "https://openalex.org/I141945490"
       ],
-      "shortand_name": "UBC"
+      "shortand_name": "UBC",
+      "label_name": "U. of British Columbia"
     },
     "aci": 0.0
   },
@@ -116658,7 +117087,8 @@
       "lineage": [
         "https://openalex.org/I5023651"
       ],
-      "shortand_name": "McGill"
+      "shortand_name": "McGill",
+      "label_name": "McGill U."
     },
     "aci": 0.0
   },
@@ -117076,7 +117506,8 @@
       "lineage": [
         "https://openalex.org/I20942203"
       ],
-      "shortand_name": "HNU"
+      "shortand_name": "HNU",
+      "label_name": "Hainan U."
     },
     "aci": 0.0
   },
@@ -117452,7 +117883,8 @@
       "lineage": [
         "https://openalex.org/I205783295"
       ],
-      "shortand_name": "Cornell"
+      "shortand_name": "Cornell",
+      "label_name": "Cornell U."
     },
     "aci": 0.0
   },
@@ -117810,7 +118242,8 @@
       "lineage": [
         "https://openalex.org/I285663978"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 0.0
   },
@@ -118144,7 +118577,8 @@
       "lineage": [
         "https://openalex.org/I67031392"
       ],
-      "shortand_name": "Carleton"
+      "shortand_name": "Carleton",
+      "label_name": "Carleton U."
     },
     "aci": 0.0
   },
@@ -118340,7 +118774,8 @@
       "lineage": [
         "https://openalex.org/I67031392"
       ],
-      "shortand_name": "Carleton"
+      "shortand_name": "Carleton",
+      "label_name": "Carleton U."
     },
     "aci": 0.0
   },
@@ -118566,7 +119001,8 @@
       "lineage": [
         "https://openalex.org/I212119943"
       ],
-      "shortand_name": "UVic"
+      "shortand_name": "UVic",
+      "label_name": "U. of Victoria"
     },
     "aci": 0.0
   },
@@ -118853,7 +119289,8 @@
       "lineage": [
         "https://openalex.org/I125749732"
       ],
-      "shortand_name": "Western"
+      "shortand_name": "Western",
+      "label_name": "Western U."
     },
     "aci": 0.0
   },
@@ -119102,7 +119539,8 @@
       "lineage": [
         "https://openalex.org/I186803428"
       ],
-      "shortand_name": "Brock"
+      "shortand_name": "Brock",
+      "label_name": "Brock U."
     },
     "aci": 0.0
   },
@@ -119460,7 +119898,8 @@
       "lineage": [
         "https://openalex.org/I141945490"
       ],
-      "shortand_name": "UBC"
+      "shortand_name": "UBC",
+      "label_name": "U. of British Columbia"
     },
     "aci": 0.0
   },
@@ -119795,7 +120234,8 @@
       "lineage": [
         "https://openalex.org/I204722609"
       ],
-      "shortand_name": "Queen's"
+      "shortand_name": "Queen's",
+      "label_name": "Queen's U."
     },
     "aci": 0.0
   },
@@ -120261,7 +120701,8 @@
       "lineage": [
         "https://openalex.org/I154425047"
       ],
-      "shortand_name": "U of A"
+      "shortand_name": "U of A",
+      "label_name": "U. of Alberta"
     },
     "aci": 0.0
   },
@@ -120644,7 +121085,8 @@
       "lineage": [
         "https://openalex.org/I67031392"
       ],
-      "shortand_name": "Carleton"
+      "shortand_name": "Carleton",
+      "label_name": "Carleton U."
     },
     "aci": 0.0
   },
@@ -121176,7 +121618,8 @@
       "lineage": [
         "https://openalex.org/I212119943"
       ],
-      "shortand_name": "UVic"
+      "shortand_name": "UVic",
+      "label_name": "U. of Victoria"
     },
     "aci": 0.0
   },
@@ -121295,7 +121738,8 @@
       "lineage": [
         "https://openalex.org/I129902397"
       ],
-      "shortand_name": "Dal"
+      "shortand_name": "Dal",
+      "label_name": "Dalhousie U."
     },
     "aci": 0.0
   },
@@ -121497,7 +121941,8 @@
       "lineage": [
         "https://openalex.org/I129902397"
       ],
-      "shortand_name": "Dal"
+      "shortand_name": "Dal",
+      "label_name": "Dalhousie U."
     },
     "aci": 0.0
   },
@@ -121724,7 +122169,8 @@
       "lineage": [
         "https://openalex.org/I129902397"
       ],
-      "shortand_name": "Dal"
+      "shortand_name": "Dal",
+      "label_name": "Dalhousie U."
     },
     "aci": 0.45
   },
@@ -121975,7 +122421,8 @@
       "lineage": [
         "https://openalex.org/I129902397"
       ],
-      "shortand_name": "Dal"
+      "shortand_name": "Dal",
+      "label_name": "Dalhousie U."
     },
     "aci": 0.0
   },
@@ -122199,7 +122646,8 @@
       "lineage": [
         "https://openalex.org/I530967"
       ],
-      "shortand_name": "TMU"
+      "shortand_name": "TMU",
+      "label_name": "Toronto Metropolitan U."
     },
     "aci": 0.0
   },
@@ -122540,7 +122988,8 @@
       "lineage": [
         "https://openalex.org/I197323543"
       ],
-      "shortand_name": "JGU"
+      "shortand_name": "JGU",
+      "label_name": "JGU Mainz"
     },
     "aci": 0.0
   },
@@ -122814,7 +123263,8 @@
       "lineage": [
         "https://openalex.org/I141945490"
       ],
-      "shortand_name": "UBC"
+      "shortand_name": "UBC",
+      "label_name": "U. of British Columbia"
     },
     "aci": 0.0
   },
@@ -123028,7 +123478,8 @@
       "lineage": [
         "https://openalex.org/I195460627"
       ],
-      "shortand_name": "Aberdeen"
+      "shortand_name": "Aberdeen",
+      "label_name": "U. of Aberdeen"
     },
     "aci": 0.0
   },
@@ -123542,7 +123993,8 @@
       "lineage": [
         "https://openalex.org/I141945490"
       ],
-      "shortand_name": "UBC"
+      "shortand_name": "UBC",
+      "label_name": "U. of British Columbia"
     },
     "aci": 0.0
   },
@@ -123948,7 +124400,8 @@
       "lineage": [
         "https://openalex.org/I141945490"
       ],
-      "shortand_name": "UBC"
+      "shortand_name": "UBC",
+      "label_name": "U. of British Columbia"
     },
     "aci": 0.0
   },
@@ -124168,7 +124621,8 @@
       "lineage": [
         "https://openalex.org/I41156924"
       ],
-      "shortand_name": "VUW"
+      "shortand_name": "VUW",
+      "label_name": "Victoria U. of Wellington"
     },
     "aci": 0.0
   },
@@ -124382,7 +124836,8 @@
       "lineage": [
         "https://openalex.org/I43406934"
       ],
-      "shortand_name": "Laval"
+      "shortand_name": "Laval",
+      "label_name": "U. Laval"
     },
     "aci": 0.0
   },
@@ -124680,7 +125135,8 @@
       "lineage": [
         "https://openalex.org/I204722609"
       ],
-      "shortand_name": "Queen's"
+      "shortand_name": "Queen's",
+      "label_name": "Queen's U."
     },
     "aci": 0.0
   },
@@ -124876,7 +125332,8 @@
       "lineage": [
         "https://openalex.org/I41156924"
       ],
-      "shortand_name": "VUW"
+      "shortand_name": "VUW",
+      "label_name": "Victoria U. of Wellington"
     },
     "aci": 0.0
   },
@@ -125092,7 +125549,8 @@
       "lineage": [
         "https://openalex.org/I157614274"
       ],
-      "shortand_name": "UCT"
+      "shortand_name": "UCT",
+      "label_name": "U. of Cape Town"
     },
     "aci": 0.68
   },
@@ -125313,7 +125771,8 @@
       "lineage": [
         "https://openalex.org/I129604602"
       ],
-      "shortand_name": "USyd"
+      "shortand_name": "USyd",
+      "label_name": "U. of Sydney"
     },
     "aci": 0.27
   },
@@ -125556,7 +126015,8 @@
       "lineage": [
         "https://openalex.org/I4210099821"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 0.27
   },
@@ -125787,7 +126247,8 @@
       "lineage": [
         "https://openalex.org/I12093191"
       ],
-      "shortand_name": "Stirling"
+      "shortand_name": "Stirling",
+      "label_name": "U. of Stirling"
     },
     "aci": 0.27
   },
@@ -126006,7 +126467,8 @@
       "lineage": [
         "https://openalex.org/I46247651"
       ],
-      "shortand_name": "UM"
+      "shortand_name": "UM",
+      "label_name": "U. of Manitoba"
     },
     "aci": 0.27
   },
@@ -126173,7 +126635,8 @@
       "lineage": [
         "https://openalex.org/I4210127717"
       ],
-      "shortand_name": "AFCM"
+      "shortand_name": "AFCM",
+      "label_name": "Armed Forces College of Med."
     },
     "aci": 0.0
   },
@@ -126393,7 +126856,8 @@
       "lineage": [
         "https://openalex.org/I891191580"
       ],
-      "shortand_name": "AAU"
+      "shortand_name": "AAU",
+      "label_name": "Aalborg U."
     },
     "aci": 0.0
   },
@@ -126733,7 +127197,8 @@
       "lineage": [
         "https://openalex.org/I29894533"
       ],
-      "shortand_name": "CDU"
+      "shortand_name": "CDU",
+      "label_name": "Charles Darwin U."
     },
     "aci": 0.0
   },
@@ -127008,7 +127473,8 @@
       "lineage": [
         "https://openalex.org/I217085601"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 0.55
   },
@@ -127253,7 +127719,8 @@
       "lineage": [
         "https://openalex.org/I50441567"
       ],
-      "shortand_name": "UIB"
+      "shortand_name": "UIB",
+      "label_name": "U. de les Illes Balears"
     },
     "aci": 0.0
   },
@@ -127517,7 +127984,8 @@
       "lineage": [
         "https://openalex.org/I50441567"
       ],
-      "shortand_name": "UIB"
+      "shortand_name": "UIB",
+      "label_name": "U. de les Illes Balears"
     },
     "aci": 0.0
   },
@@ -127851,7 +128319,8 @@
       "lineage": [
         "https://openalex.org/I9927081"
       ],
-      "shortand_name": "Aalto"
+      "shortand_name": "Aalto",
+      "label_name": "Aalto U."
     },
     "aci": 0.0
   },
@@ -128179,7 +128648,8 @@
       "lineage": [
         "https://openalex.org/I70931966"
       ],
-      "shortand_name": "UdeM"
+      "shortand_name": "UdeM",
+      "label_name": "U. de Montréal"
     },
     "aci": 0.0
   },
@@ -128376,7 +128846,8 @@
       "lineage": [
         "https://openalex.org/I204722609"
       ],
-      "shortand_name": "Queen's"
+      "shortand_name": "Queen's",
+      "label_name": "Queen's U."
     },
     "aci": 0.0
   },
@@ -128603,7 +129074,8 @@
       "lineage": [
         "https://openalex.org/I204722609"
       ],
-      "shortand_name": "Queen's"
+      "shortand_name": "Queen's",
+      "label_name": "Queen's U."
     },
     "aci": 0.0
   },
@@ -128830,7 +129302,8 @@
       "lineage": [
         "https://openalex.org/I67031392"
       ],
-      "shortand_name": "Carleton"
+      "shortand_name": "Carleton",
+      "label_name": "Carleton U."
     },
     "aci": 0.0
   },
@@ -129051,7 +129524,8 @@
       "lineage": [
         "https://openalex.org/I185261750"
       ],
-      "shortand_name": "U of T"
+      "shortand_name": "U of T",
+      "label_name": "U. of Toronto"
     },
     "aci": 0.0
   },
@@ -129254,7 +129728,8 @@
       "lineage": [
         "https://openalex.org/I98251732"
       ],
-      "shortand_name": "Mac"
+      "shortand_name": "Mac",
+      "label_name": "McMaster U."
     },
     "aci": 0.0
   },
@@ -129444,7 +129919,8 @@
       "lineage": [
         "https://openalex.org/I4210120389"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 0.0
   },
@@ -129652,7 +130128,8 @@
       "lineage": [
         "https://openalex.org/I160993911"
       ],
-      "shortand_name": "QUT"
+      "shortand_name": "QUT",
+      "label_name": "Queensland U. of Tech."
     },
     "aci": 0.0
   },
@@ -129802,7 +130279,8 @@
       "lineage": [
         "https://openalex.org/I160993911"
       ],
-      "shortand_name": "QUT"
+      "shortand_name": "QUT",
+      "label_name": "Queensland U. of Tech."
     },
     "aci": 0.0
   },
@@ -130118,7 +130596,8 @@
       "lineage": [
         "https://openalex.org/I160993911"
       ],
-      "shortand_name": "QUT"
+      "shortand_name": "QUT",
+      "label_name": "Queensland U. of Tech."
     },
     "aci": 0.0
   },
@@ -130482,7 +130961,8 @@
       "lineage": [
         "https://openalex.org/I65181880"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 0.0
   },
@@ -130690,7 +131170,8 @@
       "lineage": [
         "https://openalex.org/I160993911"
       ],
-      "shortand_name": "QUT"
+      "shortand_name": "QUT",
+      "label_name": "Queensland U. of Tech."
     },
     "aci": 0.0
   },
@@ -131018,7 +131499,8 @@
       "lineage": [
         "https://openalex.org/I160993911"
       ],
-      "shortand_name": "QUT"
+      "shortand_name": "QUT",
+      "label_name": "Queensland U. of Tech."
     },
     "aci": 0.0
   },
@@ -131214,7 +131696,8 @@
       "lineage": [
         "https://openalex.org/I151746483"
       ],
-      "shortand_name": "UW"
+      "shortand_name": "UW",
+      "label_name": "U. of Waterloo"
     },
     "aci": 0.0
   },
@@ -131364,7 +131847,8 @@
       "lineage": [
         "https://openalex.org/I162096671"
       ],
-      "shortand_name": "Uniandes"
+      "shortand_name": "Uniandes",
+      "label_name": "U. de Los Andes"
     },
     "aci": 0.0
   },
@@ -131514,7 +131998,8 @@
       "lineage": [
         "https://openalex.org/I151746483"
       ],
-      "shortand_name": "UW"
+      "shortand_name": "UW",
+      "label_name": "U. of Waterloo"
     },
     "aci": 0.0
   },
@@ -131804,7 +132289,8 @@
       "lineage": [
         "https://openalex.org/I1925986"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 0.0
   },
@@ -131954,7 +132440,8 @@
       "lineage": [
         "https://openalex.org/I151746483"
       ],
-      "shortand_name": "UW"
+      "shortand_name": "UW",
+      "label_name": "U. of Waterloo"
     },
     "aci": 0.0
   },
@@ -132163,7 +132650,8 @@
       "lineage": [
         "https://openalex.org/I185492890"
       ],
-      "shortand_name": "UC"
+      "shortand_name": "UC",
+      "label_name": "U. of Canterbury"
     },
     "aci": 0.0
   },
@@ -132366,7 +132854,8 @@
       "lineage": [
         "https://openalex.org/I150229711"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 0.0
   },
@@ -132562,7 +133051,8 @@
       "lineage": [
         "https://openalex.org/I185492890"
       ],
-      "shortand_name": "UC"
+      "shortand_name": "UC",
+      "label_name": "U. of Canterbury"
     },
     "aci": 0.0
   },
@@ -132849,7 +133339,8 @@
       "lineage": [
         "https://openalex.org/I185492890"
       ],
-      "shortand_name": "UC"
+      "shortand_name": "UC",
+      "label_name": "U. of Canterbury"
     },
     "aci": 0.0
   },
@@ -133118,7 +133609,8 @@
       "lineage": [
         "https://openalex.org/I185492890"
       ],
-      "shortand_name": "UC"
+      "shortand_name": "UC",
+      "label_name": "U. of Canterbury"
     },
     "aci": 0.0
   },
@@ -133429,7 +133921,8 @@
         "https://openalex.org/I125839683",
         "https://openalex.org/I890469752"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 0.0
   },
@@ -133725,7 +134218,8 @@
       "lineage": [
         "https://openalex.org/I103605164"
       ],
-      "shortand_name": "TIT"
+      "shortand_name": "TIT",
+      "label_name": "Tohoku Inst. of Tech."
     },
     "aci": 0.0
   },
@@ -134095,7 +134589,8 @@
       "lineage": [
         "https://openalex.org/I185492890"
       ],
-      "shortand_name": "UC"
+      "shortand_name": "UC",
+      "label_name": "U. of Canterbury"
     },
     "aci": 0.0
   },
@@ -134321,7 +134816,8 @@
       "lineage": [
         "https://openalex.org/I62853816"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 0.0
   },
@@ -134517,7 +135013,8 @@
       "lineage": [
         "https://openalex.org/I141945490"
       ],
-      "shortand_name": "UBC"
+      "shortand_name": "UBC",
+      "label_name": "U. of British Columbia"
     },
     "aci": 0.0
   },
@@ -134887,7 +135384,8 @@
       "lineage": [
         "https://openalex.org/I1336277565"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 0.0
   },
@@ -135107,7 +135605,8 @@
       "lineage": [
         "https://openalex.org/I67031392"
       ],
-      "shortand_name": "Carleton"
+      "shortand_name": "Carleton",
+      "label_name": "Carleton U."
     },
     "aci": 0.0
   },
@@ -135689,7 +136188,8 @@
       "lineage": [
         "https://openalex.org/I197323543"
       ],
-      "shortand_name": "JGU"
+      "shortand_name": "JGU",
+      "label_name": "JGU Mainz"
     },
     "aci": 0.0
   },
@@ -135903,7 +136403,8 @@
       "lineage": [
         "https://openalex.org/I129902397"
       ],
-      "shortand_name": "Dal"
+      "shortand_name": "Dal",
+      "label_name": "Dalhousie U."
     },
     "aci": 0.0
   },
@@ -136135,7 +136636,8 @@
       "lineage": [
         "https://openalex.org/I177181097"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 0.0
   },
@@ -136331,7 +136833,8 @@
       "lineage": [
         "https://openalex.org/I129902397"
       ],
-      "shortand_name": "Dal"
+      "shortand_name": "Dal",
+      "label_name": "Dalhousie U."
     },
     "aci": 0.0
   },
@@ -136569,7 +137072,8 @@
       "lineage": [
         "https://openalex.org/I129902397"
       ],
-      "shortand_name": "Dal"
+      "shortand_name": "Dal",
+      "label_name": "Dalhousie U."
     },
     "aci": 0.0
   },
@@ -136850,7 +137354,8 @@
       "lineage": [
         "https://openalex.org/I129902397"
       ],
-      "shortand_name": "Dal"
+      "shortand_name": "Dal",
+      "label_name": "Dalhousie U."
     },
     "aci": 1.7
   },
@@ -137378,7 +137883,8 @@
       "lineage": [
         "https://openalex.org/I192455969"
       ],
-      "shortand_name": "York"
+      "shortand_name": "York",
+      "label_name": "York U."
     },
     "aci": 0.36
   },
@@ -137724,7 +138230,8 @@
       "lineage": [
         "https://openalex.org/I204824540"
       ],
-      "shortand_name": "UOW"
+      "shortand_name": "UOW",
+      "label_name": "U. of Wollongong"
     },
     "aci": 0.0
   },
@@ -137951,7 +138458,8 @@
       "lineage": [
         "https://openalex.org/I1328775524"
       ],
-      "shortand_name": "ZSTU"
+      "shortand_name": "ZSTU",
+      "label_name": "Zhejiang Sci-Tech U."
     },
     "aci": 0.0
   },
@@ -138184,7 +138692,8 @@
       "lineage": [
         "https://openalex.org/I1328775524"
       ],
-      "shortand_name": "ZSTU"
+      "shortand_name": "ZSTU",
+      "label_name": "Zhejiang Sci-Tech U."
     },
     "aci": 0.0
   },
@@ -138458,7 +138967,8 @@
       "lineage": [
         "https://openalex.org/I17145004"
       ],
-      "shortand_name": "NWPU"
+      "shortand_name": "NWPU",
+      "label_name": "NW Poly. U."
     },
     "aci": 0.0
   },
@@ -138655,7 +139165,8 @@
       "lineage": [
         "https://openalex.org/I60158472"
       ],
-      "shortand_name": "Concordia"
+      "shortand_name": "Concordia",
+      "label_name": "Concordia U."
     },
     "aci": 0.0
   },
@@ -138857,7 +139368,8 @@
       "lineage": [
         "https://openalex.org/I151746483"
       ],
-      "shortand_name": "UW"
+      "shortand_name": "UW",
+      "label_name": "U. of Waterloo"
     },
     "aci": 0.0
   },
@@ -139059,7 +139571,8 @@
       "lineage": [
         "https://openalex.org/I192455969"
       ],
-      "shortand_name": "York"
+      "shortand_name": "York",
+      "label_name": "York U."
     },
     "aci": 0.0
   },
@@ -139321,7 +139834,8 @@
       "lineage": [
         "https://openalex.org/I192455969"
       ],
-      "shortand_name": "York"
+      "shortand_name": "York",
+      "label_name": "York U."
     },
     "aci": 0.0
   },
@@ -139612,7 +140126,8 @@
       "lineage": [
         "https://openalex.org/I4400009020"
       ],
-      "shortand_name": "Science Tokyo"
+      "shortand_name": "Science Tokyo",
+      "label_name": "Inst. of Science Tokyo"
     },
     "aci": 0.0
   },
@@ -139850,7 +140365,8 @@
       "lineage": [
         "https://openalex.org/I18014758"
       ],
-      "shortand_name": "SFU"
+      "shortand_name": "SFU",
+      "label_name": "Simon Fraser U."
     },
     "aci": 0.0
   },
@@ -140070,7 +140586,8 @@
       "lineage": [
         "https://openalex.org/I18014758"
       ],
-      "shortand_name": "SFU"
+      "shortand_name": "SFU",
+      "label_name": "Simon Fraser U."
     },
     "aci": 0.0
   },
@@ -140421,7 +140938,8 @@
       "lineage": [
         "https://openalex.org/I18014758"
       ],
-      "shortand_name": "SFU"
+      "shortand_name": "SFU",
+      "label_name": "Simon Fraser U."
     },
     "aci": 0.0
   },
@@ -140624,7 +141142,8 @@
       "lineage": [
         "https://openalex.org/I151746483"
       ],
-      "shortand_name": "UW"
+      "shortand_name": "UW",
+      "label_name": "U. of Waterloo"
     },
     "aci": 1.86
   },
@@ -140861,7 +141380,8 @@
       "lineage": [
         "https://openalex.org/I151746483"
       ],
-      "shortand_name": "UW"
+      "shortand_name": "UW",
+      "label_name": "U. of Waterloo"
     },
     "aci": 1.29
   },
@@ -141058,7 +141578,8 @@
       "lineage": [
         "https://openalex.org/I168635309"
       ],
-      "shortand_name": "U of C"
+      "shortand_name": "U of C",
+      "label_name": "U. of Calgary"
     },
     "aci": 1.86
   },
@@ -141248,7 +141769,8 @@
       "lineage": [
         "https://openalex.org/I168635309"
       ],
-      "shortand_name": "U of C"
+      "shortand_name": "U of C",
+      "label_name": "U. of Calgary"
     },
     "aci": 0.74
   },
@@ -141444,7 +141966,8 @@
       "lineage": [
         "https://openalex.org/I168635309"
       ],
-      "shortand_name": "U of C"
+      "shortand_name": "U of C",
+      "label_name": "U. of Calgary"
     },
     "aci": 0.74
   },
@@ -141647,7 +142170,8 @@
       "lineage": [
         "https://openalex.org/I106938459"
       ],
-      "shortand_name": "UNB"
+      "shortand_name": "UNB",
+      "label_name": "U. of New Brunswick"
     },
     "aci": 1.86
   },
@@ -141868,7 +142392,8 @@
       "lineage": [
         "https://openalex.org/I106938459"
       ],
-      "shortand_name": "UNB"
+      "shortand_name": "UNB",
+      "label_name": "U. of New Brunswick"
     },
     "aci": 0.74
   },
@@ -142221,7 +142746,8 @@
       "lineage": [
         "https://openalex.org/I3129222093"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 1.49
   },
@@ -142423,7 +142949,8 @@
       "lineage": [
         "https://openalex.org/I151746483"
       ],
-      "shortand_name": "UW"
+      "shortand_name": "UW",
+      "label_name": "U. of Waterloo"
     },
     "aci": 0.55
   },
@@ -142691,7 +143218,8 @@
       "lineage": [
         "https://openalex.org/I201448701"
       ],
-      "shortand_name": "UW"
+      "shortand_name": "UW",
+      "label_name": "U. of Washington"
     },
     "aci": 0.55
   },
@@ -142918,7 +143446,8 @@
       "lineage": [
         "https://openalex.org/I185261750"
       ],
-      "shortand_name": "U of T"
+      "shortand_name": "U of T",
+      "label_name": "U. of Toronto"
     },
     "aci": 1.14
   },
@@ -143283,7 +143812,8 @@
       "lineage": [
         "https://openalex.org/I185261750"
       ],
-      "shortand_name": "U of T"
+      "shortand_name": "U of T",
+      "label_name": "U. of Toronto"
     },
     "aci": 0.91
   },
@@ -143473,7 +144003,8 @@
       "lineage": [
         "https://openalex.org/I185261750"
       ],
-      "shortand_name": "U of T"
+      "shortand_name": "U of T",
+      "label_name": "U. of Toronto"
     },
     "aci": 0.45
   },
@@ -143688,7 +144219,8 @@
       "lineage": [
         "https://openalex.org/I185261750"
       ],
-      "shortand_name": "U of T"
+      "shortand_name": "U of T",
+      "label_name": "U. of Toronto"
     },
     "aci": 0.45
   },
@@ -143914,7 +144446,8 @@
       "lineage": [
         "https://openalex.org/I18014758"
       ],
-      "shortand_name": "SFU"
+      "shortand_name": "SFU",
+      "label_name": "Simon Fraser U."
     },
     "aci": 1.32
   },
@@ -144046,7 +144579,8 @@
       "lineage": [
         "https://openalex.org/I5023651"
       ],
-      "shortand_name": "McGill"
+      "shortand_name": "McGill",
+      "label_name": "McGill U."
     },
     "aci": 0.45
   },
@@ -144428,7 +144962,8 @@
       "lineage": [
         "https://openalex.org/I151746483"
       ],
-      "shortand_name": "UW"
+      "shortand_name": "UW",
+      "label_name": "U. of Waterloo"
     },
     "aci": 1.14
   },
@@ -144978,7 +145513,8 @@
       "lineage": [
         "https://openalex.org/I151746483"
       ],
-      "shortand_name": "UW"
+      "shortand_name": "UW",
+      "label_name": "U. of Waterloo"
     },
     "aci": 0.91
   },
@@ -145192,7 +145728,8 @@
       "lineage": [
         "https://openalex.org/I913958620"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 1.14
   },
@@ -145395,7 +145932,8 @@
       "lineage": [
         "https://openalex.org/I185261750"
       ],
-      "shortand_name": "U of T"
+      "shortand_name": "U of T",
+      "label_name": "U. of Toronto"
     },
     "aci": 1.27
   },
@@ -145591,7 +146129,8 @@
       "lineage": [
         "https://openalex.org/I130769515"
       ],
-      "shortand_name": "Penn State"
+      "shortand_name": "Penn State",
+      "label_name": "Penn State U."
     },
     "aci": 0.45
   },
@@ -145782,7 +146321,8 @@
       "lineage": [
         "https://openalex.org/I592451"
       ],
-      "shortand_name": "IU"
+      "shortand_name": "IU",
+      "label_name": "Indiana U."
     },
     "aci": 0.45
   },
@@ -146020,7 +146560,8 @@
       "lineage": [
         "https://openalex.org/I205783295"
       ],
-      "shortand_name": "Cornell"
+      "shortand_name": "Cornell",
+      "label_name": "Cornell U."
     },
     "aci": 0.45
   },
@@ -146216,7 +146757,8 @@
       "lineage": [
         "https://openalex.org/I83467386"
       ],
-      "shortand_name": "ITU"
+      "shortand_name": "ITU",
+      "label_name": "IT U. of Copenhagen"
     },
     "aci": 0.45
   },
@@ -146496,7 +147038,8 @@
       "lineage": [
         "https://openalex.org/I86987016"
       ],
-      "shortand_name": "KTH"
+      "shortand_name": "KTH",
+      "label_name": "KTH Royal Inst. of Tech."
     },
     "aci": 0.45
   },
@@ -146813,7 +147356,8 @@
       "lineage": [
         "https://openalex.org/I592451"
       ],
-      "shortand_name": "IU"
+      "shortand_name": "IU",
+      "label_name": "Indiana U."
     },
     "aci": 0.45
   },
@@ -147075,7 +147619,8 @@
       "lineage": [
         "https://openalex.org/I94624287"
       ],
-      "shortand_name": "UTwente"
+      "shortand_name": "UTwente",
+      "label_name": "U. of Twente"
     },
     "aci": 0.91
   },
@@ -147318,7 +147863,8 @@
       "lineage": [
         "https://openalex.org/I34771391"
       ],
-      "shortand_name": "UCY"
+      "shortand_name": "UCY",
+      "label_name": "U. of Cyprus"
     },
     "aci": 1.36
   },
@@ -147538,7 +148084,8 @@
       "lineage": [
         "https://openalex.org/I18014758"
       ],
-      "shortand_name": "SFU"
+      "shortand_name": "SFU",
+      "label_name": "Simon Fraser U."
     },
     "aci": 0.45
   },
@@ -147728,7 +148275,8 @@
       "lineage": [
         "https://openalex.org/I185103710"
       ],
-      "shortand_name": "UCSC"
+      "shortand_name": "UCSC",
+      "label_name": "UC Santa Cruz"
     },
     "aci": 0.45
   },
@@ -147924,7 +148472,8 @@
       "lineage": [
         "https://openalex.org/I58610484"
       ],
-      "shortand_name": "SeattleU"
+      "shortand_name": "SeattleU",
+      "label_name": "Seattle U."
     },
     "aci": 0.45
   },
@@ -148126,7 +148675,8 @@
       "lineage": [
         "https://openalex.org/I130701444"
       ],
-      "shortand_name": "Georgia Tech"
+      "shortand_name": "Georgia Tech",
+      "label_name": "Georgia Tech"
     },
     "aci": 0.45
   },
@@ -148352,7 +148902,8 @@
       "lineage": [
         "https://openalex.org/I130701444"
       ],
-      "shortand_name": "Georgia Tech"
+      "shortand_name": "Georgia Tech",
+      "label_name": "Georgia Tech"
     },
     "aci": 0.45
   },
@@ -148656,7 +149207,8 @@
       "lineage": [
         "https://openalex.org/I58610484"
       ],
-      "shortand_name": "SeattleU"
+      "shortand_name": "SeattleU",
+      "label_name": "Seattle U."
     },
     "aci": 0.45
   },
@@ -148924,7 +149476,8 @@
       "lineage": [
         "https://openalex.org/I185103710"
       ],
-      "shortand_name": "UCSC"
+      "shortand_name": "UCSC",
+      "label_name": "UC Santa Cruz"
     },
     "aci": 0.91
   },
@@ -149202,7 +149755,8 @@
       "lineage": [
         "https://openalex.org/I205349734"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 1.99
   },
@@ -149474,7 +150028,8 @@
       "lineage": [
         "https://openalex.org/I15057530"
       ],
-      "shortand_name": "UBordeaux"
+      "shortand_name": "UBordeaux",
+      "label_name": "U. de Bordeaux"
     },
     "aci": 0.8
   },
@@ -149724,7 +150279,8 @@
       "lineage": [
         "https://openalex.org/I9224756"
       ],
-      "shortand_name": "NEU"
+      "shortand_name": "NEU",
+      "label_name": "Northeastern U."
     },
     "aci": 1.99
   },
@@ -150012,7 +150568,8 @@
         "https://openalex.org/I31683504",
         "https://openalex.org/I4210127390"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 0.8
   },
@@ -150286,7 +150843,8 @@
         "https://openalex.org/I49663120",
         "https://openalex.org/I9736820"
       ],
-      "shortand_name": "ÉTS"
+      "shortand_name": "ÉTS",
+      "label_name": "ÉTS"
     },
     "aci": 1.7
   },
@@ -150501,7 +151059,8 @@
       "lineage": [
         "https://openalex.org/I129902397"
       ],
-      "shortand_name": "Dal"
+      "shortand_name": "Dal",
+      "label_name": "Dalhousie U."
     },
     "aci": 2.13
   },
@@ -150758,7 +151317,8 @@
       "lineage": [
         "https://openalex.org/I129902397"
       ],
-      "shortand_name": "Dal"
+      "shortand_name": "Dal",
+      "label_name": "Dalhousie U."
     },
     "aci": 0.85
   },
@@ -150991,7 +151551,8 @@
       "lineage": [
         "https://openalex.org/I121820613"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 0.85
   },
@@ -151259,7 +151820,8 @@
       "lineage": [
         "https://openalex.org/I39470171"
       ],
-      "shortand_name": "Ontario Tech"
+      "shortand_name": "Ontario Tech",
+      "label_name": "U. of Ontario IT"
     },
     "aci": 0.8
   },
@@ -151533,7 +152095,8 @@
       "lineage": [
         "https://openalex.org/I52099693"
       ],
-      "shortand_name": "UoY"
+      "shortand_name": "UoY",
+      "label_name": "U. of York (UK)"
     },
     "aci": 0.8
   },
@@ -151743,7 +152306,8 @@
       "lineage": [
         "https://openalex.org/I168635309"
       ],
-      "shortand_name": "U of C"
+      "shortand_name": "U of C",
+      "label_name": "U. of Calgary"
     },
     "aci": 2.46
   },
@@ -152145,7 +152709,8 @@
       "lineage": [
         "https://openalex.org/I168635309"
       ],
-      "shortand_name": "U of C"
+      "shortand_name": "U of C",
+      "label_name": "U. of Calgary"
     },
     "aci": 2.53
   },
@@ -152409,7 +152974,8 @@
       "lineage": [
         "https://openalex.org/I5023651"
       ],
-      "shortand_name": "McGill"
+      "shortand_name": "McGill",
+      "label_name": "McGill U."
     },
     "aci": 1.63
   },
@@ -152726,7 +153292,8 @@
       "lineage": [
         "https://openalex.org/I5023651"
       ],
-      "shortand_name": "McGill"
+      "shortand_name": "McGill",
+      "label_name": "McGill U."
     },
     "aci": 0.65
   },
@@ -152971,7 +153538,8 @@
       "lineage": [
         "https://openalex.org/I79817857"
       ],
-      "shortand_name": "U of G"
+      "shortand_name": "U of G",
+      "label_name": "U. of Guelph"
     },
     "aci": 0.65
   },
@@ -153240,7 +153808,8 @@
       "lineage": [
         "https://openalex.org/I5023651"
       ],
-      "shortand_name": "McGill"
+      "shortand_name": "McGill",
+      "label_name": "McGill U."
     },
     "aci": 1.3
   },
@@ -153449,7 +154018,8 @@
       "lineage": [
         "https://openalex.org/I55732556"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 0.65
   },
@@ -153798,7 +154368,8 @@
       "lineage": [
         "https://openalex.org/I2279609970"
       ],
-      "shortand_name": "ULille"
+      "shortand_name": "ULille",
+      "label_name": "U. de Lille"
     },
     "aci": 1.63
   },
@@ -154074,7 +154645,8 @@
       "lineage": [
         "https://openalex.org/I212119943"
       ],
-      "shortand_name": "UVic"
+      "shortand_name": "UVic",
+      "label_name": "U. of Victoria"
     },
     "aci": 0.65
   },
@@ -154453,7 +155025,8 @@
       "lineage": [
         "https://openalex.org/I2279609970"
       ],
-      "shortand_name": "ULille"
+      "shortand_name": "ULille",
+      "label_name": "U. de Lille"
     },
     "aci": 0.65
   },
@@ -154759,7 +155332,8 @@
       "lineage": [
         "https://openalex.org/I8692664"
       ],
-      "shortand_name": "OU"
+      "shortand_name": "OU",
+      "label_name": "U. of Oklahoma"
     },
     "aci": 1.3
   },
@@ -154949,7 +155523,8 @@
       "lineage": [
         "https://openalex.org/I141945490"
       ],
-      "shortand_name": "UBC"
+      "shortand_name": "UBC",
+      "label_name": "U. of British Columbia"
     },
     "aci": 0.91
   },
@@ -155419,7 +155994,8 @@
       "lineage": [
         "https://openalex.org/I141945490"
       ],
-      "shortand_name": "UBC"
+      "shortand_name": "UBC",
+      "label_name": "U. of British Columbia"
     },
     "aci": 0.73
   },
@@ -155622,7 +156198,8 @@
       "lineage": [
         "https://openalex.org/I185261750"
       ],
-      "shortand_name": "U of T"
+      "shortand_name": "U of T",
+      "label_name": "U. of Toronto"
     },
     "aci": 0.91
   },
@@ -155897,7 +156474,8 @@
       "lineage": [
         "https://openalex.org/I70908550"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 0.36
   },
@@ -156093,7 +156671,8 @@
       "lineage": [
         "https://openalex.org/I185261750"
       ],
-      "shortand_name": "U of T"
+      "shortand_name": "U of T",
+      "label_name": "U. of Toronto"
     },
     "aci": 0.36
   },
@@ -156487,7 +157066,8 @@
       "lineage": [
         "https://openalex.org/I185261750"
       ],
-      "shortand_name": "U of T"
+      "shortand_name": "U of T",
+      "label_name": "U. of Toronto"
     },
     "aci": 0.73
   },
@@ -156684,7 +157264,8 @@
       "lineage": [
         "https://openalex.org/I141945490"
       ],
-      "shortand_name": "UBC"
+      "shortand_name": "UBC",
+      "label_name": "U. of British Columbia"
     },
     "aci": 0.91
   },
@@ -156934,7 +157515,8 @@
       "lineage": [
         "https://openalex.org/I141945490"
       ],
-      "shortand_name": "UBC"
+      "shortand_name": "UBC",
+      "label_name": "U. of British Columbia"
     },
     "aci": 0.36
   },
@@ -157364,7 +157946,8 @@
       "lineage": [
         "https://openalex.org/I141945490"
       ],
-      "shortand_name": "UBC"
+      "shortand_name": "UBC",
+      "label_name": "U. of British Columbia"
     },
     "aci": 0.73
   },
@@ -157554,7 +158137,8 @@
       "lineage": [
         "https://openalex.org/I34771391"
       ],
-      "shortand_name": "UCY"
+      "shortand_name": "UCY",
+      "label_name": "U. of Cyprus"
     },
     "aci": 0.36
   },
@@ -157817,7 +158401,8 @@
       "lineage": [
         "https://openalex.org/I25974101"
       ],
-      "shortand_name": "Würzburg"
+      "shortand_name": "Würzburg",
+      "label_name": "U. of Würzburg"
     },
     "aci": 0.36
   },
@@ -158037,7 +158622,8 @@
       "lineage": [
         "https://openalex.org/I99464096"
       ],
-      "shortand_name": "KU Leuven"
+      "shortand_name": "KU Leuven",
+      "label_name": "KU Leuven"
     },
     "aci": 0.36
   },
@@ -158263,7 +158849,8 @@
       "lineage": [
         "https://openalex.org/I18014758"
       ],
-      "shortand_name": "SFU"
+      "shortand_name": "SFU",
+      "label_name": "Simon Fraser U."
     },
     "aci": 0.36
   },
@@ -158537,7 +159124,8 @@
       "lineage": [
         "https://openalex.org/I891191580"
       ],
-      "shortand_name": "AAU"
+      "shortand_name": "AAU",
+      "label_name": "Aalborg U."
     },
     "aci": 0.36
   },
@@ -158739,7 +159327,8 @@
       "lineage": [
         "https://openalex.org/I40120149"
       ],
-      "shortand_name": "Oxford"
+      "shortand_name": "Oxford",
+      "label_name": "U. of Oxford"
     },
     "aci": 0.36
   },
@@ -159073,7 +159662,8 @@
       "lineage": [
         "https://openalex.org/I27577105"
       ],
-      "shortand_name": "UCC"
+      "shortand_name": "UCC",
+      "label_name": "U. College Cork"
     },
     "aci": 0.36
   },
@@ -159521,7 +160111,8 @@
       "lineage": [
         "https://openalex.org/I165526535"
       ],
-      "shortand_name": "RCA"
+      "shortand_name": "RCA",
+      "label_name": "Royal College of Art"
     },
     "aci": 0.36
   },
@@ -159790,7 +160381,8 @@
       "lineage": [
         "https://openalex.org/I20581793"
       ],
-      "shortand_name": "Kent"
+      "shortand_name": "Kent",
+      "label_name": "U. of Kent"
     },
     "aci": 0.73
   },
@@ -160002,11 +160594,12 @@
       "lineage": [
         "https://openalex.org/I141945490"
       ],
-      "shortand_name": "UBC"
+      "shortand_name": "UBC",
+      "label_name": "U. of British Columbia"
     },
     "aci": 0.91
   },
-    {
+  {
     "author_id": "https://openalex.org/A5090272179",
     "orcid": "https://orcid.org/0009-0006-2890-5460",
     "display_name": "Khalad Hasan",
@@ -160280,7 +160873,8 @@
       "lineage": [
         "https://openalex.org/I822440"
       ],
-      "shortand_name": "OUC"
+      "shortand_name": "OUC",
+      "label_name": "Okanagan U. College"
     },
     "aci": 0.73
   },
@@ -160505,7 +161099,8 @@
       "lineage": [
         "https://openalex.org/I153718931"
       ],
-      "shortand_name": "uOttawa"
+      "shortand_name": "uOttawa",
+      "label_name": "U. of Ottawa"
     },
     "aci": 0.91
   },
@@ -160778,7 +161373,8 @@
       "lineage": [
         "https://openalex.org/I153718931"
       ],
-      "shortand_name": "uOttawa"
+      "shortand_name": "uOttawa",
+      "label_name": "U. of Ottawa"
     },
     "aci": 0.36
   },
@@ -161065,7 +161661,8 @@
       "lineage": [
         "https://openalex.org/I153718931"
       ],
-      "shortand_name": "uOttawa"
+      "shortand_name": "uOttawa",
+      "label_name": "U. of Ottawa"
     },
     "aci": 0.36
   },
@@ -161344,7 +161941,8 @@
       "lineage": [
         "https://openalex.org/I153718931"
       ],
-      "shortand_name": "uOttawa"
+      "shortand_name": "uOttawa",
+      "label_name": "U. of Ottawa"
     },
     "aci": 0.73
   },
@@ -161600,7 +162198,8 @@
       "lineage": [
         "https://openalex.org/I87354575"
       ],
-      "shortand_name": "NCCU"
+      "shortand_name": "NCCU",
+      "label_name": "Nat. Chengchi U."
     },
     "aci": 0.91
   },
@@ -161790,7 +162389,8 @@
       "lineage": [
         "https://openalex.org/I87354575"
       ],
-      "shortand_name": "NCCU"
+      "shortand_name": "NCCU",
+      "label_name": "Nat. Chengchi U."
     },
     "aci": 0.36
   },
@@ -162057,7 +162657,8 @@
       "lineage": [
         "https://openalex.org/I185261750"
       ],
-      "shortand_name": "U of T"
+      "shortand_name": "U of T",
+      "label_name": "U. of Toronto"
     },
     "aci": 0.73
   },
@@ -162265,7 +162866,8 @@
       "lineage": [
         "https://openalex.org/I60158472"
       ],
-      "shortand_name": "Concordia"
+      "shortand_name": "Concordia",
+      "label_name": "Concordia U."
     },
     "aci": 0.91
   },
@@ -162461,7 +163063,8 @@
       "lineage": [
         "https://openalex.org/I74753095"
       ],
-      "shortand_name": "OCAD U"
+      "shortand_name": "OCAD U",
+      "label_name": "Ontario College of Art & Design"
     },
     "aci": 0.73
   },
@@ -162795,7 +163398,8 @@
       "lineage": [
         "https://openalex.org/I98381234"
       ],
-      "shortand_name": "Oulu"
+      "shortand_name": "Oulu",
+      "label_name": "U. of Oulu"
     },
     "aci": 0.91
   },
@@ -163123,7 +163727,8 @@
       "lineage": [
         "https://openalex.org/I204337017"
       ],
-      "shortand_name": "AU"
+      "shortand_name": "AU",
+      "label_name": "Aarhus U."
     },
     "aci": 0.36
   },
@@ -163505,7 +164110,8 @@
       "lineage": [
         "https://openalex.org/I36788626"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 0.36
   },
@@ -163845,7 +164451,8 @@
       "lineage": [
         "https://openalex.org/I204337017"
       ],
-      "shortand_name": "AU"
+      "shortand_name": "AU",
+      "label_name": "Aarhus U."
     },
     "aci": 0.36
   },
@@ -164149,7 +164756,8 @@
       "lineage": [
         "https://openalex.org/I98381234"
       ],
-      "shortand_name": "Oulu"
+      "shortand_name": "Oulu",
+      "label_name": "U. of Oulu"
     },
     "aci": 0.36
   },
@@ -164447,7 +165055,8 @@
       "lineage": [
         "https://openalex.org/I204337017"
       ],
-      "shortand_name": "AU"
+      "shortand_name": "AU",
+      "label_name": "Aarhus U."
     },
     "aci": 0.36
   },
@@ -164739,7 +165348,8 @@
       "lineage": [
         "https://openalex.org/I129774422"
       ],
-      "shortand_name": "Uni Wien"
+      "shortand_name": "Uni Wien",
+      "label_name": "U. of Vienna"
     },
     "aci": 0.36
   },
@@ -165019,7 +165629,8 @@
       "lineage": [
         "https://openalex.org/I66946132"
       ],
-      "shortand_name": "UMD"
+      "shortand_name": "UMD",
+      "label_name": "U. of Maryland"
     },
     "aci": 0.36
   },
@@ -165263,7 +165874,8 @@
       "lineage": [
         "https://openalex.org/I68891433"
       ],
-      "shortand_name": "IIT Delhi"
+      "shortand_name": "IIT Delhi",
+      "label_name": "IIT Delhi"
     },
     "aci": 0.36
   },
@@ -165513,7 +166125,8 @@
       "lineage": [
         "https://openalex.org/I204337017"
       ],
-      "shortand_name": "AU"
+      "shortand_name": "AU",
+      "label_name": "Aarhus U."
     },
     "aci": 0.36
   },
@@ -165889,7 +166502,8 @@
       "lineage": [
         "https://openalex.org/I98381234"
       ],
-      "shortand_name": "Oulu"
+      "shortand_name": "Oulu",
+      "label_name": "U. of Oulu"
     },
     "aci": 0.73
   },
@@ -166117,7 +166731,8 @@
       "lineage": [
         "https://openalex.org/I51235708"
       ],
-      "shortand_name": "UFES"
+      "shortand_name": "UFES",
+      "label_name": "Fed. U. of Espírito Santo"
     },
     "aci": 1.4
   },
@@ -166349,7 +166964,8 @@
       "lineage": [
         "https://openalex.org/I51235708"
       ],
-      "shortand_name": "UFES"
+      "shortand_name": "UFES",
+      "label_name": "Fed. U. of Espírito Santo"
     },
     "aci": 0.56
   },
@@ -166610,7 +167226,8 @@
       "lineage": [
         "https://openalex.org/I63169043"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 0.56
   },
@@ -166872,7 +167489,8 @@
       "lineage": [
         "https://openalex.org/I162096671"
       ],
-      "shortand_name": "Uniandes"
+      "shortand_name": "Uniandes",
+      "label_name": "U. de Los Andes"
     },
     "aci": 0.56
   },
@@ -167248,7 +167866,8 @@
       "lineage": [
         "https://openalex.org/I51235708"
       ],
-      "shortand_name": "UFES"
+      "shortand_name": "UFES",
+      "label_name": "Fed. U. of Espírito Santo"
     },
     "aci": 0.56
   },
@@ -167600,7 +168219,8 @@
       "lineage": [
         "https://openalex.org/I530967"
       ],
-      "shortand_name": "TMU"
+      "shortand_name": "TMU",
+      "label_name": "Toronto Metropolitan U."
     },
     "aci": 1.12
   },
@@ -167796,7 +168416,8 @@
       "lineage": [
         "https://openalex.org/I185261750"
       ],
-      "shortand_name": "U of T"
+      "shortand_name": "U of T",
+      "label_name": "U. of Toronto"
     },
     "aci": 1.4
   },
@@ -168004,7 +168625,8 @@
       "lineage": [
         "https://openalex.org/I185261750"
       ],
-      "shortand_name": "U of T"
+      "shortand_name": "U of T",
+      "label_name": "U. of Toronto"
     },
     "aci": 0.56
   },
@@ -168272,7 +168894,8 @@
       "lineage": [
         "https://openalex.org/I185261750"
       ],
-      "shortand_name": "U of T"
+      "shortand_name": "U of T",
+      "label_name": "U. of Toronto"
     },
     "aci": 1.12
   },
@@ -168486,7 +169109,8 @@
       "lineage": [
         "https://openalex.org/I141945490"
       ],
-      "shortand_name": "UBC"
+      "shortand_name": "UBC",
+      "label_name": "U. of British Columbia"
     },
     "aci": 1.08
   },
@@ -168808,7 +169432,8 @@
       "lineage": [
         "https://openalex.org/I56590836"
       ],
-      "shortand_name": "Monash"
+      "shortand_name": "Monash",
+      "label_name": "Monash U."
     },
     "aci": 0.43
   },
@@ -169088,7 +169713,8 @@
       "lineage": [
         "https://openalex.org/I66946132"
       ],
-      "shortand_name": "UMD"
+      "shortand_name": "UMD",
+      "label_name": "U. of Maryland"
     },
     "aci": 0.43
   },
@@ -169417,7 +170043,8 @@
       "lineage": [
         "https://openalex.org/I154130895"
       ],
-      "shortand_name": "UoA"
+      "shortand_name": "UoA",
+      "label_name": "U. of Auckland"
     },
     "aci": 1.08
   },
@@ -169733,7 +170360,8 @@
       "lineage": [
         "https://openalex.org/I212119943"
       ],
-      "shortand_name": "UVic"
+      "shortand_name": "UVic",
+      "label_name": "U. of Victoria"
     },
     "aci": 0.43
   },
@@ -170241,7 +170869,8 @@
       "lineage": [
         "https://openalex.org/I154130895"
       ],
-      "shortand_name": "UoA"
+      "shortand_name": "UoA",
+      "label_name": "U. of Auckland"
     },
     "aci": 0.43
   },
@@ -170641,7 +171270,8 @@
       "lineage": [
         "https://openalex.org/I212119943"
       ],
-      "shortand_name": "UVic"
+      "shortand_name": "UVic",
+      "label_name": "U. of Victoria"
     },
     "aci": 0.43
   },
@@ -171047,7 +171677,8 @@
       "lineage": [
         "https://openalex.org/I4210104872"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 0.87
   },
@@ -171279,7 +171910,8 @@
       "lineage": [
         "https://openalex.org/I151746483"
       ],
-      "shortand_name": "UW"
+      "shortand_name": "UW",
+      "label_name": "U. of Waterloo"
     },
     "aci": 0.68
   },
@@ -171487,7 +172119,8 @@
       "lineage": [
         "https://openalex.org/I18014758"
       ],
-      "shortand_name": "SFU"
+      "shortand_name": "SFU",
+      "label_name": "Simon Fraser U."
     },
     "aci": 0.27
   },
@@ -171677,7 +172310,8 @@
       "lineage": [
         "https://openalex.org/I18014758"
       ],
-      "shortand_name": "SFU"
+      "shortand_name": "SFU",
+      "label_name": "Simon Fraser U."
     },
     "aci": 0.27
   },
@@ -171827,7 +172461,8 @@
       "lineage": [
         "https://openalex.org/I18014758"
       ],
-      "shortand_name": "SFU"
+      "shortand_name": "SFU",
+      "label_name": "Simon Fraser U."
     },
     "aci": 0.27
   },
@@ -171977,7 +172612,8 @@
       "lineage": [
         "https://openalex.org/I151746483"
       ],
-      "shortand_name": "UW"
+      "shortand_name": "UW",
+      "label_name": "U. of Waterloo"
     },
     "aci": 0.55
   },
@@ -172245,7 +172881,8 @@
       "lineage": [
         "https://openalex.org/I154425047"
       ],
-      "shortand_name": "U of A"
+      "shortand_name": "U of A",
+      "label_name": "U. of Alberta"
     },
     "aci": 0.68
   },
@@ -172477,7 +173114,8 @@
       "lineage": [
         "https://openalex.org/I154425047"
       ],
-      "shortand_name": "U of A"
+      "shortand_name": "U of A",
+      "label_name": "U. of Alberta"
     },
     "aci": 0.27
   },
@@ -172835,7 +173473,8 @@
       "lineage": [
         "https://openalex.org/I154425047"
       ],
-      "shortand_name": "U of A"
+      "shortand_name": "U of A",
+      "label_name": "U. of Alberta"
     },
     "aci": 0.27
   },
@@ -173187,7 +173826,8 @@
       "lineage": [
         "https://openalex.org/I154425047"
       ],
-      "shortand_name": "U of A"
+      "shortand_name": "U of A",
+      "label_name": "U. of Alberta"
     },
     "aci": 0.55
   },
@@ -173515,7 +174155,8 @@
       "lineage": [
         "https://openalex.org/I67415387"
       ],
-      "shortand_name": "Lancaster"
+      "shortand_name": "Lancaster",
+      "label_name": "Lancaster U."
     },
     "aci": 0.27
   },
@@ -173705,7 +174346,8 @@
       "lineage": [
         "https://openalex.org/I185852735"
       ],
-      "shortand_name": "UCLan"
+      "shortand_name": "UCLan",
+      "label_name": "U. of Central Lancashire"
     },
     "aci": 0.27
   },
@@ -174027,7 +174669,8 @@
       "lineage": [
         "https://openalex.org/I185852735"
       ],
-      "shortand_name": "UCLan"
+      "shortand_name": "UCLan",
+      "label_name": "U. of Central Lancashire"
     },
     "aci": 0.27
   },
@@ -174223,7 +174866,8 @@
       "lineage": [
         "https://openalex.org/I185852735"
       ],
-      "shortand_name": "UCLan"
+      "shortand_name": "UCLan",
+      "label_name": "U. of Central Lancashire"
     },
     "aci": 0.27
   },
@@ -174467,7 +175111,8 @@
       "lineage": [
         "https://openalex.org/I185852735"
       ],
-      "shortand_name": "UCLan"
+      "shortand_name": "UCLan",
+      "label_name": "U. of Central Lancashire"
     },
     "aci": 0.27
   },
@@ -174741,7 +175386,8 @@
       "lineage": [
         "https://openalex.org/I185852735"
       ],
-      "shortand_name": "UCLan"
+      "shortand_name": "UCLan",
+      "label_name": "U. of Central Lancashire"
     },
     "aci": 0.27
   },
@@ -174949,7 +175595,8 @@
       "lineage": [
         "https://openalex.org/I185852735"
       ],
-      "shortand_name": "UCLan"
+      "shortand_name": "UCLan",
+      "label_name": "U. of Central Lancashire"
     },
     "aci": 0.27
   },
@@ -175253,7 +175900,8 @@
       "lineage": [
         "https://openalex.org/I185852735"
       ],
-      "shortand_name": "UCLan"
+      "shortand_name": "UCLan",
+      "label_name": "U. of Central Lancashire"
     },
     "aci": 0.27
   },
@@ -175515,7 +176163,8 @@
       "lineage": [
         "https://openalex.org/I185852735"
       ],
-      "shortand_name": "UCLan"
+      "shortand_name": "UCLan",
+      "label_name": "U. of Central Lancashire"
     },
     "aci": 0.27
   },
@@ -175723,7 +176372,8 @@
       "lineage": [
         "https://openalex.org/I84884186"
       ],
-      "shortand_name": "Newcastle"
+      "shortand_name": "Newcastle",
+      "label_name": "Newcastle U."
     },
     "aci": 0.68
   },
@@ -175985,7 +176635,8 @@
       "lineage": [
         "https://openalex.org/I84884186"
       ],
-      "shortand_name": "Newcastle"
+      "shortand_name": "Newcastle",
+      "label_name": "Newcastle U."
     },
     "aci": 0.27
   },
@@ -176277,7 +176928,8 @@
       "lineage": [
         "https://openalex.org/I84884186"
       ],
-      "shortand_name": "Newcastle"
+      "shortand_name": "Newcastle",
+      "label_name": "Newcastle U."
     },
     "aci": 0.27
   },
@@ -176569,7 +177221,8 @@
       "lineage": [
         "https://openalex.org/I84884186"
       ],
-      "shortand_name": "Newcastle"
+      "shortand_name": "Newcastle",
+      "label_name": "Newcastle U."
     },
     "aci": 0.27
   },
@@ -176933,7 +177586,8 @@
       "lineage": [
         "https://openalex.org/I84884186"
       ],
-      "shortand_name": "Newcastle"
+      "shortand_name": "Newcastle",
+      "label_name": "Newcastle U."
     },
     "aci": 0.55
   },
@@ -177243,7 +177897,8 @@
       "lineage": [
         "https://openalex.org/I129902397"
       ],
-      "shortand_name": "Dal"
+      "shortand_name": "Dal",
+      "label_name": "Dalhousie U."
     },
     "aci": 0.82
   },
@@ -177439,7 +178094,8 @@
       "lineage": [
         "https://openalex.org/I7882870"
       ],
-      "shortand_name": "U of G"
+      "shortand_name": "U of G",
+      "label_name": "U. of Glasgow"
     },
     "aci": 1.36
   },
@@ -177628,7 +178284,8 @@
       "lineage": [
         "https://openalex.org/I162714631"
       ],
-      "shortand_name": "GMU"
+      "shortand_name": "GMU",
+      "label_name": "George Mason U."
     },
     "aci": 0.68
   },
@@ -177867,7 +178524,8 @@
       "lineage": [
         "https://openalex.org/I78577930"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 0.95
   },
@@ -178070,7 +178728,8 @@
       "lineage": [
         "https://openalex.org/I139660479"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 0.55
   },
@@ -178367,7 +179026,8 @@
       "lineage": [
         "https://openalex.org/I96749437"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 0.27
   },
@@ -178648,7 +179308,8 @@
       "lineage": [
         "https://openalex.org/I58610484"
       ],
-      "shortand_name": "SeattleU"
+      "shortand_name": "SeattleU",
+      "label_name": "Seattle U."
     },
     "aci": 0.82
   },
@@ -178844,7 +179505,8 @@
       "lineage": [
         "https://openalex.org/I67031392"
       ],
-      "shortand_name": "Carleton"
+      "shortand_name": "Carleton",
+      "label_name": "Carleton U."
     },
     "aci": 0.68
   },
@@ -179071,7 +179733,8 @@
       "lineage": [
         "https://openalex.org/I151746483"
       ],
-      "shortand_name": "UW"
+      "shortand_name": "UW",
+      "label_name": "U. of Waterloo"
     },
     "aci": 0.27
   },
@@ -179316,7 +179979,8 @@
       "lineage": [
         "https://openalex.org/I151746483"
       ],
-      "shortand_name": "UW"
+      "shortand_name": "UW",
+      "label_name": "U. of Waterloo"
     },
     "aci": 0.27
   },
@@ -179554,7 +180218,8 @@
       "lineage": [
         "https://openalex.org/I67031392"
       ],
-      "shortand_name": "Carleton"
+      "shortand_name": "Carleton",
+      "label_name": "Carleton U."
     },
     "aci": 0.55
   },
@@ -179750,7 +180415,8 @@
       "lineage": [
         "https://openalex.org/I530967"
       ],
-      "shortand_name": "TMU"
+      "shortand_name": "TMU",
+      "label_name": "Toronto Metropolitan U."
     },
     "aci": 0.68
   },
@@ -179947,7 +180613,8 @@
       "lineage": [
         "https://openalex.org/I18014758"
       ],
-      "shortand_name": "SFU"
+      "shortand_name": "SFU",
+      "label_name": "Simon Fraser U."
     },
     "aci": 0.27
   },
@@ -180207,7 +180874,8 @@
       "lineage": [
         "https://openalex.org/I151221077"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 0.68
   },
@@ -180449,7 +181117,8 @@
       "lineage": [
         "https://openalex.org/I200769079"
       ],
-      "shortand_name": "HKUST"
+      "shortand_name": "HKUST",
+      "label_name": "Hong Kong U. of Science & Tech"
     },
     "aci": 0.27
   },
@@ -180704,7 +181373,8 @@
       "lineage": [
         "https://openalex.org/I14243506"
       ],
-      "shortand_name": "PolyU"
+      "shortand_name": "PolyU",
+      "label_name": "Hong Kong Poly. U."
     },
     "aci": 0.27
   },
@@ -180942,7 +181612,8 @@
       "lineage": [
         "https://openalex.org/I9927081"
       ],
-      "shortand_name": "Aalto"
+      "shortand_name": "Aalto",
+      "label_name": "Aalto U."
     },
     "aci": 0.27
   },
@@ -181161,7 +181832,8 @@
       "lineage": [
         "https://openalex.org/I200769079"
       ],
-      "shortand_name": "HKUST"
+      "shortand_name": "HKUST",
+      "label_name": "Hong Kong U. of Science & Tech"
     },
     "aci": 0.27
   },
@@ -181470,7 +182142,8 @@
       "lineage": [
         "https://openalex.org/I143868143"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 0.55
   },
@@ -181745,7 +182418,8 @@
         "https://openalex.org/I4210119109",
         "https://openalex.org/I592451"
       ],
-      "shortand_name": "IU Bloomington"
+      "shortand_name": "IU Bloomington",
+      "label_name": "Indiana U. Bloomington"
     },
     "aci": 0.68
   },
@@ -182025,7 +182699,8 @@
       "lineage": [
         "https://openalex.org/I192455969"
       ],
-      "shortand_name": "York"
+      "shortand_name": "York",
+      "label_name": "York U."
     },
     "aci": 0.27
   },
@@ -182317,7 +182992,8 @@
       "lineage": [
         "https://openalex.org/I192455969"
       ],
-      "shortand_name": "York"
+      "shortand_name": "York",
+      "label_name": "York U."
     },
     "aci": 0.55
   },
@@ -182603,7 +183279,8 @@
       "lineage": [
         "https://openalex.org/I3124059619"
       ],
-      "shortand_name": "CUG"
+      "shortand_name": "CUG",
+      "label_name": "China U. of Geosciences"
     },
     "aci": 0.68
   },
@@ -182901,7 +183578,8 @@
       "lineage": [
         "https://openalex.org/I3124059619"
       ],
-      "shortand_name": "CUG"
+      "shortand_name": "CUG",
+      "label_name": "China U. of Geosciences"
     },
     "aci": 0.27
   },
@@ -183277,7 +183955,8 @@
       "lineage": [
         "https://openalex.org/I18014758"
       ],
-      "shortand_name": "SFU"
+      "shortand_name": "SFU",
+      "label_name": "Simon Fraser U."
     },
     "aci": 0.55
   },
@@ -183510,7 +184189,8 @@
       "lineage": [
         "https://openalex.org/I63586086"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 1.14
   },
@@ -183840,7 +184520,8 @@
       "lineage": [
         "https://openalex.org/I2279609970"
       ],
-      "shortand_name": "ULille"
+      "shortand_name": "ULille",
+      "label_name": "U. de Lille"
     },
     "aci": 0.45
   },
@@ -184042,7 +184723,8 @@
       "lineage": [
         "https://openalex.org/I74801974"
       ],
-      "shortand_name": "UTokyo"
+      "shortand_name": "UTokyo",
+      "label_name": "U. of Tokyo"
     },
     "aci": 0.27
   },
@@ -184298,7 +184980,8 @@
       "lineage": [
         "https://openalex.org/I891191580"
       ],
-      "shortand_name": "AAU"
+      "shortand_name": "AAU",
+      "label_name": "Aalborg U."
     },
     "aci": 0.27
   },
@@ -184620,7 +185303,8 @@
       "lineage": [
         "https://openalex.org/I74801974"
       ],
-      "shortand_name": "UTokyo"
+      "shortand_name": "UTokyo",
+      "label_name": "U. of Tokyo"
     },
     "aci": 0.27
   },
@@ -184924,7 +185608,8 @@
       "lineage": [
         "https://openalex.org/I98381234"
       ],
-      "shortand_name": "Oulu"
+      "shortand_name": "Oulu",
+      "label_name": "U. of Oulu"
     },
     "aci": 0.55
   },
@@ -185135,7 +185820,8 @@
       "lineage": [
         "https://openalex.org/I67031392"
       ],
-      "shortand_name": "Carleton"
+      "shortand_name": "Carleton",
+      "label_name": "Carleton U."
     },
     "aci": 1.14
   },
@@ -185438,7 +186124,8 @@
       "lineage": [
         "https://openalex.org/I67031392"
       ],
-      "shortand_name": "Carleton"
+      "shortand_name": "Carleton",
+      "label_name": "Carleton U."
     },
     "aci": 1.27
   },
@@ -185611,7 +186298,8 @@
       "lineage": [
         "https://openalex.org/I151746483"
       ],
-      "shortand_name": "UW"
+      "shortand_name": "UW",
+      "label_name": "U. of Waterloo"
     },
     "aci": 0.68
   },
@@ -185784,7 +186472,8 @@
       "lineage": [
         "https://openalex.org/I188538660"
       ],
-      "shortand_name": "CU Boulder"
+      "shortand_name": "CU Boulder",
+      "label_name": "U. of Colorado Boulder"
     },
     "aci": 0.68
   },
@@ -186027,7 +186716,8 @@
       "lineage": [
         "https://openalex.org/I185261750"
       ],
-      "shortand_name": "U of T"
+      "shortand_name": "U of T",
+      "label_name": "U. of Toronto"
     },
     "aci": 0.27
   },
@@ -186313,7 +187003,8 @@
       "lineage": [
         "https://openalex.org/I188538660"
       ],
-      "shortand_name": "CU Boulder"
+      "shortand_name": "CU Boulder",
+      "label_name": "U. of Colorado Boulder"
     },
     "aci": 0.55
   },
@@ -186545,7 +187236,8 @@
       "lineage": [
         "https://openalex.org/I8204097"
       ],
-      "shortand_name": "LMU Munich"
+      "shortand_name": "LMU Munich",
+      "label_name": "LMU Munich"
     },
     "aci": 0.27
   },
@@ -186841,7 +187533,8 @@
       "lineage": [
         "https://openalex.org/I27837315"
       ],
-      "shortand_name": "UMich"
+      "shortand_name": "UMich",
+      "label_name": "U. of Michigan"
     },
     "aci": 0.27
   },
@@ -187055,7 +187748,8 @@
       "lineage": [
         "https://openalex.org/I18014758"
       ],
-      "shortand_name": "SFU"
+      "shortand_name": "SFU",
+      "label_name": "Simon Fraser U."
     },
     "aci": 1.63
   },
@@ -187251,7 +187945,8 @@
       "lineage": [
         "https://openalex.org/I212119943"
       ],
-      "shortand_name": "UVic"
+      "shortand_name": "UVic",
+      "label_name": "U. of Victoria"
     },
     "aci": 1.41
   },
@@ -187461,7 +188156,8 @@
       "lineage": [
         "https://openalex.org/I168635309"
       ],
-      "shortand_name": "U of C"
+      "shortand_name": "U of C",
+      "label_name": "U. of Calgary"
     },
     "aci": 1.18
   },
@@ -187693,7 +188389,8 @@
       "lineage": [
         "https://openalex.org/I24943067"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 1.18
   },
@@ -187889,7 +188586,8 @@
       "lineage": [
         "https://openalex.org/I114395901"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 0.47
   },
@@ -188171,7 +188869,8 @@
       "lineage": [
         "https://openalex.org/I142108993"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 0.47
   },
@@ -188457,7 +189156,8 @@
       "lineage": [
         "https://openalex.org/I204722609"
       ],
-      "shortand_name": "Queen's"
+      "shortand_name": "Queen's",
+      "label_name": "Queen's U."
     },
     "aci": 0.47
   },
@@ -188737,7 +189437,8 @@
       "lineage": [
         "https://openalex.org/I79817857"
       ],
-      "shortand_name": "U of G"
+      "shortand_name": "U of G",
+      "label_name": "U. of Guelph"
     },
     "aci": 0.94
   },
@@ -188940,7 +189641,8 @@
       "lineage": [
         "https://openalex.org/I60158472"
       ],
-      "shortand_name": "Concordia"
+      "shortand_name": "Concordia",
+      "label_name": "Concordia U."
     },
     "aci": 1.18
   },
@@ -189149,7 +189851,8 @@
       "lineage": [
         "https://openalex.org/I185261750"
       ],
-      "shortand_name": "U of T"
+      "shortand_name": "U of T",
+      "label_name": "U. of Toronto"
     },
     "aci": 0.47
   },
@@ -189448,7 +190151,8 @@
       "lineage": [
         "https://openalex.org/I112536369"
       ],
-      "shortand_name": "Yazd"
+      "shortand_name": "Yazd",
+      "label_name": "Yazd U."
     },
     "aci": 0.47
   },
@@ -189741,7 +190445,8 @@
       "lineage": [
         "https://openalex.org/I60158472"
       ],
-      "shortand_name": "Concordia"
+      "shortand_name": "Concordia",
+      "label_name": "Concordia U."
     },
     "aci": 0.47
   },
@@ -190118,7 +190823,8 @@
       "lineage": [
         "https://openalex.org/I185261750"
       ],
-      "shortand_name": "U of T"
+      "shortand_name": "U of T",
+      "label_name": "U. of Toronto"
     },
     "aci": 0.94
   },
@@ -190338,7 +191044,8 @@
       "lineage": [
         "https://openalex.org/I168635309"
       ],
-      "shortand_name": "U of C"
+      "shortand_name": "U of C",
+      "label_name": "U. of Calgary"
     },
     "aci": 0.45
   },
@@ -190703,7 +191410,8 @@
       "lineage": [
         "https://openalex.org/I56475706"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 3.3
   },
@@ -191169,7 +191877,8 @@
       "lineage": [
         "https://openalex.org/I168635309"
       ],
-      "shortand_name": "U of C"
+      "shortand_name": "U of C",
+      "label_name": "U. of Calgary"
     },
     "aci": 0.36
   },
@@ -191447,7 +192156,8 @@
       "lineage": [
         "https://openalex.org/I822440"
       ],
-      "shortand_name": "OUC"
+      "shortand_name": "OUC",
+      "label_name": "Okanagan U. College"
     },
     "aci": 0.45
   },
@@ -191833,7 +192543,8 @@
       "lineage": [
         "https://openalex.org/I822440"
       ],
-      "shortand_name": "OUC"
+      "shortand_name": "OUC",
+      "label_name": "Okanagan U. College"
     },
     "aci": 0.18
   },
@@ -192123,7 +192834,8 @@
       "lineage": [
         "https://openalex.org/I822440"
       ],
-      "shortand_name": "OUC"
+      "shortand_name": "OUC",
+      "label_name": "Okanagan U. College"
     },
     "aci": 0.18
   },
@@ -192389,7 +193101,8 @@
       "lineage": [
         "https://openalex.org/I822440"
       ],
-      "shortand_name": "OUC"
+      "shortand_name": "OUC",
+      "label_name": "Okanagan U. College"
     },
     "aci": 0.18
   },
@@ -192601,7 +193314,8 @@
       "lineage": [
         "https://openalex.org/I822440"
       ],
-      "shortand_name": "OUC"
+      "shortand_name": "OUC",
+      "label_name": "Okanagan U. College"
     },
     "aci": 0.18
   },
@@ -192909,7 +193623,8 @@
       "lineage": [
         "https://openalex.org/I822440"
       ],
-      "shortand_name": "OUC"
+      "shortand_name": "OUC",
+      "label_name": "Okanagan U. College"
     },
     "aci": 0.18
   },
@@ -193183,7 +193898,8 @@
       "lineage": [
         "https://openalex.org/I145286018"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 0.18
   },
@@ -193559,7 +194275,8 @@
       "lineage": [
         "https://openalex.org/I141945490"
       ],
-      "shortand_name": "UBC"
+      "shortand_name": "UBC",
+      "label_name": "U. of British Columbia"
     },
     "aci": 0.36
   },
@@ -193762,7 +194479,8 @@
       "lineage": [
         "https://openalex.org/I74753095"
       ],
-      "shortand_name": "OCAD U"
+      "shortand_name": "OCAD U",
+      "label_name": "Ontario College of Art & Design"
     },
     "aci": 0.45
   },
@@ -194085,7 +194803,8 @@
       "lineage": [
         "https://openalex.org/I19668297"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 0.18
   },
@@ -194306,7 +195025,8 @@
       "lineage": [
         "https://openalex.org/I154425047"
       ],
-      "shortand_name": "U of A"
+      "shortand_name": "U of A",
+      "label_name": "U. of Alberta"
     },
     "aci": 0.18
   },
@@ -194651,7 +195371,8 @@
       "lineage": [
         "https://openalex.org/I201448701"
       ],
-      "shortand_name": "UW"
+      "shortand_name": "UW",
+      "label_name": "U. of Washington"
     },
     "aci": 0.18
   },
@@ -195051,7 +195772,8 @@
       "lineage": [
         "https://openalex.org/I309607013"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 0.18
   },
@@ -195266,7 +195988,8 @@
       "lineage": [
         "https://openalex.org/I74753095"
       ],
-      "shortand_name": "OCAD U"
+      "shortand_name": "OCAD U",
+      "label_name": "Ontario College of Art & Design"
     },
     "aci": 0.18
   },
@@ -195534,7 +196257,8 @@
       "lineage": [
         "https://openalex.org/I185261750"
       ],
-      "shortand_name": "U of T"
+      "shortand_name": "U of T",
+      "label_name": "U. of Toronto"
     },
     "aci": 0.18
   },
@@ -195821,7 +196545,8 @@
       "lineage": [
         "https://openalex.org/I74753095"
       ],
-      "shortand_name": "OCAD U"
+      "shortand_name": "OCAD U",
+      "label_name": "Ontario College of Art & Design"
     },
     "aci": 0.36
   },
@@ -196047,7 +196772,8 @@
       "lineage": [
         "https://openalex.org/I5023651"
       ],
-      "shortand_name": "McGill"
+      "shortand_name": "McGill",
+      "label_name": "McGill U."
     },
     "aci": 0.45
   },
@@ -196429,7 +197155,8 @@
       "lineage": [
         "https://openalex.org/I5023651"
       ],
-      "shortand_name": "McGill"
+      "shortand_name": "McGill",
+      "label_name": "McGill U."
     },
     "aci": 0.36
   },
@@ -196545,7 +197272,8 @@
       "lineage": [
         "https://openalex.org/I43406934"
       ],
-      "shortand_name": "Laval"
+      "shortand_name": "Laval",
+      "label_name": "U. Laval"
     },
     "aci": 0.45
   },
@@ -196661,7 +197389,8 @@
       "lineage": [
         "https://openalex.org/I43406934"
       ],
-      "shortand_name": "Laval"
+      "shortand_name": "Laval",
+      "label_name": "U. Laval"
     },
     "aci": 0.18
   },
@@ -196777,7 +197506,8 @@
       "lineage": [
         "https://openalex.org/I43406934"
       ],
-      "shortand_name": "Laval"
+      "shortand_name": "Laval",
+      "label_name": "U. Laval"
     },
     "aci": 0.36
   },
@@ -196979,7 +197709,8 @@
       "lineage": [
         "https://openalex.org/I129902397"
       ],
-      "shortand_name": "Dal"
+      "shortand_name": "Dal",
+      "label_name": "Dalhousie U."
     },
     "aci": 0.18
   },
@@ -197205,7 +197936,8 @@
       "lineage": [
         "https://openalex.org/I129902397"
       ],
-      "shortand_name": "Dal"
+      "shortand_name": "Dal",
+      "label_name": "Dalhousie U."
     },
     "aci": 0.18
   },
@@ -197510,7 +198242,8 @@
       "lineage": [
         "https://openalex.org/I3129292944"
       ],
-      "shortand_name": "Cégep Chicoutimi"
+      "shortand_name": "Cégep Chicoutimi",
+      "label_name": "Cégep de Chicoutimi"
     },
     "aci": 0.91
   },
@@ -197737,7 +198470,8 @@
       "lineage": [
         "https://openalex.org/I135117807"
       ],
-      "shortand_name": "UdeS"
+      "shortand_name": "UdeS",
+      "label_name": "U. de Sherbrooke"
     },
     "aci": 0.18
   },
@@ -198129,7 +198863,8 @@
       "lineage": [
         "https://openalex.org/I4210108471"
       ],
-      "shortand_name": "Le Mans"
+      "shortand_name": "Le Mans",
+      "label_name": "Le Mans U."
     },
     "aci": 0.36
   },
@@ -198452,7 +199187,8 @@
       "lineage": [
         "https://openalex.org/I138689650"
       ],
-      "shortand_name": "UniPd"
+      "shortand_name": "UniPd",
+      "label_name": "U. of Padua"
     },
     "aci": 0.45
   },
@@ -198673,7 +199409,8 @@
       "lineage": [
         "https://openalex.org/I138689650"
       ],
-      "shortand_name": "UniPd"
+      "shortand_name": "UniPd",
+      "label_name": "U. of Padua"
     },
     "aci": 0.18
   },
@@ -198900,7 +199637,8 @@
       "lineage": [
         "https://openalex.org/I153718931"
       ],
-      "shortand_name": "uOttawa"
+      "shortand_name": "uOttawa",
+      "label_name": "U. of Ottawa"
     },
     "aci": 0.18
   },
@@ -199229,7 +199967,8 @@
       "lineage": [
         "https://openalex.org/I25217355"
       ],
-      "shortand_name": "UniPv"
+      "shortand_name": "UniPv",
+      "label_name": "U. of Pavia"
     },
     "aci": 0.36
   },
@@ -199501,7 +200240,8 @@
       "lineage": [
         "https://openalex.org/I185261750"
       ],
-      "shortand_name": "U of T"
+      "shortand_name": "U of T",
+      "label_name": "U. of Toronto"
     },
     "aci": 0.45
   },
@@ -199767,7 +200507,8 @@
       "lineage": [
         "https://openalex.org/I185261750"
       ],
-      "shortand_name": "U of T"
+      "shortand_name": "U of T",
+      "label_name": "U. of Toronto"
     },
     "aci": 0.18
   },
@@ -200119,7 +200860,8 @@
       "lineage": [
         "https://openalex.org/I185261750"
       ],
-      "shortand_name": "U of T"
+      "shortand_name": "U of T",
+      "label_name": "U. of Toronto"
     },
     "aci": 0.36
   },
@@ -200430,7 +201172,8 @@
       "lineage": [
         "https://openalex.org/I151746483"
       ],
-      "shortand_name": "UW"
+      "shortand_name": "UW",
+      "label_name": "U. of Waterloo"
     },
     "aci": 0.45
   },
@@ -200795,7 +201538,8 @@
       "lineage": [
         "https://openalex.org/I151746483"
       ],
-      "shortand_name": "UW"
+      "shortand_name": "UW",
+      "label_name": "U. of Waterloo"
     },
     "aci": 0.36
   },
@@ -200998,7 +201742,8 @@
       "lineage": [
         "https://openalex.org/I67031392"
       ],
-      "shortand_name": "Carleton"
+      "shortand_name": "Carleton",
+      "label_name": "Carleton U."
     },
     "aci": 0.91
   },
@@ -201236,7 +201981,8 @@
       "lineage": [
         "https://openalex.org/I130438778"
       ],
-      "shortand_name": "MUN"
+      "shortand_name": "MUN",
+      "label_name": "Memorial U. of Newfoundland"
     },
     "aci": 0.18
   },
@@ -201450,7 +202196,8 @@
       "lineage": [
         "https://openalex.org/I185261750"
       ],
-      "shortand_name": "U of T"
+      "shortand_name": "U of T",
+      "label_name": "U. of Toronto"
     },
     "aci": 0.45
   },
@@ -201600,7 +202347,8 @@
       "lineage": [
         "https://openalex.org/I159176309"
       ],
-      "shortand_name": "UHH"
+      "shortand_name": "UHH",
+      "label_name": "U. Hamburg"
     },
     "aci": 0.18
   },
@@ -201802,7 +202550,8 @@
       "lineage": [
         "https://openalex.org/I67031392"
       ],
-      "shortand_name": "Carleton"
+      "shortand_name": "Carleton",
+      "label_name": "Carleton U."
     },
     "aci": 0.45
   },
@@ -202112,7 +202861,8 @@
       "lineage": [
         "https://openalex.org/I67031392"
       ],
-      "shortand_name": "Carleton"
+      "shortand_name": "Carleton",
+      "label_name": "Carleton U."
     },
     "aci": 0.36
   },
@@ -202356,7 +203106,8 @@
       "lineage": [
         "https://openalex.org/I98251732"
       ],
-      "shortand_name": "Mac"
+      "shortand_name": "Mac",
+      "label_name": "McMaster U."
     },
     "aci": 0.18
   },
@@ -202517,7 +203268,8 @@
       "lineage": [
         "https://openalex.org/I141945490"
       ],
-      "shortand_name": "UBC"
+      "shortand_name": "UBC",
+      "label_name": "U. of British Columbia"
     },
     "aci": 0.18
   },
@@ -202803,7 +203555,8 @@
       "lineage": [
         "https://openalex.org/I67031392"
       ],
-      "shortand_name": "Carleton"
+      "shortand_name": "Carleton",
+      "label_name": "Carleton U."
     },
     "aci": 0.55
   },
@@ -203011,7 +203764,8 @@
       "lineage": [
         "https://openalex.org/I133771110"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 0.45
   },
@@ -203267,7 +204021,8 @@
       "lineage": [
         "https://openalex.org/I186803428"
       ],
-      "shortand_name": "Brock"
+      "shortand_name": "Brock",
+      "label_name": "Brock U."
     },
     "aci": 0.36
   },
@@ -203500,7 +204255,8 @@
       "lineage": [
         "https://openalex.org/I125749732"
       ],
-      "shortand_name": "Western"
+      "shortand_name": "Western",
+      "label_name": "Western U."
     },
     "aci": 0.55
   },
@@ -203824,7 +204580,8 @@
       "lineage": [
         "https://openalex.org/I125749732"
       ],
-      "shortand_name": "Western"
+      "shortand_name": "Western",
+      "label_name": "Western U."
     },
     "aci": 0.45
   },
@@ -204254,7 +205011,8 @@
       "lineage": [
         "https://openalex.org/I79510175"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 0.36
   },
@@ -204602,7 +205360,8 @@
       "lineage": [
         "https://openalex.org/I168635309"
       ],
-      "shortand_name": "U of C"
+      "shortand_name": "U of C",
+      "label_name": "U. of Calgary"
     },
     "aci": 0.45
   },
@@ -204828,7 +205587,8 @@
       "lineage": [
         "https://openalex.org/I168635309"
       ],
-      "shortand_name": "U of C"
+      "shortand_name": "U of C",
+      "label_name": "U. of Calgary"
     },
     "aci": 0.18
   },
@@ -205036,7 +205796,8 @@
       "lineage": [
         "https://openalex.org/I168635309"
       ],
-      "shortand_name": "U of C"
+      "shortand_name": "U of C",
+      "label_name": "U. of Calgary"
     },
     "aci": 0.18
   },
@@ -205274,7 +206035,8 @@
       "lineage": [
         "https://openalex.org/I168635309"
       ],
-      "shortand_name": "U of C"
+      "shortand_name": "U of C",
+      "label_name": "U. of Calgary"
     },
     "aci": 0.18
   },
@@ -205483,7 +206245,8 @@
       "lineage": [
         "https://openalex.org/I168635309"
       ],
-      "shortand_name": "U of C"
+      "shortand_name": "U of C",
+      "label_name": "U. of Calgary"
     },
     "aci": 0.18
   },
@@ -205830,7 +206593,8 @@
       "lineage": [
         "https://openalex.org/I168635309"
       ],
-      "shortand_name": "U of C"
+      "shortand_name": "U of C",
+      "label_name": "U. of Calgary"
     },
     "aci": 0.36
   },
@@ -206134,7 +206898,8 @@
       "lineage": [
         "https://openalex.org/I354108"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 0.45
   },
@@ -206486,7 +207251,8 @@
       "lineage": [
         "https://openalex.org/I25355098"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 0.18
   },
@@ -206814,7 +207580,8 @@
       "lineage": [
         "https://openalex.org/I80947539"
       ],
-      "shortand_name": "FZU"
+      "shortand_name": "FZU",
+      "label_name": "Fuzhou U."
     },
     "aci": 0.18
   },
@@ -207202,7 +207969,8 @@
       "lineage": [
         "https://openalex.org/I129902397"
       ],
-      "shortand_name": "Dal"
+      "shortand_name": "Dal",
+      "label_name": "Dalhousie U."
     },
     "aci": 0.36
   },
@@ -207410,7 +208178,8 @@
       "lineage": [
         "https://openalex.org/I123096312"
       ],
-      "shortand_name": "MSU"
+      "shortand_name": "MSU",
+      "label_name": "Mahasarakham U."
     },
     "aci": 0.45
   },
@@ -207632,7 +208401,8 @@
         "https://openalex.org/I49663120",
         "https://openalex.org/I9736820"
       ],
-      "shortand_name": "ÉTS"
+      "shortand_name": "ÉTS",
+      "label_name": "ÉTS"
     },
     "aci": 0.18
   },
@@ -207974,7 +208744,8 @@
         "https://openalex.org/I159129438",
         "https://openalex.org/I49663120"
       ],
-      "shortand_name": "UQAM"
+      "shortand_name": "UQAM",
+      "label_name": "UQAM"
     },
     "aci": 0.36
   },
@@ -208189,7 +208960,8 @@
       "lineage": [
         "https://openalex.org/I192455969"
       ],
-      "shortand_name": "York"
+      "shortand_name": "York",
+      "label_name": "York U."
     },
     "aci": 0.91
   },
@@ -208445,7 +209217,8 @@
       "lineage": [
         "https://openalex.org/I12315562"
       ],
-      "shortand_name": "TTU"
+      "shortand_name": "TTU",
+      "label_name": "Texas Tech U."
     },
     "aci": 0.36
   },
@@ -208646,7 +209419,8 @@
       "lineage": [
         "https://openalex.org/I60158472"
       ],
-      "shortand_name": "Concordia"
+      "shortand_name": "Concordia",
+      "label_name": "Concordia U."
     },
     "aci": 0.45
   },
@@ -209034,7 +209808,8 @@
       "lineage": [
         "https://openalex.org/I64152125"
       ],
-      "shortand_name": "ZHdK"
+      "shortand_name": "ZHdK",
+      "label_name": "Zurich U. of the Arts"
     },
     "aci": 0.36
   },
@@ -209218,7 +209993,8 @@
       "lineage": [
         "https://openalex.org/I18014758"
       ],
-      "shortand_name": "SFU"
+      "shortand_name": "SFU",
+      "label_name": "Simon Fraser U."
     },
     "aci": 0.45
   },
@@ -209432,7 +210208,8 @@
       "lineage": [
         "https://openalex.org/I185261750"
       ],
-      "shortand_name": "U of T"
+      "shortand_name": "U of T",
+      "label_name": "U. of Toronto"
     },
     "aci": 0.45
   },
@@ -209778,7 +210555,8 @@
       "lineage": [
         "https://openalex.org/I18014758"
       ],
-      "shortand_name": "SFU"
+      "shortand_name": "SFU",
+      "label_name": "Simon Fraser U."
     },
     "aci": 0.36
   },
@@ -209992,7 +210770,8 @@
       "lineage": [
         "https://openalex.org/I192455969"
       ],
-      "shortand_name": "York"
+      "shortand_name": "York",
+      "label_name": "York U."
     },
     "aci": 0.36
   },
@@ -210218,7 +210997,8 @@
       "lineage": [
         "https://openalex.org/I204722609"
       ],
-      "shortand_name": "Queen's"
+      "shortand_name": "Queen's",
+      "label_name": "Queen's U."
     },
     "aci": 0.45
   },
@@ -210666,7 +211446,8 @@
       "lineage": [
         "https://openalex.org/I126231945"
       ],
-      "shortand_name": "QUB"
+      "shortand_name": "QUB",
+      "label_name": "Queen's U. Belfast"
     },
     "aci": 0.18
   },
@@ -211060,7 +211841,8 @@
       "lineage": [
         "https://openalex.org/I126231945"
       ],
-      "shortand_name": "QUB"
+      "shortand_name": "QUB",
+      "label_name": "Queen's U. Belfast"
     },
     "aci": 0.18
   },
@@ -211502,7 +212284,8 @@
       "lineage": [
         "https://openalex.org/I204722609"
       ],
-      "shortand_name": "Queen's"
+      "shortand_name": "Queen's",
+      "label_name": "Queen's U."
     },
     "aci": 0.36
   },
@@ -211735,7 +212518,8 @@
       "lineage": [
         "https://openalex.org/I165143802"
       ],
-      "shortand_name": "UQ"
+      "shortand_name": "UQ",
+      "label_name": "U. of Queensland"
     },
     "aci": 0.45
   },
@@ -211992,7 +212776,8 @@
       "lineage": [
         "https://openalex.org/I165143802"
       ],
-      "shortand_name": "UQ"
+      "shortand_name": "UQ",
+      "label_name": "U. of Queensland"
     },
     "aci": 0.18
   },
@@ -212303,7 +213088,8 @@
       "lineage": [
         "https://openalex.org/I160993911"
       ],
-      "shortand_name": "QUT"
+      "shortand_name": "QUT",
+      "label_name": "Queensland U. of Tech."
     },
     "aci": 0.18
   },
@@ -212674,7 +213460,8 @@
       "lineage": [
         "https://openalex.org/I165143802"
       ],
-      "shortand_name": "UQ"
+      "shortand_name": "UQ",
+      "label_name": "U. of Queensland"
     },
     "aci": 0.18
   },
@@ -212943,7 +213730,8 @@
       "lineage": [
         "https://openalex.org/I165143802"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 0.36
   },
@@ -213217,7 +214005,8 @@
       "lineage": [
         "https://openalex.org/I1323252656"
       ],
-      "shortand_name": null
+      "shortand_name": null,
+      "label_name": null
     },
     "aci": 0.18
   },
@@ -213509,7 +214298,8 @@
         "https://openalex.org/I141596103",
         "https://openalex.org/I4387152517"
       ],
-      "shortand_name": "IST"
+      "shortand_name": "IST",
+      "label_name": "Inst. Superior Técnico"
     },
     "aci": 0.36
   },
@@ -213753,7 +214543,8 @@
       "lineage": [
         "https://openalex.org/I28166907"
       ],
-      "shortand_name": "KI"
+      "shortand_name": "KI",
+      "label_name": "Karolinska Inst."
     },
     "aci": 0.45
   }

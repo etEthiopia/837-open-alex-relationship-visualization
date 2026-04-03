@@ -15,6 +15,7 @@ interface Author {
   last_known_institution: {
     id: string;
     display_name: string;
+    label_name: string;
     country_code: string;
   } | null;
   topics?: Array<{
@@ -51,7 +52,7 @@ export default function ScatterplotView({
     null
   );
   const [universities, setUniversities] = useState<
-    Array<{ name: string; color: string; totalACI: number }>
+    Array<{ name: string; color: string; totalACI: number; count: number }>
   >([]);
 
   useEffect(() => {
@@ -79,7 +80,7 @@ export default function ScatterplotView({
             })
           );
         }
-        setAuthors(domainFiltered);
+        setAuthors(domainFiltered.sort((a, b) => b.aci - a.aci));
       });
   }, [canadianFilter, domain]);
 
@@ -90,7 +91,7 @@ export default function ScatterplotView({
 
     const allInstitutionMap = new Map<string, Author[]>();
     authors.forEach((author) => {
-      const inst = author.last_known_institution?.display_name || "Unknown";
+      const inst = author.last_known_institution?.label_name || author.last_known_institution?.display_name || "Unknown";
       if (!allInstitutionMap.has(inst)) {
         allInstitutionMap.set(inst, []);
       }
@@ -101,9 +102,10 @@ export default function ScatterplotView({
       ([inst, instAuthors]) => ({
         name: inst,
         totalACI: instAuthors.reduce((sum, a) => sum + a.aci, 0),
-        authors: instAuthors,
+        authors: instAuthors.sort((a, b) => b.aci - a.aci), // Sort authors by ACI within the institution
       })
     );
+    console.log(allUniList)
     allUniList.sort((a, b) => b.totalACI - a.totalACI);
 
     const topUniversities = allUniList.slice(0, maxUniversities);
@@ -111,7 +113,7 @@ export default function ScatterplotView({
 
     const filteredAuthors = authors.filter((author) =>
       topUniversityNames.has(
-        author.last_known_institution?.display_name || "Unknown"
+        author.last_known_institution?.label_name || author.last_known_institution?.display_name || "Unknown"
       )
     );
     const displayAuthors = filteredAuthors.slice(0, maxAuthors);
@@ -121,10 +123,18 @@ export default function ScatterplotView({
       .domain(topUniversities.map((u) => u.name))
       .range(distinctColors(topUniversities.length));
 
+    // Count how many authors from each university are actually displayed
+    const displayedUniversityCounts = new Map<string, number>();
+    displayAuthors.forEach((author) => {
+      const inst = author.last_known_institution?.label_name || author.last_known_institution?.display_name || "Unknown";
+      displayedUniversityCounts.set(inst, (displayedUniversityCounts.get(inst) || 0) + 1);
+    });
+
     const uniList = topUniversities.map((uni) => ({
       name: uni.name,
       color: colorScale(uni.name),
       totalACI: uni.totalACI,
+      count: displayedUniversityCounts.get(uni.name) || 0,
     }));
     setUniversities(uniList);
 
@@ -242,14 +252,14 @@ export default function ScatterplotView({
       .attr("cy", (d) => yScale(d.field_citations))
       .attr("r", (d) => (useSizeEncoding ? sizeScale(d.aci) : 5))
       .attr("fill", (d) =>
-        colorScale(d.last_known_institution?.display_name || "Unknown")
+        colorScale(d.last_known_institution?.label_name || d.last_known_institution?.display_name || "Unknown")
       )
       .attr("stroke", "rgba(255,255,255,0.7)")
       .attr("stroke-width", 0.8)
       .style("cursor", "pointer")
       .style("opacity", (d) => {
         if (!selectedInstitution) return 1.0;
-        return d.last_known_institution?.display_name === selectedInstitution
+        return d.last_known_institution?.label_name === selectedInstitution || d.last_known_institution?.display_name === selectedInstitution
           ? 1.0
           : 0.2;
       })
@@ -257,7 +267,7 @@ export default function ScatterplotView({
         d3.select(this).attr("stroke-width", 2);
         tooltip.style("opacity", 1).html(`
             <strong>${d.display_name}</strong><br/>
-            Institution: ${d.last_known_institution?.display_name || "Unknown"}<br/>
+            Institution: ${d.last_known_institution?.label_name || d.last_known_institution?.display_name || "Unknown"}<br/>
             Publications: ${d.field_papers}<br/>
             Citations: ${d.field_citations}<br/>
             Citation Impact: ${d.aci.toFixed(2)}<br/>
@@ -291,9 +301,9 @@ export default function ScatterplotView({
         let newY = t.rescaleY(yScale);
 
         // Clamp to avoid negative axis values
-        let [minX, maxX] = newX.domain();
+        const [minX, maxX] = newX.domain();
         if (minX < 0) newX = newX.copy().domain([0, maxX - minX]);
-        let [minY, maxY] = newY.domain();
+        const [minY, maxY] = newY.domain();
         if (minY < 0) newY = newY.copy().domain([0, maxY - minY]);
 
         const xTicks = [];
@@ -388,7 +398,10 @@ export default function ScatterplotView({
                 className={styles.colorBox}
                 style={{ backgroundColor: uni.color }}
               />
-              <span className={styles.universityName}>{uni.name}</span>
+              
+                <span className={styles.universityName}>
+                {uni.name} {uni.count > 0 ? `(${uni.count})` : ''}
+                </span>
             </div>
           ))}
         </div>

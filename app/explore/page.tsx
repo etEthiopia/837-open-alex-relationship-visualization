@@ -169,6 +169,7 @@ function ExploreContent() {
   const [canadianFilter, setCanadianFilter] = useState<CanadianFilter>("full");
   const [selectedField, setSelectedField] = useState<string>("");
   const [selectedSubfield, setSelectedSubfield] = useState<string>("");
+  const [networkViewMode, setNetworkViewMode] = useState<"author" | "university">("author");
 
   const handleFieldChange = (val: string) => {
     setSelectedField(val);
@@ -183,6 +184,9 @@ function ExploreContent() {
     : `field:${selectedField}`;
 
   const availableSubfields = selectedField ? (SUBFIELDS[selectedField] ?? []) : [];
+
+  // Disable maxAuthors slider when in network tab with university view mode
+  const isMaxAuthorsDisabled = activeTab === "network" && networkViewMode === "university";
 
   return (
     <div className={styles.page}>
@@ -202,7 +206,9 @@ function ExploreContent() {
       {/* ── Filters ── */}
       <div className={styles.filterBar}>
         <div className={styles.filterGroup}>
-          <label htmlFor="maxAuthors">Authors — {maxAuthors}</label>
+          <label htmlFor="maxAuthors" style={{ opacity: isMaxAuthorsDisabled ? 0.5 : 1 }}>
+            Authors — {maxAuthors}
+          </label>
           <input
             id="maxAuthors"
             type="range"
@@ -211,6 +217,8 @@ function ExploreContent() {
             value={maxAuthors}
             onChange={(e) => setMaxAuthors(Number(e.target.value))}
             className={styles.slider}
+            disabled={isMaxAuthorsDisabled}
+            style={{ opacity: isMaxAuthorsDisabled ? 0.5 : 1, cursor: isMaxAuthorsDisabled ? 'not-allowed' : 'pointer' }}
           />
         </div>
         <div className={styles.filterGroup}>
@@ -304,6 +312,7 @@ function ExploreContent() {
             maxUniversities={maxUniversities}
             canadianFilter={canadianFilter}
             domain={domainValue}
+            onViewModeChange={setNetworkViewMode}
           />
         )}
       </div>

@@ -1,0 +1,6223 @@
+[
+  {
+    "id": "https://openalex.org/I18014758",
+    "name": "Simon Fraser University",
+    "ror": "https://ror.org/0213rcc28",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I18014758"
+    ],
+    "field_citations": 203,
+    "field_papers": 58,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 164,
+        "field_papers": 30
+      },
+      "2025": {
+        "field_citations": 39,
+        "field_papers": 26
+      },
+      "2026": {
+        "field_citations": 0,
+        "field_papers": 2
+      }
+    },
+    "works_count": 58,
+    "cited_by_count": 203,
+    "ICI": 86.50309012746511,
+    "shortand_name": "SFU",
+    "label_name": "Simon Fraser U."
+  },
+  {
+    "id": "https://openalex.org/I185261750",
+    "name": "University of Toronto",
+    "ror": "https://ror.org/03dbr7087",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I185261750"
+    ],
+    "field_citations": 313,
+    "field_papers": 53,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 290,
+        "field_papers": 34
+      },
+      "2025": {
+        "field_citations": 23,
+        "field_papers": 19
+      }
+    },
+    "works_count": 53,
+    "cited_by_count": 313,
+    "ICI": 73.50018906789093,
+    "shortand_name": "U of T",
+    "label_name": "U. of Toronto"
+  },
+  {
+    "id": "https://openalex.org/I151746483",
+    "name": "University of Waterloo",
+    "ror": "https://ror.org/01aff2v68",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I151746483"
+    ],
+    "field_citations": 199,
+    "field_papers": 46,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 173,
+        "field_papers": 28
+      },
+      "2025": {
+        "field_citations": 26,
+        "field_papers": 17
+      },
+      "2026": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 46,
+    "cited_by_count": 199,
+    "ICI": 82.88291666666667,
+    "shortand_name": "UW",
+    "label_name": "U. of Waterloo"
+  },
+  {
+    "id": "https://openalex.org/I192455969",
+    "name": "York University",
+    "ror": "https://ror.org/05fq50484",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I192455969"
+    ],
+    "field_citations": 59,
+    "field_papers": 30,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 47,
+        "field_papers": 14
+      },
+      "2025": {
+        "field_citations": 12,
+        "field_papers": 16
+      }
+    },
+    "works_count": 30,
+    "cited_by_count": 59,
+    "ICI": 34.38055555555555,
+    "shortand_name": "York",
+    "label_name": "York U."
+  },
+  {
+    "id": "https://openalex.org/I141945490",
+    "name": "University of British Columbia",
+    "ror": "https://ror.org/03rmrcq20",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I141945490"
+    ],
+    "field_citations": 82,
+    "field_papers": 30,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 74,
+        "field_papers": 19
+      },
+      "2025": {
+        "field_citations": 8,
+        "field_papers": 11
+      }
+    },
+    "works_count": 30,
+    "cited_by_count": 82,
+    "ICI": 50.18869047619047,
+    "shortand_name": "UBC",
+    "label_name": "U. of British Columbia"
+  },
+  {
+    "id": "https://openalex.org/I67031392",
+    "name": "Carleton University",
+    "ror": "https://ror.org/02qtvee93",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I67031392"
+    ],
+    "field_citations": 34,
+    "field_papers": 27,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 28,
+        "field_papers": 15
+      },
+      "2025": {
+        "field_citations": 6,
+        "field_papers": 12
+      }
+    },
+    "works_count": 27,
+    "cited_by_count": 34,
+    "ICI": 37.21190476190476,
+    "shortand_name": "Carleton",
+    "label_name": "Carleton U."
+  },
+  {
+    "id": "https://openalex.org/I168635309",
+    "name": "University of Calgary",
+    "ror": "https://ror.org/03yjb2x39",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I168635309"
+    ],
+    "field_citations": 62,
+    "field_papers": 20,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 58,
+        "field_papers": 15
+      },
+      "2025": {
+        "field_citations": 4,
+        "field_papers": 5
+      }
+    },
+    "works_count": 20,
+    "cited_by_count": 62,
+    "ICI": 33.89991258741259,
+    "shortand_name": "U of C",
+    "label_name": "U. of Calgary"
+  },
+  {
+    "id": "https://openalex.org/I60158472",
+    "name": "Concordia University",
+    "ror": "https://ror.org/0420zvk78",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I60158472"
+    ],
+    "field_citations": 31,
+    "field_papers": 19,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 21,
+        "field_papers": 5
+      },
+      "2025": {
+        "field_citations": 10,
+        "field_papers": 14
+      }
+    },
+    "works_count": 19,
+    "cited_by_count": 31,
+    "ICI": 15.163541666666667,
+    "shortand_name": "Concordia",
+    "label_name": "Concordia U."
+  },
+  {
+    "id": "https://openalex.org/I204722609",
+    "name": "Queen's University",
+    "ror": "https://ror.org/02y72wh86",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I204722609"
+    ],
+    "field_citations": 49,
+    "field_papers": 17,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 12,
+        "field_papers": 10
+      },
+      "2024": {
+        "field_citations": 37,
+        "field_papers": 7
+      }
+    },
+    "works_count": 17,
+    "cited_by_count": 49,
+    "ICI": 24.730086580086578,
+    "shortand_name": "Queen's",
+    "label_name": "Queen's U."
+  },
+  {
+    "id": "https://openalex.org/I83019370",
+    "name": "Eindhoven University of Technology",
+    "ror": "https://ror.org/02c2kyt77",
+    "country_code": "NL",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I83019370"
+    ],
+    "field_citations": 101,
+    "field_papers": 16,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 80,
+        "field_papers": 9
+      },
+      "2025": {
+        "field_citations": 21,
+        "field_papers": 7
+      }
+    },
+    "works_count": 16,
+    "cited_by_count": 101,
+    "ICI": 23.024381914381912,
+    "shortand_name": "TU/e",
+    "label_name": "Eindhoven U. of Tech."
+  },
+  {
+    "id": "https://openalex.org/I212119943",
+    "name": "University of Victoria",
+    "ror": "https://ror.org/04s5mat29",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I212119943"
+    ],
+    "field_citations": 66,
+    "field_papers": 16,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 55,
+        "field_papers": 9
+      },
+      "2025": {
+        "field_citations": 11,
+        "field_papers": 5
+      },
+      "2026": {
+        "field_citations": 0,
+        "field_papers": 2
+      }
+    },
+    "works_count": 16,
+    "cited_by_count": 66,
+    "ICI": 16.503470418470418,
+    "shortand_name": "UVic",
+    "label_name": "U. of Victoria"
+  },
+  {
+    "id": "https://openalex.org/I129902397",
+    "name": "Dalhousie University",
+    "ror": "https://ror.org/01e6qks80",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I129902397"
+    ],
+    "field_citations": 19,
+    "field_papers": 12,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 17,
+        "field_papers": 6
+      },
+      "2025": {
+        "field_citations": 2,
+        "field_papers": 6
+      }
+    },
+    "works_count": 12,
+    "cited_by_count": 19,
+    "ICI": 16.921875,
+    "shortand_name": "Dal",
+    "label_name": "Dalhousie U."
+  },
+  {
+    "id": "https://openalex.org/I5023651",
+    "name": "McGill University",
+    "ror": "https://ror.org/01pxwe438",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I5023651"
+    ],
+    "field_citations": 23,
+    "field_papers": 11,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 19,
+        "field_papers": 7
+      },
+      "2025": {
+        "field_citations": 4,
+        "field_papers": 4
+      }
+    },
+    "works_count": 11,
+    "cited_by_count": 23,
+    "ICI": 14.7125,
+    "shortand_name": "McGill",
+    "label_name": "McGill U."
+  },
+  {
+    "id": "https://openalex.org/I98251732",
+    "name": "McMaster University",
+    "ror": "https://ror.org/02fa3aq29",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I98251732"
+    ],
+    "field_citations": 123,
+    "field_papers": 10,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 119,
+        "field_papers": 8
+      },
+      "2025": {
+        "field_citations": 4,
+        "field_papers": 2
+      }
+    },
+    "works_count": 10,
+    "cited_by_count": 123,
+    "ICI": 12.683075630252102,
+    "shortand_name": "Mac",
+    "label_name": "McMaster U."
+  },
+  {
+    "id": "https://openalex.org/I154425047",
+    "name": "University of Alberta",
+    "ror": "https://ror.org/0160cpw27",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I154425047"
+    ],
+    "field_citations": 48,
+    "field_papers": 10,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 40,
+        "field_papers": 6
+      },
+      "2025": {
+        "field_citations": 8,
+        "field_papers": 4
+      }
+    },
+    "works_count": 10,
+    "cited_by_count": 48,
+    "ICI": 12.500757575757575,
+    "shortand_name": "U of A",
+    "label_name": "U. of Alberta"
+  },
+  {
+    "id": "https://openalex.org/I204337017",
+    "name": "Aarhus University",
+    "ror": "https://ror.org/01aj84f44",
+    "country_code": "DK",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I204337017"
+    ],
+    "field_citations": 50,
+    "field_papers": 8,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 47,
+        "field_papers": 6
+      },
+      "2025": {
+        "field_citations": 3,
+        "field_papers": 2
+      }
+    },
+    "works_count": 8,
+    "cited_by_count": 50,
+    "ICI": 7.978801406926406,
+    "shortand_name": "AU",
+    "label_name": "Aarhus U."
+  },
+  {
+    "id": "https://openalex.org/I822440",
+    "name": "Okanagan University College",
+    "ror": "https://ror.org/02mxmh518",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I822440"
+    ],
+    "field_citations": 34,
+    "field_papers": 8,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 33,
+        "field_papers": 7
+      },
+      "2025": {
+        "field_citations": 1,
+        "field_papers": 1
+      }
+    },
+    "works_count": 8,
+    "cited_by_count": 34,
+    "ICI": 17.64702380952381,
+    "shortand_name": "OUC",
+    "label_name": "Okanagan U. College"
+  },
+  {
+    "id": "https://openalex.org/I530967",
+    "name": "Toronto Metropolitan University",
+    "ror": "https://ror.org/05g13zd79",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I530967"
+    ],
+    "field_citations": 20,
+    "field_papers": 8,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 18,
+        "field_papers": 5
+      },
+      "2025": {
+        "field_citations": 2,
+        "field_papers": 3
+      }
+    },
+    "works_count": 8,
+    "cited_by_count": 20,
+    "ICI": 12.011904761904763,
+    "shortand_name": "TMU",
+    "label_name": "Toronto Metropolitan U."
+  },
+  {
+    "id": "https://openalex.org/I188538660",
+    "name": "University of Colorado Boulder",
+    "ror": "https://ror.org/02ttsq026",
+    "country_code": "US",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I188538660"
+    ],
+    "field_citations": 55,
+    "field_papers": 7,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 49,
+        "field_papers": 3
+      },
+      "2025": {
+        "field_citations": 6,
+        "field_papers": 4
+      }
+    },
+    "works_count": 7,
+    "cited_by_count": 55,
+    "ICI": 4.950114237614238,
+    "shortand_name": "CU Boulder",
+    "label_name": "U. of Colorado Boulder"
+  },
+  {
+    "id": "https://openalex.org/I132286405",
+    "name": "Kadir Has University",
+    "ror": "https://ror.org/03zzckc47",
+    "country_code": "TR",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I132286405"
+    ],
+    "field_citations": 17,
+    "field_papers": 6,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 17,
+        "field_papers": 4
+      },
+      "2025": {
+        "field_citations": 0,
+        "field_papers": 2
+      }
+    },
+    "works_count": 6,
+    "cited_by_count": 17,
+    "ICI": 6.215625,
+    "shortand_name": "KHAS",
+    "label_name": "Kadir Has U."
+  },
+  {
+    "id": "https://openalex.org/I201448701",
+    "name": "University of Washington",
+    "ror": "https://ror.org/00cvxb145",
+    "country_code": "US",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I201448701"
+    ],
+    "field_citations": 12,
+    "field_papers": 6,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 7,
+        "field_papers": 3
+      },
+      "2025": {
+        "field_citations": 5,
+        "field_papers": 3
+      }
+    },
+    "works_count": 6,
+    "cited_by_count": 12,
+    "ICI": 4.071969696969697,
+    "shortand_name": "UW",
+    "label_name": "U. of Washington"
+  },
+  {
+    "id": "https://openalex.org/I43406934",
+    "name": "Université Laval",
+    "ror": "https://ror.org/04sjchr03",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I43406934"
+    ],
+    "field_citations": 3,
+    "field_papers": 6,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 3,
+        "field_papers": 4
+      },
+      "2025": {
+        "field_citations": 0,
+        "field_papers": 2
+      }
+    },
+    "works_count": 6,
+    "cited_by_count": 3,
+    "ICI": 9.375,
+    "shortand_name": "Laval",
+    "label_name": "U. Laval"
+  },
+  {
+    "id": "https://openalex.org/I79817857",
+    "name": "University of Guelph",
+    "ror": "https://ror.org/01r7awg59",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I79817857"
+    ],
+    "field_citations": 16,
+    "field_papers": 6,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 3,
+        "field_papers": 3
+      },
+      "2024": {
+        "field_citations": 13,
+        "field_papers": 3
+      }
+    },
+    "works_count": 6,
+    "cited_by_count": 16,
+    "ICI": 13.823214285714286,
+    "shortand_name": "U of G",
+    "label_name": "U. of Guelph"
+  },
+  {
+    "id": "https://openalex.org/I125749732",
+    "name": "Western University",
+    "ror": "https://ror.org/02grkyz14",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I125749732"
+    ],
+    "field_citations": 2,
+    "field_papers": 6,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 2,
+        "field_papers": 3
+      },
+      "2025": {
+        "field_citations": 0,
+        "field_papers": 3
+      }
+    },
+    "works_count": 6,
+    "cited_by_count": 2,
+    "ICI": 12.0,
+    "shortand_name": "Western",
+    "label_name": "Western U."
+  },
+  {
+    "id": "https://openalex.org/I86987016",
+    "name": "KTH Royal Institute of Technology",
+    "ror": "https://ror.org/026vcq606",
+    "country_code": "SE",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I86987016"
+    ],
+    "field_citations": 96,
+    "field_papers": 5,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 95,
+        "field_papers": 4
+      },
+      "2025": {
+        "field_citations": 1,
+        "field_papers": 1
+      }
+    },
+    "works_count": 5,
+    "cited_by_count": 96,
+    "ICI": 4.654,
+    "shortand_name": "KTH",
+    "label_name": "KTH Royal Inst. of Tech."
+  },
+  {
+    "id": "https://openalex.org/I70931966",
+    "name": "Université de Montréal",
+    "ror": "https://ror.org/0161xgx34",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I70931966"
+    ],
+    "field_citations": 25,
+    "field_papers": 5,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 23,
+        "field_papers": 2
+      },
+      "2025": {
+        "field_citations": 2,
+        "field_papers": 3
+      }
+    },
+    "works_count": 5,
+    "cited_by_count": 25,
+    "ICI": 5.045454545454545,
+    "shortand_name": "UdeM",
+    "label_name": "U. de Montréal"
+  },
+  {
+    "id": "https://openalex.org/I67415387",
+    "name": "Lancaster University",
+    "ror": "https://ror.org/04f2nsd36",
+    "country_code": "GB",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I67415387"
+    ],
+    "field_citations": 39,
+    "field_papers": 5,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 39,
+        "field_papers": 5
+      }
+    },
+    "works_count": 5,
+    "cited_by_count": 39,
+    "ICI": 11.129761904761903,
+    "shortand_name": "Lancaster",
+    "label_name": "Lancaster U."
+  },
+  {
+    "id": "https://openalex.org/I56590836",
+    "name": "Monash University",
+    "ror": "https://ror.org/02bfwt286",
+    "country_code": "AU",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I56590836"
+    ],
+    "field_citations": 62,
+    "field_papers": 4,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 52,
+        "field_papers": 3
+      },
+      "2025": {
+        "field_citations": 10,
+        "field_papers": 1
+      }
+    },
+    "works_count": 4,
+    "cited_by_count": 62,
+    "ICI": 4.136428571428572,
+    "shortand_name": "Monash",
+    "label_name": "Monash U."
+  },
+  {
+    "id": "https://openalex.org/I205783295",
+    "name": "Cornell University",
+    "ror": "https://ror.org/05bnh6r87",
+    "country_code": "US",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I205783295"
+    ],
+    "field_citations": 46,
+    "field_papers": 4,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 42,
+        "field_papers": 3
+      },
+      "2025": {
+        "field_citations": 4,
+        "field_papers": 1
+      }
+    },
+    "works_count": 4,
+    "cited_by_count": 46,
+    "ICI": 2.027717652717653,
+    "shortand_name": "Cornell",
+    "label_name": "Cornell U."
+  },
+  {
+    "id": "https://openalex.org/I7882870",
+    "name": "University of Glasgow",
+    "ror": "https://ror.org/00vtgdb53",
+    "country_code": "GB",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I7882870"
+    ],
+    "field_citations": 25,
+    "field_papers": 4,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 25,
+        "field_papers": 4
+      }
+    },
+    "works_count": 4,
+    "cited_by_count": 25,
+    "ICI": 11.90844155844156,
+    "shortand_name": "U of G",
+    "label_name": "U. of Glasgow"
+  },
+  {
+    "id": "https://openalex.org/I104914703",
+    "name": "Université du Québec à Chicoutimi",
+    "ror": "https://ror.org/00y3hzd62",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I104914703",
+      "https://openalex.org/I49663120"
+    ],
+    "field_citations": 15,
+    "field_papers": 4,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 14,
+        "field_papers": 3
+      },
+      "2025": {
+        "field_citations": 1,
+        "field_papers": 1
+      }
+    },
+    "works_count": 4,
+    "cited_by_count": 15,
+    "ICI": 9.108333333333333,
+    "shortand_name": "UQAC",
+    "label_name": "UQAC"
+  },
+  {
+    "id": "https://openalex.org/I185492890",
+    "name": "University of Canterbury",
+    "ror": "https://ror.org/03y7q9t39",
+    "country_code": "NZ",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I185492890"
+    ],
+    "field_citations": 7,
+    "field_papers": 4,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 7,
+        "field_papers": 2
+      },
+      "2025": {
+        "field_citations": 0,
+        "field_papers": 2
+      }
+    },
+    "works_count": 4,
+    "cited_by_count": 7,
+    "ICI": 1.1428571428571428,
+    "shortand_name": "UC",
+    "label_name": "U. of Canterbury"
+  },
+  {
+    "id": "https://openalex.org/I100930933",
+    "name": "University College Dublin",
+    "ror": "https://ror.org/05m7pjf47",
+    "country_code": "IE",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I100930933"
+    ],
+    "field_citations": 12,
+    "field_papers": 4,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 11,
+        "field_papers": 2
+      },
+      "2025": {
+        "field_citations": 1,
+        "field_papers": 1
+      },
+      "2026": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 4,
+    "cited_by_count": 12,
+    "ICI": 1.9880952380952381,
+    "shortand_name": "UCD",
+    "label_name": "U. College Dublin"
+  },
+  {
+    "id": "https://openalex.org/I4210089758",
+    "name": "Anhalt University of Applied Sciences",
+    "ror": "https://ror.org/0076zct58",
+    "country_code": "DE",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I4210089758"
+    ],
+    "field_citations": 14,
+    "field_papers": 4,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 5,
+        "field_papers": 2
+      },
+      "2024": {
+        "field_citations": 9,
+        "field_papers": 2
+      }
+    },
+    "works_count": 4,
+    "cited_by_count": 14,
+    "ICI": 1.6578282828282827,
+    "shortand_name": "HS Anhalt",
+    "label_name": "Anhalt U. of Applied Sciences"
+  },
+  {
+    "id": "https://openalex.org/I160993911",
+    "name": "Queensland University of Technology",
+    "ror": "https://ror.org/03pnv4752",
+    "country_code": "AU",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I160993911"
+    ],
+    "field_citations": 11,
+    "field_papers": 4,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 11,
+        "field_papers": 2
+      },
+      "2025": {
+        "field_citations": 0,
+        "field_papers": 2
+      }
+    },
+    "works_count": 4,
+    "cited_by_count": 11,
+    "ICI": 1.3033333333333332,
+    "shortand_name": "QUT",
+    "label_name": "Queensland U. of Tech."
+  },
+  {
+    "id": "https://openalex.org/I106938459",
+    "name": "University of New Brunswick",
+    "ror": "https://ror.org/05nkf0n29",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I106938459"
+    ],
+    "field_citations": 21,
+    "field_papers": 4,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 21,
+        "field_papers": 4
+      }
+    },
+    "works_count": 4,
+    "cited_by_count": 21,
+    "ICI": 8.830769230769231,
+    "shortand_name": "UNB",
+    "label_name": "U. of New Brunswick"
+  },
+  {
+    "id": "https://openalex.org/I2279609970",
+    "name": "Université de Lille",
+    "ror": "https://ror.org/02kzqn938",
+    "country_code": "FR",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I2279609970"
+    ],
+    "field_citations": 8,
+    "field_papers": 4,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 5,
+        "field_papers": 2
+      },
+      "2025": {
+        "field_citations": 3,
+        "field_papers": 2
+      }
+    },
+    "works_count": 4,
+    "cited_by_count": 8,
+    "ICI": 8.136904761904763,
+    "shortand_name": "ULille",
+    "label_name": "U. de Lille"
+  },
+  {
+    "id": "https://openalex.org/I169521973",
+    "name": "University of New Mexico",
+    "ror": "https://ror.org/05fs6jp91",
+    "country_code": "US",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I169521973"
+    ],
+    "field_citations": 46,
+    "field_papers": 3,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 42,
+        "field_papers": 2
+      },
+      "2025": {
+        "field_citations": 4,
+        "field_papers": 1
+      }
+    },
+    "works_count": 3,
+    "cited_by_count": 46,
+    "ICI": 2.210185185185185,
+    "shortand_name": "UNM",
+    "label_name": "U. of New Mexico"
+  },
+  {
+    "id": "https://openalex.org/I136199984",
+    "name": "Harvard University",
+    "ror": "https://ror.org/03vek6s52",
+    "country_code": "US",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I136199984"
+    ],
+    "field_citations": 55,
+    "field_papers": 3,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 48,
+        "field_papers": 2
+      },
+      "2025": {
+        "field_citations": 7,
+        "field_papers": 1
+      }
+    },
+    "works_count": 3,
+    "cited_by_count": 55,
+    "ICI": 2.2399600399600397,
+    "shortand_name": "Harvard",
+    "label_name": "Harvard U."
+  },
+  {
+    "id": "https://openalex.org/I130238516",
+    "name": "University of Minnesota",
+    "ror": "https://ror.org/017zqws13",
+    "country_code": "US",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I130238516"
+    ],
+    "field_citations": 24,
+    "field_papers": 3,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 24,
+        "field_papers": 3
+      }
+    },
+    "works_count": 3,
+    "cited_by_count": 24,
+    "ICI": 5.502857142857144,
+    "shortand_name": "UMN",
+    "label_name": "U. of Minnesota"
+  },
+  {
+    "id": "https://openalex.org/I200769079",
+    "name": "Hong Kong University of Science and Technology",
+    "ror": "https://ror.org/00q4vv597",
+    "country_code": "HK",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I200769079"
+    ],
+    "field_citations": 17,
+    "field_papers": 3,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 16,
+        "field_papers": 2
+      },
+      "2025": {
+        "field_citations": 1,
+        "field_papers": 1
+      }
+    },
+    "works_count": 3,
+    "cited_by_count": 17,
+    "ICI": 4.55,
+    "shortand_name": "HKUST",
+    "label_name": "Hong Kong U. of Science & Tech"
+  },
+  {
+    "id": "https://openalex.org/I154130895",
+    "name": "University of Auckland",
+    "ror": "https://ror.org/03b94tp07",
+    "country_code": "NZ",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I154130895"
+    ],
+    "field_citations": 12,
+    "field_papers": 3,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 12,
+        "field_papers": 2
+      },
+      "2025": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 3,
+    "cited_by_count": 12,
+    "ICI": 2.0,
+    "shortand_name": "UoA",
+    "label_name": "U. of Auckland"
+  },
+  {
+    "id": "https://openalex.org/I4405260628",
+    "name": "University of British Columbia, Okanagan Campus",
+    "ror": "https://ror.org/04241wz75",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I141945490",
+      "https://openalex.org/I4405260628"
+    ],
+    "field_citations": 19,
+    "field_papers": 3,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 18,
+        "field_papers": 2
+      },
+      "2025": {
+        "field_citations": 1,
+        "field_papers": 1
+      }
+    },
+    "works_count": 3,
+    "cited_by_count": 19,
+    "ICI": 5.117857142857143,
+    "shortand_name": "UBCO",
+    "label_name": "UBC Okanagan"
+  },
+  {
+    "id": "https://openalex.org/I12912129",
+    "name": "Northeastern University",
+    "ror": "https://ror.org/04t5xt781",
+    "country_code": "US",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I12912129"
+    ],
+    "field_citations": 10,
+    "field_papers": 3,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 9,
+        "field_papers": 1
+      },
+      "2025": {
+        "field_citations": 1,
+        "field_papers": 2
+      }
+    },
+    "works_count": 3,
+    "cited_by_count": 10,
+    "ICI": 1.2333333333333334,
+    "shortand_name": "NEU",
+    "label_name": "Northeastern U."
+  },
+  {
+    "id": "https://openalex.org/I8078737",
+    "name": "Clemson University",
+    "ror": "https://ror.org/037s24f05",
+    "country_code": "US",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I8078737"
+    ],
+    "field_citations": 19,
+    "field_papers": 3,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 19,
+        "field_papers": 3
+      }
+    },
+    "works_count": 3,
+    "cited_by_count": 19,
+    "ICI": 2.3085416666666667,
+    "shortand_name": "Clemson",
+    "label_name": "Clemson U."
+  },
+  {
+    "id": "https://openalex.org/I1174212",
+    "name": "University of Southern California",
+    "ror": "https://ror.org/03taz7m60",
+    "country_code": "US",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I1174212"
+    ],
+    "field_citations": 14,
+    "field_papers": 3,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 14,
+        "field_papers": 2
+      },
+      "2025": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 3,
+    "cited_by_count": 14,
+    "ICI": 1.4545454545454546,
+    "shortand_name": "USC",
+    "label_name": "U. of Southern California"
+  },
+  {
+    "id": "https://openalex.org/I70983195",
+    "name": "Syracuse University",
+    "ror": "https://ror.org/025r5qe02",
+    "country_code": "US",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I70983195"
+    ],
+    "field_citations": 7,
+    "field_papers": 3,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 6,
+        "field_papers": 1
+      },
+      "2025": {
+        "field_citations": 1,
+        "field_papers": 1
+      },
+      "2026": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 3,
+    "cited_by_count": 7,
+    "ICI": 2.4166666666666665,
+    "shortand_name": "Syracuse",
+    "label_name": "Syracuse U."
+  },
+  {
+    "id": "https://openalex.org/I51601045",
+    "name": "University of Bath",
+    "ror": "https://ror.org/002h8g185",
+    "country_code": "GB",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I51601045"
+    ],
+    "field_citations": 9,
+    "field_papers": 3,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 6,
+        "field_papers": 2
+      },
+      "2025": {
+        "field_citations": 3,
+        "field_papers": 1
+      }
+    },
+    "works_count": 3,
+    "cited_by_count": 9,
+    "ICI": 1.6999999999999997,
+    "shortand_name": "Bath",
+    "label_name": "U. of Bath"
+  },
+  {
+    "id": "https://openalex.org/I889458895",
+    "name": "University of Hong Kong",
+    "ror": "https://ror.org/02zhqgq86",
+    "country_code": "HK",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I889458895"
+    ],
+    "field_citations": 4,
+    "field_papers": 3,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 2,
+        "field_papers": 2
+      },
+      "2024": {
+        "field_citations": 2,
+        "field_papers": 1
+      }
+    },
+    "works_count": 3,
+    "cited_by_count": 4,
+    "ICI": 5.419047619047619,
+    "shortand_name": "HKU",
+    "label_name": "U. of Hong Kong"
+  },
+  {
+    "id": "https://openalex.org/I130701444",
+    "name": "Georgia Institute of Technology",
+    "ror": "https://ror.org/01zkghx44",
+    "country_code": "US",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I130701444"
+    ],
+    "field_citations": 5,
+    "field_papers": 3,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 5,
+        "field_papers": 3
+      }
+    },
+    "works_count": 3,
+    "cited_by_count": 5,
+    "ICI": 2.8166666666666664,
+    "shortand_name": "Georgia Tech",
+    "label_name": "Georgia Tech"
+  },
+  {
+    "id": "https://openalex.org/I159176309",
+    "name": "Universität Hamburg",
+    "ror": "https://ror.org/00g30e956",
+    "country_code": "DE",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I159176309"
+    ],
+    "field_citations": 2,
+    "field_papers": 3,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 1,
+        "field_papers": 2
+      },
+      "2024": {
+        "field_citations": 1,
+        "field_papers": 1
+      }
+    },
+    "works_count": 3,
+    "cited_by_count": 2,
+    "ICI": 7.7,
+    "shortand_name": "UHH",
+    "label_name": "U. Hamburg"
+  },
+  {
+    "id": "https://openalex.org/I891191580",
+    "name": "Aalborg University",
+    "ror": "https://ror.org/04m5j1k67",
+    "country_code": "DK",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I891191580"
+    ],
+    "field_citations": 5,
+    "field_papers": 3,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 3,
+        "field_papers": 1
+      },
+      "2025": {
+        "field_citations": 2,
+        "field_papers": 2
+      }
+    },
+    "works_count": 3,
+    "cited_by_count": 5,
+    "ICI": 0.7619047619047619,
+    "shortand_name": "AAU",
+    "label_name": "Aalborg U."
+  },
+  {
+    "id": "https://openalex.org/I153718931",
+    "name": "University of Ottawa",
+    "ror": "https://ror.org/03c4mmv16",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I153718931"
+    ],
+    "field_citations": 5,
+    "field_papers": 3,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 4,
+        "field_papers": 2
+      },
+      "2024": {
+        "field_citations": 1,
+        "field_papers": 1
+      }
+    },
+    "works_count": 3,
+    "cited_by_count": 5,
+    "ICI": 7.4,
+    "shortand_name": "uOttawa",
+    "label_name": "U. of Ottawa"
+  },
+  {
+    "id": "https://openalex.org/I98381234",
+    "name": "University of Oulu",
+    "ror": "https://ror.org/03yj89h83",
+    "country_code": "FI",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I98381234"
+    ],
+    "field_citations": 6,
+    "field_papers": 3,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 6,
+        "field_papers": 3
+      }
+    },
+    "works_count": 3,
+    "cited_by_count": 6,
+    "ICI": 2.5238095238095237,
+    "shortand_name": "Oulu",
+    "label_name": "U. of Oulu"
+  },
+  {
+    "id": "https://openalex.org/I7454413",
+    "name": "École Centrale de Lille",
+    "ror": "https://ror.org/01x441g73",
+    "country_code": "FR",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I7454413"
+    ],
+    "field_citations": 4,
+    "field_papers": 3,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 3,
+        "field_papers": 2
+      },
+      "2024": {
+        "field_citations": 1,
+        "field_papers": 1
+      }
+    },
+    "works_count": 3,
+    "cited_by_count": 4,
+    "ICI": 6.261904761904762,
+    "shortand_name": "Centrale Lille",
+    "label_name": "École Centrale de Lille"
+  },
+  {
+    "id": "https://openalex.org/I157614274",
+    "name": "University of Cape Town",
+    "ror": "https://ror.org/03p74gp79",
+    "country_code": "ZA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I157614274"
+    ],
+    "field_citations": 2,
+    "field_papers": 3,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 2,
+        "field_papers": 3
+      }
+    },
+    "works_count": 3,
+    "cited_by_count": 2,
+    "ICI": 0.5,
+    "shortand_name": "UCT",
+    "label_name": "U. of Cape Town"
+  },
+  {
+    "id": "https://openalex.org/I79891267",
+    "name": "Singapore Management University",
+    "ror": "https://ror.org/050qmg959",
+    "country_code": "SG",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I79891267"
+    ],
+    "field_citations": 15,
+    "field_papers": 3,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 15,
+        "field_papers": 3
+      }
+    },
+    "works_count": 3,
+    "cited_by_count": 15,
+    "ICI": 6.730769230769231,
+    "shortand_name": "SMU",
+    "label_name": "Singapore Management U."
+  },
+  {
+    "id": "https://openalex.org/I50441567",
+    "name": "Universitat de les Illes Balears",
+    "ror": "https://ror.org/03e10x626",
+    "country_code": "ES",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I50441567"
+    ],
+    "field_citations": 0,
+    "field_papers": 3,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 0,
+        "field_papers": 3
+      }
+    },
+    "works_count": 3,
+    "cited_by_count": 0,
+    "ICI": 0.0,
+    "shortand_name": "UIB",
+    "label_name": "U. de les Illes Balears"
+  },
+  {
+    "id": "https://openalex.org/I27837315",
+    "name": "University of Michigan–Ann Arbor",
+    "ror": "https://ror.org/00jmfr291",
+    "country_code": "US",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I27837315"
+    ],
+    "field_citations": 71,
+    "field_papers": 2,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 69,
+        "field_papers": 1
+      },
+      "2025": {
+        "field_citations": 2,
+        "field_papers": 1
+      }
+    },
+    "works_count": 2,
+    "cited_by_count": 71,
+    "ICI": 1.5144927536231885,
+    "shortand_name": "UMich",
+    "label_name": "U. of Michigan"
+  },
+  {
+    "id": "https://openalex.org/I95457486",
+    "name": "University of California, Berkeley",
+    "ror": "https://ror.org/01an7q238",
+    "country_code": "US",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I95457486"
+    ],
+    "field_citations": 38,
+    "field_papers": 2,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 38,
+        "field_papers": 2
+      }
+    },
+    "works_count": 2,
+    "cited_by_count": 38,
+    "ICI": 1.4535834535834535,
+    "shortand_name": "UC Berkeley",
+    "label_name": "UC Berkeley"
+  },
+  {
+    "id": "https://openalex.org/I157485424",
+    "name": "Korea Advanced Institute of Science and Technology",
+    "ror": "https://ror.org/05apxxy63",
+    "country_code": "KR",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I157485424"
+    ],
+    "field_citations": 11,
+    "field_papers": 2,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 11,
+        "field_papers": 2
+      }
+    },
+    "works_count": 2,
+    "cited_by_count": 11,
+    "ICI": 2.4545454545454546,
+    "shortand_name": "KAIST",
+    "label_name": "KAIST"
+  },
+  {
+    "id": "https://openalex.org/I89864525",
+    "name": "Universität Trier",
+    "ror": "https://ror.org/02778hg05",
+    "country_code": "DE",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I89864525"
+    ],
+    "field_citations": 19,
+    "field_papers": 2,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 19,
+        "field_papers": 2
+      }
+    },
+    "works_count": 2,
+    "cited_by_count": 19,
+    "ICI": 2.807142857142857,
+    "shortand_name": "Trier",
+    "label_name": "U. Trier"
+  },
+  {
+    "id": "https://openalex.org/I154099455",
+    "name": "Shandong University",
+    "ror": "https://ror.org/0207yh398",
+    "country_code": "CN",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I154099455"
+    ],
+    "field_citations": 15,
+    "field_papers": 2,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 13,
+        "field_papers": 1
+      },
+      "2025": {
+        "field_citations": 2,
+        "field_papers": 1
+      }
+    },
+    "works_count": 2,
+    "cited_by_count": 15,
+    "ICI": 4.115384615384615,
+    "shortand_name": "SDU",
+    "label_name": "Shandong U."
+  },
+  {
+    "id": "https://openalex.org/I9736820",
+    "name": "École de Technologie Supérieure",
+    "ror": "https://ror.org/0020snb74",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I49663120",
+      "https://openalex.org/I9736820"
+    ],
+    "field_citations": 14,
+    "field_papers": 2,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 13,
+        "field_papers": 1
+      },
+      "2025": {
+        "field_citations": 1,
+        "field_papers": 1
+      }
+    },
+    "works_count": 2,
+    "cited_by_count": 14,
+    "ICI": 3.4743589743589745,
+    "shortand_name": "ÉTS",
+    "label_name": "ÉTS"
+  },
+  {
+    "id": "https://openalex.org/I12356871",
+    "name": "Télécom Paris",
+    "ror": "https://ror.org/01naq7912",
+    "country_code": "FR",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I12356871",
+      "https://openalex.org/I205703379",
+      "https://openalex.org/I4210145102"
+    ],
+    "field_citations": 16,
+    "field_papers": 2,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 16,
+        "field_papers": 2
+      }
+    },
+    "works_count": 2,
+    "cited_by_count": 16,
+    "ICI": 1.0547619047619046,
+    "shortand_name": "Telecom",
+    "label_name": "Télécom Paris"
+  },
+  {
+    "id": "https://openalex.org/I41156924",
+    "name": "Victoria University of Wellington",
+    "ror": "https://ror.org/0040r6f76",
+    "country_code": "NZ",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I41156924"
+    ],
+    "field_citations": 10,
+    "field_papers": 2,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 10,
+        "field_papers": 1
+      },
+      "2025": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 2,
+    "cited_by_count": 10,
+    "ICI": 0.47142857142857136,
+    "shortand_name": "VUW",
+    "label_name": "Victoria U. of Wellington"
+  },
+  {
+    "id": "https://openalex.org/I32394136",
+    "name": "Northumbria University",
+    "ror": "https://ror.org/049e6bc10",
+    "country_code": "GB",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I32394136"
+    ],
+    "field_citations": 10,
+    "field_papers": 2,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 9,
+        "field_papers": 1
+      },
+      "2025": {
+        "field_citations": 1,
+        "field_papers": 1
+      }
+    },
+    "works_count": 2,
+    "cited_by_count": 10,
+    "ICI": 1.5606060606060606,
+    "shortand_name": "Northumbria",
+    "label_name": "Northumbria U."
+  },
+  {
+    "id": "https://openalex.org/I4210118524",
+    "name": "Université Bourgogne Franche-Comté",
+    "ror": "https://ror.org/02dn7x778",
+    "country_code": "FR",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I4210118524"
+    ],
+    "field_citations": 8,
+    "field_papers": 2,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 8,
+        "field_papers": 1
+      },
+      "2025": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 2,
+    "cited_by_count": 8,
+    "ICI": 2.53125,
+    "shortand_name": "UBFC",
+    "label_name": "U. Bourgogne Franche-Comté"
+  },
+  {
+    "id": "https://openalex.org/I146655781",
+    "name": "University of Liverpool",
+    "ror": "https://ror.org/04xs57h96",
+    "country_code": "GB",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I146655781"
+    ],
+    "field_citations": 9,
+    "field_papers": 2,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 8,
+        "field_papers": 1
+      },
+      "2025": {
+        "field_citations": 1,
+        "field_papers": 1
+      }
+    },
+    "works_count": 2,
+    "cited_by_count": 9,
+    "ICI": 1.3625,
+    "shortand_name": "UoL",
+    "label_name": "U. of Liverpool"
+  },
+  {
+    "id": "https://openalex.org/I69356397",
+    "name": "Xi’an Jiaotong-Liverpool University",
+    "ror": "https://ror.org/03zmrmn05",
+    "country_code": "CN",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I69356397"
+    ],
+    "field_citations": 9,
+    "field_papers": 2,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 8,
+        "field_papers": 1
+      },
+      "2025": {
+        "field_citations": 1,
+        "field_papers": 1
+      }
+    },
+    "works_count": 2,
+    "cited_by_count": 9,
+    "ICI": 4.4125,
+    "shortand_name": "XJTLU",
+    "label_name": "Xi’an Jiaotong-Liverpool U."
+  },
+  {
+    "id": "https://openalex.org/I32625721",
+    "name": "University of Saskatchewan",
+    "ror": "https://ror.org/010x8gc63",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I32625721"
+    ],
+    "field_citations": 7,
+    "field_papers": 2,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 7,
+        "field_papers": 2
+      }
+    },
+    "works_count": 2,
+    "cited_by_count": 7,
+    "ICI": 2.2857142857142856,
+    "shortand_name": "USask",
+    "label_name": "U. of Saskatchewan"
+  },
+  {
+    "id": "https://openalex.org/I51441396",
+    "name": "Bauhaus-Universität Weimar",
+    "ror": "https://ror.org/033bb5z47",
+    "country_code": "DE",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I51441396"
+    ],
+    "field_citations": 6,
+    "field_papers": 2,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 6,
+        "field_papers": 2
+      }
+    },
+    "works_count": 2,
+    "cited_by_count": 6,
+    "ICI": 0.5833333333333333,
+    "shortand_name": "Bauhaus",
+    "label_name": "Bauhaus-U. Weimar"
+  },
+  {
+    "id": "https://openalex.org/I3045169105",
+    "name": "Southern University of Science and Technology",
+    "ror": "https://ror.org/049tv2d57",
+    "country_code": "CN",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I3045169105"
+    ],
+    "field_citations": 6,
+    "field_papers": 2,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 6,
+        "field_papers": 1
+      },
+      "2025": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 2,
+    "cited_by_count": 6,
+    "ICI": 1.75,
+    "shortand_name": "SUSTech",
+    "label_name": "Southern U. of Science & Tech"
+  },
+  {
+    "id": "https://openalex.org/I177969490",
+    "name": "University of Southern Denmark",
+    "ror": "https://ror.org/03yrrjy16",
+    "country_code": "DK",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I177969490"
+    ],
+    "field_citations": 4,
+    "field_papers": 2,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 4,
+        "field_papers": 1
+      },
+      "2025": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 2,
+    "cited_by_count": 4,
+    "ICI": 1.875,
+    "shortand_name": "SDU",
+    "label_name": "U. of Southern Denmark"
+  },
+  {
+    "id": "https://openalex.org/I33217400",
+    "name": "Université du Québec en Outaouais",
+    "ror": "https://ror.org/011pqxa69",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I33217400",
+      "https://openalex.org/I49663120"
+    ],
+    "field_citations": 5,
+    "field_papers": 2,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 5,
+        "field_papers": 2
+      }
+    },
+    "works_count": 2,
+    "cited_by_count": 5,
+    "ICI": 1.8250000000000002,
+    "shortand_name": "UQO",
+    "label_name": "UQO"
+  },
+  {
+    "id": "https://openalex.org/I319074055",
+    "name": "Cégep de l'Outaouais",
+    "ror": "https://ror.org/05rxd1q58",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I319074055"
+    ],
+    "field_citations": 5,
+    "field_papers": 2,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 5,
+        "field_papers": 2
+      }
+    },
+    "works_count": 2,
+    "cited_by_count": 5,
+    "ICI": 1.8250000000000002,
+    "shortand_name": "Cégep Outaouais",
+    "label_name": "Cégep de l'Outaouais"
+  },
+  {
+    "id": "https://openalex.org/I135117807",
+    "name": "Université de Sherbrooke",
+    "ror": "https://ror.org/00kybxq39",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I135117807"
+    ],
+    "field_citations": 3,
+    "field_papers": 2,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 2,
+        "field_papers": 1
+      },
+      "2024": {
+        "field_citations": 1,
+        "field_papers": 1
+      }
+    },
+    "works_count": 2,
+    "cited_by_count": 3,
+    "ICI": 3.0,
+    "shortand_name": "UdeS",
+    "label_name": "U. de Sherbrooke"
+  },
+  {
+    "id": "https://openalex.org/I94951947",
+    "name": "University of Westminster",
+    "ror": "https://ror.org/04ycpbx82",
+    "country_code": "GB",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I94951947"
+    ],
+    "field_citations": 2,
+    "field_papers": 2,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 2,
+        "field_papers": 2
+      }
+    },
+    "works_count": 2,
+    "cited_by_count": 2,
+    "ICI": 1.5,
+    "shortand_name": "Westminster",
+    "label_name": "U. of Westminster"
+  },
+  {
+    "id": "https://openalex.org/I185852735",
+    "name": "University of Central Lancashire",
+    "ror": "https://ror.org/010jbqd54",
+    "country_code": "GB",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I185852735"
+    ],
+    "field_citations": 3,
+    "field_papers": 2,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 3,
+        "field_papers": 2
+      }
+    },
+    "works_count": 2,
+    "cited_by_count": 3,
+    "ICI": 8.125,
+    "shortand_name": "UCLan",
+    "label_name": "U. of Central Lancashire"
+  },
+  {
+    "id": "https://openalex.org/I159129438",
+    "name": "Université du Québec à Montréal",
+    "ror": "https://ror.org/002rjbv21",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I159129438",
+      "https://openalex.org/I49663120"
+    ],
+    "field_citations": 1,
+    "field_papers": 2,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 1,
+        "field_papers": 2
+      }
+    },
+    "works_count": 2,
+    "cited_by_count": 1,
+    "ICI": 2.0,
+    "shortand_name": "UQAM",
+    "label_name": "UQAM"
+  },
+  {
+    "id": "https://openalex.org/I83467386",
+    "name": "IT University of Copenhagen",
+    "ror": "https://ror.org/02309jg23",
+    "country_code": "DK",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I83467386"
+    ],
+    "field_citations": 5,
+    "field_papers": 2,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 1,
+        "field_papers": 1
+      },
+      "2024": {
+        "field_citations": 4,
+        "field_papers": 1
+      }
+    },
+    "works_count": 2,
+    "cited_by_count": 5,
+    "ICI": 0.7803030303030303,
+    "shortand_name": "ITU",
+    "label_name": "IT U. of Copenhagen"
+  },
+  {
+    "id": "https://openalex.org/I84884186",
+    "name": "Newcastle University",
+    "ror": "https://ror.org/01kj2bm70",
+    "country_code": "GB",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I84884186"
+    ],
+    "field_citations": 3,
+    "field_papers": 2,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 1,
+        "field_papers": 1
+      },
+      "2024": {
+        "field_citations": 2,
+        "field_papers": 1
+      }
+    },
+    "works_count": 2,
+    "cited_by_count": 3,
+    "ICI": 4.113636363636363,
+    "shortand_name": "Newcastle",
+    "label_name": "Newcastle U."
+  },
+  {
+    "id": "https://openalex.org/I9927081",
+    "name": "Aalto University",
+    "ror": "https://ror.org/020hwjq30",
+    "country_code": "FI",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I9927081"
+    ],
+    "field_citations": 1,
+    "field_papers": 2,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 1,
+        "field_papers": 2
+      }
+    },
+    "works_count": 2,
+    "cited_by_count": 1,
+    "ICI": 0.8,
+    "shortand_name": "Aalto",
+    "label_name": "Aalto U."
+  },
+  {
+    "id": "https://openalex.org/I39470171",
+    "name": "University of Ontario Institute of Technology",
+    "ror": "https://ror.org/016zre027",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I39470171"
+    ],
+    "field_citations": 6,
+    "field_papers": 2,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 1,
+        "field_papers": 1
+      },
+      "2024": {
+        "field_citations": 5,
+        "field_papers": 1
+      }
+    },
+    "works_count": 2,
+    "cited_by_count": 6,
+    "ICI": 2.7199999999999998,
+    "shortand_name": "Ontario Tech",
+    "label_name": "U. of Ontario IT"
+  },
+  {
+    "id": "https://openalex.org/I8204097",
+    "name": "Ludwig-Maximilians-Universität München",
+    "ror": "https://ror.org/05591te55",
+    "country_code": "DE",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I8204097"
+    ],
+    "field_citations": 7,
+    "field_papers": 2,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 7,
+        "field_papers": 2
+      }
+    },
+    "works_count": 2,
+    "cited_by_count": 7,
+    "ICI": 1.9591836734693875,
+    "shortand_name": "LMU Munich",
+    "label_name": "LMU Munich"
+  },
+  {
+    "id": "https://openalex.org/I185103710",
+    "name": "University of California, Santa Cruz",
+    "ror": "https://ror.org/03s65by71",
+    "country_code": "US",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I185103710"
+    ],
+    "field_citations": 10,
+    "field_papers": 2,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 6,
+        "field_papers": 1
+      },
+      "2025": {
+        "field_citations": 4,
+        "field_papers": 1
+      }
+    },
+    "works_count": 2,
+    "cited_by_count": 10,
+    "ICI": 0.9999999999999999,
+    "shortand_name": "UCSC",
+    "label_name": "UC Santa Cruz"
+  },
+  {
+    "id": "https://openalex.org/I130769515",
+    "name": "Pennsylvania State University",
+    "ror": "https://ror.org/04p491231",
+    "country_code": "US",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I130769515"
+    ],
+    "field_citations": 5,
+    "field_papers": 2,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 5,
+        "field_papers": 2
+      }
+    },
+    "works_count": 2,
+    "cited_by_count": 5,
+    "ICI": 6.416666666666667,
+    "shortand_name": "Penn State",
+    "label_name": "Penn State U."
+  },
+  {
+    "id": "https://openalex.org/I4210119109",
+    "name": "Indiana University Bloomington",
+    "ror": "https://ror.org/02k40bc56",
+    "country_code": "US",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I4210119109",
+      "https://openalex.org/I592451"
+    ],
+    "field_citations": 6,
+    "field_papers": 2,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 4,
+        "field_papers": 1
+      },
+      "2025": {
+        "field_citations": 2,
+        "field_papers": 1
+      }
+    },
+    "works_count": 2,
+    "cited_by_count": 6,
+    "ICI": 1.8333333333333333,
+    "shortand_name": "IU Bloomington",
+    "label_name": "Indiana U. Bloomington"
+  },
+  {
+    "id": "https://openalex.org/I20581793",
+    "name": "University of Kent",
+    "ror": "https://ror.org/00xkeyj56",
+    "country_code": "GB",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I20581793"
+    ],
+    "field_citations": 3,
+    "field_papers": 2,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 3,
+        "field_papers": 1
+      },
+      "2025": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 2,
+    "cited_by_count": 3,
+    "ICI": 0.6666666666666666,
+    "shortand_name": "Kent",
+    "label_name": "U. of Kent"
+  },
+  {
+    "id": "https://openalex.org/I25974101",
+    "name": "University of Würzburg",
+    "ror": "https://ror.org/00fbnyb24",
+    "country_code": "DE",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I25974101"
+    ],
+    "field_citations": 3,
+    "field_papers": 2,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 3,
+        "field_papers": 1
+      },
+      "2025": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 2,
+    "cited_by_count": 3,
+    "ICI": 0.3333333333333333,
+    "shortand_name": "Würzburg",
+    "label_name": "U. of Würzburg"
+  },
+  {
+    "id": "https://openalex.org/I99464096",
+    "name": "KU Leuven",
+    "ror": "https://ror.org/05f950310",
+    "country_code": "BE",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I99464096"
+    ],
+    "field_citations": 3,
+    "field_papers": 2,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 3,
+        "field_papers": 1
+      },
+      "2025": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 2,
+    "cited_by_count": 3,
+    "ICI": 0.3333333333333333,
+    "shortand_name": "KU Leuven",
+    "label_name": "KU Leuven"
+  },
+  {
+    "id": "https://openalex.org/I40120149",
+    "name": "University of Oxford",
+    "ror": "https://ror.org/052gg0110",
+    "country_code": "GB",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I40120149"
+    ],
+    "field_citations": 5,
+    "field_papers": 2,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 5,
+        "field_papers": 2
+      }
+    },
+    "works_count": 2,
+    "cited_by_count": 5,
+    "ICI": 2.1333333333333333,
+    "shortand_name": "Oxford",
+    "label_name": "U. of Oxford"
+  },
+  {
+    "id": "https://openalex.org/I74753095",
+    "name": "Ontario College of Art and Design",
+    "ror": "https://ror.org/059ncap70",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I74753095"
+    ],
+    "field_citations": 4,
+    "field_papers": 2,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 3,
+        "field_papers": 1
+      },
+      "2024": {
+        "field_citations": 1,
+        "field_papers": 1
+      }
+    },
+    "works_count": 2,
+    "cited_by_count": 4,
+    "ICI": 3.333333333333333,
+    "shortand_name": "OCAD U",
+    "label_name": "Ontario College of Art & Design"
+  },
+  {
+    "id": "https://openalex.org/I66946132",
+    "name": "University of Maryland, College Park",
+    "ror": "https://ror.org/047s2c258",
+    "country_code": "US",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I66946132"
+    ],
+    "field_citations": 5,
+    "field_papers": 2,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 3,
+        "field_papers": 1
+      },
+      "2024": {
+        "field_citations": 2,
+        "field_papers": 1
+      }
+    },
+    "works_count": 2,
+    "cited_by_count": 5,
+    "ICI": 1.3472222222222223,
+    "shortand_name": "UMD",
+    "label_name": "U. of Maryland"
+  },
+  {
+    "id": "https://openalex.org/I129604602",
+    "name": "University of Sydney",
+    "ror": "https://ror.org/0384j8v12",
+    "country_code": "AU",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I129604602"
+    ],
+    "field_citations": 2,
+    "field_papers": 2,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 2,
+        "field_papers": 2
+      }
+    },
+    "works_count": 2,
+    "cited_by_count": 2,
+    "ICI": 0.5,
+    "shortand_name": "USyd",
+    "label_name": "U. of Sydney"
+  },
+  {
+    "id": "https://openalex.org/I4210141751",
+    "name": "The Independent Institute of Education",
+    "ror": "https://ror.org/038cnrz59",
+    "country_code": "ZA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I4210141751"
+    ],
+    "field_citations": 2,
+    "field_papers": 2,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 2,
+        "field_papers": 2
+      }
+    },
+    "works_count": 2,
+    "cited_by_count": 2,
+    "ICI": 0.5,
+    "shortand_name": "IIE",
+    "label_name": "Independent Inst. of Education"
+  },
+  {
+    "id": "https://openalex.org/I46247651",
+    "name": "University of Manitoba",
+    "ror": "https://ror.org/02gfys938",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I46247651"
+    ],
+    "field_citations": 2,
+    "field_papers": 2,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 2,
+        "field_papers": 2
+      }
+    },
+    "works_count": 2,
+    "cited_by_count": 2,
+    "ICI": 0.5,
+    "shortand_name": "UM",
+    "label_name": "U. of Manitoba"
+  },
+  {
+    "id": "https://openalex.org/I197323543",
+    "name": "Johannes Gutenberg University Mainz",
+    "ror": "https://ror.org/023b0x485",
+    "country_code": "DE",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I197323543"
+    ],
+    "field_citations": 0,
+    "field_papers": 2,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 0,
+        "field_papers": 2
+      }
+    },
+    "works_count": 2,
+    "cited_by_count": 0,
+    "ICI": 0.0,
+    "shortand_name": "JGU",
+    "label_name": "JGU Mainz"
+  },
+  {
+    "id": "https://openalex.org/I82880672",
+    "name": "Beihang University",
+    "ror": "https://ror.org/00wk2mp56",
+    "country_code": "CN",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I82880672"
+    ],
+    "field_citations": 75,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 75,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 75,
+    "ICI": 1.8239999999999998,
+    "shortand_name": "Beihang",
+    "label_name": "Beihang U."
+  },
+  {
+    "id": "https://openalex.org/I20942203",
+    "name": "Hainan University",
+    "ror": "https://ror.org/03q648j11",
+    "country_code": "CN",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I20942203"
+    ],
+    "field_citations": 75,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 75,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 75,
+    "ICI": 0.6080000000000001,
+    "shortand_name": "HNU",
+    "label_name": "Hainan U."
+  },
+  {
+    "id": "https://openalex.org/I592451",
+    "name": "Indiana University",
+    "ror": "https://ror.org/01kg8sb98",
+    "country_code": "US",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I592451"
+    ],
+    "field_citations": 69,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 69,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 69,
+    "ICI": 1.0144927536231885,
+    "shortand_name": "IU",
+    "label_name": "Indiana U."
+  },
+  {
+    "id": "https://openalex.org/I200183955",
+    "name": "Technological University of Pereira",
+    "ror": "https://ror.org/01d981710",
+    "country_code": "CO",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I200183955"
+    ],
+    "field_citations": 40,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 40,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 40,
+    "ICI": 2.196428571428571,
+    "shortand_name": "UTP",
+    "label_name": "Tech. U. of Pereira"
+  },
+  {
+    "id": "https://openalex.org/I91045830",
+    "name": "Texas A&M University",
+    "ror": "https://ror.org/01f5ytq51",
+    "country_code": "US",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I91045830"
+    ],
+    "field_citations": 27,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 27,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 27,
+    "ICI": 0.5185185185185185,
+    "shortand_name": "TAMU",
+    "label_name": "Texas A&M U."
+  },
+  {
+    "id": "https://openalex.org/I183697816",
+    "name": "Bangladesh University of Engineering and Technology",
+    "ror": "https://ror.org/05a1qpv97",
+    "country_code": "BD",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I183697816"
+    ],
+    "field_citations": 26,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 26,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 26,
+    "ICI": 1.2461538461538462,
+    "shortand_name": "BUET",
+    "label_name": "Bangladesh U. of Eng. & Tech"
+  },
+  {
+    "id": "https://openalex.org/I83328450",
+    "name": "Miami University",
+    "ror": "https://ror.org/05nbqxr67",
+    "country_code": "US",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I83328450"
+    ],
+    "field_citations": 26,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 26,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 26,
+    "ICI": 0.6230769230769231,
+    "shortand_name": "MiamiU",
+    "label_name": "Miami U."
+  },
+  {
+    "id": "https://openalex.org/I6469544",
+    "name": "City University of Macau",
+    "ror": "https://ror.org/04gpd4q15",
+    "country_code": "MO",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I6469544"
+    ],
+    "field_citations": 22,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 22,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 22,
+    "ICI": 0.7840909090909092,
+    "shortand_name": "CityU",
+    "label_name": "City U. of Macau"
+  },
+  {
+    "id": "https://openalex.org/I37461747",
+    "name": "Wuhan University",
+    "ror": "https://ror.org/033vjfk17",
+    "country_code": "CN",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I37461747"
+    ],
+    "field_citations": 22,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 22,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 22,
+    "ICI": 2.3522727272727275,
+    "shortand_name": "WHU",
+    "label_name": "Wuhan U."
+  },
+  {
+    "id": "https://openalex.org/I111950717",
+    "name": "Macau University of Science and Technology",
+    "ror": "https://ror.org/03jqs2n27",
+    "country_code": "MO",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I111950717",
+      "https://openalex.org/I4391767947"
+    ],
+    "field_citations": 22,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 22,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 22,
+    "ICI": 0.7840909090909092,
+    "shortand_name": "MUST",
+    "label_name": "Macau U. of Science & Tech"
+  },
+  {
+    "id": "https://openalex.org/I4210121333",
+    "name": "Istinye University",
+    "ror": "https://ror.org/03081nz23",
+    "country_code": "TR",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I4210121333"
+    ],
+    "field_citations": 22,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 22,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 22,
+    "ICI": 0.7840909090909092,
+    "shortand_name": "ISU",
+    "label_name": "Istinye U."
+  },
+  {
+    "id": "https://openalex.org/I4210147161",
+    "name": "Mudra Institute of Communications Ahmedabad",
+    "ror": "https://ror.org/03thb9733",
+    "country_code": "IN",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I4210147161"
+    ],
+    "field_citations": 18,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 18,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 18,
+    "ICI": 2.1111111111111107,
+    "shortand_name": "MICA",
+    "label_name": "MICA Ahmedabad"
+  },
+  {
+    "id": "https://openalex.org/I16609230",
+    "name": "Hunan University",
+    "ror": "https://ror.org/05htk5m33",
+    "country_code": "CN",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I16609230"
+    ],
+    "field_citations": 11,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 11,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 11,
+    "ICI": 2.1818181818181817,
+    "shortand_name": "HNU",
+    "label_name": "Hunan U."
+  },
+  {
+    "id": "https://openalex.org/I170215575",
+    "name": "National University of Defense Technology",
+    "ror": "https://ror.org/05d2yfz11",
+    "country_code": "CN",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I170215575"
+    ],
+    "field_citations": 11,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 11,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 11,
+    "ICI": 0.5454545454545454,
+    "shortand_name": "NUDT",
+    "label_name": "Nat. U. of Defense Technology"
+  },
+  {
+    "id": "https://openalex.org/I183111857",
+    "name": "Malmö University",
+    "ror": "https://ror.org/05wp7an13",
+    "country_code": "SE",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I183111857"
+    ],
+    "field_citations": 11,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 11,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 11,
+    "ICI": 0.4675324675324675,
+    "shortand_name": "Malmö",
+    "label_name": "Malmö U."
+  },
+  {
+    "id": "https://openalex.org/I223464139",
+    "name": "Linnaeus University",
+    "ror": "https://ror.org/00j9qag85",
+    "country_code": "SE",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I223464139"
+    ],
+    "field_citations": 11,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 11,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 11,
+    "ICI": 0.4675324675324675,
+    "shortand_name": "LNU",
+    "label_name": "Linnaeus U."
+  },
+  {
+    "id": "https://openalex.org/I42934936",
+    "name": "Dublin City University",
+    "ror": "https://ror.org/04a1a1e81",
+    "country_code": "IE",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I42934936"
+    ],
+    "field_citations": 8,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 8,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 8,
+    "ICI": 0.675,
+    "shortand_name": "DCU",
+    "label_name": "Dublin City U."
+  },
+  {
+    "id": "https://openalex.org/I107077323",
+    "name": "Worcester Polytechnic Institute",
+    "ror": "https://ror.org/05ejpqr48",
+    "country_code": "US",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I107077323"
+    ],
+    "field_citations": 4,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 4,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 4,
+    "ICI": 0.625,
+    "shortand_name": "WPI",
+    "label_name": "Worcester Poly. Inst."
+  },
+  {
+    "id": "https://openalex.org/I98358874",
+    "name": "Delft University of Technology",
+    "ror": "https://ror.org/02e2c7k09",
+    "country_code": "NL",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I98358874"
+    ],
+    "field_citations": 4,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 4,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 4,
+    "ICI": 0.3125,
+    "shortand_name": "TU Delft",
+    "label_name": "TU Delft"
+  },
+  {
+    "id": "https://openalex.org/I84218800",
+    "name": "University of California, Davis",
+    "ror": "https://ror.org/05rrcem69",
+    "country_code": "US",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I84218800"
+    ],
+    "field_citations": 4,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 4,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 4,
+    "ICI": 0.3125,
+    "shortand_name": "UC Davis",
+    "label_name": "UC Davis"
+  },
+  {
+    "id": "https://openalex.org/I193629610",
+    "name": "Tallinn University",
+    "ror": "https://ror.org/05mey9k78",
+    "country_code": "EE",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I193629610"
+    ],
+    "field_citations": 14,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 14,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 14,
+    "ICI": 0.5357142857142856,
+    "shortand_name": "TLU",
+    "label_name": "Tallinn U."
+  },
+  {
+    "id": "https://openalex.org/I86501945",
+    "name": "University of Delaware",
+    "ror": "https://ror.org/01sbq1a82",
+    "country_code": "US",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I86501945"
+    ],
+    "field_citations": 13,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 13,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 13,
+    "ICI": 2.1538461538461537,
+    "shortand_name": "UDel",
+    "label_name": "U. of Delaware"
+  },
+  {
+    "id": "https://openalex.org/I87445476",
+    "name": "Xi'an Jiaotong University",
+    "ror": "https://ror.org/017zhmm22",
+    "country_code": "CN",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I87445476"
+    ],
+    "field_citations": 13,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 13,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 13,
+    "ICI": 0.8076923076923077,
+    "shortand_name": "XJTU",
+    "label_name": "Xi'an Jiaotong U."
+  },
+  {
+    "id": "https://openalex.org/I90745801",
+    "name": "University of New England",
+    "ror": "https://ror.org/04r659a56",
+    "country_code": "AU",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I90745801"
+    ],
+    "field_citations": 10,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 10,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 10,
+    "ICI": 0.47142857142857136,
+    "shortand_name": "UNE",
+    "label_name": "U. of New England"
+  },
+  {
+    "id": "https://openalex.org/I60053951",
+    "name": "Universitat Politècnica de València",
+    "ror": "https://ror.org/01460j859",
+    "country_code": "ES",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I60053951"
+    ],
+    "field_citations": 10,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 10,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 10,
+    "ICI": 0.44000000000000006,
+    "shortand_name": "UPV",
+    "label_name": "U. Politècnica de València"
+  },
+  {
+    "id": "https://openalex.org/I57201433",
+    "name": "Università della Svizzera italiana",
+    "ror": "https://ror.org/03c4atk17",
+    "country_code": "CH",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I57201433"
+    ],
+    "field_citations": 10,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 10,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 10,
+    "ICI": 0.44000000000000006,
+    "shortand_name": "USI",
+    "label_name": "U. della Svizzera italiana"
+  },
+  {
+    "id": "https://openalex.org/I219193219",
+    "name": "Purdue University West Lafayette",
+    "ror": "https://ror.org/02dqehb95",
+    "country_code": "US",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I219193219"
+    ],
+    "field_citations": 9,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 9,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 9,
+    "ICI": 0.2777777777777778,
+    "shortand_name": "Purdue",
+    "label_name": "Purdue U."
+  },
+  {
+    "id": "https://openalex.org/I48825208",
+    "name": "Université Paris 8",
+    "ror": "https://ror.org/04wez5e68",
+    "country_code": "FR",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I48825208"
+    ],
+    "field_citations": 8,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 8,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 8,
+    "ICI": 0.84375,
+    "shortand_name": "Paris 8",
+    "label_name": "U. Paris 8"
+  },
+  {
+    "id": "https://openalex.org/I9360294",
+    "name": "University of Bologna",
+    "ror": "https://ror.org/01111rn36",
+    "country_code": "IT",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I9360294"
+    ],
+    "field_citations": 8,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 8,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 8,
+    "ICI": 0.84375,
+    "shortand_name": "UniBo",
+    "label_name": "U. of Bologna"
+  },
+  {
+    "id": "https://openalex.org/I162714631",
+    "name": "George Mason University",
+    "ror": "https://ror.org/02jqj7156",
+    "country_code": "US",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I162714631"
+    ],
+    "field_citations": 7,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 7,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 7,
+    "ICI": 0.5714285714285714,
+    "shortand_name": "GMU",
+    "label_name": "George Mason U."
+  },
+  {
+    "id": "https://openalex.org/I4210115111",
+    "name": "University of Arts and Industrial Design Linz",
+    "ror": "https://ror.org/02as55378",
+    "country_code": "AT",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I4210115111"
+    ],
+    "field_citations": 7,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 7,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 7,
+    "ICI": 0.3116883116883117,
+    "shortand_name": "Kunstuni Linz",
+    "label_name": "U. of Arts Linz"
+  },
+  {
+    "id": "https://openalex.org/I182212641",
+    "name": "University of Salzburg",
+    "ror": "https://ror.org/05gs8cd61",
+    "country_code": "AT",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I182212641"
+    ],
+    "field_citations": 7,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 7,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 7,
+    "ICI": 0.3116883116883117,
+    "shortand_name": "Uni Salzburg",
+    "label_name": "U. of Salzburg"
+  },
+  {
+    "id": "https://openalex.org/I76569877",
+    "name": "Southeast University",
+    "ror": "https://ror.org/04ct4d772",
+    "country_code": "CN",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I76569877"
+    ],
+    "field_citations": 6,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 6,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 6,
+    "ICI": 2.1,
+    "shortand_name": "SEU",
+    "label_name": "Southeast U."
+  },
+  {
+    "id": "https://openalex.org/I36399199",
+    "name": "Nanjing University of Science and Technology",
+    "ror": "https://ror.org/00xp9wg62",
+    "country_code": "CN",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I36399199"
+    ],
+    "field_citations": 6,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 6,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 6,
+    "ICI": 0.7000000000000001,
+    "shortand_name": "NJUST",
+    "label_name": "Nanjing U. of Science & Tech"
+  },
+  {
+    "id": "https://openalex.org/I168719708",
+    "name": "City University of Hong Kong",
+    "ror": "https://ror.org/03q8dnn23",
+    "country_code": "HK",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I168719708"
+    ],
+    "field_citations": 6,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 6,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 6,
+    "ICI": 0.5833333333333333,
+    "shortand_name": "CityU HK",
+    "label_name": "City U. of Hong Kong"
+  },
+  {
+    "id": "https://openalex.org/I277688954",
+    "name": "Université Paris-Saclay",
+    "ror": "https://ror.org/03xjwb503",
+    "country_code": "FR",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I277688954"
+    ],
+    "field_citations": 6,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 6,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 6,
+    "ICI": 1.1666666666666667,
+    "shortand_name": "Paris-Saclay",
+    "label_name": "U. Paris-Saclay"
+  },
+  {
+    "id": "https://openalex.org/I63548447",
+    "name": "Lappeenranta-Lahti University of Technology",
+    "ror": "https://ror.org/0208vgz68",
+    "country_code": "FI",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I63548447"
+    ],
+    "field_citations": 3,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 3,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 3,
+    "ICI": 1.3333333333333333,
+    "shortand_name": "LUT",
+    "label_name": "LUT University"
+  },
+  {
+    "id": "https://openalex.org/I34574549",
+    "name": "National Taichung University of Education",
+    "ror": "https://ror.org/006tnfe02",
+    "country_code": "TW",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I34574549"
+    ],
+    "field_citations": 2,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 2,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 2,
+    "ICI": 1.125,
+    "shortand_name": "NTCU",
+    "label_name": "Nat. Taichung U. of Education"
+  },
+  {
+    "id": "https://openalex.org/I157386601",
+    "name": "North South University",
+    "ror": "https://ror.org/05wdbfp45",
+    "country_code": "BD",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I157386601"
+    ],
+    "field_citations": 2,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 2,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 2,
+    "ICI": 4.5,
+    "shortand_name": "NSU",
+    "label_name": "North South U."
+  },
+  {
+    "id": "https://openalex.org/I75059550",
+    "name": "Zhejiang Gongshang University",
+    "ror": "https://ror.org/0569mkk41",
+    "country_code": "CN",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I75059550"
+    ],
+    "field_citations": 2,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 2,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 2,
+    "ICI": 1.5,
+    "shortand_name": "ZJGSU",
+    "label_name": "Zhejiang Gongshang U."
+  },
+  {
+    "id": "https://openalex.org/I193223587",
+    "name": "University of Trento",
+    "ror": "https://ror.org/05trd4x28",
+    "country_code": "IT",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I193223587"
+    ],
+    "field_citations": 1,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 1,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 1,
+    "ICI": 0.6666666666666666,
+    "shortand_name": "UniTrento",
+    "label_name": "U. of Trento"
+  },
+  {
+    "id": "https://openalex.org/I2610724",
+    "name": "Chemnitz University of Technology",
+    "ror": "https://ror.org/00a208s56",
+    "country_code": "DE",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I2610724"
+    ],
+    "field_citations": 1,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 1,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 1,
+    "ICI": 0.36363636363636365,
+    "shortand_name": "TU Chemnitz",
+    "label_name": "Chemnitz U. of Tech."
+  },
+  {
+    "id": "https://openalex.org/I12870472",
+    "name": "Birmingham City University",
+    "ror": "https://ror.org/00t67pt25",
+    "country_code": "GB",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I12870472"
+    ],
+    "field_citations": 1,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 1,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 1,
+    "ICI": 0.4,
+    "shortand_name": "BCU",
+    "label_name": "Birmingham City U."
+  },
+  {
+    "id": "https://openalex.org/I161593684",
+    "name": "Stockholm University",
+    "ror": "https://ror.org/05f0yaq80",
+    "country_code": "SE",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I161593684"
+    ],
+    "field_citations": 1,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 1,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 1,
+    "ICI": 0.4,
+    "shortand_name": "SU",
+    "label_name": "Stockholm U."
+  },
+  {
+    "id": "https://openalex.org/I178535277",
+    "name": "University of the West of England",
+    "ror": "https://ror.org/02nwg5t34",
+    "country_code": "GB",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I178535277"
+    ],
+    "field_citations": 1,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 1,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 1,
+    "ICI": 0.4,
+    "shortand_name": "UWE",
+    "label_name": "U. of the West of England"
+  },
+  {
+    "id": "https://openalex.org/I102134673",
+    "name": "Linköping University",
+    "ror": "https://ror.org/05ynxx418",
+    "country_code": "SE",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I102134673"
+    ],
+    "field_citations": 1,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 1,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 1,
+    "ICI": 0.4,
+    "shortand_name": "LiU",
+    "label_name": "Linköping U."
+  },
+  {
+    "id": "https://openalex.org/I90267481",
+    "name": "Umeå University",
+    "ror": "https://ror.org/05kb8h459",
+    "country_code": "SE",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I90267481"
+    ],
+    "field_citations": 1,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 1,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 1,
+    "ICI": 0.4,
+    "shortand_name": "UmU",
+    "label_name": "Umeå U."
+  },
+  {
+    "id": "https://openalex.org/I4210161785",
+    "name": "First Technical University",
+    "ror": "https://ror.org/05tb13r23",
+    "country_code": "NG",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I4210161785"
+    ],
+    "field_citations": 1,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 1,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 1,
+    "ICI": 2.0,
+    "shortand_name": "Tech-U",
+    "label_name": "First Technical U."
+  },
+  {
+    "id": "https://openalex.org/I37987034",
+    "name": "Guangzhou University",
+    "ror": "https://ror.org/05ar8rn06",
+    "country_code": "CN",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I37987034"
+    ],
+    "field_citations": 1,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 1,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 1,
+    "ICI": 3.3333333333333335,
+    "shortand_name": "GZHU",
+    "label_name": "Guangzhou U."
+  },
+  {
+    "id": "https://openalex.org/I189712700",
+    "name": "University of Konstanz",
+    "ror": "https://ror.org/0546hnb39",
+    "country_code": "DE",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I189712700"
+    ],
+    "field_citations": 7,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 7,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 7,
+    "ICI": 0.9795918367346937,
+    "shortand_name": "Konstanz",
+    "label_name": "U. of Konstanz"
+  },
+  {
+    "id": "https://openalex.org/I165733156",
+    "name": "University of Georgia",
+    "ror": "https://ror.org/00te3t702",
+    "country_code": "US",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I165733156"
+    ],
+    "field_citations": 6,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 6,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 6,
+    "ICI": 0.5833333333333333,
+    "shortand_name": "UGA",
+    "label_name": "U. of Georgia"
+  },
+  {
+    "id": "https://openalex.org/I193662353",
+    "name": "Utrecht University",
+    "ror": "https://ror.org/04pp8hn57",
+    "country_code": "NL",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I193662353"
+    ],
+    "field_citations": 6,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 6,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 6,
+    "ICI": 0.5833333333333333,
+    "shortand_name": "UU",
+    "label_name": "Utrecht U."
+  },
+  {
+    "id": "https://openalex.org/I31512782",
+    "name": "Technical University of Darmstadt",
+    "ror": "https://ror.org/05n911h24",
+    "country_code": "DE",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I31512782"
+    ],
+    "field_citations": 6,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 6,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 6,
+    "ICI": 0.5833333333333333,
+    "shortand_name": "TU Darmstadt",
+    "label_name": "TU Darmstadt"
+  },
+  {
+    "id": "https://openalex.org/I94624287",
+    "name": "University of Twente",
+    "ror": "https://ror.org/006hf6230",
+    "country_code": "NL",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I94624287"
+    ],
+    "field_citations": 4,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 4,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 4,
+    "ICI": 0.8333333333333333,
+    "shortand_name": "UTwente",
+    "label_name": "U. of Twente"
+  },
+  {
+    "id": "https://openalex.org/I4210089347",
+    "name": "École Supérieure des Technologies Industrielles Avancées",
+    "ror": "https://ror.org/008kvxw43",
+    "country_code": "FR",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I4210089347"
+    ],
+    "field_citations": 5,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 5,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 5,
+    "ICI": 3.5999999999999996,
+    "shortand_name": "ESTIA",
+    "label_name": "ESTIA"
+  },
+  {
+    "id": "https://openalex.org/I15057530",
+    "name": "Université de Bordeaux",
+    "ror": "https://ror.org/057qpr032",
+    "country_code": "FR",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I15057530"
+    ],
+    "field_citations": 5,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 5,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 5,
+    "ICI": 3.5999999999999996,
+    "shortand_name": "UBordeaux",
+    "label_name": "U. de Bordeaux"
+  },
+  {
+    "id": "https://openalex.org/I9842412",
+    "name": "Nanjing University of Aeronautics and Astronautics",
+    "ror": "https://ror.org/01scyh794",
+    "country_code": "CN",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I9842412"
+    ],
+    "field_citations": 5,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 5,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 5,
+    "ICI": 1.1999999999999997,
+    "shortand_name": "NUAA",
+    "label_name": "Nanjing U. of Aero. & Astro."
+  },
+  {
+    "id": "https://openalex.org/I11957088",
+    "name": "Michigan Technological University",
+    "ror": "https://ror.org/0036rpn28",
+    "country_code": "US",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I11957088"
+    ],
+    "field_citations": 5,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 5,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 5,
+    "ICI": 1.1999999999999997,
+    "shortand_name": "Michigan Tech",
+    "label_name": "Michigan Tech U."
+  },
+  {
+    "id": "https://openalex.org/I57206974",
+    "name": "New York University",
+    "ror": "https://ror.org/0190ak572",
+    "country_code": "US",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I57206974"
+    ],
+    "field_citations": 5,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 5,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 5,
+    "ICI": 0.8999999999999999,
+    "shortand_name": "NYU",
+    "label_name": "New York U."
+  },
+  {
+    "id": "https://openalex.org/I52099693",
+    "name": "University of York",
+    "ror": "https://ror.org/04m01e293",
+    "country_code": "GB",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I52099693"
+    ],
+    "field_citations": 5,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 5,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 5,
+    "ICI": 0.72,
+    "shortand_name": "UoY",
+    "label_name": "U. of York (UK)"
+  },
+  {
+    "id": "https://openalex.org/I8692664",
+    "name": "University of Oklahoma",
+    "ror": "https://ror.org/02aqsxs83",
+    "country_code": "US",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I8692664"
+    ],
+    "field_citations": 4,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 4,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 4,
+    "ICI": 1.875,
+    "shortand_name": "OU",
+    "label_name": "U. of Oklahoma"
+  },
+  {
+    "id": "https://openalex.org/I97018004",
+    "name": "Stanford University",
+    "ror": "https://ror.org/00f54p054",
+    "country_code": "US",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I97018004"
+    ],
+    "field_citations": 3,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 3,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 3,
+    "ICI": 1.3333333333333333,
+    "shortand_name": "Stanford",
+    "label_name": "Stanford U."
+  },
+  {
+    "id": "https://openalex.org/I34771391",
+    "name": "University of Cyprus",
+    "ror": "https://ror.org/02qjrjx09",
+    "country_code": "CY",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I34771391"
+    ],
+    "field_citations": 3,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 3,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 3,
+    "ICI": 0.3333333333333333,
+    "shortand_name": "UCY",
+    "label_name": "U. of Cyprus"
+  },
+  {
+    "id": "https://openalex.org/I163151358",
+    "name": "Cyprus University of Technology",
+    "ror": "https://ror.org/05qt8tf94",
+    "country_code": "CY",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I163151358"
+    ],
+    "field_citations": 3,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 3,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 3,
+    "ICI": 0.3333333333333333,
+    "shortand_name": "CUT",
+    "label_name": "Cyprus U. of Tech."
+  },
+  {
+    "id": "https://openalex.org/I27577105",
+    "name": "University College Cork",
+    "ror": "https://ror.org/03265fv13",
+    "country_code": "IE",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I27577105"
+    ],
+    "field_citations": 3,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 3,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 3,
+    "ICI": 0.3333333333333333,
+    "shortand_name": "UCC",
+    "label_name": "U. College Cork"
+  },
+  {
+    "id": "https://openalex.org/I165526535",
+    "name": "Royal College of Art",
+    "ror": "https://ror.org/01egahc47",
+    "country_code": "GB",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I165526535"
+    ],
+    "field_citations": 3,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 3,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 3,
+    "ICI": 0.3333333333333333,
+    "shortand_name": "RCA",
+    "label_name": "Royal College of Art"
+  },
+  {
+    "id": "https://openalex.org/I87354575",
+    "name": "National Chengchi University",
+    "ror": "https://ror.org/03rqk8h36",
+    "country_code": "TW",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I87354575"
+    ],
+    "field_citations": 3,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 3,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 3,
+    "ICI": 1.7777777777777777,
+    "shortand_name": "NCCU",
+    "label_name": "Nat. Chengchi U."
+  },
+  {
+    "id": "https://openalex.org/I79576946",
+    "name": "University of Pennsylvania",
+    "ror": "https://ror.org/00b30xv10",
+    "country_code": "US",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I79576946"
+    ],
+    "field_citations": 3,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 3,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 3,
+    "ICI": 0.2222222222222222,
+    "shortand_name": "UPenn",
+    "label_name": "U. of Pennsylvania"
+  },
+  {
+    "id": "https://openalex.org/I129774422",
+    "name": "University of Vienna",
+    "ror": "https://ror.org/03prydq77",
+    "country_code": "AT",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I129774422"
+    ],
+    "field_citations": 3,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 3,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 3,
+    "ICI": 0.2222222222222222,
+    "shortand_name": "Uni Wien",
+    "label_name": "U. of Vienna"
+  },
+  {
+    "id": "https://openalex.org/I68891433",
+    "name": "Indian Institute of Technology Delhi",
+    "ror": "https://ror.org/049tgcd06",
+    "country_code": "IN",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I68891433"
+    ],
+    "field_citations": 3,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 3,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 3,
+    "ICI": 0.2222222222222222,
+    "shortand_name": "IIT Delhi",
+    "label_name": "IIT Delhi"
+  },
+  {
+    "id": "https://openalex.org/I15766328",
+    "name": "Universitat de Lleida",
+    "ror": "https://ror.org/050c3cw24",
+    "country_code": "ES",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I15766328"
+    ],
+    "field_citations": 3,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 3,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 3,
+    "ICI": 0.2222222222222222,
+    "shortand_name": "UdL",
+    "label_name": "U. de Lleida"
+  },
+  {
+    "id": "https://openalex.org/I51235708",
+    "name": "Universidade Federal do Espírito Santo",
+    "ror": "https://ror.org/05sxf4h28",
+    "country_code": "BR",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I51235708"
+    ],
+    "field_citations": 3,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 3,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 3,
+    "ICI": 2.6666666666666665,
+    "shortand_name": "UFES",
+    "label_name": "Fed. U. of Espírito Santo"
+  },
+  {
+    "id": "https://openalex.org/I80281795",
+    "name": "University of Otago",
+    "ror": "https://ror.org/01jmxt844",
+    "country_code": "NZ",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I80281795"
+    ],
+    "field_citations": 2,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 2,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 2,
+    "ICI": 0.9,
+    "shortand_name": "Otago",
+    "label_name": "U. of Otago"
+  },
+  {
+    "id": "https://openalex.org/I14243506",
+    "name": "Hong Kong Polytechnic University",
+    "ror": "https://ror.org/0030zas98",
+    "country_code": "HK",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I14243506"
+    ],
+    "field_citations": 2,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 2,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 2,
+    "ICI": 1.2857142857142856,
+    "shortand_name": "PolyU",
+    "label_name": "Hong Kong Poly. U."
+  },
+  {
+    "id": "https://openalex.org/I13511017",
+    "name": "Texas State University",
+    "ror": "https://ror.org/05h9q1g27",
+    "country_code": "US",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I13511017"
+    ],
+    "field_citations": 2,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 2,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 2,
+    "ICI": 1.0,
+    "shortand_name": "TXST",
+    "label_name": "Texas State U."
+  },
+  {
+    "id": "https://openalex.org/I3124059619",
+    "name": "China University of Geosciences",
+    "ror": "https://ror.org/04gcegc37",
+    "country_code": "CN",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I3124059619"
+    ],
+    "field_citations": 2,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 2,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 2,
+    "ICI": 2.0,
+    "shortand_name": "CUG",
+    "label_name": "China U. of Geosciences"
+  },
+  {
+    "id": "https://openalex.org/I74801974",
+    "name": "The University of Tokyo",
+    "ror": "https://ror.org/057zh3y96",
+    "country_code": "JP",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I74801974"
+    ],
+    "field_citations": 2,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 2,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 2,
+    "ICI": 0.8571428571428571,
+    "shortand_name": "UTokyo",
+    "label_name": "U. of Tokyo"
+  },
+  {
+    "id": "https://openalex.org/I119511950",
+    "name": "Glasgow School of Art",
+    "ror": "https://ror.org/01s033b11",
+    "country_code": "GB",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I119511950"
+    ],
+    "field_citations": 2,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 2,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 2,
+    "ICI": 0.5,
+    "shortand_name": "GSA",
+    "label_name": "Glasgow School of Art"
+  },
+  {
+    "id": "https://openalex.org/I112536369",
+    "name": "Yazd University",
+    "ror": "https://ror.org/02x99ac45",
+    "country_code": "IR",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I112536369"
+    ],
+    "field_citations": 2,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 2,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 2,
+    "ICI": 0.9,
+    "shortand_name": "Yazd",
+    "label_name": "Yazd U."
+  },
+  {
+    "id": "https://openalex.org/I87216513",
+    "name": "Michigan State University",
+    "ror": "https://ror.org/05hs6h993",
+    "country_code": "US",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I87216513"
+    ],
+    "field_citations": 1,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 1,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 1,
+    "ICI": 0.75,
+    "shortand_name": "MSU",
+    "label_name": "Michigan State U."
+  },
+  {
+    "id": "https://openalex.org/I71422933",
+    "name": "Sheffield Hallam University",
+    "ror": "https://ror.org/019wt1929",
+    "country_code": "GB",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I71422933"
+    ],
+    "field_citations": 1,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 1,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 1,
+    "ICI": 0.6666666666666666,
+    "shortand_name": "SHU",
+    "label_name": "Sheffield Hallam U."
+  },
+  {
+    "id": "https://openalex.org/I58610484",
+    "name": "Seattle University",
+    "ror": "https://ror.org/02jqc0m91",
+    "country_code": "US",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I58610484"
+    ],
+    "field_citations": 1,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 1,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 1,
+    "ICI": 0.6666666666666666,
+    "shortand_name": "SeattleU",
+    "label_name": "Seattle U."
+  },
+  {
+    "id": "https://openalex.org/I4210108471",
+    "name": "Le Mans Université",
+    "ror": "https://ror.org/01mtcc283",
+    "country_code": "FR",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I4210108471"
+    ],
+    "field_citations": 1,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 1,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 1,
+    "ICI": 2.0,
+    "shortand_name": "Le Mans",
+    "label_name": "Le Mans U."
+  },
+  {
+    "id": "https://openalex.org/I138689650",
+    "name": "University of Padua",
+    "ror": "https://ror.org/00240q980",
+    "country_code": "IT",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I138689650"
+    ],
+    "field_citations": 1,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 1,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 1,
+    "ICI": 2.4000000000000004,
+    "shortand_name": "UniPd",
+    "label_name": "U. of Padua"
+  },
+  {
+    "id": "https://openalex.org/I25217355",
+    "name": "University of Pavia",
+    "ror": "https://ror.org/00s6t1f81",
+    "country_code": "IT",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I25217355"
+    ],
+    "field_citations": 1,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 1,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 1,
+    "ICI": 1.2000000000000002,
+    "shortand_name": "UniPv",
+    "label_name": "U. of Pavia"
+  },
+  {
+    "id": "https://openalex.org/I185839726",
+    "name": "Institut Universitaire de France",
+    "ror": "https://ror.org/055khg266",
+    "country_code": "FR",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I185839726"
+    ],
+    "field_citations": 1,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 1,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 1,
+    "ICI": 1.5,
+    "shortand_name": "IUF",
+    "label_name": "Inst. Universitaire de France"
+  },
+  {
+    "id": "https://openalex.org/I130438778",
+    "name": "Memorial University of Newfoundland",
+    "ror": "https://ror.org/04haebc03",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I130438778"
+    ],
+    "field_citations": 1,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 1,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 1,
+    "ICI": 2.0,
+    "shortand_name": "MUN",
+    "label_name": "Memorial U. of Newfoundland"
+  },
+  {
+    "id": "https://openalex.org/I186803428",
+    "name": "Brock University",
+    "ror": "https://ror.org/056am2717",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I186803428"
+    ],
+    "field_citations": 1,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 1,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 1,
+    "ICI": 6.0,
+    "shortand_name": "Brock",
+    "label_name": "Brock U."
+  },
+  {
+    "id": "https://openalex.org/I80947539",
+    "name": "Fuzhou University",
+    "ror": "https://ror.org/011xvna82",
+    "country_code": "CN",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I80947539"
+    ],
+    "field_citations": 1,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 1,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 1,
+    "ICI": 4.5,
+    "shortand_name": "FZU",
+    "label_name": "Fuzhou U."
+  },
+  {
+    "id": "https://openalex.org/I123096312",
+    "name": "Mahasarakham University",
+    "ror": "https://ror.org/0453j3c58",
+    "country_code": "TH",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I123096312"
+    ],
+    "field_citations": 1,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 1,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 1,
+    "ICI": 1.3333333333333333,
+    "shortand_name": "MSU",
+    "label_name": "Mahasarakham U."
+  },
+  {
+    "id": "https://openalex.org/I12315562",
+    "name": "Texas Tech University",
+    "ror": "https://ror.org/0405mnx93",
+    "country_code": "US",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I12315562"
+    ],
+    "field_citations": 1,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 1,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 1,
+    "ICI": 2.0,
+    "shortand_name": "TTU",
+    "label_name": "Texas Tech U."
+  },
+  {
+    "id": "https://openalex.org/I64152125",
+    "name": "Zurich University of the Arts",
+    "ror": "https://ror.org/05r0ap620",
+    "country_code": "CH",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I64152125"
+    ],
+    "field_citations": 1,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 1,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 1,
+    "ICI": 4.0,
+    "shortand_name": "ZHdK",
+    "label_name": "Zurich U. of the Arts"
+  },
+  {
+    "id": "https://openalex.org/I126231945",
+    "name": "Queen's University Belfast",
+    "ror": "https://ror.org/00hswnk62",
+    "country_code": "GB",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I126231945"
+    ],
+    "field_citations": 1,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 1,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 1,
+    "ICI": 1.0,
+    "shortand_name": "QUB",
+    "label_name": "Queen's U. Belfast"
+  },
+  {
+    "id": "https://openalex.org/I165143802",
+    "name": "University of Queensland",
+    "ror": "https://ror.org/00rqy9422",
+    "country_code": "AU",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I165143802"
+    ],
+    "field_citations": 1,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 1,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 1,
+    "ICI": 3.3333333333333335,
+    "shortand_name": "UQ",
+    "label_name": "U. of Queensland"
+  },
+  {
+    "id": "https://openalex.org/I94722563",
+    "name": "University of Jyväskylä",
+    "ror": "https://ror.org/05n3dz165",
+    "country_code": "FI",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I94722563"
+    ],
+    "field_citations": 1,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 1,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 1,
+    "ICI": 1.0,
+    "shortand_name": "JYU",
+    "label_name": "U. of Jyväskylä"
+  },
+  {
+    "id": "https://openalex.org/I83558840",
+    "name": "Universidade Nova de Lisboa",
+    "ror": "https://ror.org/02xankh89",
+    "country_code": "PT",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I83558840"
+    ],
+    "field_citations": 1,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 1,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 1,
+    "ICI": 1.0,
+    "shortand_name": "NOVA",
+    "label_name": "NOVA U. Lisbon"
+  },
+  {
+    "id": "https://openalex.org/I4387152517",
+    "name": "Instituto Superior Técnico",
+    "ror": "https://ror.org/03db2by73",
+    "country_code": null,
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I141596103",
+      "https://openalex.org/I4387152517"
+    ],
+    "field_citations": 1,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 1,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 1,
+    "ICI": 1.0,
+    "shortand_name": "IST",
+    "label_name": "Inst. Superior Técnico"
+  },
+  {
+    "id": "https://openalex.org/I141596103",
+    "name": "University of Lisbon",
+    "ror": "https://ror.org/01c27hj86",
+    "country_code": "PT",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I141596103"
+    ],
+    "field_citations": 1,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 1,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 1,
+    "ICI": 1.0,
+    "shortand_name": "ULisboa",
+    "label_name": "U. of Lisbon"
+  },
+  {
+    "id": "https://openalex.org/I28166907",
+    "name": "Karolinska Institutet",
+    "ror": "https://ror.org/056d84691",
+    "country_code": "SE",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I28166907"
+    ],
+    "field_citations": 1,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 1,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 1,
+    "ICI": 2.0,
+    "shortand_name": "KI",
+    "label_name": "Karolinska Inst."
+  },
+  {
+    "id": "https://openalex.org/I899635006",
+    "name": "Université Grenoble Alpes",
+    "ror": "https://ror.org/02rx3b187",
+    "country_code": "FR",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I899635006"
+    ],
+    "field_citations": 1,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 1,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 1,
+    "ICI": 1.3333333333333333,
+    "shortand_name": "UGA",
+    "label_name": "U. Grenoble Alpes"
+  },
+  {
+    "id": "https://openalex.org/I162577319",
+    "name": "The University of Texas at Dallas",
+    "ror": "https://ror.org/049emcs32",
+    "country_code": "US",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I162577319"
+    ],
+    "field_citations": 1,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 1,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 1,
+    "ICI": 0.5714285714285714,
+    "shortand_name": "UT Dallas",
+    "label_name": "U. of Texas at Dallas"
+  },
+  {
+    "id": "https://openalex.org/I103163165",
+    "name": "Florida State University",
+    "ror": "https://ror.org/05g3dte14",
+    "country_code": "US",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I103163165"
+    ],
+    "field_citations": 1,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 1,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 1,
+    "ICI": 0.5714285714285714,
+    "shortand_name": "FSU",
+    "label_name": "Florida State U."
+  },
+  {
+    "id": "https://openalex.org/I3129292944",
+    "name": "Cégep de Chicoutimi",
+    "ror": "https://ror.org/03kzn3e44",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I3129292944"
+    ],
+    "field_citations": 1,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 1,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 1,
+    "ICI": 1.3333333333333333,
+    "shortand_name": "Cégep Chicoutimi",
+    "label_name": "Cégep de Chicoutimi"
+  },
+  {
+    "id": "https://openalex.org/I117965899",
+    "name": "University of Hawaiʻi at Mānoa",
+    "ror": "https://ror.org/01wspgy28",
+    "country_code": "US",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I117965899"
+    ],
+    "field_citations": 1,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 1,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 1,
+    "ICI": 1.3333333333333333,
+    "shortand_name": "UH Mānoa",
+    "label_name": "U. of Hawaiʻi at Mānoa"
+  },
+  {
+    "id": "https://openalex.org/I95220073",
+    "name": "University of Lapland",
+    "ror": "https://ror.org/05jzt8766",
+    "country_code": "FI",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I95220073"
+    ],
+    "field_citations": 1,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 1,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 1,
+    "ICI": 1.3333333333333333,
+    "shortand_name": "ULapland",
+    "label_name": "U. of Lapland"
+  },
+  {
+    "id": "https://openalex.org/I123946342",
+    "name": "Binghamton University",
+    "ror": "https://ror.org/008rmbt77",
+    "country_code": "US",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I123946342"
+    ],
+    "field_citations": 1,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 1,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 1,
+    "ICI": 6.0,
+    "shortand_name": "Binghamton",
+    "label_name": "Binghamton U."
+  },
+  {
+    "id": "https://openalex.org/I124055696",
+    "name": "University of Copenhagen",
+    "ror": "https://ror.org/035b05819",
+    "country_code": "DK",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I124055696"
+    ],
+    "field_citations": 13,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 13,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 13,
+    "ICI": 3.230769230769231,
+    "shortand_name": "UCPH",
+    "label_name": "U. of Copenhagen"
+  },
+  {
+    "id": "https://openalex.org/I16076960",
+    "name": "COMSATS University Islamabad",
+    "ror": "https://ror.org/00nqqvk19",
+    "country_code": "PK",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I16076960"
+    ],
+    "field_citations": 0,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 0,
+    "ICI": 0.0,
+    "shortand_name": "CUI",
+    "label_name": "COMSATS U. Islamabad"
+  },
+  {
+    "id": "https://openalex.org/I55801708",
+    "name": "Saint Michael's College",
+    "ror": "https://ror.org/03b353k89",
+    "country_code": "US",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I55801708"
+    ],
+    "field_citations": 0,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 0,
+    "ICI": 0.0,
+    "shortand_name": "SMC",
+    "label_name": "Saint Michael's College"
+  },
+  {
+    "id": "https://openalex.org/I4210132911",
+    "name": "Universidad Villa Rica",
+    "ror": "https://ror.org/048yh2980",
+    "country_code": "MX",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I4210132911"
+    ],
+    "field_citations": 0,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 0,
+    "ICI": 0.0,
+    "shortand_name": "UVR",
+    "label_name": "U. Villa Rica"
+  },
+  {
+    "id": "https://openalex.org/I124158823",
+    "name": "Conservatoire National des Arts et Métiers",
+    "ror": "https://ror.org/0175hh227",
+    "country_code": "FR",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I124158823",
+      "https://openalex.org/I4210134562"
+    ],
+    "field_citations": 0,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 0,
+    "ICI": 0.0,
+    "shortand_name": "CNAM",
+    "label_name": "CNAM"
+  },
+  {
+    "id": "https://openalex.org/I182451676",
+    "name": "Université du Québec à Rimouski",
+    "ror": "https://ror.org/049jtt335",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I182451676",
+      "https://openalex.org/I49663120"
+    ],
+    "field_citations": 0,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 0,
+    "ICI": 0.0,
+    "shortand_name": "UQAR",
+    "label_name": "UQAR"
+  },
+  {
+    "id": "https://openalex.org/I97188460",
+    "name": "Nantes Université",
+    "ror": "https://ror.org/03gnr7b55",
+    "country_code": "FR",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I97188460"
+    ],
+    "field_citations": 0,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 0,
+    "ICI": 0.0,
+    "shortand_name": "NantesU",
+    "label_name": "Nantes U."
+  },
+  {
+    "id": "https://openalex.org/I49451733",
+    "name": "Université d'Angers",
+    "ror": "https://ror.org/04yrqp957",
+    "country_code": "FR",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I49451733"
+    ],
+    "field_citations": 0,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 0,
+    "ICI": 0.0,
+    "shortand_name": "UAngers",
+    "label_name": "U. d'Angers"
+  },
+  {
+    "id": "https://openalex.org/I155125353",
+    "name": "Università Campus Bio-Medico",
+    "ror": "https://ror.org/04gqx4x78",
+    "country_code": "IT",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I155125353"
+    ],
+    "field_citations": 0,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 0,
+    "ICI": 0.0,
+    "shortand_name": "UCBM",
+    "label_name": "U. Campus Bio-Medico"
+  },
+  {
+    "id": "https://openalex.org/I76766440",
+    "name": "University of San Francisco",
+    "ror": "https://ror.org/029m7xn54",
+    "country_code": "US",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I76766440"
+    ],
+    "field_citations": 0,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 0,
+    "ICI": 0.0,
+    "shortand_name": "USF",
+    "label_name": "U. of San Francisco"
+  },
+  {
+    "id": "https://openalex.org/I4210107997",
+    "name": "Finland University",
+    "ror": "https://ror.org/014rks409",
+    "country_code": "FI",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I4210107997"
+    ],
+    "field_citations": 0,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 0,
+    "ICI": 0.0,
+    "shortand_name": "FinlandU",
+    "label_name": "Finland U."
+  },
+  {
+    "id": "https://openalex.org/I175532246",
+    "name": "University of Eastern Finland",
+    "ror": "https://ror.org/00cyydd11",
+    "country_code": "FI",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I175532246"
+    ],
+    "field_citations": 0,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 0,
+    "ICI": 0.0,
+    "shortand_name": "UEF",
+    "label_name": "U. of Eastern Finland"
+  },
+  {
+    "id": "https://openalex.org/I100066346",
+    "name": "University of Stuttgart",
+    "ror": "https://ror.org/04vnq7t77",
+    "country_code": "DE",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I100066346"
+    ],
+    "field_citations": 0,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 0,
+    "ICI": 0.0,
+    "shortand_name": "Stuttgart",
+    "label_name": "U. of Stuttgart"
+  },
+  {
+    "id": "https://openalex.org/I150744194",
+    "name": "Waseda University",
+    "ror": "https://ror.org/00ntfnx83",
+    "country_code": "JP",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I150744194"
+    ],
+    "field_citations": 0,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 0,
+    "ICI": 0.0,
+    "shortand_name": "Waseda",
+    "label_name": "Waseda U."
+  },
+  {
+    "id": "https://openalex.org/I91136226",
+    "name": "University of Sheffield",
+    "ror": "https://ror.org/05krs5044",
+    "country_code": "GB",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I91136226"
+    ],
+    "field_citations": 0,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 0,
+    "ICI": 0.0,
+    "shortand_name": "Sheffield",
+    "label_name": "U. of Sheffield"
+  },
+  {
+    "id": "https://openalex.org/I130828816",
+    "name": "University of Leeds",
+    "ror": "https://ror.org/024mrxd33",
+    "country_code": "GB",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I130828816"
+    ],
+    "field_citations": 0,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 0,
+    "ICI": 0.0,
+    "shortand_name": "Leeds",
+    "label_name": "U. of Leeds"
+  },
+  {
+    "id": "https://openalex.org/I39422238",
+    "name": "University of Illinois Chicago",
+    "ror": "https://ror.org/02mpq6x41",
+    "country_code": "US",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I39422238"
+    ],
+    "field_citations": 0,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 0,
+    "ICI": 0.0,
+    "shortand_name": "UIC",
+    "label_name": "U. of Illinois Chicago"
+  },
+  {
+    "id": "https://openalex.org/I201841394",
+    "name": "Université Côte d'Azur",
+    "ror": "https://ror.org/019tgvf94",
+    "country_code": "FR",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I201841394"
+    ],
+    "field_citations": 0,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 0,
+    "ICI": 0.0,
+    "shortand_name": "UniCA",
+    "label_name": "U. Côte d'Azur"
+  },
+  {
+    "id": "https://openalex.org/I3124938446",
+    "name": "Université Rennes 2",
+    "ror": "https://ror.org/01m84wm78",
+    "country_code": "FR",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I3124938446"
+    ],
+    "field_citations": 0,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 0,
+    "ICI": 0.0,
+    "shortand_name": "Rennes 2",
+    "label_name": "U. Rennes 2"
+  },
+  {
+    "id": "https://openalex.org/I17120543",
+    "name": "National University of Modern Languages",
+    "ror": "https://ror.org/008dh2426",
+    "country_code": "PK",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I17120543"
+    ],
+    "field_citations": 0,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 0,
+    "ICI": 0.0,
+    "shortand_name": "NUML",
+    "label_name": "Nat. U. of Modern Languages"
+  },
+  {
+    "id": "https://openalex.org/I169541294",
+    "name": "Flinders University",
+    "ror": "https://ror.org/01kpzv902",
+    "country_code": "AU",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I169541294"
+    ],
+    "field_citations": 0,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 0,
+    "ICI": 0.0,
+    "shortand_name": "Flinders",
+    "label_name": "Flinders U."
+  },
+  {
+    "id": "https://openalex.org/I66867065",
+    "name": "East China Normal University",
+    "ror": "https://ror.org/02n96ep67",
+    "country_code": "CN",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I66867065"
+    ],
+    "field_citations": 0,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 0,
+    "ICI": 0.0,
+    "shortand_name": "ECNU",
+    "label_name": "East China Normal U."
+  },
+  {
+    "id": "https://openalex.org/I96673099",
+    "name": "Technical University of Denmark",
+    "ror": "https://ror.org/04qtj9h94",
+    "country_code": "DK",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I96673099"
+    ],
+    "field_citations": 0,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 0,
+    "ICI": 0.0,
+    "shortand_name": "DTU",
+    "label_name": "Tech. U. of Denmark"
+  },
+  {
+    "id": "https://openalex.org/I1293555014",
+    "name": "Islamic Azad University of Tabriz",
+    "ror": "https://ror.org/04hnf9a51",
+    "country_code": "IR",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I110525433",
+      "https://openalex.org/I1293555014"
+    ],
+    "field_citations": 0,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 0,
+    "ICI": 0.0,
+    "shortand_name": "IAU Tabriz",
+    "label_name": "Islamic Azad U. Tabriz"
+  },
+  {
+    "id": "https://openalex.org/I110525433",
+    "name": "Islamic Azad University, Tehran",
+    "ror": "https://ror.org/01kzn7k21",
+    "country_code": "IR",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I110525433"
+    ],
+    "field_citations": 0,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 0,
+    "ICI": 0.0,
+    "shortand_name": "IAUT",
+    "label_name": "Islamic Azad U. Tehran"
+  },
+  {
+    "id": "https://openalex.org/I4092182",
+    "name": "Graz University of Technology",
+    "ror": "https://ror.org/00d7xrm67",
+    "country_code": "AT",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I4092182"
+    ],
+    "field_citations": 0,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 0,
+    "ICI": 0.0,
+    "shortand_name": "TU Graz",
+    "label_name": "Graz U. of Tech."
+  },
+  {
+    "id": "https://openalex.org/I106165777",
+    "name": "University of Central Florida",
+    "ror": "https://ror.org/036nfer12",
+    "country_code": "US",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I106165777"
+    ],
+    "field_citations": 0,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 0,
+    "ICI": 0.0,
+    "shortand_name": "UCF",
+    "label_name": "U. of Central Florida"
+  },
+  {
+    "id": "https://openalex.org/I251424209",
+    "name": "University of Girona",
+    "ror": "https://ror.org/01xdxns91",
+    "country_code": "ES",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I251424209"
+    ],
+    "field_citations": 0,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 0,
+    "ICI": 0.0,
+    "shortand_name": "UdG",
+    "label_name": "U. of Girona"
+  },
+  {
+    "id": "https://openalex.org/I167576493",
+    "name": "Colorado School of Mines",
+    "ror": "https://ror.org/04raf6v53",
+    "country_code": "US",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I167576493"
+    ],
+    "field_citations": 0,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 0,
+    "ICI": 0.0,
+    "shortand_name": "Mines",
+    "label_name": "Colorado School of Mines"
+  },
+  {
+    "id": "https://openalex.org/I161515732",
+    "name": "University of St. Thomas - Minnesota",
+    "ror": "https://ror.org/05vfxvp80",
+    "country_code": "US",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I161515732"
+    ],
+    "field_citations": 0,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 0,
+    "ICI": 0.0,
+    "shortand_name": "UST",
+    "label_name": "U. of St. Thomas (MN)"
+  },
+  {
+    "id": "https://openalex.org/I4210139955",
+    "name": "Yorkville University",
+    "ror": "https://ror.org/04t8wxc05",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I4210139955"
+    ],
+    "field_citations": 0,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 0,
+    "ICI": 0.0,
+    "shortand_name": "Yorkville",
+    "label_name": "Yorkville U."
+  },
+  {
+    "id": "https://openalex.org/I7863295",
+    "name": "Villanova University",
+    "ror": "https://ror.org/02g7kd627",
+    "country_code": "US",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I7863295"
+    ],
+    "field_citations": 0,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 0,
+    "ICI": 0.0,
+    "shortand_name": "Villanova",
+    "label_name": "Villanova U."
+  },
+  {
+    "id": "https://openalex.org/I251738",
+    "name": "Edinburgh Napier University",
+    "ror": "https://ror.org/03zjvnn91",
+    "country_code": "GB",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I251738"
+    ],
+    "field_citations": 0,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 0,
+    "ICI": 0.0,
+    "shortand_name": "Napier",
+    "label_name": "Edinburgh Napier U."
+  },
+  {
+    "id": "https://openalex.org/I74413500",
+    "name": "University of Windsor",
+    "ror": "https://ror.org/01gw3d370",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I74413500"
+    ],
+    "field_citations": 0,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 0,
+    "ICI": 0.0,
+    "shortand_name": "UWindsor",
+    "label_name": "U. of Windsor"
+  },
+  {
+    "id": "https://openalex.org/I31571312",
+    "name": "École Nationale d'Administration Publique",
+    "ror": "https://ror.org/05wwfbb42",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I31571312",
+      "https://openalex.org/I49663120"
+    ],
+    "field_citations": 0,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 0,
+    "ICI": 0.0,
+    "shortand_name": "ENAP",
+    "label_name": "ENAP"
+  },
+  {
+    "id": "https://openalex.org/I81556334",
+    "name": "Amrita Vishwa Vidyapeetham",
+    "ror": "https://ror.org/03am10p12",
+    "country_code": "IN",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I81556334"
+    ],
+    "field_citations": 0,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 0,
+    "ICI": 0.0,
+    "shortand_name": "Amrita",
+    "label_name": "Amrita Vishwa Vidyapeetham"
+  },
+  {
+    "id": "https://openalex.org/I195460627",
+    "name": "University of Aberdeen",
+    "ror": "https://ror.org/016476m91",
+    "country_code": "GB",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I195460627"
+    ],
+    "field_citations": 0,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 0,
+    "ICI": 0.0,
+    "shortand_name": "Aberdeen",
+    "label_name": "U. of Aberdeen"
+  },
+  {
+    "id": "https://openalex.org/I12093191",
+    "name": "University of Stirling",
+    "ror": "https://ror.org/045wgfr59",
+    "country_code": "GB",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I12093191"
+    ],
+    "field_citations": 0,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 0,
+    "ICI": 0.0,
+    "shortand_name": "Stirling",
+    "label_name": "U. of Stirling"
+  },
+  {
+    "id": "https://openalex.org/I872945872",
+    "name": "University of Winnipeg",
+    "ror": "https://ror.org/02gdzyx04",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I872945872"
+    ],
+    "field_citations": 0,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 0,
+    "ICI": 0.0,
+    "shortand_name": "UWinnipeg",
+    "label_name": "U. of Winnipeg"
+  },
+  {
+    "id": "https://openalex.org/I4210127717",
+    "name": "Armed Forces College of Medicine",
+    "ror": "https://ror.org/033ttrk34",
+    "country_code": "EG",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I4210127717"
+    ],
+    "field_citations": 0,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 0,
+    "ICI": 0.0,
+    "shortand_name": "AFCM",
+    "label_name": "Armed Forces College of Med."
+  },
+  {
+    "id": "https://openalex.org/I29894533",
+    "name": "Charles Darwin University",
+    "ror": "https://ror.org/048zcaj52",
+    "country_code": "AU",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I29894533"
+    ],
+    "field_citations": 0,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 0,
+    "ICI": 0.0,
+    "shortand_name": "CDU",
+    "label_name": "Charles Darwin U."
+  },
+  {
+    "id": "https://openalex.org/I2802889516",
+    "name": "University of the Arts",
+    "ror": "https://ror.org/040w1dr55",
+    "country_code": "US",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I2802889516"
+    ],
+    "field_citations": 0,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 0,
+    "ICI": 0.0,
+    "shortand_name": "UArts",
+    "label_name": "U. of the Arts"
+  },
+  {
+    "id": "https://openalex.org/I162096671",
+    "name": "Universidad de Los Andes",
+    "ror": "https://ror.org/02mhbdp94",
+    "country_code": "CO",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I162096671"
+    ],
+    "field_citations": 0,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 0,
+    "ICI": 0.0,
+    "shortand_name": "Uniandes",
+    "label_name": "U. de Los Andes"
+  },
+  {
+    "id": "https://openalex.org/I103605164",
+    "name": "Tohoku Institute of Technology",
+    "ror": "https://ror.org/01phqre83",
+    "country_code": "JP",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I103605164"
+    ],
+    "field_citations": 0,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 0,
+    "ICI": 0.0,
+    "shortand_name": "TIT",
+    "label_name": "Tohoku Inst. of Tech."
+  },
+  {
+    "id": "https://openalex.org/I201537933",
+    "name": "Tohoku University",
+    "ror": "https://ror.org/01dq60k83",
+    "country_code": "JP",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I201537933"
+    ],
+    "field_citations": 0,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 0,
+    "ICI": 0.0,
+    "shortand_name": "Tohoku",
+    "label_name": "Tohoku U."
+  },
+  {
+    "id": "https://openalex.org/I200433483",
+    "name": "Bowen University",
+    "ror": "https://ror.org/02avtbn34",
+    "country_code": "NG",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I200433483"
+    ],
+    "field_citations": 0,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 0,
+    "ICI": 0.0,
+    "shortand_name": "Bowen",
+    "label_name": "Bowen U."
+  },
+  {
+    "id": "https://openalex.org/I204824540",
+    "name": "University of Wollongong",
+    "ror": "https://ror.org/00jtmb277",
+    "country_code": "AU",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I204824540"
+    ],
+    "field_citations": 0,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 0,
+    "ICI": 0.0,
+    "shortand_name": "UOW",
+    "label_name": "U. of Wollongong"
+  },
+  {
+    "id": "https://openalex.org/I1328775524",
+    "name": "Zhejiang Sci-Tech University",
+    "ror": "https://ror.org/03893we55",
+    "country_code": "CN",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I1328775524"
+    ],
+    "field_citations": 0,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 0,
+    "ICI": 0.0,
+    "shortand_name": "ZSTU",
+    "label_name": "Zhejiang Sci-Tech U."
+  },
+  {
+    "id": "https://openalex.org/I17145004",
+    "name": "Northwestern Polytechnical University",
+    "ror": "https://ror.org/01y0j0j86",
+    "country_code": "CN",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I17145004"
+    ],
+    "field_citations": 0,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 0,
+    "ICI": 0.0,
+    "shortand_name": "NWPU",
+    "label_name": "NW Poly. U."
+  },
+  {
+    "id": "https://openalex.org/I189442560",
+    "name": "Gyeongsang National University",
+    "ror": "https://ror.org/00saywf64",
+    "country_code": "KR",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I189442560"
+    ],
+    "field_citations": 0,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 0,
+    "ICI": 0.0,
+    "shortand_name": "GNU",
+    "label_name": "Gyeongsang Nat. U."
+  },
+  {
+    "id": "https://openalex.org/I52418104",
+    "name": "Universidade Federal do Paraná",
+    "ror": "https://ror.org/05syd6y78",
+    "country_code": "BR",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I52418104"
+    ],
+    "field_citations": 0,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 0,
+    "ICI": 0.0,
+    "shortand_name": "UFPR",
+    "label_name": "Fed. U. of Paraná"
+  },
+  {
+    "id": "https://openalex.org/I241749",
+    "name": "University of Cambridge",
+    "ror": "https://ror.org/013meh722",
+    "country_code": "GB",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I241749"
+    ],
+    "field_citations": 0,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2026": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 0,
+    "ICI": 0.0,
+    "shortand_name": "Cambridge",
+    "label_name": "U. of Cambridge"
+  },
+  {
+    "id": "https://openalex.org/I4400009020",
+    "name": "Institute of Science Tokyo",
+    "ror": "https://ror.org/05dqf9946",
+    "country_code": null,
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I4400009020"
+    ],
+    "field_citations": 0,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2026": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 0,
+    "ICI": 0.0,
+    "shortand_name": "Science Tokyo",
+    "label_name": "Inst. of Science Tokyo"
+  }
+]
