@@ -3,7 +3,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import * as d3 from "d3";
-import { distinctColors } from "../lib/colors";
+import { visualPalette, getTextureStrokeForVariable } from "../lib/visualPalette";
 
 interface Institution {
   id: string;
@@ -87,7 +87,7 @@ interface NetworkUniversityViewProps {
   selectedUniversity: string | null;
   nodeLabelMode: "major" | "all" | "none";
   matrixUniversity: string | null;
-  onUniversitiesChange: (universities: Array<{ name: string; display_name: string; color: string; totalACI: number; count: number }>) => void;
+  onUniversitiesChange: (universities: Array<{ name: string; display_name: string; color: string; texture?: string; luminance?: "dark" | "light"; totalACI: number; count: number }>) => void;
 }
 
 const UNIVERSITY_VIEW_AUTHOR_SAMPLE = 500;
@@ -109,7 +109,7 @@ export default function NetworkUniversityView({
   const [authorships, setAuthorships] = useState<Authorship[]>([]);
   const [domainAuthorIds, setDomainAuthorIds] = useState<Set<string> | null>(null);
   const [institutions, setInstitutions] = useState<InstitutionData[]>([]);
-  const [universityColors, setUniversityColors] = useState<Map<string, string>>(new Map());
+  const [universityColors, setUniversityColors] = useState<Map<string, { color: string; texture: string; luminance: "dark" | "light" }>>(new Map());
 
   useEffect(() => {
     fetch("/data/authorships.json")
@@ -283,24 +283,53 @@ export default function NetworkUniversityView({
       .domain([0, d3.max(universityNodes, d => d.totalICI) || 1])
       .range([10, 40]);
 
-    const colorScale = d3.scaleOrdinal<string>()
-      .domain(universityNodes.map(u => u.name))
-      .range(distinctColors(universityNodes.length));
+    // Map each university to its visual variable (color + texture)
+    const universityVisuals = new Map(
+      universityNodes.map((node, idx) => {
+        const paletteItem = visualPalette[idx % visualPalette.length];
+        return [node.name, paletteItem];
+      })
+    );
 
-    // Store colors in state for matrix rendering
-    const colorMap = new Map<string, string>();
+    // Helper function to get fill value (solid color or pattern URL)
+    const getFillForUniversity = (universityName: string): string => {
+      const visual = universityVisuals.get(universityName);
+      if (!visual) return "#808080"; // Fallback gray
+
+      if (visual.texture === "none") {
+        return visual.color;
+      } else {
+        const patternId = `pattern-uni-${universityName.replace(/[^a-zA-Z0-9]/g, "-")}`;
+        return `url(#${patternId})`;
+      }
+    };
+
+    // Store visuals in state for matrix rendering
+    const colorMap = new Map<string, { color: string; texture: string; luminance: "dark" | "light" }>();
     universityNodes.forEach(uni => {
-      colorMap.set(uni.name, colorScale(uni.name));
+      const visual = universityVisuals.get(uni.name);
+      if (visual) {
+        colorMap.set(uni.name, {
+          color: visual.color,
+          texture: visual.texture,
+          luminance: visual.luminance
+        });
+      }
     });
     setUniversityColors(colorMap);
 
-    onUniversitiesChange(universityNodes.map(uni => ({
-      name: uni.name,
-      display_name: uni.display_name,
-      color: colorScale(uni.name),
-      totalACI: uni.totalICI, // Still use totalACI key for backward compatibility with sidebar
-      count: uni.authorCount,
-    })));
+    onUniversitiesChange(universityNodes.map(uni => {
+      const visual = universityVisuals.get(uni.name);
+      return {
+        name: uni.name,
+        display_name: uni.display_name,
+        color: visual?.color || "#808080",
+        texture: visual?.texture || "none",
+        luminance: visual?.luminance || "dark",
+        totalACI: uni.totalICI, // Still use totalACI key for backward compatibility with sidebar
+        count: uni.authorCount,
+      };
+    }));
 
     function boxForce() {
       const margin = 80;
@@ -345,6 +374,111 @@ export default function NetworkUniversityView({
     const svgEl = d3.select(svgRef.current)
       .attr("width", containerWidth)
       .attr("height", containerHeight);
+
+    // Definitions: texture patterns
+    const defs = svgEl.append("defs");
+
+    // Create texture patterns for each university that needs one
+    universityVisuals.forEach((visual, universityName) => {
+      if (visual.texture === "none") return;
+
+      const patternId = `pattern-uni-${universityName.replace(/[^a-zA-Z0-9]/g, "-")}`;
+      const strokeColor = getTextureStrokeForVariable(visual);
+
+      // Small repeating pattern that works well for circles of all sizes
+      const pattern = defs
+        .append("pattern")
+        .attr("id", patternId)
+        .attr("patternUnits", "userSpaceOnUse")
+        .attr("width", 8)
+        .attr("height", 8);
+
+      // Background color
+      pattern.append("rect")
+        .attr("width", 8)
+        .attr("height", 8)
+        .attr("fill", visual.color);
+
+      // Add lines based on texture type
+      if (visual.texture === "vertical") {
+        // Vertical stripes
+        pattern.append("line")
+          .attr("x1", 2)
+          .attr("y1", 0)
+          .attr("x2", 2)
+          .attr("y2", 8)
+          .attr("stroke", strokeColor)
+          .attr("stroke-width", 2);
+        pattern.append("line")
+          .attr("x1", 6)
+          .attr("y1", 0)
+          .attr("x2", 6)
+          .attr("y2", 8)
+          .attr("stroke", strokeColor)
+          .attr("stroke-width", 2);
+      } else if (visual.texture === "horizontal") {
+        // Horizontal stripes
+        pattern.append("line")
+          .attr("x1", 0)
+          .attr("y1", 2)
+          .attr("x2", 8)
+          .attr("y2", 2)
+          .attr("stroke", strokeColor)
+          .attr("stroke-width", 2);
+        pattern.append("line")
+          .attr("x1", 0)
+          .attr("y1", 6)
+          .attr("x2", 8)
+          .attr("y2", 6)
+          .attr("stroke", strokeColor)
+          .attr("stroke-width", 2);
+      } else if (visual.texture === "diagonal") {
+        // Diagonal stripes (45 degree)
+        pattern.append("line")
+          .attr("x1", 0)
+          .attr("y1", 0)
+          .attr("x2", 8)
+          .attr("y2", 8)
+          .attr("stroke", strokeColor)
+          .attr("stroke-width", 2);
+        pattern.append("line")
+          .attr("x1", -2)
+          .attr("y1", 6)
+          .attr("x2", 2)
+          .attr("y2", 10)
+          .attr("stroke", strokeColor)
+          .attr("stroke-width", 2);
+        pattern.append("line")
+          .attr("x1", 6)
+          .attr("y1", -2)
+          .attr("x2", 10)
+          .attr("y2", 2)
+          .attr("stroke", strokeColor)
+          .attr("stroke-width", 2);
+      } else if (visual.texture === "dots") {
+        // Dot pattern - 4 dots in a grid
+        pattern.append("circle")
+          .attr("cx", 2)
+          .attr("cy", 2)
+          .attr("r", 1)
+          .attr("fill", strokeColor);
+        pattern.append("circle")
+          .attr("cx", 6)
+          .attr("cy", 2)
+          .attr("r", 1)
+          .attr("fill", strokeColor);
+        pattern.append("circle")
+          .attr("cx", 2)
+          .attr("cy", 6)
+          .attr("r", 1)
+          .attr("fill", strokeColor);
+        pattern.append("circle")
+          .attr("cx", 6)
+          .attr("cy", 6)
+          .attr("r", 1)
+          .attr("fill", strokeColor);
+      }
+    });
 
     const g = svgEl.append("g");
     const zoom = d3.zoom<SVGSVGElement, unknown>().scaleExtent([0.2, 6]).on("zoom", (e) => g.attr("transform", e.transform));
@@ -399,7 +533,7 @@ export default function NetworkUniversityView({
 
     nodeGroup.append("circle")
       .attr("r", d => sizeScale(d.totalICI))
-      .attr("fill", d => colorScale(d.name))
+      .attr("fill", d => getFillForUniversity(d.name))
       .attr("stroke", "rgba(255,255,255,0.9)")
       .attr("stroke-width", 2)
       .style("opacity", d => !selectedUniversity || d.name === selectedUniversity ? 0.9 : 0.2);
@@ -692,7 +826,8 @@ export default function NetworkUniversityView({
     const matrixTooltip = tooltipRef.current;
 
     // Get the color for this university
-    const universityColor = universityColors.get(matrixUniversity) || "#4a90e2";
+    const universityVisual = universityColors.get(matrixUniversity);
+    const universityColor = universityVisual?.color || "#4a90e2";
 
     // Draw cells
     g.selectAll("rect.cell")

@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import * as d3 from "d3";
 import styles from "./NetworkView.module.css";
-import { distinctColors } from "../lib/colors";
+import { visualPalette, getTextureStrokeForVariable, getTextureStrokeColor } from "../lib/visualPalette";
 import NetworkUniversityView from "./NetworkUniversityView";
 
 interface Institution {
@@ -121,7 +121,7 @@ export default function NetworkView({
   );
   const [selectedNode, setSelectedNode] = useState<string | null>(null);
   const [universities, setUniversities] = useState<
-    Array<{ name: string; color: string; totalACI: number; count: number }>
+    Array<{ name: string; color: string; texture: string; luminance: "dark" | "light"; totalACI: number; count: number }>
   >([]);
   const [matrixUniversities, setMatrixUniversities] = useState<Set<string>>(
     new Set(),
@@ -129,7 +129,7 @@ export default function NetworkView({
 
   // State for university view
   const [universityViewUniversities, setUniversityViewUniversities] = useState<
-    Array<{ name: string; color: string; totalACI: number; count: number }>
+    Array<{ name: string; color: string; texture?: string; luminance?: "dark" | "light"; totalACI: number; count: number }>
   >([]);
   const [universityLabelMode, setUniversityLabelMode] = useState<"major" | "all" | "none">(
     maxUniversities > 20 ? "major" : "all"
@@ -412,10 +412,27 @@ export default function NetworkView({
     });
 
     const topInstArray = Array.from(topInstitutionNames);
-    const colorScale = d3
-      .scaleOrdinal<string>()
-      .domain(topInstArray)
-      .range(distinctColors(topInstArray.length));
+
+    // Map each university to its visual variable (color + texture)
+    const universityVisuals = new Map(
+      topInstArray.map((name, idx) => {
+        const paletteItem = visualPalette[idx % visualPalette.length];
+        return [name, paletteItem];
+      })
+    );
+
+    // Helper function to get fill value (solid color or pattern URL)
+    const getFillForUniversity = (universityName: string): string => {
+      const visual = universityVisuals.get(universityName);
+      if (!visual) return "#808080"; // Fallback gray
+
+      if (visual.texture === "none") {
+        return visual.color;
+      } else {
+        const patternId = `pattern-${universityName.replace(/[^a-zA-Z0-9]/g, "-")}`;
+        return `url(#${patternId})`;
+      }
+    };
 
     const displayedUniversityCounts = new Map<string, number>();
     displayAuthors.forEach((author) => {
@@ -427,7 +444,9 @@ export default function NetworkView({
 
     const uniList = sortedInstitutions.map(([name, group]) => ({
       name,
-      color: colorScale(name),
+      color: universityVisuals.get(name)?.color || "#808080",
+      texture: universityVisuals.get(name)?.texture || "none",
+      luminance: universityVisuals.get(name)?.luminance || "dark",
       totalACI: group.totalACI,
       count: displayedUniversityCounts.get(name) || 0,
     }));
@@ -491,6 +510,111 @@ export default function NetworkView({
       .select(svgRef.current)
       .attr("width", containerWidth)
       .attr("height", containerHeight);
+
+    // Definitions: texture patterns
+    const defs = svgEl.append("defs");
+
+    // Create texture patterns for each university that needs one
+    universityVisuals.forEach((visual, universityName) => {
+      if (visual.texture === "none") return;
+
+      const patternId = `pattern-${universityName.replace(/[^a-zA-Z0-9]/g, "-")}`;
+      const strokeColor = getTextureStrokeForVariable(visual);
+
+      // Small repeating pattern that works well for circles of all sizes
+      const pattern = defs
+        .append("pattern")
+        .attr("id", patternId)
+        .attr("patternUnits", "userSpaceOnUse")
+        .attr("width", 8)
+        .attr("height", 8);
+
+      // Background color
+      pattern.append("rect")
+        .attr("width", 8)
+        .attr("height", 8)
+        .attr("fill", visual.color);
+
+      // Add lines based on texture type
+      if (visual.texture === "vertical") {
+        // Vertical stripes
+        pattern.append("line")
+          .attr("x1", 2)
+          .attr("y1", 0)
+          .attr("x2", 2)
+          .attr("y2", 8)
+          .attr("stroke", strokeColor)
+          .attr("stroke-width", 2);
+        pattern.append("line")
+          .attr("x1", 6)
+          .attr("y1", 0)
+          .attr("x2", 6)
+          .attr("y2", 8)
+          .attr("stroke", strokeColor)
+          .attr("stroke-width", 2);
+      } else if (visual.texture === "horizontal") {
+        // Horizontal stripes
+        pattern.append("line")
+          .attr("x1", 0)
+          .attr("y1", 2)
+          .attr("x2", 8)
+          .attr("y2", 2)
+          .attr("stroke", strokeColor)
+          .attr("stroke-width", 2);
+        pattern.append("line")
+          .attr("x1", 0)
+          .attr("y1", 6)
+          .attr("x2", 8)
+          .attr("y2", 6)
+          .attr("stroke", strokeColor)
+          .attr("stroke-width", 2);
+      } else if (visual.texture === "diagonal") {
+        // Diagonal stripes (45 degree)
+        pattern.append("line")
+          .attr("x1", 0)
+          .attr("y1", 0)
+          .attr("x2", 8)
+          .attr("y2", 8)
+          .attr("stroke", strokeColor)
+          .attr("stroke-width", 2);
+        pattern.append("line")
+          .attr("x1", -2)
+          .attr("y1", 6)
+          .attr("x2", 2)
+          .attr("y2", 10)
+          .attr("stroke", strokeColor)
+          .attr("stroke-width", 2);
+        pattern.append("line")
+          .attr("x1", 6)
+          .attr("y1", -2)
+          .attr("x2", 10)
+          .attr("y2", 2)
+          .attr("stroke", strokeColor)
+          .attr("stroke-width", 2);
+      } else if (visual.texture === "dots") {
+        // Dot pattern - 4 dots in a grid
+        pattern.append("circle")
+          .attr("cx", 2)
+          .attr("cy", 2)
+          .attr("r", 1)
+          .attr("fill", strokeColor);
+        pattern.append("circle")
+          .attr("cx", 6)
+          .attr("cy", 2)
+          .attr("r", 1)
+          .attr("fill", strokeColor);
+        pattern.append("circle")
+          .attr("cx", 2)
+          .attr("cy", 6)
+          .attr("r", 1)
+          .attr("fill", strokeColor);
+        pattern.append("circle")
+          .attr("cx", 6)
+          .attr("cy", 6)
+          .attr("r", 1)
+          .attr("fill", strokeColor);
+      }
+    });
 
     const g = svgEl.append("g");
 
@@ -653,7 +777,10 @@ export default function NetworkView({
           "authors" in d.source ? d.source.institution : d.source.institution;
         const targetInst =
           "authors" in d.target ? d.target.institution : d.target.institution;
-        if (sourceInst === targetInst) return colorScale(sourceInst);
+        if (sourceInst === targetInst) {
+          const visual = universityVisuals.get(sourceInst);
+          return visual?.color || "#9aa0b8";
+        }
         return "#9aa0b8";
       })
       .attr("stroke-opacity", (d: any) => {
@@ -718,7 +845,7 @@ export default function NetworkView({
       .append("circle")
       .attr("class", "node-circle")
       .attr("r", (d) => (useSizeEncoding ? sizeScale(d.aci) : 6))
-      .attr("fill", (d) => colorScale(d.institution))
+      .attr("fill", (d) => getFillForUniversity(d.institution))
       .attr("stroke", "rgba(255,255,255,0.5)")
       .attr("stroke-width", 0.8)
       .style("opacity", (d) => {
@@ -846,10 +973,14 @@ export default function NetworkView({
       .attr("width", (d) => d.width)
       .attr("height", (d) => d.height)
       .attr("fill", (d) => {
-        const color = d3.color(colorScale(d.institution));
+        const visual = universityVisuals.get(d.institution);
+        const color = d3.color(visual?.color || "#808080");
         return color ? color.copy({ opacity: 0.1 }).toString() : "white";
       })
-      .attr("stroke", (d) => colorScale(d.institution))
+      .attr("stroke", (d) => {
+        const visual = universityVisuals.get(d.institution);
+        return visual?.color || "#808080";
+      })
       .attr("stroke-width", 3)
       .attr("rx", 4)
       .attr("ry", 4);
@@ -1068,7 +1199,8 @@ export default function NetworkView({
         .attr("height", cellSize - 1)
         .attr("fill", (d) => {
           if (d.row === d.col) {
-            return colorScale(matrixNode.institution);
+            const visual = universityVisuals.get(matrixNode.institution);
+            return visual?.color || "#808080";
           }
           if (d.value > 0 && d.linkData) {
             // Apply luminance based on connection strength
@@ -1330,13 +1462,78 @@ export default function NetworkView({
                 key={uni.name}
                 className={`${styles.universityItem} ${selectedInstitution === uni.name ? styles.selected : ""}`}
               >
-                <div
-                  className={styles.colorBox}
-                  style={{ backgroundColor: uni.color }}
-                  onClick={() =>
+                {(!uni.texture || uni.texture === "none") ? (
+                  <div
+                    className={styles.colorBox}
+                    style={{ backgroundColor: uni.color }}
+                    onClick={() =>
+                      setSelectedInstitution(selectedInstitution === uni.name ? null : uni.name)
+                    }
+                  />
+                ) : (
+                  <svg className={styles.colorBox} viewBox="0 0 90 90" onClick={() =>
                     setSelectedInstitution(selectedInstitution === uni.name ? null : uni.name)
-                  }
-                />
+                  }>
+                    <defs>
+                      <pattern
+                        id={`sidebar-pattern-uni-${uni.name.replace(/[^a-zA-Z0-9]/g, "-")}`}
+                        patternUnits="userSpaceOnUse"
+                        width="90"
+                        height="90"
+                      >
+                        <rect width="90" height="90" fill={uni.color} />
+                        {uni.texture === "vertical" && (
+                          <>
+                            <line x1="20" y1="0" x2="20" y2="90"
+                                  stroke={getTextureStrokeColor(uni.luminance || "dark")} strokeWidth="10" />
+                            <line x1="45" y1="0" x2="45" y2="90"
+                                  stroke={getTextureStrokeColor(uni.luminance || "dark")} strokeWidth="10" />
+                            <line x1="70" y1="0" x2="70" y2="90"
+                                  stroke={getTextureStrokeColor(uni.luminance || "dark")} strokeWidth="10" />
+                          </>
+                        )}
+                        {uni.texture === "horizontal" && (
+                          <>
+                            <line x1="0" y1="20" x2="90" y2="20"
+                                  stroke={getTextureStrokeColor(uni.luminance || "dark")} strokeWidth="10" />
+                            <line x1="0" y1="45" x2="90" y2="45"
+                                  stroke={getTextureStrokeColor(uni.luminance || "dark")} strokeWidth="10" />
+                            <line x1="0" y1="70" x2="90" y2="70"
+                                  stroke={getTextureStrokeColor(uni.luminance || "dark")} strokeWidth="10" />
+                          </>
+                        )}
+                        {uni.texture === "diagonal" && (
+                          <>
+                            <line x1="50" y1="0" x2="90" y2="40"
+                                  stroke={getTextureStrokeColor(uni.luminance || "dark")} strokeWidth="10" />
+                            <line x1="0" y1="0" x2="90" y2="90"
+                                  stroke={getTextureStrokeColor(uni.luminance || "dark")} strokeWidth="10" />
+                            <line x1="0" y1="50" x2="40" y2="90"
+                                  stroke={getTextureStrokeColor(uni.luminance || "dark")} strokeWidth="10" />
+                          </>
+                        )}
+                        {uni.texture === "dots" && (
+                          <>
+                            <circle cx="15" cy="15" r="7" fill={getTextureStrokeColor(uni.luminance || "dark")} />
+                            <circle cx="45" cy="15" r="7" fill={getTextureStrokeColor(uni.luminance || "dark")} />
+                            <circle cx="75" cy="15" r="7" fill={getTextureStrokeColor(uni.luminance || "dark")} />
+                            <circle cx="15" cy="45" r="7" fill={getTextureStrokeColor(uni.luminance || "dark")} />
+                            <circle cx="45" cy="45" r="7" fill={getTextureStrokeColor(uni.luminance || "dark")} />
+                            <circle cx="75" cy="45" r="7" fill={getTextureStrokeColor(uni.luminance || "dark")} />
+                            <circle cx="15" cy="75" r="7" fill={getTextureStrokeColor(uni.luminance || "dark")} />
+                            <circle cx="45" cy="75" r="7" fill={getTextureStrokeColor(uni.luminance || "dark")} />
+                            <circle cx="75" cy="75" r="7" fill={getTextureStrokeColor(uni.luminance || "dark")} />
+                          </>
+                        )}
+                      </pattern>
+                    </defs>
+                    <rect
+                      width="90"
+                      height="90"
+                      fill={`url(#sidebar-pattern-uni-${uni.name.replace(/[^a-zA-Z0-9]/g, "-")})`}
+                    />
+                  </svg>
+                )}
                 <span
                   className={styles.universityName}
                   onClick={() =>
@@ -1415,15 +1612,82 @@ export default function NetworkView({
               key={uni.name}
               className={`${styles.universityItem} ${selectedInstitution === uni.name ? styles.selected : ""}`}
             >
-              <div
-                className={styles.colorBox}
-                style={{ backgroundColor: uni.color }}
-                onClick={() =>
+              {uni.texture === "none" ? (
+                <div
+                  className={styles.colorBox}
+                  style={{ backgroundColor: uni.color }}
+                  onClick={() =>
+                    setSelectedInstitution(
+                      selectedInstitution === uni.name ? null : uni.name,
+                    )
+                  }
+                />
+              ) : (
+                <svg className={styles.colorBox} viewBox="0 0 90 90" onClick={() =>
                   setSelectedInstitution(
                     selectedInstitution === uni.name ? null : uni.name,
                   )
-                }
-              />
+                }>
+                  <defs>
+                    <pattern
+                      id={`sidebar-pattern-${uni.name.replace(/[^a-zA-Z0-9]/g, "-")}`}
+                      patternUnits="userSpaceOnUse"
+                      width="90"
+                      height="90"
+                    >
+                      <rect width="90" height="90" fill={uni.color} />
+                      {uni.texture === "vertical" && (
+                        <>
+                          <line x1="20" y1="0" x2="20" y2="90"
+                                stroke={getTextureStrokeColor(uni.luminance)} strokeWidth="10" />
+                          <line x1="45" y1="0" x2="45" y2="90"
+                                stroke={getTextureStrokeColor(uni.luminance)} strokeWidth="10" />
+                          <line x1="70" y1="0" x2="70" y2="90"
+                                stroke={getTextureStrokeColor(uni.luminance)} strokeWidth="10" />
+                        </>
+                      )}
+                      {uni.texture === "horizontal" && (
+                        <>
+                          <line x1="0" y1="20" x2="90" y2="20"
+                                stroke={getTextureStrokeColor(uni.luminance)} strokeWidth="10" />
+                          <line x1="0" y1="45" x2="90" y2="45"
+                                stroke={getTextureStrokeColor(uni.luminance)} strokeWidth="10" />
+                          <line x1="0" y1="70" x2="90" y2="70"
+                                stroke={getTextureStrokeColor(uni.luminance)} strokeWidth="10" />
+                        </>
+                      )}
+                      {uni.texture === "diagonal" && (
+                        <>
+                          <line x1="50" y1="0" x2="90" y2="40"
+                                stroke={getTextureStrokeColor(uni.luminance)} strokeWidth="10" />
+                          <line x1="0" y1="0" x2="90" y2="90"
+                                stroke={getTextureStrokeColor(uni.luminance)} strokeWidth="10" />
+                          <line x1="0" y1="50" x2="40" y2="90"
+                                stroke={getTextureStrokeColor(uni.luminance)} strokeWidth="10" />
+                        </>
+                      )}
+                      {uni.texture === "dots" && (
+                        <>
+                          <circle cx="15" cy="15" r="7" fill={getTextureStrokeColor(uni.luminance)} />
+                          <circle cx="45" cy="15" r="7" fill={getTextureStrokeColor(uni.luminance)} />
+                          <circle cx="75" cy="15" r="7" fill={getTextureStrokeColor(uni.luminance)} />
+                          <circle cx="15" cy="45" r="7" fill={getTextureStrokeColor(uni.luminance)} />
+                          <circle cx="45" cy="45" r="7" fill={getTextureStrokeColor(uni.luminance)} />
+                          <circle cx="75" cy="45" r="7" fill={getTextureStrokeColor(uni.luminance)} />
+                          <circle cx="15" cy="75" r="7" fill={getTextureStrokeColor(uni.luminance)} />
+                          <circle cx="45" cy="75" r="7" fill={getTextureStrokeColor(uni.luminance)} />
+                          <circle cx="75" cy="75" r="7" fill={getTextureStrokeColor(uni.luminance)} />
+                        </>
+                      )}
+                    </pattern>
+                  </defs>
+                  <rect
+                    width="90"
+                    height="90"
+                    fill={`url(#sidebar-pattern-${uni.name.replace(/[^a-zA-Z0-9]/g, "-")})`}
+                  />
+                </svg>
+              )}
               <span
                 className={styles.universityName}
                 onClick={() =>

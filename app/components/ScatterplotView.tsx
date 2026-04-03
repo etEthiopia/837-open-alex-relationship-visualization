@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import * as d3 from "d3";
 import styles from "./ScatterplotView.module.css";
-import { distinctColors } from "../lib/colors";
+import { visualPalette, getTextureStrokeForVariable, getTextureStrokeColor } from "../lib/visualPalette";
 
 interface Author {
   author_id: string;
@@ -21,6 +21,10 @@ interface Author {
   topics?: Array<{
     domain?: { display_name: string };
   }>;
+}
+
+interface AuthorWithOcclusionOffset extends Author {
+  occlusionXOffset: number;
 }
 
 interface ScatterplotViewProps {
@@ -52,7 +56,7 @@ export default function ScatterplotView({
     null
   );
   const [universities, setUniversities] = useState<
-    Array<{ name: string; color: string; totalACI: number; count: number }>
+    Array<{ name: string; color: string; texture: string; luminance: "dark" | "light"; totalACI: number; count: number }>
   >([]);
 
   useEffect(() => {
@@ -118,10 +122,16 @@ export default function ScatterplotView({
     );
     const displayAuthors = filteredAuthors.slice(0, maxAuthors);
 
-    const colorScale = d3
-      .scaleOrdinal<string>()
-      .domain(topUniversities.map((u) => u.name))
-      .range(distinctColors(topUniversities.length));
+    // Use custom visual palette based on Opponent Color Theory + Mackinlay's Model
+    const universityNames = topUniversities.map((u) => u.name);
+
+    // Map each university to its visual variable (color + texture)
+    const universityVisuals = new Map(
+      universityNames.map((name, idx) => {
+        const paletteItem = visualPalette[idx % visualPalette.length];
+        return [name, paletteItem];
+      })
+    );
 
     // Count how many authors from each university are actually displayed
     const displayedUniversityCounts = new Map<string, number>();
@@ -130,9 +140,24 @@ export default function ScatterplotView({
       displayedUniversityCounts.set(inst, (displayedUniversityCounts.get(inst) || 0) + 1);
     });
 
+    // Helper function to get fill value (solid color or pattern URL)
+    const getFillForUniversity = (universityName: string): string => {
+      const visual = universityVisuals.get(universityName);
+      if (!visual) return "#808080"; // Fallback gray
+
+      if (visual.texture === "none") {
+        return visual.color;
+      } else {
+        const patternId = `pattern-${universityName.replace(/[^a-zA-Z0-9]/g, "-")}`;
+        return `url(#${patternId})`;
+      }
+    };
+
     const uniList = topUniversities.map((uni) => ({
       name: uni.name,
-      color: colorScale(uni.name),
+      color: universityVisuals.get(uni.name)?.color || "#808080",
+      texture: universityVisuals.get(uni.name)?.texture || "none",
+      luminance: universityVisuals.get(uni.name)?.luminance || "dark",
       totalACI: uni.totalACI,
       count: displayedUniversityCounts.get(uni.name) || 0,
     }));
@@ -142,7 +167,7 @@ export default function ScatterplotView({
       (svgRef.current.parentElement?.clientWidth || 1000) - 50;
     const containerHeight =
       (svgRef.current.parentElement?.clientHeight || 800) - 50;
-    const margin = { top: 80, right: 100, bottom: 100, left: 100 };
+    const margin = { top: 30, right: 30, bottom: 20, left: 100 };
     const width = containerWidth - margin.left - margin.right;
     const height = containerHeight - margin.top - margin.bottom;
 
@@ -151,14 +176,118 @@ export default function ScatterplotView({
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom);
 
+    // Definitions: clip path and texture patterns
+    const defs = svgEl.append("defs");
+
     // Clip path so circles don't render outside the plot area
-    svgEl
-      .append("defs")
+    defs
       .append("clipPath")
       .attr("id", "scatter-clip")
       .append("rect")
       .attr("width", width)
       .attr("height", height);
+
+    // Create texture patterns for each university that needs one
+    universityVisuals.forEach((visual, universityName) => {
+      if (visual.texture === "none") return;
+
+      const patternId = `pattern-${universityName.replace(/[^a-zA-Z0-9]/g, "-")}`;
+      const strokeColor = getTextureStrokeForVariable(visual);
+
+      // Small repeating pattern that works well for circles of all sizes
+      const pattern = defs
+        .append("pattern")
+        .attr("id", patternId)
+        .attr("patternUnits", "userSpaceOnUse")
+        .attr("width", 8)
+        .attr("height", 8);
+
+      // Background color
+      pattern.append("rect")
+        .attr("width", 8)
+        .attr("height", 8)
+        .attr("fill", visual.color);
+
+      // Add lines based on texture type
+      if (visual.texture === "vertical") {
+        // Vertical stripes
+        pattern.append("line")
+          .attr("x1", 2)
+          .attr("y1", 0)
+          .attr("x2", 2)
+          .attr("y2", 8)
+          .attr("stroke", strokeColor)
+          .attr("stroke-width", 2);
+        pattern.append("line")
+          .attr("x1", 6)
+          .attr("y1", 0)
+          .attr("x2", 6)
+          .attr("y2", 8)
+          .attr("stroke", strokeColor)
+          .attr("stroke-width", 2);
+      } else if (visual.texture === "horizontal") {
+        // Horizontal stripes
+        pattern.append("line")
+          .attr("x1", 0)
+          .attr("y1", 2)
+          .attr("x2", 8)
+          .attr("y2", 2)
+          .attr("stroke", strokeColor)
+          .attr("stroke-width", 2);
+        pattern.append("line")
+          .attr("x1", 0)
+          .attr("y1", 6)
+          .attr("x2", 8)
+          .attr("y2", 6)
+          .attr("stroke", strokeColor)
+          .attr("stroke-width", 2);
+      } else if (visual.texture === "diagonal") {
+        // Diagonal stripes (45 degree)
+        pattern.append("line")
+          .attr("x1", 0)
+          .attr("y1", 0)
+          .attr("x2", 8)
+          .attr("y2", 8)
+          .attr("stroke", strokeColor)
+          .attr("stroke-width", 2);
+        pattern.append("line")
+          .attr("x1", -2)
+          .attr("y1", 6)
+          .attr("x2", 2)
+          .attr("y2", 10)
+          .attr("stroke", strokeColor)
+          .attr("stroke-width", 2);
+        pattern.append("line")
+          .attr("x1", 6)
+          .attr("y1", -2)
+          .attr("x2", 10)
+          .attr("y2", 2)
+          .attr("stroke", strokeColor)
+          .attr("stroke-width", 2);
+      } else if (visual.texture === "dots") {
+        // Dot pattern - 4 dots in a grid
+        pattern.append("circle")
+          .attr("cx", 2)
+          .attr("cy", 2)
+          .attr("r", 1)
+          .attr("fill", strokeColor);
+        pattern.append("circle")
+          .attr("cx", 6)
+          .attr("cy", 2)
+          .attr("r", 1)
+          .attr("fill", strokeColor);
+        pattern.append("circle")
+          .attr("cx", 2)
+          .attr("cy", 6)
+          .attr("r", 1)
+          .attr("fill", strokeColor);
+        pattern.append("circle")
+          .attr("cx", 6)
+          .attr("cy", 6)
+          .attr("r", 1)
+          .attr("fill", strokeColor);
+      }
+    });
 
     const svg = svgEl
       .append("g")
@@ -183,6 +312,38 @@ export default function ScatterplotView({
       .scaleSqrt()
       .domain([0, d3.max(displayAuthors, (d) => d.aci) || 1])
       .range([3, 15]);
+    
+        // Only spread points that share the exact same (papers, citations) coordinate.
+    // Keep spacing extremely small so points stay near their true x value.
+    const occlusionStepData = 0.015;
+    const overlapGroups = d3.group(
+      displayAuthors,
+      (d) => `${d.field_papers}__${d.field_citations}`
+    );
+    const authorsWithOcclusionOffset: AuthorWithOcclusionOffset[] = [];
+
+    overlapGroups.forEach((group) => {
+      if (group.length === 1) {
+        authorsWithOcclusionOffset.push({
+          ...group[0],
+          occlusionXOffset: 0,
+        });
+        return;
+      }
+
+      // Deterministic symmetric offsets: left/right around the true x-value.
+      const sortedGroup = [...group].sort((a, b) =>
+        a.author_id.localeCompare(b.author_id)
+      );
+      const centerIndex = (sortedGroup.length - 1) / 2;
+
+      sortedGroup.forEach((author, index) => {
+        authorsWithOcclusionOffset.push({
+          ...author,
+          occlusionXOffset: (index - centerIndex) * occlusionStepData,
+        });
+      });
+    });
 
     const xAxis = d3.axisBottom(xScale);
     const yAxis = d3.axisLeft(yScale);
@@ -242,18 +403,22 @@ export default function ScatterplotView({
     const circlesGroup = svg
       .append("g")
       .attr("clip-path", "url(#scatter-clip)");
+    
+    const getAdjustedX = (d: AuthorWithOcclusionOffset) =>
+      Math.max(0, d.field_papers + d.occlusionXOffset);
 
     circlesGroup
       .selectAll("circle")
-      .data(displayAuthors)
+      .data(authorsWithOcclusionOffset)
       .enter()
       .append("circle")
-      .attr("cx", (d) => xScale(d.field_papers))
+      .attr("cx", (d) =>  xScale(getAdjustedX(d))) // xScale(d.field_papers))
       .attr("cy", (d) => yScale(d.field_citations))
       .attr("r", (d) => (useSizeEncoding ? sizeScale(d.aci) : 5))
-      .attr("fill", (d) =>
-        colorScale(d.last_known_institution?.label_name || d.last_known_institution?.display_name || "Unknown")
-      )
+      .attr("fill", (d) => {
+        const institutionName = d.last_known_institution?.label_name || d.last_known_institution?.display_name || "Unknown";
+        return getFillForUniversity(institutionName);
+      })
       .attr("stroke", "rgba(255,255,255,0.7)")
       .attr("stroke-width", 0.8)
       .style("cursor", "pointer")
@@ -321,8 +486,8 @@ export default function ScatterplotView({
         yAxisGroup.selectAll("text").attr("fill", "rgba(0,0,0,0.4)");
 
         circlesGroup
-          .selectAll<SVGCircleElement, Author>("circle")
-          .attr("cx", (d) => newX(d.field_papers))
+          .selectAll<SVGCircleElement, AuthorWithOcclusionOffset>("circle")
+          .attr("cx", (d) => newX(getAdjustedX(d)))
           .attr("cy", (d) => newY(d.field_citations));
       });
 
@@ -339,7 +504,7 @@ export default function ScatterplotView({
       .style("letter-spacing", "2px")
       .style("text-transform", "uppercase")
       .attr("fill", "rgba(0,0,0,0.2)")
-      .text("Publications vs Citations");
+      // .text("Authors");
 
     return () => {
       if (tooltipRef.current) {
@@ -394,14 +559,101 @@ export default function ScatterplotView({
                 )
               }
             >
-              <div
-                className={styles.colorBox}
-                style={{ backgroundColor: uni.color }}
-              />
-              
-                <span className={styles.universityName}>
+              {uni.texture === "none" ? (
+                <div
+                  className={styles.colorBox}
+                  style={{ backgroundColor: uni.color }}
+                />
+              ) : (
+                <svg className={styles.colorBox} viewBox="0 0 90 90">
+  <defs>
+    <pattern
+      id={`sidebar-pattern-${uni.name.replace(/[^a-zA-Z0-9]/g, "-")}`}
+      patternUnits="userSpaceOnUse"
+      width="90"
+      height="90"
+    >
+      {/* Background fill */}
+      <rect width="90" height="90" fill={uni.color} />
+
+      {/* Vertical: Three thick stripes (space-between: 15-10-15-10-15-10-15) */}
+      {uni.texture === "vertical" && (
+        <>
+          <line x1="20" y1="0" x2="20" y2="90"
+                stroke={getTextureStrokeColor(uni.luminance)} strokeWidth="10" />
+          <line x1="45" y1="0" x2="45" y2="90"
+                stroke={getTextureStrokeColor(uni.luminance)} strokeWidth="10" />
+          <line x1="70" y1="0" x2="70" y2="90"
+                stroke={getTextureStrokeColor(uni.luminance)} strokeWidth="10" />
+        </>
+      )}
+
+      {/* Horizontal: Three thick stripes (space-between: 15-10-15-10-15-10-15) */}
+      {uni.texture === "horizontal" && (
+        <>
+          <line x1="0" y1="20" x2="90" y2="20"
+                stroke={getTextureStrokeColor(uni.luminance)} strokeWidth="10" />
+          <line x1="0" y1="45" x2="90" y2="45"
+                stroke={getTextureStrokeColor(uni.luminance)} strokeWidth="10" />
+          <line x1="0" y1="70" x2="90" y2="70"
+                stroke={getTextureStrokeColor(uni.luminance)} strokeWidth="10" />
+        </>
+      )}
+
+      {/* Diagonal: Three thick stripes */}
+      {uni.texture === "diagonal" && (
+        <>
+          {/* First diagonal stripe */}
+          <line x1="50" y1="0" x2="90" y2="40"
+                              stroke={getTextureStrokeColor(uni.luminance)} strokeWidth="10" />
+          {/* Second diagonal stripe from 0,0 to 90,90 */}
+          <line x1="0" y1="0" x2="90" y2="90"
+                stroke={getTextureStrokeColor(uni.luminance)} strokeWidth="10" />
+          {/* Third diagonal stripe */}
+          <line x1="0" y1="50" x2="40" y2="90"
+                stroke={getTextureStrokeColor(uni.luminance)} strokeWidth="10" />
+
+        </>
+      )}
+
+      {/* Dots: Grid of dots */}
+      {uni.texture === "dots" && (
+        <>
+          {/* Row 1 */}
+          <circle cx="15" cy="15" r="7"
+                  fill={getTextureStrokeColor(uni.luminance)} />
+          <circle cx="45" cy="15" r="7"
+                  fill={getTextureStrokeColor(uni.luminance)} />
+          <circle cx="75" cy="15" r="7"
+                  fill={getTextureStrokeColor(uni.luminance)} />
+          {/* Row 2 */}
+          <circle cx="15" cy="45" r="7"
+                  fill={getTextureStrokeColor(uni.luminance)} />
+          <circle cx="45" cy="45" r="7"
+                  fill={getTextureStrokeColor(uni.luminance)} />
+          <circle cx="75" cy="45" r="7"
+                  fill={getTextureStrokeColor(uni.luminance)} />
+          {/* Row 3 */}
+          <circle cx="15" cy="75" r="7"
+                  fill={getTextureStrokeColor(uni.luminance)} />
+          <circle cx="45" cy="75" r="7"
+                  fill={getTextureStrokeColor(uni.luminance)} />
+          <circle cx="75" cy="75" r="7"
+                  fill={getTextureStrokeColor(uni.luminance)} />
+        </>
+      )}
+    </pattern>
+  </defs>
+  <rect
+    width="90"
+    height="90"
+    fill={`url(#sidebar-pattern-${uni.name.replace(/[^a-zA-Z0-9]/g, "-")})`}
+  />
+</svg>
+              )}
+              <span className={styles.universityName}>
                 {uni.name} {uni.count > 0 ? `(${uni.count})` : ''}
-                </span>
+              </span>
             </div>
           ))}
         </div>
