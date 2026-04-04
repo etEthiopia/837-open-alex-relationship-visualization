@@ -692,25 +692,27 @@ export default function NetworkView({
       .force(
         "link",
         d3
-          .forceLink<SimulationNode, Link>(externalLinks)
-          .id((d: any) => ("authors" in d ? d.id : d.id))
-          .distance(120)
-          .strength((d: any) => {
-            const sourceInst =
-              "authors" in d.source
-                ? d.source.institution
-                : d.source.institution;
-            const targetInst =
-              "authors" in d.target
-                ? d.target.institution
-                : d.target.institution;
+    .forceLink<SimulationNode, Link>(externalLinks)
+    .id((d: any) => d.id)
+    // 1. Reduce distance for strong links
+    .distance((d: any) => {
+      const baseDistance = 120;
+      // The stronger the connection, the shorter the "ideal" distance
+      const strengthFactor = edgeStrength === "none" ? 1 : Math.max(0.6, 1 - (d.value / 100));
+      return baseDistance * strengthFactor;
+    })
+    // 2. Significantly increase strength for cross-university links
+    .strength((d: any) => {
+      const sourceInst = "authors" in d.source ? d.source.institution : d.source.institution;
+      const targetInst = "authors" in d.target ? d.target.institution : d.target.institution;
 
-            // If they are from different institutions, give them a stronger pull
-            // to counteract the cluster force
-            const base = edgeStrength === "none" ? 0.1 : d.value / 500;
-            return sourceInst !== targetInst ? base * 2 : base;
-          }),
-      )
+      // Base link strength
+      const power = edgeStrength === "none" ? 0.3 : Math.min(0.5, d.value / 100); 
+      
+      // If external, boost the power significantly so it can fight the cluster force
+      return sourceInst !== targetInst ? power * 3 : power;
+    }),
+)
       .force("charge", d3.forceManyBody().strength(-500).distanceMax(150))
       .force("x", d3.forceX(cx).strength(0.015)) // Keep slightly horizontal
       .force("y", d3.forceY(cy).strength(0.04)) // Stronger vertical pull to combat drift

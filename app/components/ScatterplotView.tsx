@@ -4,7 +4,11 @@ import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import * as d3 from "d3";
 import styles from "./ScatterplotView.module.css";
-import { visualPalette, getTextureStrokeForVariable, getTextureStrokeColor } from "../lib/visualPalette";
+import {
+  visualPalette,
+  getTextureStrokeForVariable,
+  getTextureStrokeColor,
+} from "../lib/visualPalette";
 
 interface Author {
   author_id: string;
@@ -48,15 +52,25 @@ export default function ScatterplotView({
     HTMLElement,
     unknown
   > | null>(null);
-  const zoomBehaviorRef = useRef<d3.ZoomBehavior<SVGSVGElement, unknown> | null>(null);
+  const zoomBehaviorRef = useRef<d3.ZoomBehavior<
+    SVGSVGElement,
+    unknown
+  > | null>(null);
   const [authors, setAuthors] = useState<Author[]>([]);
   const [useSizeEncoding, setUseSizeEncoding] = useState<boolean>(true);
   const [hasZoomed, setHasZoomed] = useState<boolean>(false);
   const [selectedInstitution, setSelectedInstitution] = useState<string | null>(
-    null
+    null,
   );
   const [universities, setUniversities] = useState<
-    Array<{ name: string; color: string; texture: string; luminance: "dark" | "light"; totalACI: number; count: number }>
+    Array<{
+      name: string;
+      color: string;
+      texture: string;
+      luminance: "dark" | "light";
+      totalACI: number;
+      count: number;
+    }>
   >([]);
 
   useEffect(() => {
@@ -78,10 +92,12 @@ export default function ScatterplotView({
           domainFiltered = canadianAuthors.filter((author) =>
             (author.topics || []).some((t) => {
               if (level === "domain") return t.domain?.display_name === value;
-              if (level === "field") return (t as any).field?.display_name === value;
-              if (level === "subfield") return (t as any).subfield?.display_name === value;
+              if (level === "field")
+                return (t as any).field?.display_name === value;
+              if (level === "subfield")
+                return (t as any).subfield?.display_name === value;
               return false;
-            })
+            }),
           );
         }
         setAuthors(domainFiltered.sort((a, b) => b.aci - a.aci));
@@ -95,7 +111,10 @@ export default function ScatterplotView({
 
     const allInstitutionMap = new Map<string, Author[]>();
     authors.forEach((author) => {
-      const inst = author.last_known_institution?.label_name || author.last_known_institution?.display_name || "Unknown";
+      const inst =
+        author.last_known_institution?.label_name ||
+        author.last_known_institution?.display_name ||
+        "Unknown";
       if (!allInstitutionMap.has(inst)) {
         allInstitutionMap.set(inst, []);
       }
@@ -107,9 +126,9 @@ export default function ScatterplotView({
         name: inst,
         totalACI: instAuthors.reduce((sum, a) => sum + a.aci, 0),
         authors: instAuthors.sort((a, b) => b.aci - a.aci), // Sort authors by ACI within the institution
-      })
+      }),
     );
-    console.log(allUniList)
+    console.log(allUniList);
     allUniList.sort((a, b) => b.totalACI - a.totalACI);
 
     const topUniversities = allUniList.slice(0, maxUniversities);
@@ -117,8 +136,10 @@ export default function ScatterplotView({
 
     const filteredAuthors = authors.filter((author) =>
       topUniversityNames.has(
-        author.last_known_institution?.label_name || author.last_known_institution?.display_name || "Unknown"
-      )
+        author.last_known_institution?.label_name ||
+          author.last_known_institution?.display_name ||
+          "Unknown",
+      ),
     );
     const displayAuthors = filteredAuthors.slice(0, maxAuthors);
 
@@ -130,14 +151,20 @@ export default function ScatterplotView({
       universityNames.map((name, idx) => {
         const paletteItem = visualPalette[idx % visualPalette.length];
         return [name, paletteItem];
-      })
+      }),
     );
 
     // Count how many authors from each university are actually displayed
     const displayedUniversityCounts = new Map<string, number>();
     displayAuthors.forEach((author) => {
-      const inst = author.last_known_institution?.label_name || author.last_known_institution?.display_name || "Unknown";
-      displayedUniversityCounts.set(inst, (displayedUniversityCounts.get(inst) || 0) + 1);
+      const inst =
+        author.last_known_institution?.label_name ||
+        author.last_known_institution?.display_name ||
+        "Unknown";
+      displayedUniversityCounts.set(
+        inst,
+        (displayedUniversityCounts.get(inst) || 0) + 1,
+      );
     });
 
     // Helper function to get fill value (solid color or pattern URL)
@@ -163,18 +190,25 @@ export default function ScatterplotView({
     }));
     setUniversities(uniList);
 
-    const containerWidth =
-      (svgRef.current.parentElement?.clientWidth || 1000) - 50;
-    const containerHeight =
-      (svgRef.current.parentElement?.clientHeight || 800) - 50;
-    const margin = { top: 30, right: 30, bottom: 20, left: 100 };
-    const width = containerWidth - margin.left - margin.right;
-    const height = containerHeight - margin.top - margin.bottom;
+    // Get parent dimensions
+    const parentWidth = svgRef.current.parentElement?.clientWidth || 1000;
+    const parentHeight = svgRef.current.parentElement?.clientHeight || 800;
+
+    // SVG dimensions with gaps from parent
+    const svgWidth = parentWidth - 50; // 50px total gap from parent width
+    const svgHeight = parentHeight - 20; // 20px total gap from parent height
+
+    // Internal margins for axis labels and preventing cutoff
+    const margin = { top: 20, right: 40, bottom: 60, left: 100 };
+
+    // Plot area dimensions
+    const width = svgWidth - margin.left - margin.right;
+    const height = svgHeight - margin.top - margin.bottom;
 
     const svgEl = d3
       .select(svgRef.current)
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom);
+      .attr("width", svgWidth)
+      .attr("height", svgHeight);
 
     // Definitions: clip path and texture patterns
     const defs = svgEl.append("defs");
@@ -203,7 +237,8 @@ export default function ScatterplotView({
         .attr("height", 8);
 
       // Background color
-      pattern.append("rect")
+      pattern
+        .append("rect")
         .attr("width", 8)
         .attr("height", 8)
         .attr("fill", visual.color);
@@ -211,14 +246,16 @@ export default function ScatterplotView({
       // Add lines based on texture type
       if (visual.texture === "vertical") {
         // Vertical stripes
-        pattern.append("line")
+        pattern
+          .append("line")
           .attr("x1", 2)
           .attr("y1", 0)
           .attr("x2", 2)
           .attr("y2", 8)
           .attr("stroke", strokeColor)
           .attr("stroke-width", 2);
-        pattern.append("line")
+        pattern
+          .append("line")
           .attr("x1", 6)
           .attr("y1", 0)
           .attr("x2", 6)
@@ -227,14 +264,16 @@ export default function ScatterplotView({
           .attr("stroke-width", 2);
       } else if (visual.texture === "horizontal") {
         // Horizontal stripes
-        pattern.append("line")
+        pattern
+          .append("line")
           .attr("x1", 0)
           .attr("y1", 2)
           .attr("x2", 8)
           .attr("y2", 2)
           .attr("stroke", strokeColor)
           .attr("stroke-width", 2);
-        pattern.append("line")
+        pattern
+          .append("line")
           .attr("x1", 0)
           .attr("y1", 6)
           .attr("x2", 8)
@@ -243,21 +282,24 @@ export default function ScatterplotView({
           .attr("stroke-width", 2);
       } else if (visual.texture === "diagonal") {
         // Diagonal stripes (45 degree)
-        pattern.append("line")
+        pattern
+          .append("line")
           .attr("x1", 0)
           .attr("y1", 0)
           .attr("x2", 8)
           .attr("y2", 8)
           .attr("stroke", strokeColor)
           .attr("stroke-width", 2);
-        pattern.append("line")
+        pattern
+          .append("line")
           .attr("x1", -2)
           .attr("y1", 6)
           .attr("x2", 2)
           .attr("y2", 10)
           .attr("stroke", strokeColor)
           .attr("stroke-width", 2);
-        pattern.append("line")
+        pattern
+          .append("line")
           .attr("x1", 6)
           .attr("y1", -2)
           .attr("x2", 10)
@@ -266,22 +308,26 @@ export default function ScatterplotView({
           .attr("stroke-width", 2);
       } else if (visual.texture === "dots") {
         // Dot pattern - 4 dots in a grid
-        pattern.append("circle")
+        pattern
+          .append("circle")
           .attr("cx", 2)
           .attr("cy", 2)
           .attr("r", 1)
           .attr("fill", strokeColor);
-        pattern.append("circle")
+        pattern
+          .append("circle")
           .attr("cx", 6)
           .attr("cy", 2)
           .attr("r", 1)
           .attr("fill", strokeColor);
-        pattern.append("circle")
+        pattern
+          .append("circle")
           .attr("cx", 2)
           .attr("cy", 6)
           .attr("r", 1)
           .attr("fill", strokeColor);
-        pattern.append("circle")
+        pattern
+          .append("circle")
           .attr("cx", 6)
           .attr("cy", 6)
           .attr("r", 1)
@@ -294,7 +340,8 @@ export default function ScatterplotView({
       .attr("transform", `translate(${margin.left},${margin.top})`);
 
     const maxPapers = d3.max(displayAuthors, (d) => d.field_papers) || 10;
-    const maxCitations = d3.max(displayAuthors, (d) => d.field_citations) || 100;
+    const maxCitations =
+      d3.max(displayAuthors, (d) => d.field_citations) || 100;
 
     const xScale = d3
       .scaleLinear()
@@ -302,23 +349,121 @@ export default function ScatterplotView({
       .range([0, width])
       .nice();
 
-    const yScale = d3
-      .scaleLinear()
-      .domain([0, maxCitations * 1.1])
-      .range([height, 0])
-      .nice();
+    // Detect outliers using P95
+    const citations = displayAuthors.map((d) => d.field_citations);
+    const sortedCitations = [...citations].sort(d3.ascending);
+    const p95 = d3.quantile(sortedCitations, 0.95) || 10;
+    const hasOutliers = maxCitations > p95 * 2.5;
+
+    // Helper to generate nice tick values with consistent step size
+    const generateNiceTicks = (min: number, max: number, targetCount: number = 8): number[] => {
+      const range = max - min;
+      const roughStep = range / (targetCount - 1);
+
+      // Find a nice step size (1, 2, 5, 10, 20, 50, 100, etc.)
+      const magnitude = Math.pow(10, Math.floor(Math.log10(roughStep)));
+      const normalized = roughStep / magnitude;
+      let niceStep: number;
+
+      if (normalized <= 1) niceStep = magnitude;
+      else if (normalized <= 2) niceStep = 2 * magnitude;
+      else if (normalized <= 5) niceStep = 5 * magnitude;
+      else niceStep = 10 * magnitude;
+
+      const start = Math.ceil(min / niceStep) * niceStep;
+      const end = Math.floor(max / niceStep) * niceStep;
+
+      const ticks: number[] = [];
+      for (let tick = start; tick <= end; tick += niceStep) {
+        ticks.push(tick);
+      }
+
+      // Ensure we include 0 if it's in range
+      if (min <= 0 && !ticks.includes(0)) {
+        ticks.unshift(0);
+      }
+
+      return ticks;
+    };
+
+    // Create scale with axis break if outliers exist
+    let yScale: d3.ScaleLinear<number, number>;
+    let breakThreshold: number | null = null;
+    let yTickValues: number[] = [];
+
+    if (hasOutliers) {
+      const break_at = p95 * 1.3;
+      breakThreshold = break_at;
+      const upperMax = maxCitations * 1.2;
+
+      // Generate nice ticks for bottom segment (where 95% of data lives)
+      const bottomTicks = generateNiceTicks(0, break_at, 8);
+
+      // Calculate the step size from bottom ticks
+      const step = bottomTicks.length > 1 ? bottomTicks[1] - bottomTicks[0] : 20;
+
+      // Find the minimum outlier value (first value above the break)
+      const minOutlier = Math.min(...displayAuthors
+        .map(d => d.field_citations)
+        .filter(c => c > break_at));
+
+      // First tick after break should be just below the min outlier (1 step below)
+      const firstTopTick = minOutlier - step;
+
+      // Generate top ticks with the same step size, but limit to max 2 ticks
+      const topTicks: number[] = [];
+      let currentTick = firstTopTick;
+      while (currentTick <= upperMax && topTicks.length < 2) {
+        if (currentTick > break_at) {
+          topTicks.push(currentTick);
+        }
+        currentTick += step;
+      }
+
+      yTickValues = [...bottomTicks, ...topTicks];
+
+      // Allocate 70% of height to bottom segment, 30% to top segment
+      const bottomPixels = height * 0.7;
+
+      // Calculate tick spacing for bottom segment
+      const bottomDataRange = break_at; // 0 to break_at
+      const numBottomIntervals = bottomDataRange / step;
+      const bottomTickSpacing = bottomPixels / numBottomIntervals;
+
+      // Use the bottom tick spacing for the break gap to maintain consistency
+      const breakPixel = height - bottomPixels;
+      const topStartPixel = breakPixel - bottomTickSpacing; // One tick spacing down from break
+
+      // Create 4-point piecewise linear scale
+      // [0, break_at] -> [height, breakPixel]: bottom segment
+      // [break_at, firstTopTick] -> [breakPixel, topStartPixel]: the data jump with visual gap
+      // [firstTopTick, upperMax] -> [topStartPixel, 0]: top segment
+      yScale = d3
+        .scaleLinear()
+        .domain([0, break_at, firstTopTick, upperMax])
+        .range([height, breakPixel, topStartPixel, 0]);
+    } else {
+      yScale = d3
+        .scaleLinear()
+        .domain([0, maxCitations * 1.1])
+        .range([height, 0])
+        .nice();
+
+      // Use nice tick generation for normal case
+      yTickValues = generateNiceTicks(0, maxCitations * 1.1, 8);
+    }
 
     const sizeScale = d3
       .scaleSqrt()
       .domain([0, d3.max(displayAuthors, (d) => d.aci) || 1])
       .range([3, 15]);
-    
-        // Only spread points that share the exact same (papers, citations) coordinate.
+
+    // Only spread points that share the exact same (papers, citations) coordinate.
     // Keep spacing extremely small so points stay near their true x value.
     const occlusionStepData = 0.015;
     const overlapGroups = d3.group(
       displayAuthors,
-      (d) => `${d.field_papers}__${d.field_citations}`
+      (d) => `${d.field_papers}__${d.field_citations}`,
     );
     const authorsWithOcclusionOffset: AuthorWithOcclusionOffset[] = [];
 
@@ -333,7 +478,7 @@ export default function ScatterplotView({
 
       // Deterministic symmetric offsets: left/right around the true x-value.
       const sortedGroup = [...group].sort((a, b) =>
-        a.author_id.localeCompare(b.author_id)
+        a.author_id.localeCompare(b.author_id),
       );
       const centerIndex = (sortedGroup.length - 1) / 2;
 
@@ -346,7 +491,7 @@ export default function ScatterplotView({
     });
 
     const xAxis = d3.axisBottom(xScale);
-    const yAxis = d3.axisLeft(yScale);
+    const yAxis = d3.axisLeft(yScale).tickValues(yTickValues);
 
     const xAxisGroup = svg
       .append("g")
@@ -370,6 +515,50 @@ export default function ScatterplotView({
     const yAxisGroup = svg.append("g").attr("class", "y-axis").call(yAxis);
     yAxisGroup.selectAll("path, line").attr("stroke", "rgba(0,0,0,0.15)");
     yAxisGroup.selectAll("text").attr("fill", "rgba(0,0,0,0.4)");
+
+    // Add visual break indicator if outliers exist
+    if (hasOutliers && breakThreshold !== null) {
+      const breakY = yScale(breakThreshold);
+      const breakGroup = svg
+        .append("g")
+        .attr("class", "axis-break")
+        .attr("transform", `translate(0, ${breakY})`);
+
+      // Draw two horizontal lines with a gap to indicate axis break
+      const gapSize = 4;
+
+      // Top line (above the break)
+      breakGroup
+        .append("line")
+        .attr("x1", -10)
+        .attr("x2", 10)
+        .attr("y1", - (2 * gapSize))
+        .attr("y2", 0)
+        .attr("stroke", "rgba(0,0,0,0.4)")
+        .attr("stroke-width", 2);
+
+      // Bottom line (below the break)
+      breakGroup
+        .append("line")
+        .attr("x1", -10)
+        .attr("x2", 10)
+        .attr("y1", 0)
+        .attr("y2", 2 * gapSize )
+        .attr("stroke", "rgba(0,0,0,0.4)")
+        .attr("stroke-width", 2);
+
+      // Draw horizontal line across the plot area to show the break
+      breakGroup
+        .append("line")
+        .attr("x1", 0)
+        .attr("x2", width)
+        .attr("y1", 0)
+        .attr("y2", 0)
+        .attr("stroke", "rgba(0,0,0,0.1)")
+        .attr("stroke-width", 1)
+        .attr("stroke-dasharray", "4,4");
+    }
+
     yAxisGroup
       .append("text")
       .attr("transform", "rotate(-90)")
@@ -403,7 +592,7 @@ export default function ScatterplotView({
     const circlesGroup = svg
       .append("g")
       .attr("clip-path", "url(#scatter-clip)");
-    
+
     const getAdjustedX = (d: AuthorWithOcclusionOffset) =>
       Math.max(0, d.field_papers + d.occlusionXOffset);
 
@@ -412,11 +601,14 @@ export default function ScatterplotView({
       .data(authorsWithOcclusionOffset)
       .enter()
       .append("circle")
-      .attr("cx", (d) =>  xScale(getAdjustedX(d))) // xScale(d.field_papers))
+      .attr("cx", (d) => xScale(getAdjustedX(d))) // xScale(d.field_papers))
       .attr("cy", (d) => yScale(d.field_citations))
       .attr("r", (d) => (useSizeEncoding ? sizeScale(d.aci) : 5))
       .attr("fill", (d) => {
-        const institutionName = d.last_known_institution?.label_name || d.last_known_institution?.display_name || "Unknown";
+        const institutionName =
+          d.last_known_institution?.label_name ||
+          d.last_known_institution?.display_name ||
+          "Unknown";
         return getFillForUniversity(institutionName);
       })
       .attr("stroke", "rgba(255,255,255,0.7)")
@@ -424,7 +616,8 @@ export default function ScatterplotView({
       .style("cursor", "pointer")
       .style("opacity", (d) => {
         if (!selectedInstitution) return 1.0;
-        return d.last_known_institution?.label_name === selectedInstitution || d.last_known_institution?.display_name === selectedInstitution
+        return d.last_known_institution?.label_name === selectedInstitution ||
+          d.last_known_institution?.display_name === selectedInstitution
           ? 1.0
           : 0.2;
       })
@@ -450,35 +643,84 @@ export default function ScatterplotView({
       })
       .on("click", function (_event, d) {
         const shortId = d.author_id.replace("https://openalex.org/", "");
-        const fieldParam = domain && domain !== "All Domains" ? `&field=${encodeURIComponent(domain.split(":")[1] || domain)}` : "";
+        const fieldParam =
+          domain && domain !== "All Domains"
+            ? `&field=${encodeURIComponent(domain.split(":")[1] || domain)}`
+            : "";
         router.push(`/author?id=${shortId}${fieldParam}`);
       });
 
+    // Create a simple linear scale for zooming (used when outliers exist and user zooms)
+    const yScaleLinear = d3
+      .scaleLinear()
+      .domain([0, maxCitations * 1.1])
+      .range([height, 0])
+      .nice();
+
     // Zoom behaviour
-    const zoom = d3.zoom<SVGSVGElement, unknown>()
+    const zoom = d3
+      .zoom<SVGSVGElement, unknown>()
       .scaleExtent([0.5, 10])
-      .extent([[0, 0], [width, height]])
+      .extent([
+        [0, 0],
+        [width, height],
+      ])
       .on("zoom", (event) => {
         const t = event.transform;
-        setHasZoomed(t.k !== 1 || t.x !== 0 || t.y !== 0);
+        const isZoomed = t.k !== 1 || t.x !== 0 || t.y !== 0;
+        setHasZoomed(isZoomed);
 
         let newX = t.rescaleX(xScale);
-        let newY = t.rescaleY(yScale);
+        let newY: d3.ScaleLinear<number, number>;
+        let newYTicks: number[] = [];
 
-        // Clamp to avoid negative axis values
+        // If zooming and outliers exist, switch to linear scale (remove break)
+        if (hasOutliers && breakThreshold !== null && isZoomed) {
+          // Use linear scale when zooming
+          newY = t.rescaleY(yScaleLinear);
+          const [minY, maxY] = newY.domain();
+          const clampedMinY = Math.max(0, minY);
+          if (minY < 0) {
+            newY = newY.copy().domain([clampedMinY, maxY - minY]);
+          }
+          newYTicks = generateNiceTicks(clampedMinY, newY.domain()[1], 8);
+
+          // Hide the break indicator when zoomed
+          svg.select(".axis-break").style("opacity", 0);
+        } else if (hasOutliers && breakThreshold !== null && !isZoomed) {
+          // Not zoomed, use piecewise scale with break
+          newY = yScale;
+          newYTicks = yTickValues;
+
+          // Show the break indicator
+          svg.select(".axis-break").style("opacity", 1);
+        } else {
+          // No outliers, normal zoom behavior
+          newY = t.rescaleY(yScale);
+          const [minY, maxY] = newY.domain();
+          const clampedMinY = Math.max(0, minY);
+          if (minY < 0) {
+            newY = newY.copy().domain([clampedMinY, maxY - minY]);
+          }
+          newYTicks = generateNiceTicks(clampedMinY, newY.domain()[1], 8);
+        }
+
+        // Clamp X to avoid negative values
         const [minX, maxX] = newX.domain();
         if (minX < 0) newX = newX.copy().domain([0, maxX - minX]);
-        const [minY, maxY] = newY.domain();
-        if (minY < 0) newY = newY.copy().domain([0, maxY - minY]);
 
+        // Generate X ticks
         const xTicks = [];
         const [x0, x1] = newX.domain();
         for (let i = Math.ceil(x0); i <= Math.floor(x1); i++) xTicks.push(i);
 
         xAxisGroup.call(
-          d3.axisBottom(newX).tickValues(xTicks).tickFormat((d) => String(Math.round(Number(d))))
+          d3
+            .axisBottom(newX)
+            .tickValues(xTicks)
+            .tickFormat((d) => String(Math.round(Number(d)))),
         );
-        yAxisGroup.call(d3.axisLeft(newY));
+        yAxisGroup.call(d3.axisLeft(newY).tickValues(newYTicks));
 
         xAxisGroup.selectAll("path, line").attr("stroke", "rgba(0,0,0,0.15)");
         xAxisGroup.selectAll("text").attr("fill", "rgba(0,0,0,0.4)");
@@ -503,8 +745,8 @@ export default function ScatterplotView({
       .style("font-weight", "500")
       .style("letter-spacing", "2px")
       .style("text-transform", "uppercase")
-      .attr("fill", "rgba(0,0,0,0.2)")
-      // .text("Authors");
+      .attr("fill", "rgba(0,0,0,0.2)");
+    // .text("Authors");
 
     return () => {
       if (tooltipRef.current) {
@@ -512,7 +754,14 @@ export default function ScatterplotView({
         tooltipRef.current = null;
       }
     };
-  }, [authors, maxAuthors, maxUniversities, useSizeEncoding, selectedInstitution, router]);
+  }, [
+    authors,
+    maxAuthors,
+    maxUniversities,
+    useSizeEncoding,
+    selectedInstitution,
+    router,
+  ]);
 
   const resetZoom = () => {
     if (svgRef.current && zoomBehaviorRef.current) {
@@ -555,7 +804,7 @@ export default function ScatterplotView({
               }`}
               onClick={() =>
                 setSelectedInstitution(
-                  selectedInstitution === uni.name ? null : uni.name
+                  selectedInstitution === uni.name ? null : uni.name,
                 )
               }
             >
@@ -566,93 +815,182 @@ export default function ScatterplotView({
                 />
               ) : (
                 <svg className={styles.colorBox} viewBox="0 0 90 90">
-  <defs>
-    <pattern
-      id={`sidebar-pattern-${uni.name.replace(/[^a-zA-Z0-9]/g, "-")}`}
-      patternUnits="userSpaceOnUse"
-      width="90"
-      height="90"
-    >
-      {/* Background fill */}
-      <rect width="90" height="90" fill={uni.color} />
+                  <defs>
+                    <pattern
+                      id={`sidebar-pattern-${uni.name.replace(/[^a-zA-Z0-9]/g, "-")}`}
+                      patternUnits="userSpaceOnUse"
+                      width="90"
+                      height="90"
+                    >
+                      {/* Background fill */}
+                      <rect width="90" height="90" fill={uni.color} />
 
-      {/* Vertical: Three thick stripes (space-between: 15-10-15-10-15-10-15) */}
-      {uni.texture === "vertical" && (
-        <>
-          <line x1="20" y1="0" x2="20" y2="90"
-                stroke={getTextureStrokeColor(uni.luminance)} strokeWidth="10" />
-          <line x1="45" y1="0" x2="45" y2="90"
-                stroke={getTextureStrokeColor(uni.luminance)} strokeWidth="10" />
-          <line x1="70" y1="0" x2="70" y2="90"
-                stroke={getTextureStrokeColor(uni.luminance)} strokeWidth="10" />
-        </>
-      )}
+                      {/* Vertical: Three thick stripes (space-between: 15-10-15-10-15-10-15) */}
+                      {uni.texture === "vertical" && (
+                        <>
+                          <line
+                            x1="20"
+                            y1="0"
+                            x2="20"
+                            y2="90"
+                            stroke={getTextureStrokeColor(uni.luminance)}
+                            strokeWidth="10"
+                          />
+                          <line
+                            x1="45"
+                            y1="0"
+                            x2="45"
+                            y2="90"
+                            stroke={getTextureStrokeColor(uni.luminance)}
+                            strokeWidth="10"
+                          />
+                          <line
+                            x1="70"
+                            y1="0"
+                            x2="70"
+                            y2="90"
+                            stroke={getTextureStrokeColor(uni.luminance)}
+                            strokeWidth="10"
+                          />
+                        </>
+                      )}
 
-      {/* Horizontal: Three thick stripes (space-between: 15-10-15-10-15-10-15) */}
-      {uni.texture === "horizontal" && (
-        <>
-          <line x1="0" y1="20" x2="90" y2="20"
-                stroke={getTextureStrokeColor(uni.luminance)} strokeWidth="10" />
-          <line x1="0" y1="45" x2="90" y2="45"
-                stroke={getTextureStrokeColor(uni.luminance)} strokeWidth="10" />
-          <line x1="0" y1="70" x2="90" y2="70"
-                stroke={getTextureStrokeColor(uni.luminance)} strokeWidth="10" />
-        </>
-      )}
+                      {/* Horizontal: Three thick stripes (space-between: 15-10-15-10-15-10-15) */}
+                      {uni.texture === "horizontal" && (
+                        <>
+                          <line
+                            x1="0"
+                            y1="20"
+                            x2="90"
+                            y2="20"
+                            stroke={getTextureStrokeColor(uni.luminance)}
+                            strokeWidth="10"
+                          />
+                          <line
+                            x1="0"
+                            y1="45"
+                            x2="90"
+                            y2="45"
+                            stroke={getTextureStrokeColor(uni.luminance)}
+                            strokeWidth="10"
+                          />
+                          <line
+                            x1="0"
+                            y1="70"
+                            x2="90"
+                            y2="70"
+                            stroke={getTextureStrokeColor(uni.luminance)}
+                            strokeWidth="10"
+                          />
+                        </>
+                      )}
 
-      {/* Diagonal: Three thick stripes */}
-      {uni.texture === "diagonal" && (
-        <>
-          {/* First diagonal stripe */}
-          <line x1="50" y1="0" x2="90" y2="40"
-                              stroke={getTextureStrokeColor(uni.luminance)} strokeWidth="10" />
-          {/* Second diagonal stripe from 0,0 to 90,90 */}
-          <line x1="0" y1="0" x2="90" y2="90"
-                stroke={getTextureStrokeColor(uni.luminance)} strokeWidth="10" />
-          {/* Third diagonal stripe */}
-          <line x1="0" y1="50" x2="40" y2="90"
-                stroke={getTextureStrokeColor(uni.luminance)} strokeWidth="10" />
+                      {/* Diagonal: Three thick stripes */}
+                      {uni.texture === "diagonal" && (
+                        <>
+                          {/* First diagonal stripe */}
+                          <line
+                            x1="50"
+                            y1="0"
+                            x2="90"
+                            y2="40"
+                            stroke={getTextureStrokeColor(uni.luminance)}
+                            strokeWidth="10"
+                          />
+                          {/* Second diagonal stripe from 0,0 to 90,90 */}
+                          <line
+                            x1="0"
+                            y1="0"
+                            x2="90"
+                            y2="90"
+                            stroke={getTextureStrokeColor(uni.luminance)}
+                            strokeWidth="10"
+                          />
+                          {/* Third diagonal stripe */}
+                          <line
+                            x1="0"
+                            y1="50"
+                            x2="40"
+                            y2="90"
+                            stroke={getTextureStrokeColor(uni.luminance)}
+                            strokeWidth="10"
+                          />
+                        </>
+                      )}
 
-        </>
-      )}
-
-      {/* Dots: Grid of dots */}
-      {uni.texture === "dots" && (
-        <>
-          {/* Row 1 */}
-          <circle cx="15" cy="15" r="7"
-                  fill={getTextureStrokeColor(uni.luminance)} />
-          <circle cx="45" cy="15" r="7"
-                  fill={getTextureStrokeColor(uni.luminance)} />
-          <circle cx="75" cy="15" r="7"
-                  fill={getTextureStrokeColor(uni.luminance)} />
-          {/* Row 2 */}
-          <circle cx="15" cy="45" r="7"
-                  fill={getTextureStrokeColor(uni.luminance)} />
-          <circle cx="45" cy="45" r="7"
-                  fill={getTextureStrokeColor(uni.luminance)} />
-          <circle cx="75" cy="45" r="7"
-                  fill={getTextureStrokeColor(uni.luminance)} />
-          {/* Row 3 */}
-          <circle cx="15" cy="75" r="7"
-                  fill={getTextureStrokeColor(uni.luminance)} />
-          <circle cx="45" cy="75" r="7"
-                  fill={getTextureStrokeColor(uni.luminance)} />
-          <circle cx="75" cy="75" r="7"
-                  fill={getTextureStrokeColor(uni.luminance)} />
-        </>
-      )}
-    </pattern>
-  </defs>
-  <rect
-    width="90"
-    height="90"
-    fill={`url(#sidebar-pattern-${uni.name.replace(/[^a-zA-Z0-9]/g, "-")})`}
-  />
-</svg>
+                      {/* Dots: Grid of dots */}
+                      {uni.texture === "dots" && (
+                        <>
+                          {/* Row 1 */}
+                          <circle
+                            cx="15"
+                            cy="15"
+                            r="7"
+                            fill={getTextureStrokeColor(uni.luminance)}
+                          />
+                          <circle
+                            cx="45"
+                            cy="15"
+                            r="7"
+                            fill={getTextureStrokeColor(uni.luminance)}
+                          />
+                          <circle
+                            cx="75"
+                            cy="15"
+                            r="7"
+                            fill={getTextureStrokeColor(uni.luminance)}
+                          />
+                          {/* Row 2 */}
+                          <circle
+                            cx="15"
+                            cy="45"
+                            r="7"
+                            fill={getTextureStrokeColor(uni.luminance)}
+                          />
+                          <circle
+                            cx="45"
+                            cy="45"
+                            r="7"
+                            fill={getTextureStrokeColor(uni.luminance)}
+                          />
+                          <circle
+                            cx="75"
+                            cy="45"
+                            r="7"
+                            fill={getTextureStrokeColor(uni.luminance)}
+                          />
+                          {/* Row 3 */}
+                          <circle
+                            cx="15"
+                            cy="75"
+                            r="7"
+                            fill={getTextureStrokeColor(uni.luminance)}
+                          />
+                          <circle
+                            cx="45"
+                            cy="75"
+                            r="7"
+                            fill={getTextureStrokeColor(uni.luminance)}
+                          />
+                          <circle
+                            cx="75"
+                            cy="75"
+                            r="7"
+                            fill={getTextureStrokeColor(uni.luminance)}
+                          />
+                        </>
+                      )}
+                    </pattern>
+                  </defs>
+                  <rect
+                    width="90"
+                    height="90"
+                    fill={`url(#sidebar-pattern-${uni.name.replace(/[^a-zA-Z0-9]/g, "-")})`}
+                  />
+                </svg>
               )}
               <span className={styles.universityName}>
-                {uni.name} {uni.count > 0 ? `(${uni.count})` : ''}
+                {uni.name} {uni.count > 0 ? `(${uni.count})` : ""}
               </span>
             </div>
           ))}

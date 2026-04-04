@@ -509,7 +509,7 @@ export default function NetworkUniversityView({
       .append("line")
       .attr("stroke", "#9aa0b8")
       .attr("stroke-opacity", 0.4)
-      .attr("stroke-width", d => Math.sqrt(d.value) * 1.5);
+      .attr("stroke-width", d => edgeStrength === "none" ? 1 : Math.sqrt(d.value) * 1.5);
 
     const nodeGroup = g.append("g")
       .selectAll("g")
