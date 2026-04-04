@@ -36,6 +36,10 @@ interface ScatterplotViewProps {
   maxUniversities: number;
   canadianFilter: "full" | "full_partial";
   domain: string;
+  publicationsMin: number | null;
+  publicationsMax: number | null;
+  citationsMin: number | null;
+  citationsMax: number | null;
 }
 
 export default function ScatterplotView({
@@ -43,6 +47,10 @@ export default function ScatterplotView({
   maxUniversities,
   canadianFilter,
   domain,
+  publicationsMin,
+  publicationsMax,
+  citationsMin,
+  citationsMax,
 }: ScatterplotViewProps) {
   const router = useRouter();
   const svgRef = useRef<SVGSVGElement>(null);
@@ -93,16 +101,33 @@ export default function ScatterplotView({
             (author.topics || []).some((t) => {
               if (level === "domain") return t.domain?.display_name === value;
               if (level === "field")
-                return (t as any).field?.display_name === value;
+                return (t as {field?: {display_name: string}}).field?.display_name === value;
               if (level === "subfield")
                 return (t as any).subfield?.display_name === value;
               return false;
             }),
           );
         }
-        setAuthors(domainFiltered.sort((a, b) => b.aci - a.aci));
+
+        // Apply publications and citations filters
+        let filtered = domainFiltered;
+
+        if (publicationsMin !== null) {
+          filtered = filtered.filter((author) => author.field_papers >= publicationsMin);
+        }
+        if (publicationsMax !== null) {
+          filtered = filtered.filter((author) => author.field_papers <= publicationsMax);
+        }
+        if (citationsMin !== null) {
+          filtered = filtered.filter((author) => author.field_citations >= citationsMin);
+        }
+        if (citationsMax !== null) {
+          filtered = filtered.filter((author) => author.field_citations <= citationsMax);
+        }
+
+        setAuthors(filtered.sort((a, b) => b.aci - a.aci));
       });
-  }, [canadianFilter, domain]);
+  }, [canadianFilter, domain, publicationsMin, publicationsMax, citationsMin, citationsMax]);
 
   useEffect(() => {
     if (!svgRef.current || authors.length === 0) return;
@@ -343,9 +368,27 @@ export default function ScatterplotView({
     const maxCitations =
       d3.max(displayAuthors, (d) => d.field_citations) || 100;
 
+    // Calculate axis origins based on filter values
+    const xMin = publicationsMin !== null ? publicationsMin - 1 : 0;
+
+    // For Y-axis, calculate a nice round number below citationsMin
+    let yMin = 0;
+    if (citationsMin !== null) {
+      const magnitude = Math.pow(10, Math.floor(Math.log10(citationsMin)));
+      let niceStep: number;
+      const normalized = citationsMin / magnitude;
+
+      if (normalized <= 1) niceStep = magnitude;
+      else if (normalized <= 2) niceStep = magnitude;
+      else if (normalized <= 5) niceStep = 2 * magnitude;
+      else niceStep = 5 * magnitude;
+
+      yMin = Math.max(0, Math.floor(citationsMin / niceStep) * niceStep - niceStep);
+    }
+
     const xScale = d3
       .scaleLinear()
-      .domain([0, maxPapers * 1.1])
+      .domain([xMin, maxPapers * 1.1])
       .range([0, width])
       .nice();
 
@@ -378,9 +421,9 @@ export default function ScatterplotView({
         ticks.push(tick);
       }
 
-      // Ensure we include 0 if it's in range
-      if (min <= 0 && !ticks.includes(0)) {
-        ticks.unshift(0);
+      // Ensure we include min if it's not already there
+      if (!ticks.includes(min)) {
+        ticks.unshift(min);
       }
 
       return ticks;
@@ -397,7 +440,7 @@ export default function ScatterplotView({
       const upperMax = maxCitations * 1.2;
 
       // Generate nice ticks for bottom segment (where 95% of data lives)
-      const bottomTicks = generateNiceTicks(0, break_at, 8);
+      const bottomTicks = generateNiceTicks(yMin, break_at, 8);
 
       // Calculate the step size from bottom ticks
       const step = bottomTicks.length > 1 ? bottomTicks[1] - bottomTicks[0] : 20;
@@ -426,7 +469,7 @@ export default function ScatterplotView({
       const bottomPixels = height * 0.7;
 
       // Calculate tick spacing for bottom segment
-      const bottomDataRange = break_at; // 0 to break_at
+      const bottomDataRange = break_at - yMin; // yMin to break_at
       const numBottomIntervals = bottomDataRange / step;
       const bottomTickSpacing = bottomPixels / numBottomIntervals;
 
@@ -435,22 +478,22 @@ export default function ScatterplotView({
       const topStartPixel = breakPixel - bottomTickSpacing; // One tick spacing down from break
 
       // Create 4-point piecewise linear scale
-      // [0, break_at] -> [height, breakPixel]: bottom segment
+      // [yMin, break_at] -> [height, breakPixel]: bottom segment
       // [break_at, firstTopTick] -> [breakPixel, topStartPixel]: the data jump with visual gap
       // [firstTopTick, upperMax] -> [topStartPixel, 0]: top segment
       yScale = d3
         .scaleLinear()
-        .domain([0, break_at, firstTopTick, upperMax])
+        .domain([yMin, break_at, firstTopTick, upperMax])
         .range([height, breakPixel, topStartPixel, 0]);
     } else {
       yScale = d3
         .scaleLinear()
-        .domain([0, maxCitations * 1.1])
+        .domain([yMin, maxCitations * 1.1])
         .range([height, 0])
         .nice();
 
       // Use nice tick generation for normal case
-      yTickValues = generateNiceTicks(0, maxCitations * 1.1, 8);
+      yTickValues = generateNiceTicks(yMin, maxCitations * 1.1, 8);
     }
 
     const sizeScale = d3
@@ -572,6 +615,40 @@ export default function ScatterplotView({
       .style("text-transform", "uppercase")
       .text("Citations");
 
+    // Add zigzag indicator if publications filter is set
+    if (publicationsMin !== null && publicationsMin > 0) {
+      const xZigzagGroup = svg
+        .append("g")
+        .attr("class", "x-axis-break-indicator")
+        .attr("transform", `translate(10, ${height - 5})`); // 10px from left, 5px above x-axis
+
+      // Draw M-shaped zigzag pattern /\/\
+      const zigzagPath = "M -5,8 L 0,0 L 5,8 L 10,0 L 15,8";
+      xZigzagGroup
+        .append("path")
+        .attr("d", zigzagPath)
+        .attr("stroke", "rgba(0,0,0,0.4)")
+        .attr("stroke-width", 1.5)
+        .attr("fill", "none");
+    }
+
+    // Add zigzag indicator if citations filter is set
+    if (citationsMin !== null && citationsMin > 0) {
+      const yZigzagGroup = svg
+        .append("g")
+        .attr("class", "y-axis-break-indicator")
+        .attr("transform", `translate(5, ${height - 20})`); // 5px left of y-axis, 10px above bottom
+
+      // Draw rotated zigzag pattern (W shape rotated 90 degrees)
+      const zigzagPath = "M -8,-5 L 0,0 L -8,5 L 0,10 L -8,15";
+      yZigzagGroup
+        .append("path")
+        .attr("d", zigzagPath)
+        .attr("stroke", "rgba(0,0,0,0.4)")
+        .attr("stroke-width", 1.5)
+        .attr("fill", "none");
+    }
+
     if (!tooltipRef.current) {
       tooltipRef.current = d3
         .select("body")
@@ -653,7 +730,7 @@ export default function ScatterplotView({
     // Create a simple linear scale for zooming (used when outliers exist and user zooms)
     const yScaleLinear = d3
       .scaleLinear()
-      .domain([0, maxCitations * 1.1])
+      .domain([yMin, maxCitations * 1.1])
       .range([height, 0])
       .nice();
 
@@ -679,9 +756,9 @@ export default function ScatterplotView({
           // Use linear scale when zooming
           newY = t.rescaleY(yScaleLinear);
           const [minY, maxY] = newY.domain();
-          const clampedMinY = Math.max(0, minY);
-          if (minY < 0) {
-            newY = newY.copy().domain([clampedMinY, maxY - minY]);
+          const clampedMinY = Math.max(yMin, minY);
+          if (minY < yMin) {
+            newY = newY.copy().domain([clampedMinY, maxY - (minY - yMin)]);
           }
           newYTicks = generateNiceTicks(clampedMinY, newY.domain()[1], 8);
 
@@ -698,21 +775,22 @@ export default function ScatterplotView({
           // No outliers, normal zoom behavior
           newY = t.rescaleY(yScale);
           const [minY, maxY] = newY.domain();
-          const clampedMinY = Math.max(0, minY);
-          if (minY < 0) {
-            newY = newY.copy().domain([clampedMinY, maxY - minY]);
+          const clampedMinY = Math.max(yMin, minY);
+          if (minY < yMin) {
+            newY = newY.copy().domain([clampedMinY, maxY - (minY - yMin)]);
           }
           newYTicks = generateNiceTicks(clampedMinY, newY.domain()[1], 8);
         }
 
-        // Clamp X to avoid negative values
+        // Clamp X to avoid going below xMin
         const [minX, maxX] = newX.domain();
-        if (minX < 0) newX = newX.copy().domain([0, maxX - minX]);
+        if (minX < xMin) newX = newX.copy().domain([xMin, maxX - (minX - xMin)]);
 
-        // Generate X ticks
+        // Generate X ticks starting from the domain minimum
         const xTicks = [];
         const [x0, x1] = newX.domain();
-        for (let i = Math.ceil(x0); i <= Math.floor(x1); i++) xTicks.push(i);
+        const startX = Math.max(xMin, Math.ceil(x0));
+        for (let i = startX; i <= Math.floor(x1); i++) xTicks.push(i);
 
         xAxisGroup.call(
           d3
@@ -761,6 +839,9 @@ export default function ScatterplotView({
     useSizeEncoding,
     selectedInstitution,
     router,
+    domain,
+    publicationsMin,
+    citationsMin,
   ]);
 
   const resetZoom = () => {

@@ -171,6 +171,14 @@ function ExploreContent() {
   const [selectedSubfield, setSelectedSubfield] = useState<string>("");
   const [networkViewMode, setNetworkViewMode] = useState<"author" | "university">("author");
 
+  // Publications range
+  const [publicationsMin, setPublicationsMin] = useState<number | null>(null);
+  const [publicationsMax, setPublicationsMax] = useState<number | null>(null);
+
+  // Citations range
+  const [citationsMin, setCitationsMin] = useState<number | null>(null);
+  const [citationsMax, setCitationsMax] = useState<number | null>(null);
+
   const handleFieldChange = (val: string) => {
     setSelectedField(val);
     setSelectedSubfield(""); // reset subfield on field change
@@ -187,6 +195,9 @@ function ExploreContent() {
 
   // Disable maxAuthors slider when in network tab with university view mode
   const isMaxAuthorsDisabled = activeTab === "network" && networkViewMode === "university";
+
+  // Disable publications and citations filters when in network tab with university view mode
+  const areRangeFiltersDisabled = activeTab === "network" && networkViewMode === "university";
 
   return (
     <div className={styles.page}>
@@ -205,46 +216,7 @@ function ExploreContent() {
 
       {/* ── Filters ── */}
       <div className={styles.filterBar}>
-        <div className={styles.filterGroup}>
-          <label htmlFor="maxAuthors" style={{ opacity: isMaxAuthorsDisabled ? 0.5 : 1 }}>
-            Authors — {maxAuthors}
-          </label>
-          <input
-            id="maxAuthors"
-            type="range"
-            min="10"
-            max="500"
-            value={maxAuthors}
-            onChange={(e) => setMaxAuthors(Number(e.target.value))}
-            className={styles.slider}
-            disabled={isMaxAuthorsDisabled}
-            style={{ opacity: isMaxAuthorsDisabled ? 0.5 : 1, cursor: isMaxAuthorsDisabled ? 'not-allowed' : 'pointer' }}
-          />
-        </div>
-        <div className={styles.filterGroup}>
-          <label htmlFor="maxUniversities">Universities — {maxUniversities}</label>
-          <input
-            id="maxUniversities"
-            type="range"
-            min="5"
-            max="100"
-            value={maxUniversities}
-            onChange={(e) => setMaxUniversities(Number(e.target.value))}
-            className={styles.slider}
-          />
-        </div>
-        <div className={styles.filterGroup}>
-          <label htmlFor="canadianFilter">Researchers</label>
-          <select
-            id="canadianFilter"
-            value={canadianFilter}
-            onChange={(e) => setCanadianFilter(e.target.value as CanadianFilter)}
-            className={styles.select}
-          >
-            <option value="full">Canadian Only</option>
-            <option value="full_partial">Canadian + International</option>
-          </select>
-        </div>
+        {/* Field Selection */}
         <div className={styles.filterGroup}>
           <label htmlFor="field">Field</label>
           <select
@@ -263,6 +235,8 @@ function ExploreContent() {
             ))}
           </select>
         </div>
+
+        {/* Topic Selection (if field selected) */}
         {selectedField && availableSubfields.length > 0 && (
           <div className={`${styles.filterGroup} ${styles.filterGroupAnimate}`}>
             <label htmlFor="subfield">Topic</label>
@@ -279,6 +253,116 @@ function ExploreContent() {
             </select>
           </div>
         )}
+
+        {/* Authors Range */}
+        <div className={styles.filterGroup}>
+          <label htmlFor="maxAuthors" style={{ opacity: isMaxAuthorsDisabled ? 0.5 : 1 }}>
+            Authors — {maxAuthors}
+          </label>
+          <input
+            id="maxAuthors"
+            type="range"
+            min="10"
+            max="500"
+            value={maxAuthors}
+            onChange={(e) => setMaxAuthors(Number(e.target.value))}
+            className={styles.slider}
+            disabled={isMaxAuthorsDisabled}
+            style={{ opacity: isMaxAuthorsDisabled ? 0.5 : 1, cursor: isMaxAuthorsDisabled ? 'not-allowed' : 'pointer' }}
+          />
+        </div>
+
+        {/* Universities Range */}
+        <div className={styles.filterGroup}>
+          <label htmlFor="maxUniversities">Universities — {maxUniversities}</label>
+          <input
+            id="maxUniversities"
+            type="range"
+            min="5"
+            max="100"
+            value={maxUniversities}
+            onChange={(e) => setMaxUniversities(Number(e.target.value))}
+            className={styles.slider}
+          />
+        </div>
+
+        {/* Publications Range */}
+        <div className={styles.filterGroup}>
+          <label htmlFor="publicationsMin" style={{ opacity: areRangeFiltersDisabled ? 0.5 : 1 }}>
+            Publications
+          </label>
+          <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+            <input
+              id="publicationsMin"
+              type="number"
+              placeholder="Min"
+              value={publicationsMin ?? ''}
+              onChange={(e) => setPublicationsMin(e.target.value && Number(e.target.value) > 0 ? Number(e.target.value) : null)}
+              className={styles.numberInput}
+              min="0"
+              disabled={areRangeFiltersDisabled}
+              style={{ opacity: areRangeFiltersDisabled ? 0.5 : 1, cursor: areRangeFiltersDisabled ? 'not-allowed' : 'text' }}
+            />
+            <span style={{ opacity: 0.5 }}>—</span>
+            <input
+              id="publicationsMax"
+              type="number"
+              placeholder="Max"
+              value={publicationsMax ?? ''}
+              onChange={(e) => setPublicationsMax(e.target.value && Number(e.target.value) > 0 ? Number(e.target.value) : null)}
+              className={styles.numberInput}
+              min="0"
+              disabled={areRangeFiltersDisabled}
+              style={{ opacity: areRangeFiltersDisabled ? 0.5 : 1, cursor: areRangeFiltersDisabled ? 'not-allowed' : 'text' }}
+            />
+          </div>
+        </div>
+
+        {/* Citations Range */}
+        <div className={styles.filterGroup}>
+          <label htmlFor="citationsMin" style={{ opacity: areRangeFiltersDisabled ? 0.5 : 1 }}>
+            Citations
+          </label>
+          <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+            <input
+              id="citationsMin"
+              type="number"
+              placeholder="Min"
+              value={citationsMin ?? ''}
+              onChange={(e) => setCitationsMin(e.target.value ? Number(e.target.value) : null)}
+              className={styles.numberInput}
+              min="0"
+              disabled={areRangeFiltersDisabled}
+              style={{ opacity: areRangeFiltersDisabled ? 0.5 : 1, cursor: areRangeFiltersDisabled ? 'not-allowed' : 'text' }}
+            />
+            <span style={{ opacity: 0.5 }}>—</span>
+            <input
+              id="citationsMax"
+              type="number"
+              placeholder="Max"
+              value={citationsMax ?? ''}
+              onChange={(e) => setCitationsMax(e.target.value ? Number(e.target.value) : null)}
+              className={styles.numberInput}
+              min="0"
+              disabled={areRangeFiltersDisabled}
+              style={{ opacity: areRangeFiltersDisabled ? 0.5 : 1, cursor: areRangeFiltersDisabled ? 'not-allowed' : 'text' }}
+            />
+          </div>
+        </div>
+
+        {/* Commented out: Canadian filter (keeping logic for future use) */}
+        {/* <div className={styles.filterGroup}>
+          <label htmlFor="canadianFilter">Researchers</label>
+          <select
+            id="canadianFilter"
+            value={canadianFilter}
+            onChange={(e) => setCanadianFilter(e.target.value as CanadianFilter)}
+            className={styles.select}
+          >
+            <option value="full">Canadian Only</option>
+            <option value="full_partial">Canadian + International</option>
+          </select>
+        </div> */}
       </div>
 
       {/* ── Tabs ── */}
@@ -305,6 +389,10 @@ function ExploreContent() {
             maxUniversities={maxUniversities}
             canadianFilter={canadianFilter}
             domain={domainValue}
+            publicationsMin={publicationsMin}
+            publicationsMax={publicationsMax}
+            citationsMin={citationsMin}
+            citationsMax={citationsMax}
           />
         ) : (
           <NetworkView
@@ -313,6 +401,10 @@ function ExploreContent() {
             canadianFilter={canadianFilter}
             domain={domainValue}
             onViewModeChange={setNetworkViewMode}
+            publicationsMin={publicationsMin}
+            publicationsMax={publicationsMax}
+            citationsMin={citationsMin}
+            citationsMax={citationsMax}
           />
         )}
       </div>

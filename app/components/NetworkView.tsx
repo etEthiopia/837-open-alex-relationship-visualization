@@ -87,6 +87,10 @@ interface NetworkViewProps {
   canadianFilter: "full" | "full_partial";
   domain: string;
   onViewModeChange?: (viewMode: "author" | "university") => void;
+  publicationsMin: number | null;
+  publicationsMax: number | null;
+  citationsMin: number | null;
+  citationsMax: number | null;
 }
 
 export default function NetworkView({
@@ -95,6 +99,10 @@ export default function NetworkView({
   canadianFilter,
   domain,
   onViewModeChange,
+  publicationsMin,
+  publicationsMax,
+  citationsMin,
+  citationsMax,
 }: NetworkViewProps) {
   const router = useRouter();
   const svgRef = useRef<SVGSVGElement>(null);
@@ -231,6 +239,15 @@ export default function NetworkView({
     const authorMap = new Map<string, Node>();
     filteredAuthorships.forEach((authorship) => {
       authorship.ids.forEach((authorId, idx) => {
+        const fieldPapers = authorship.field_papers[idx];
+        const fieldCitations = authorship.field_citations[idx];
+
+        // Apply publications and citations filters
+        if (publicationsMin !== null && fieldPapers < publicationsMin) return;
+        if (publicationsMax !== null && fieldPapers > publicationsMax) return;
+        if (citationsMin !== null && fieldCitations < citationsMin) return;
+        if (citationsMax !== null && fieldCitations > citationsMax) return;
+
         if (
           !authorMap.has(authorId) &&
           (domainAuthorIds === null || domainAuthorIds.has(authorId))
@@ -240,8 +257,8 @@ export default function NetworkView({
             id: authorId,
             name: authorship.names[idx],
             aci: authorship.ACIs[idx],
-            field_citations: authorship.field_citations[idx],
-            field_papers: authorship.field_papers[idx],
+            field_citations: fieldCitations,
+            field_papers: fieldPapers,
             institution:
               institution?.label_name || institution?.display_name || "Unknown",
             institutionId: institution?.id || "unknown",
@@ -1385,6 +1402,10 @@ export default function NetworkView({
     selectedNode,
     matrixUniversities,
     router,
+    publicationsMin,
+    publicationsMax,
+    citationsMin,
+    citationsMax,
   ]);
 
   const ViewModeToggle = () => (

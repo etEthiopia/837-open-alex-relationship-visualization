@@ -146,6 +146,31 @@
   color: #0e0e0c;
 }
 
+/* Number Input */
+.numberInput {
+  width: 80px;
+  height: 32px;
+  padding: 0 10px;
+  background: #eaeae6;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  font-size: 13px;
+  color: #0e0e0c;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.numberInput:focus {
+  border-color: rgba(0, 0, 0, 0.25);
+  background-color: #e6e6e2;
+}
+
+.numberInput::placeholder {
+  color: rgba(0, 0, 0, 0.3);
+  font-size: 12px;
+}
+
 /* Animate-in for the cascading topic filter */
 .filterGroupAnimate {
   animation: slideIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
