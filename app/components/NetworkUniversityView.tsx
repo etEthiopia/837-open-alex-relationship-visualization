@@ -88,6 +88,10 @@ interface NetworkUniversityViewProps {
   nodeLabelMode: "major" | "all" | "none";
   matrixUniversity: string | null;
   onUniversitiesChange: (universities: Array<{ name: string; display_name: string; color: string; texture?: string; luminance?: "dark" | "light"; totalACI: number; count: number }>) => void;
+  publicationsMin: number | null;
+  publicationsMax: number | null;
+  citationsMin: number | null;
+  citationsMax: number | null;
 }
 
 const UNIVERSITY_VIEW_AUTHOR_SAMPLE = 500;
@@ -101,6 +105,10 @@ export default function NetworkUniversityView({
   nodeLabelMode,
   matrixUniversity,
   onUniversitiesChange,
+  publicationsMin,
+  publicationsMax,
+  citationsMin,
+  citationsMax,
 }: NetworkUniversityViewProps) {
   const svgRef = useRef<SVGSVGElement>(null);
   const matrixSvgRef = useRef<SVGSVGElement>(null);
@@ -142,14 +150,20 @@ export default function NetworkUniversityView({
     const authorMap = new Map<string, Author>();
     filteredAuthorships.forEach((authorship) => {
       authorship.ids.forEach((authorId, idx) => {
-        if (!authorMap.has(authorId)) {
+        if (!authorMap.has(authorId) && (domainAuthorIds === null || domainAuthorIds.has(authorId))) {
+          const fieldPapers = authorship.field_papers[idx];
+          const fieldCitations = authorship.field_citations[idx];
+          if (publicationsMin !== null && fieldPapers < publicationsMin) return;
+          if (publicationsMax !== null && fieldPapers > publicationsMax) return;
+          if (citationsMin !== null && fieldCitations < citationsMin) return;
+          if (citationsMax !== null && fieldCitations > citationsMax) return;
           const institution = authorship.last_known_institutions[idx];
           authorMap.set(authorId, {
             id: authorId,
             name: authorship.names[idx],
             aci: authorship.ACIs[idx],
-            field_citations: authorship.field_citations[idx],
-            field_papers: authorship.field_papers[idx],
+            field_citations: fieldCitations,
+            field_papers: fieldPapers,
             institution: institution?.label_name || institution?.display_name || "Unknown",
             institutionId: institution?.id || "unknown",
           });
@@ -573,7 +587,7 @@ export default function NetworkUniversityView({
         tooltipRef.current = null;
       }
     };
-  }, [authorships, maxUniversities, edgeStrength, canadianFilter, selectedUniversity, nodeLabelMode, onUniversitiesChange, institutions]);
+  }, [authorships, domainAuthorIds, domain, maxUniversities, edgeStrength, canadianFilter, selectedUniversity, nodeLabelMode, onUniversitiesChange, institutions, publicationsMin, publicationsMax, citationsMin, citationsMax]);
 
   // Render adjacency matrix for matrix university
   useEffect(() => {
