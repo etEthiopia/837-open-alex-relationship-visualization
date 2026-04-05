@@ -494,27 +494,72 @@ export default function NetworkUniversityView({
       .data(universityNodes)
       .enter()
       .append("g")
-      .style("cursor", "pointer")
-      .call(d3.drag<SVGGElement, UniversityNode>()
-        .on("start", (event, d) => {
-          if (!event.active) simulation.alphaTarget(0.3).restart();
-          d.fx = d.x; d.fy = d.y;
-        })
-        .on("drag", (event, d) => {
-          d.fx = event.x; d.fy = event.y;
-        })
-        .on("end", (event, d) => {
-          if (!event.active) simulation.alphaTarget(0);
-          d.fx = null; d.fy = null;
-        })
-      );
+      .style("cursor", "pointer");
 
     nodeGroup.append("circle")
+      .attr("class", "node-circle")
       .attr("r", d => sizeScale(d.totalICI))
       .attr("fill", d => getFillForUniversity(d.name))
       .attr("stroke", "rgba(255,255,255,0.9)")
       .attr("stroke-width", 2)
       .style("opacity", d => !selectedUniversity || d.name === selectedUniversity ? 0.9 : 0.2);
+
+    nodeGroup.append("circle")
+      .attr("class", "pin-dot")
+      .attr("r", 4)
+      .attr("fill", "white")
+      .attr("stroke", "rgba(0,0,0,0.3)")
+      .attr("stroke-width", 1)
+      .style("pointer-events", "none")
+      .style("opacity", 0);
+
+    // Pin system
+    const pinnedSet = new Set<string>();
+    let dragMoved = false;
+
+    const setPinVisual = (id: string, pinned: boolean) => {
+      nodeGroup.filter((d) => d.id === id)
+        .select("circle.node-circle")
+        .attr("stroke", pinned ? "rgba(0,0,0,0.5)" : "rgba(255,255,255,0.9)")
+        .attr("stroke-width", pinned ? 2.5 : 2);
+      nodeGroup.filter((d) => d.id === id)
+        .select("circle.pin-dot")
+        .style("opacity", pinned ? 1 : 0);
+    };
+
+    nodeGroup.call(d3.drag<SVGGElement, UniversityNode>()
+      .on("start", (event, d) => {
+        dragMoved = false;
+        if (!event.active) simulation.alphaTarget(0.3).restart();
+        d.fx = d.x; d.fy = d.y;
+      })
+      .on("drag", (event, d) => {
+        dragMoved = true;
+        d.fx = event.x; d.fy = event.y;
+      })
+      .on("end", (event, d) => {
+        if (!event.active) simulation.alphaTarget(0);
+        if (dragMoved) {
+          pinnedSet.add(d.id);
+          setPinVisual(d.id, true);
+        } else {
+          if (!pinnedSet.has(d.id)) {
+            d.fx = null; d.fy = null;
+          }
+        }
+      })
+    );
+
+    nodeGroup.on("contextmenu", (event, d) => {
+      event.preventDefault();
+      if (pinnedSet.has(d.id)) {
+        pinnedSet.delete(d.id);
+        d.fx = null; d.fy = null;
+        setPinVisual(d.id, false);
+        simulation.alphaTarget(0.1).restart();
+        setTimeout(() => simulation.alphaTarget(0), 300);
+      }
+    });
 
     // Calculate top 10% for "major" label mode
     const top20PercentCount = Math.ceil(universityNodes.length * 0.2);
@@ -549,16 +594,17 @@ export default function NetworkUniversityView({
     // Add hover interactions
     nodeGroup
       .on("mouseover", function (_event, d) {
-        d3.select(this).select("circle").attr("stroke-width", 3);
+        d3.select(this).select("circle.node-circle").attr("stroke-width", pinnedSet.has(d.id) ? 2.5 : 3);
         const instData = institutionMap.get(d.name);
         const connections = connectionCounts.get(d.id) || 0;
+        const pinHint = pinnedSet.has(d.id) ? "<br/><span style='opacity:0.5'>Right-click to unpin</span>" : "";
         tooltip.style("opacity", 1).html(`
           <strong>${d.display_name}</strong><br/>
           ICI: ${d.totalICI.toFixed(2)}<br/>
           Authors: ${d.authorCount}<br/>
           Papers: ${instData?.field_papers || 0}<br/>
           Citations: ${instData?.field_citations || 0}<br/>
-          Connections: ${connections}
+          Connections: ${connections}${pinHint}
         `);
       })
       .on("mousemove", (event) => {
@@ -566,8 +612,8 @@ export default function NetworkUniversityView({
           .style("left", event.pageX + 10 + "px")
           .style("top", event.pageY - 10 + "px");
       })
-      .on("mouseout", function () {
-        d3.select(this).select("circle").attr("stroke-width", 2);
+      .on("mouseout", function (_event, d) {
+        d3.select(this).select("circle.node-circle").attr("stroke-width", pinnedSet.has(d.id) ? 2.5 : 2);
         tooltip.style("opacity", 0);
       });
 
