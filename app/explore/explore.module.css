@@ -148,17 +148,27 @@
 
 /* Number Input */
 .numberInput {
-  width: 80px;
+  width: 72px;
   height: 32px;
+  min-height: 0;
   padding: 0 10px;
   background: #eaeae6;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   font-size: 13px;
+  line-height: 30px;
   color: #0e0e0c;
   font-family: var(--font-geist-sans), system-ui, sans-serif;
   outline: none;
+  appearance: textfield;
+  -webkit-appearance: textfield;
   transition: border-color 0.2s, background 0.2s;
+}
+
+.numberInput::-webkit-outer-spin-button,
+.numberInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .numberInput:focus {
@@ -169,6 +179,7 @@
 .numberInput::placeholder {
   color: rgba(0, 0, 0, 0.3);
   font-size: 12px;
+  line-height: 30px;
 }
 
 /* Animate-in for the cascading topic filter */
