@@ -1398,6 +1398,10 @@ export default function NetworkView({
             nodeLabelMode={universityLabelMode}
             matrixUniversity={matrixUniversity}
             onUniversitiesChange={setUniversityViewUniversities}
+            publicationsMin={publicationsMin}
+            publicationsMax={publicationsMax}
+            citationsMin={citationsMin}
+            citationsMax={citationsMax}
           />
         </div>
         <div className={styles.sidebar}>
