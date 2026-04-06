@@ -597,14 +597,15 @@ export default function NetworkUniversityView({
         d3.select(this).select("circle.node-circle").attr("stroke-width", pinnedSet.has(d.id) ? 2.5 : 3);
         const instData = institutionMap.get(d.name);
         const connections = connectionCounts.get(d.id) || 0;
-        const pinHint = pinnedSet.has(d.id) ? "<br/><span style='opacity:0.5'>Right-click to unpin</span>" : "";
+        const pinHint = pinnedSet.has(d.id) ? "<br/><span style='opacity:0.6'>Right-click to unpin</span>" : "";
         tooltip.style("opacity", 1).html(`
           <strong>${d.display_name}</strong><br/>
           ICI: ${d.totalICI.toFixed(2)}<br/>
           Authors: ${d.authorCount}<br/>
           Papers: ${instData?.field_papers || 0}<br/>
           Citations: ${instData?.field_citations || 0}<br/>
-          Connections: ${connections}${pinHint}
+          Connections: ${connections}<br/>
+          ${pinHint}
         `);
       })
       .on("mousemove", (event) => {

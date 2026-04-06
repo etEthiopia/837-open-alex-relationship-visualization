@@ -699,11 +699,11 @@ export default function ScatterplotView({
         d3.select(this).attr("stroke-width", 2);
         tooltip.style("opacity", 1).html(`
             <strong>${d.display_name}</strong><br/>
-            Institution: ${d.last_known_institution?.label_name || d.last_known_institution?.display_name || "Unknown"}<br/>
+            ${d.last_known_institution?.label_name || d.last_known_institution?.display_name || "Unknown Institution"}<br/>
             Publications: ${d.field_papers}<br/>
             Citations: ${d.field_citations}<br/>
             Citation Impact: ${d.aci.toFixed(2)}<br/>
-            <span style="font-size:10px;opacity:0.45;text-decoration:underline;">Click to view profile</span>
+            <span style="font-size:12px;opacity:0.45;">Click to view profile</span>
           `);
       })
       .on("mousemove", function (event) {

@@ -732,9 +732,9 @@ export default function NetworkView({
       if (authorIndex === -1) return { x: matrixNode.x!, y: matrixNode.y! };
 
       const halfHeight = matrixNode.height / 2;
-      const columnOffset = (authorIndex + 0.5) * cellSize;
-      const anchorX = matrixNode.x! - matrixNode.width / 2 + columnOffset;
-      const anchorY = matrixNode.y! - halfHeight;
+      const rowOffset = (authorIndex + 0.5) * cellSize;
+      const anchorX = matrixNode.x! - matrixNode.width / 2;
+      const anchorY = matrixNode.y! - halfHeight + rowOffset;
 
       return { x: anchorX, y: anchorY };
     };
@@ -874,10 +874,14 @@ export default function NetworkView({
           .style("opacity", 1)
           .html(
             `<strong>${d.name}</strong><br/>` +
-              `${d.institution}<br/>` +
-              `Impact: ${d.aci.toFixed(2)} · Conn: ${d.linkCount}<br/>` +
+            `${d.institution}<br/>` +
+            `Publications: ${d.field_papers}<br/>` +
+            `Citations: ${d.field_citations}<br/>` +
+            `Citation Impact: ${d.aci.toFixed(2)}<br/>` +
+            `Connection: ${d.linkCount}<br/>` +
+            `<br/><span style="font-size:12px;opacity:0.6;">Click to view profile</span><br/>` +
               (isPinned
-                ? `<span style="font-size:10px;opacity:0.6;">Right-click to unpin</span>`
+                ? `<br/><span style="font-size:12px;opacity:0.6;">Right-click to unpin</span><br/>`
                 : ""),
           );
       })
@@ -995,7 +999,7 @@ export default function NetworkView({
         .attr("width", dynamicLabelPadding - 5)
         .attr("height", cellSize)
         .attr("fill", "white")
-        .attr("opacity", 0.8)
+        .attr("opacity", 0.5)
         .style("pointer-events", "none");
 
       matrix
@@ -1025,7 +1029,7 @@ export default function NetworkView({
         .attr("width", authors.length * cellSize + 15)
         .attr("height", dynamicLabelPadding - 7)
         .attr("fill", "white")
-        .attr("opacity", 0.8)
+        .attr("opacity", 0.5)
         .style("pointer-events", "none");
 
       // 2. Draw your labels as usual (without individual backgrounds)
@@ -1680,14 +1684,15 @@ export default function NetworkView({
                 {uni.name} {uni.count > 0 ? `(${uni.count})` : ""}
               </span>
               <button
-                className={`${styles.matrixToggle} ${matrixUniversities.has(uni.name) ? styles.matrixActive : ""}`}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  toggleMatrixMode(uni.name);
-                }}
-              >
-                {matrixUniversities.has(uni.name) ? "▦" : "●"}
-              </button>
+                  className={`${styles.matrixToggle} ${matrixUniversities.has(uni.name) ? styles.matrixActive : ""}`}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    toggleMatrixMode(uni.name);
+                  }}
+                  title={matrixUniversities.has(uni.name) ? "Hide matrix view" : "Show matrix view"}
+                >
+                  ▦
+                </button>
             </div>
           ))}
         </div>
