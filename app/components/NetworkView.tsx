@@ -176,7 +176,7 @@ export default function NetworkView({
   }, [maxAuthors]);
 
   useEffect(() => {
-    fetch(`${dataPath}/authorships.json`)
+    fetch(`${dataPath}/authorships_canadian.json`)
       .then((res) => res.json())
       .then((data: Authorship[]) => setAuthorships(data));
   }, [dataPath]);

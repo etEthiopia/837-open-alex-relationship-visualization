@@ -266,7 +266,10 @@ function AuthorContent() {
   const fromNetwork = searchParams.get("from") === "network";
 
   // Determine field param for back navigation
-  const fieldParam = dataPath === "/data_information_systems" ? "information_systems" : "hci";
+  const fieldParam =
+    dataPath === "/data_information_systems" ? "information_systems" :
+    dataPath === "/data_computer_vision" ? "computer_vision" :
+    "hci";
   const tabParam = fromNetwork ? "tab=network&" : "";
   const backHref = `/explore?${tabParam}field=${fieldParam}`;
 

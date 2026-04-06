@@ -111,11 +111,11 @@ export default function NetworkUniversityView({
   const [universityColors, setUniversityColors] = useState<Map<string, { color: string; texture: string; luminance: "dark" | "light" }>>(new Map());
 
   useEffect(() => {
-    fetch(`${dataPath}/authorships.json`)
+    fetch(`${dataPath}/authorships_canadian.json`)
       .then((res) => res.json())
       .then((data: Authorship[]) => setAuthorships(data));
 
-    fetch(`${dataPath}/institutions.json`)
+    fetch(`${dataPath}/institutions_canadian.json`)
       .then((res) => res.json())
       .then((data: InstitutionData[]) => setInstitutions(data));
   }, [dataPath]);

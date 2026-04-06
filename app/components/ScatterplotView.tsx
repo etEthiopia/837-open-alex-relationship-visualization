@@ -82,7 +82,7 @@ export default function ScatterplotView({
   >([]);
 
   useEffect(() => {
-    fetch(`${dataPath}/authors.json`)
+    fetch(`${dataPath}/authors_canadian.json`)
       .then((res) => res.json())
       .then((data: Author[]) => {
         const canadianAuthors = data.filter((author) => {
@@ -423,7 +423,7 @@ export default function ScatterplotView({
     if (hasOutliers) {
       const break_at = p95 * 1.3;
       breakThreshold = break_at;
-      const upperMax = maxCitations * 1.2;
+      const upperMax = maxCitations * 1.05;
 
       // Generate nice ticks for bottom segment (where 95% of data lives)
       const bottomTicks = generateNiceTicks(yMin, break_at, 8);
@@ -442,7 +442,7 @@ export default function ScatterplotView({
       // Generate top ticks with the same step size, but limit to max 2 ticks
       const topTicks: number[] = [];
       let currentTick = firstTopTick;
-      while (currentTick <= upperMax && topTicks.length < 2) {
+      while (currentTick <= upperMax && topTicks.length < 3) {
         if (currentTick > break_at) {
           topTicks.push(currentTick);
         }
@@ -519,7 +519,18 @@ export default function ScatterplotView({
       });
     });
 
-    const xAxis = d3.axisBottom(xScale);
+    // Generate x-axis tick values as integers only
+    const xDomain = xScale.domain();
+    const xTickMin = Math.ceil(xDomain[0]);
+    const xTickMax = Math.floor(xDomain[1]);
+    const xTickValues: number[] = [];
+    for (let i = xTickMin; i <= xTickMax; i++) {
+      xTickValues.push(i);
+    }
+
+    const xAxis = d3.axisBottom(xScale)
+      .tickValues(xTickValues)
+      .tickFormat((d) => d3.format("d")(Number(d)));
     const yAxis = d3.axisLeft(yScale).tickValues(yTickValues);
 
     const xAxisGroup = svg
@@ -778,7 +789,7 @@ export default function ScatterplotView({
           d3
             .axisBottom(newX)
             .tickValues(xTicks)
-            .tickFormat((d) => String(Math.round(Number(d)))),
+            .tickFormat((d) => d3.format("d")(Number(d))),
         );
         yAxisGroup.call(d3.axisLeft(newY).tickValues(newYTicks));
 

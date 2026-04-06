@@ -10,11 +10,12 @@ import styles from "./explore.module.css";
 
 type CanadianFilter = "full" | "full_partial";
 type TabType = "scatterplot" | "network";
-type DataSource = "Human Computing Interactions" | "Information Systems";
+type DataSource = "Human Computing Interactions" | "Information Systems" | "Computer Vision";
 
 // Map data sources to their respective data paths
 const DATA_SOURCE_PATHS: Record<DataSource, string> = {
   "Human Computing Interactions": "/data",
+  "Computer Vision": "/data_computer_vision",
   "Information Systems": "/data_information_systems",
 };
 
@@ -23,9 +24,11 @@ function ExploreContent() {
   const router = useRouter();
 
   // Initialize field from query params or default to "Human Computing Interactions"
-  const initialField = searchParams.get("field") === "information_systems"
-    ? "Information Systems"
-    : "Human Computing Interactions";
+  const fieldParam = searchParams.get("field");
+  const initialField: DataSource =
+    fieldParam === "information_systems" ? "Information Systems" :
+    fieldParam === "computer_vision" ? "Computer Vision" :
+    "Human Computing Interactions";
 
   const [activeTab, setActiveTab] = useState<TabType>(
     searchParams.get("tab") === "network" ? "network" : "scatterplot"
@@ -50,7 +53,10 @@ function ExploreContent() {
   // Update URL when field or tab changes
   useEffect(() => {
     const params = new URLSearchParams();
-    const fieldParam = dataSource === "Information Systems" ? "information_systems" : "hci";
+    const fieldParam =
+      dataSource === "Information Systems" ? "information_systems" :
+      dataSource === "Computer Vision" ? "computer_vision" :
+      "hci";
     params.set("field", fieldParam);
     if (activeTab !== "scatterplot") {
       params.set("tab", activeTab);
@@ -91,6 +97,7 @@ function ExploreContent() {
             className={styles.select}
           >
             <option value="Human Computing Interactions">Human Computing Interactions</option>
+            <option value="Computer Vision">Computer Vision</option>
             <option value="Information Systems">Information Systems</option>
           </select>
         </div>
