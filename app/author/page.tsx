@@ -128,8 +128,8 @@ function buildChart(
   d3.select(svgEl).selectAll("*").remove();
 
   const width = 480;
-  const height = 220;
-  const margin = { top: 20, right: 16, bottom: 32, left: 48 };
+  const height = 210;
+  const margin = { top: 40, right: 16, bottom: 36, left: 16 };
   const innerW = width - margin.left - margin.right;
   const innerH = height - margin.top - margin.bottom;
 
@@ -144,40 +144,32 @@ function buildChart(
     .scaleBand()
     .domain(data.map((d) => String(d.year)))
     .range([0, innerW])
-    .padding(mode === "compare" ? 0.25 : 0.35);
+    .padding(mode === "compare" ? 0.38 : 0.52);
 
   const maxVal =
     mode === "total" ? d3.max(data, (d) => d.total) || 1
     : mode === "field" ? d3.max(data, (d) => d.field) || 1
     : Math.max(d3.max(data, (d) => d.total) || 1, d3.max(data, (d) => d.field) || 1);
 
-  const y = d3.scaleLinear().domain([0, maxVal]).range([innerH, 0]).nice();
+  const y = d3.scaleLinear().domain([0, maxVal * 1.15]).range([innerH, 0]);
 
-  // Grid
+  // Subtle horizontal grid lines only
   svg.append("g")
-    .call(d3.axisLeft(y).ticks(4).tickSize(-innerW).tickFormat(() => ""))
+    .call(d3.axisLeft(y).ticks(3).tickSize(-innerW).tickFormat(() => ""))
     .call((g) => g.select(".domain").remove())
-    .call((g) => g.selectAll(".tick line").attr("stroke", "rgba(0,0,0,0.06)").attr("stroke-dasharray", "3,3"));
+    .call((g) => g.selectAll(".tick line")
+      .attr("stroke", "rgba(0,0,0,0.05)")
+      .attr("stroke-dasharray", "4,4"));
 
-  // X axis
+  // X axis — year labels only, no domain line or ticks
   svg.append("g")
     .attr("transform", `translate(0,${innerH})`)
-    .call(d3.axisBottom(x).tickValues(data.filter((_, i) => i % 2 === 0).map((d) => String(d.year))))
-    .call((g) => g.select(".domain").attr("stroke", "rgba(0,0,0,0.1)"))
-    .call((g) => g.selectAll(".tick line").attr("stroke", "rgba(0,0,0,0.1)"))
-    .selectAll("text")
-    .attr("fill", "rgba(0,0,0,0.38)")
-    .style("font-size", "10px")
-    .style("font-family", "var(--font-geist-mono), monospace");
-
-  // Y axis
-  svg.append("g")
-    .call(d3.axisLeft(y).ticks(4))
+    .call(d3.axisBottom(x).tickSize(0))
     .call((g) => g.select(".domain").remove())
-    .call((g) => g.selectAll(".tick line").remove())
     .selectAll("text")
-    .attr("fill", "rgba(0,0,0,0.38)")
-    .style("font-size", "10px")
+    .attr("fill", "rgba(0,0,0,0.35)")
+    .attr("dy", "1.4em")
+    .style("font-size", "11px")
     .style("font-family", "var(--font-geist-mono), monospace");
 
   // Tooltip
@@ -187,7 +179,7 @@ function buildChart(
     .style("position", "absolute")
     .style("background", "#0e0e0c")
     .style("color", "#f0f0ec")
-    .style("padding", "7px 12px")
+    .style("padding", "6px 12px")
     .style("border-radius", "5px")
     .style("font-size", "12px")
     .style("font-family", "var(--font-geist-mono), monospace")
@@ -204,39 +196,71 @@ function buildChart(
       .append("rect").attr("class", "bar-total")
       .attr("x", (d) => x(String(d.year))!)
       .attr("y", innerH).attr("width", half).attr("height", 0)
-      .attr("fill", colors.total).attr("rx", 2).attr("opacity", 0.7);
-    totalBars.transition().duration(600).delay((_, i) => i * 30).ease(d3.easeCubicOut)
+      .attr("fill", colors.total).attr("rx", 4).attr("opacity", 0.85);
+    totalBars.transition().duration(700).delay((_, i) => i * 60).ease(d3.easeCubicOut)
       .attr("y", (d) => y(d.total)).attr("height", (d) => innerH - y(d.total));
+
+    // Value labels — total
+    svg.selectAll("text.val-total").data(data).enter()
+      .append("text").attr("class", "val-total")
+      .attr("x", (d) => x(String(d.year))! + half / 2)
+      .attr("y", innerH)
+      .attr("text-anchor", "middle")
+      .style("font-size", "11px")
+      .style("font-weight", "600")
+      .style("fill", colors.total)
+      .style("font-family", "var(--font-geist-sans), system-ui, sans-serif")
+      .style("pointer-events", "none")
+      .text((d) => d.total.toLocaleString())
+      .transition().duration(700).delay((_, i) => i * 60).ease(d3.easeCubicOut)
+      .attr("y", (d) => y(d.total) - 6);
+
     totalBars
       .on("mouseover", function (event, d) {
         d3.select(this).attr("opacity", 1);
         tooltip.style("opacity", "1").html(`<strong>${d.year}</strong> &nbsp; Total: ${d.total.toLocaleString()}`);
       })
       .on("mousemove", (event) => tooltip.style("left", event.pageX + 12 + "px").style("top", event.pageY - 32 + "px"))
-      .on("mouseout", function () { d3.select(this).attr("opacity", 0.7); tooltip.style("opacity", "0"); });
+      .on("mouseout", function () { d3.select(this).attr("opacity", 0.85); tooltip.style("opacity", "0"); });
 
     // Field bars
     const fieldBars = svg.selectAll("rect.bar-field").data(data).enter()
       .append("rect").attr("class", "bar-field")
       .attr("x", (d) => x(String(d.year))! + half + 2)
       .attr("y", innerH).attr("width", half).attr("height", 0)
-      .attr("fill", colors.field).attr("rx", 2);
-    fieldBars.transition().duration(600).delay((_, i) => i * 30).ease(d3.easeCubicOut)
+      .attr("fill", colors.field).attr("rx", 4).attr("opacity", 0.85);
+    fieldBars.transition().duration(700).delay((_, i) => i * 60).ease(d3.easeCubicOut)
       .attr("y", (d) => y(d.field)).attr("height", (d) => innerH - y(d.field));
+
+    // Value labels — field
+    svg.selectAll("text.val-field").data(data).enter()
+      .append("text").attr("class", "val-field")
+      .attr("x", (d) => x(String(d.year))! + half + 2 + half / 2)
+      .attr("y", innerH)
+      .attr("text-anchor", "middle")
+      .style("font-size", "11px")
+      .style("font-weight", "600")
+      .style("fill", colors.field)
+      .style("font-family", "var(--font-geist-sans), system-ui, sans-serif")
+      .style("pointer-events", "none")
+      .text((d) => d.field.toLocaleString())
+      .transition().duration(700).delay((_, i) => i * 60).ease(d3.easeCubicOut)
+      .attr("y", (d) => y(d.field) - 6);
+
     fieldBars
       .on("mouseover", function (event, d) {
-        d3.select(this).attr("fill", d3.color(colors.field)!.darker(0.3).toString());
+        d3.select(this).attr("opacity", 1);
         tooltip.style("opacity", "1").html(`<strong>${d.year}</strong> &nbsp; Field: ${d.field.toLocaleString()}`);
       })
       .on("mousemove", (event) => tooltip.style("left", event.pageX + 12 + "px").style("top", event.pageY - 32 + "px"))
-      .on("mouseout", function () { d3.select(this).attr("fill", colors.field); tooltip.style("opacity", "0"); });
+      .on("mouseout", function () { d3.select(this).attr("fill", colors.field); d3.select(this).attr("opacity", 0.85); tooltip.style("opacity", "0"); });
 
     // Legend
-    const leg = svg.append("g").attr("transform", `translate(${innerW - 110}, -14)`);
-    leg.append("rect").attr("width", 10).attr("height", 10).attr("fill", colors.total).attr("opacity", 0.7).attr("rx", 2);
+    const leg = svg.append("g").attr("transform", `translate(${innerW - 120}, -32)`);
+    leg.append("rect").attr("width", 10).attr("height", 10).attr("fill", colors.total).attr("opacity", 0.85).attr("rx", 2);
     leg.append("text").attr("x", 14).attr("y", 9).style("font-size", "9px").style("fill", "rgba(0,0,0,0.45)").style("font-family", "var(--font-geist-mono), monospace").text("Total");
-    leg.append("rect").attr("x", 46).attr("width", 10).attr("height", 10).attr("fill", colors.field).attr("rx", 2);
-    leg.append("text").attr("x", 60).attr("y", 9).style("font-size", "9px").style("fill", "rgba(0,0,0,0.45)").style("font-family", "var(--font-geist-mono), monospace").text("Field");
+    leg.append("rect").attr("x", 50).attr("width", 10).attr("height", 10).attr("fill", colors.field).attr("rx", 2).attr("opacity", 0.85);
+    leg.append("text").attr("x", 64).attr("y", 9).style("font-size", "9px").style("fill", "rgba(0,0,0,0.45)").style("font-family", "var(--font-geist-mono), monospace").text("Field");
   } else {
     const val = (d: YearPoint) => mode === "total" ? d.total : d.field;
     const color = mode === "total" ? colors.total : colors.field;
@@ -245,16 +269,32 @@ function buildChart(
       .append("rect").attr("class", "bar")
       .attr("x", (d) => x(String(d.year))!)
       .attr("y", innerH).attr("width", x.bandwidth()).attr("height", 0)
-      .attr("fill", color).attr("rx", 3).style("cursor", "pointer");
-    bars.transition().duration(600).delay((_, i) => i * 30).ease(d3.easeCubicOut)
+      .attr("fill", color).attr("rx", 4).style("cursor", "pointer").attr("opacity", 0.85);
+    bars.transition().duration(700).delay((_, i) => i * 60).ease(d3.easeCubicOut)
       .attr("y", (d) => y(val(d))).attr("height", (d) => innerH - y(val(d)));
+
+    // Value labels on top
+    svg.selectAll("text.val-label").data(data).enter()
+      .append("text").attr("class", "val-label")
+      .attr("x", (d) => x(String(d.year))! + x.bandwidth() / 2)
+      .attr("y", innerH)
+      .attr("text-anchor", "middle")
+      .style("font-size", "13px")
+      .style("font-weight", "700")
+      .style("fill", color)
+      .style("font-family", "var(--font-geist-sans), system-ui, sans-serif")
+      .style("pointer-events", "none")
+      .text((d) => val(d).toLocaleString())
+      .transition().duration(700).delay((_, i) => i * 60).ease(d3.easeCubicOut)
+      .attr("y", (d) => y(val(d)) - 8);
+
     bars
-      .on("mouseover", function (event, d) {
-        d3.select(this).attr("fill", d3.color(color)!.darker(0.4).toString());
+      .on("mouseover", function (_event, d) {
+        d3.select(this).attr("opacity", 1);
         tooltip.style("opacity", "1").html(`<strong>${d.year}</strong> &nbsp; ${val(d).toLocaleString()}`);
       })
       .on("mousemove", (event) => tooltip.style("left", event.pageX + 12 + "px").style("top", event.pageY - 32 + "px"))
-      .on("mouseout", function () { d3.select(this).attr("fill", color); tooltip.style("opacity", "0"); });
+      .on("mouseout", function () { d3.select(this).attr("opacity", 0.85); tooltip.style("opacity", "0"); });
   }
 }
 
@@ -295,8 +335,9 @@ function AuthorContent() {
     if (!author || !citationsRef.current) return;
     const spy = author.stats_per_year || {};
     const data: YearPoint[] = [...author.counts_by_year]
-      .filter((d) => d.year >= 2010)
-      .sort((a, b) => a.year - b.year)
+      .sort((a, b) => b.year - a.year)
+      .slice(0, 3)
+      .reverse()
       .map((d) => ({
         year: d.year,
         total: d.cited_by_count,
@@ -310,8 +351,9 @@ function AuthorContent() {
     if (!author || !worksRef.current) return;
     const spy = author.stats_per_year || {};
     const data: YearPoint[] = [...author.counts_by_year]
-      .filter((d) => d.year >= 2010)
-      .sort((a, b) => a.year - b.year)
+      .sort((a, b) => b.year - a.year)
+      .slice(0, 3)
+      .reverse()
       .map((d) => ({
         year: d.year,
         total: d.works_count,
@@ -483,7 +525,7 @@ function AuthorContent() {
         <div className={styles.chartsRow}>
           <div className={styles.chartCard}>
             <div className={styles.chartHeader}>
-              <p className={styles.chartLabel}>Citations per Year</p>
+              <p className={styles.chartLabel}>Citations — Last 3 Years</p>
               <div className={styles.chartToggle}>
                 {(["total", "field", "compare"] as ChartMode[]).map((m) => (
                   <button
@@ -500,7 +542,7 @@ function AuthorContent() {
           </div>
           <div className={styles.chartCard}>
             <div className={styles.chartHeader}>
-              <p className={styles.chartLabel}>Publications per Year</p>
+              <p className={styles.chartLabel}>Publications — Last 3 Years</p>
               <div className={styles.chartToggle}>
                 {(["total", "field", "compare"] as ChartMode[]).map((m) => (
                   <button
