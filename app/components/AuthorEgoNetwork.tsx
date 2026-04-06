@@ -46,7 +46,7 @@ export default function AuthorEgoNetwork({ authorId, authorName, dataPath }: Pro
     const height = 420;
     let sim: d3.Simulation<Node, Link> | null = null;
 
-    fetch(`${dataPath}/authorships.json`)
+    fetch(`${dataPath}/authorships_canadian.json`)
       .then((r) => r.json())
       .then((authorships: Authorship[]) => {
         const relevant = authorships.filter((a) => a.ids.includes(authorId));
