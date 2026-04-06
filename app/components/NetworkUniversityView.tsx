@@ -150,7 +150,7 @@ export default function NetworkUniversityView({
     const authorMap = new Map<string, Author>();
     filteredAuthorships.forEach((authorship) => {
       authorship.ids.forEach((authorId, idx) => {
-        if (!authorMap.has(authorId) && (domainAuthorIds === null || domainAuthorIds.has(authorId))) {
+        if (!authorMap.has(authorId)) {
           const fieldPapers = authorship.field_papers[idx];
           const fieldCitations = authorship.field_citations[idx];
           if (publicationsMin !== null && fieldPapers < publicationsMin) return;
@@ -633,7 +633,7 @@ export default function NetworkUniversityView({
         tooltipRef.current = null;
       }
     };
-  }, [authorships, domainAuthorIds, domain, maxUniversities, edgeStrength, canadianFilter, selectedUniversity, nodeLabelMode, onUniversitiesChange, institutions, publicationsMin, publicationsMax, citationsMin, citationsMax]);
+  }, [authorships, maxUniversities, edgeStrength, canadianFilter, selectedUniversity, nodeLabelMode, onUniversitiesChange, institutions, publicationsMin, publicationsMax, citationsMin, citationsMax]);
 
   // Render adjacency matrix for matrix university
   useEffect(() => {
