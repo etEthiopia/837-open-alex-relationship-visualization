@@ -262,8 +262,14 @@ function AuthorContent() {
   const searchParams = useSearchParams();
   const authorId = searchParams.get("id") || "";
   const fieldContext = searchParams.get("field") || "";
+  const dataPath = searchParams.get("dataPath") || "/data";
   const fromNetwork = searchParams.get("from") === "network";
-  const backHref = fromNetwork ? "/explore?tab=network" : "/explore";
+
+  // Determine field param for back navigation
+  const fieldParam = dataPath === "/data_information_systems" ? "information_systems" : "hci";
+  const tabParam = fromNetwork ? "tab=network&" : "";
+  const backHref = `/explore?${tabParam}field=${fieldParam}`;
+
   const [author, setAuthor] = useState<Author | null>(null);
   const [loading, setLoading] = useState(true);
   const [citationsMode, setCitationsMode] = useState<ChartMode>("total");
@@ -273,14 +279,14 @@ function AuthorContent() {
 
   useEffect(() => {
     if (!authorId) { setLoading(false); return; }
-    fetch("/data/authors.json")
+    fetch(`${dataPath}/authors.json`)
       .then((r) => r.json())
       .then((data: Author[]) => {
         const found = data.find((a) => a.author_id === `https://openalex.org/${authorId}`);
         setAuthor(found || null);
         setLoading(false);
       });
-  }, [authorId]);
+  }, [authorId, dataPath]);
 
   const renderCitationsChart = useCallback(() => {
     if (!author || !citationsRef.current) return;
@@ -347,7 +353,7 @@ function AuthorContent() {
       <div className={styles.page}>
         <div className={styles.emptyState}>
           <p>Author not found</p>
-          <Link href="/explore" className={styles.ctaSecondary}>← Back to Explore</Link>
+          <Link href={backHref} className={styles.ctaSecondary}>← Back to Explore</Link>
         </div>
       </div>
     );
@@ -466,6 +472,7 @@ function AuthorContent() {
           <AuthorEgoNetwork
             authorId={author.author_id}
             authorName={author.display_name}
+            dataPath={dataPath}
           />
         </section>
 
@@ -546,7 +553,7 @@ function AuthorContent() {
             >
               Add to Shortlist
             </button>
-            <Link href="/explore" className={styles.ctaSecondary}>
+            <Link href={backHref} className={styles.ctaSecondary}>
               Keep Exploring
             </Link>
           </div>

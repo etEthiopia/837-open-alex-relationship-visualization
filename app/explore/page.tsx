@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import { Suspense } from "react";
 import Link from "next/link";
 import ScatterplotView from "../components/ScatterplotView";
@@ -10,165 +10,30 @@ import styles from "./explore.module.css";
 
 type CanadianFilter = "full" | "full_partial";
 type TabType = "scatterplot" | "network";
+type DataSource = "Human Computing Interactions" | "Information Systems";
 
-// Field options grouped by domain
-const FIELD_GROUPS = [
-  {
-    domain: "Physical Sciences",
-    fields: [
-      "Computer Science",
-      "Engineering",
-      "Mathematics",
-      "Physics and Astronomy",
-      "Chemistry",
-      "Earth and Planetary Sciences",
-      "Materials Science",
-      "Environmental Science",
-      "Energy",
-      "Chemical Engineering",
-    ],
-  },
-  {
-    domain: "Health Sciences",
-    fields: ["Medicine", "Nursing", "Health Professions", "Dentistry", "Veterinary"],
-  },
-  {
-    domain: "Life Sciences",
-    fields: [
-      "Neuroscience",
-      "Biochemistry, Genetics and Molecular Biology",
-      "Immunology and Microbiology",
-      "Agricultural and Biological Sciences",
-    ],
-  },
-  {
-    domain: "Social Sciences",
-    fields: [
-      "Psychology",
-      "Social Sciences",
-      "Economics, Econometrics and Finance",
-      "Business, Management and Accounting",
-      "Decision Sciences",
-      "Arts and Humanities",
-    ],
-  },
-];
-
-// Subfield options per field
-const SUBFIELDS: Record<string, string[]> = {
-  "Computer Science": [
-    "Artificial Intelligence",
-    "Computer Vision and Pattern Recognition",
-    "Computer Networks and Communications",
-    "Human-Computer Interaction",
-    "Information Systems",
-    "Software",
-    "Hardware and Architecture",
-    "Signal Processing",
-    "Computational Theory and Mathematics",
-    "Computer Graphics and Computer-Aided Design",
-    "Computer Science Applications",
-  ],
-  "Engineering": [
-    "Electrical and Electronic Engineering",
-    "Biomedical Engineering",
-    "Mechanical Engineering",
-    "Civil and Structural Engineering",
-    "Aerospace Engineering",
-    "Control and Systems Engineering",
-    "Industrial and Manufacturing Engineering",
-    "Computational Mechanics",
-    "Building and Construction",
-    "Automotive Engineering",
-    "Ocean Engineering",
-    "Safety, Risk, Reliability and Quality",
-    "Architecture",
-    "Media Technology",
-  ],
-  "Mathematics": [
-    "Applied Mathematics",
-    "Statistics and Probability",
-    "Computational Mathematics",
-    "Modeling and Simulation",
-    "Numerical Analysis",
-  ],
-  "Physics and Astronomy": [
-    "Condensed Matter Physics",
-    "Astronomy and Astrophysics",
-    "Atomic and Molecular Physics, and Optics",
-    "Nuclear and High Energy Physics",
-    "Statistical and Nonlinear Physics",
-    "Radiation",
-  ],
-  "Medicine": [
-    "Oncology",
-    "Cardiology and Cardiovascular Medicine",
-    "Neurology",
-    "Epidemiology",
-    "Public Health, Environmental and Occupational Health",
-    "Infectious Diseases",
-    "Surgery",
-    "Psychiatry and Mental health",
-    "Pharmacology",
-    "Pediatrics, Perinatology and Child Health",
-    "Radiology, Nuclear Medicine and Imaging",
-    "Genetics",
-    "Endocrinology, Diabetes and Metabolism",
-    "Orthopedics and Sports Medicine",
-    "Hematology",
-  ],
-  "Neuroscience": [
-    "Cognitive Neuroscience",
-    "Cellular and Molecular Neuroscience",
-    "Behavioral Neuroscience",
-    "Sensory Systems",
-    "Neurology",
-  ],
-  "Psychology": [
-    "Clinical Psychology",
-    "Experimental and Cognitive Psychology",
-    "Developmental and Educational Psychology",
-    "Applied Psychology",
-    "Social Psychology",
-    "Neuropsychology and Physiological Psychology",
-  ],
-  "Environmental Science": [
-    "Ecology",
-    "Global and Planetary Change",
-    "Environmental Engineering",
-    "Water Science and Technology",
-    "Pollution",
-    "Environmental Chemistry",
-  ],
-  "Materials Science": [
-    "Electronic, Optical and Magnetic Materials",
-    "Biomaterials",
-    "Polymers and Plastics",
-    "Ceramics and Composites",
-    "Materials Chemistry",
-    "Surfaces, Coatings and Films",
-  ],
-  "Biochemistry, Genetics and Molecular Biology": [
-    "Cancer Research",
-    "Genetics",
-    "Cell Biology",
-    "Molecular Biology",
-    "Molecular Medicine",
-    "Clinical Biochemistry",
-    "Aging",
-  ],
+// Map data sources to their respective data paths
+const DATA_SOURCE_PATHS: Record<DataSource, string> = {
+  "Human Computing Interactions": "/data",
+  "Information Systems": "/data_information_systems",
 };
 
 function ExploreContent() {
   const searchParams = useSearchParams();
+  const router = useRouter();
+
+  // Initialize field from query params or default to "Human Computing Interactions"
+  const initialField = searchParams.get("field") === "information_systems"
+    ? "Information Systems"
+    : "Human Computing Interactions";
+
   const [activeTab, setActiveTab] = useState<TabType>(
     searchParams.get("tab") === "network" ? "network" : "scatterplot"
   );
   const [maxAuthors, setMaxAuthors] = useState<number>(30);
   const [maxUniversities, setMaxUniversities] = useState<number>(10);
   const [canadianFilter, setCanadianFilter] = useState<CanadianFilter>("full");
-  const [selectedField, setSelectedField] = useState<string>("");
-  const [selectedSubfield, setSelectedSubfield] = useState<string>("");
+  const [dataSource, setDataSource] = useState<DataSource>(initialField);
   const [networkViewMode, setNetworkViewMode] = useState<"author" | "university">("author");
 
   // Publications range
@@ -179,19 +44,19 @@ function ExploreContent() {
   const [citationsMin, setCitationsMin] = useState<number | null>(null);
   const [citationsMax, setCitationsMax] = useState<number | null>(null);
 
-  const handleFieldChange = (val: string) => {
-    setSelectedField(val);
-    setSelectedSubfield(""); // reset subfield on field change
-  };
+  // Get the data path based on selected data source
+  const dataPath = DATA_SOURCE_PATHS[dataSource];
 
-  // Build the domain value passed to views
-  const domainValue = !selectedField
-    ? "All Domains"
-    : selectedSubfield
-    ? `subfield:${selectedSubfield}`
-    : `field:${selectedField}`;
-
-  const availableSubfields = selectedField ? (SUBFIELDS[selectedField] ?? []) : [];
+  // Update URL when field or tab changes
+  useEffect(() => {
+    const params = new URLSearchParams();
+    const fieldParam = dataSource === "Information Systems" ? "information_systems" : "hci";
+    params.set("field", fieldParam);
+    if (activeTab !== "scatterplot") {
+      params.set("tab", activeTab);
+    }
+    router.replace(`/explore?${params.toString()}`, { scroll: false });
+  }, [dataSource, activeTab, router]);
 
   // Disable maxAuthors slider when in network tab with university view mode
   const isMaxAuthorsDisabled = activeTab === "network" && networkViewMode === "university";
@@ -221,38 +86,14 @@ function ExploreContent() {
           <label htmlFor="field">Field</label>
           <select
             id="field"
-            value={selectedField}
-            onChange={(e) => handleFieldChange(e.target.value)}
+            value={dataSource}
+            onChange={(e) => setDataSource(e.target.value as DataSource)}
             className={styles.select}
           >
-            <option value="">All Fields</option>
-            {FIELD_GROUPS.map((group) => (
-              <optgroup key={group.domain} label={`── ${group.domain}`}>
-                {group.fields.map((f) => (
-                  <option key={f} value={f}>{f}</option>
-                ))}
-              </optgroup>
-            ))}
+            <option value="Human Computing Interactions">Human Computing Interactions</option>
+            <option value="Information Systems">Information Systems</option>
           </select>
         </div>
-
-        {/* Topic Selection (if field selected) */}
-        {selectedField && availableSubfields.length > 0 && (
-          <div className={`${styles.filterGroup} ${styles.filterGroupAnimate}`}>
-            <label htmlFor="subfield">Topic</label>
-            <select
-              id="subfield"
-              value={selectedSubfield}
-              onChange={(e) => setSelectedSubfield(e.target.value)}
-              className={styles.select}
-            >
-              <option value="">All Topics</option>
-              {availableSubfields.map((sf) => (
-                <option key={sf} value={sf}>{sf}</option>
-              ))}
-            </select>
-          </div>
-        )}
 
         {/* Authors Range */}
         <div className={styles.filterGroup}>
@@ -388,7 +229,7 @@ function ExploreContent() {
             maxAuthors={maxAuthors}
             maxUniversities={maxUniversities}
             canadianFilter={canadianFilter}
-            domain={domainValue}
+            dataPath={dataPath}
             publicationsMin={publicationsMin}
             publicationsMax={publicationsMax}
             citationsMin={citationsMin}
@@ -399,7 +240,7 @@ function ExploreContent() {
             maxAuthors={maxAuthors}
             maxUniversities={maxUniversities}
             canadianFilter={canadianFilter}
-            domain={domainValue}
+            dataPath={dataPath}
             onViewModeChange={setNetworkViewMode}
             publicationsMin={publicationsMin}
             publicationsMax={publicationsMax}

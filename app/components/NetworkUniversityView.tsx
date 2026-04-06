@@ -82,7 +82,7 @@ type EdgeStrengthMetric =
 interface NetworkUniversityViewProps {
   maxUniversities: number;
   canadianFilter: "full" | "full_partial";
-  domain: string;
+  dataPath: string;
   edgeStrength: EdgeStrengthMetric;
   selectedUniversity: string | null;
   nodeLabelMode: "major" | "all" | "none";
@@ -95,7 +95,7 @@ const UNIVERSITY_VIEW_AUTHOR_SAMPLE = 500;
 export default function NetworkUniversityView({
   maxUniversities,
   canadianFilter,
-  domain,
+  dataPath,
   edgeStrength,
   selectedUniversity,
   nodeLabelMode,
@@ -107,57 +107,21 @@ export default function NetworkUniversityView({
   const tooltipRef = useRef<d3.Selection<HTMLDivElement, unknown, HTMLElement, unknown> | null>(null);
 
   const [authorships, setAuthorships] = useState<Authorship[]>([]);
-  const [domainAuthorIds, setDomainAuthorIds] = useState<Set<string> | null>(null);
   const [institutions, setInstitutions] = useState<InstitutionData[]>([]);
   const [universityColors, setUniversityColors] = useState<Map<string, { color: string; texture: string; luminance: "dark" | "light" }>>(new Map());
 
   useEffect(() => {
-    fetch("/data/authorships.json")
+    fetch(`${dataPath}/authorships.json`)
       .then((res) => res.json())
       .then((data: Authorship[]) => setAuthorships(data));
 
-    fetch("/data/institutions.json")
+    fetch(`${dataPath}/institutions.json`)
       .then((res) => res.json())
       .then((data: InstitutionData[]) => setInstitutions(data));
-  }, []);
-
-  useEffect(() => {
-    if (domain === "All Domains") {
-      setDomainAuthorIds(null);
-      return;
-    }
-    fetch("/data/authors.json")
-      .then((res) => res.json())
-      .then(
-        (data: Array<{
-          author_id: string;
-          topics?: Array<{
-            domain?: { display_name: string };
-            field?: { display_name: string };
-            subfield?: { display_name: string };
-          }>;
-        }>) => {
-          const [level, value] = domain.split(":") as [string, string];
-          const ids = new Set(
-            data
-              .filter((a) =>
-                (a.topics || []).some((t) => {
-                  if (level === "domain") return t.domain?.display_name === value;
-                  if (level === "field") return t.field?.display_name === value;
-                  if (level === "subfield") return t.subfield?.display_name === value;
-                  return false;
-                })
-              )
-              .map((a) => a.author_id)
-          );
-          setDomainAuthorIds(ids);
-        }
-      );
-  }, [domain]);
+  }, [dataPath]);
 
   useEffect(() => {
     if (!svgRef.current || authorships.length === 0 || institutions.length === 0) return;
-    if (domain !== "All Domains" && domainAuthorIds === null) return;
 
     d3.select(svgRef.current).selectAll("*").remove();
 
@@ -178,7 +142,7 @@ export default function NetworkUniversityView({
     const authorMap = new Map<string, Author>();
     filteredAuthorships.forEach((authorship) => {
       authorship.ids.forEach((authorId, idx) => {
-        if (!authorMap.has(authorId) && (domainAuthorIds === null || domainAuthorIds.has(authorId))) {
+        if (!authorMap.has(authorId)) {
           const institution = authorship.last_known_institutions[idx];
           authorMap.set(authorId, {
             id: authorId,
@@ -609,7 +573,7 @@ export default function NetworkUniversityView({
         tooltipRef.current = null;
       }
     };
-  }, [authorships, domainAuthorIds, domain, maxUniversities, edgeStrength, canadianFilter, selectedUniversity, nodeLabelMode, onUniversitiesChange, institutions]);
+  }, [authorships, maxUniversities, edgeStrength, canadianFilter, selectedUniversity, nodeLabelMode, onUniversitiesChange, institutions]);
 
   // Render adjacency matrix for matrix university
   useEffect(() => {
@@ -628,7 +592,7 @@ export default function NetworkUniversityView({
     const authorMap = new Map<string, Author>();
     filteredAuthorships.forEach((authorship) => {
       authorship.ids.forEach((authorId, idx) => {
-        if (!authorMap.has(authorId) && (domainAuthorIds === null || domainAuthorIds.has(authorId))) {
+        if (!authorMap.has(authorId)) {
           const institution = authorship.last_known_institutions[idx];
           const instName = institution?.label_name || institution?.display_name || "Unknown";
           if (instName === matrixUniversity) {
@@ -895,7 +859,7 @@ export default function NetworkUniversityView({
         matrixTooltip.style("opacity", 0);
       });
 
-  }, [matrixUniversity, authorships, domainAuthorIds, canadianFilter, edgeStrength, universityColors]);
+  }, [matrixUniversity, authorships, canadianFilter, edgeStrength, universityColors]);
 
   return (
     <>

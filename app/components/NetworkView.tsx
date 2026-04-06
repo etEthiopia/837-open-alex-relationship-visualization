@@ -85,7 +85,7 @@ interface NetworkViewProps {
   maxAuthors: number;
   maxUniversities: number;
   canadianFilter: "full" | "full_partial";
-  domain: string;
+  dataPath: string;
   onViewModeChange?: (viewMode: "author" | "university") => void;
   publicationsMin: number | null;
   publicationsMax: number | null;
@@ -97,7 +97,7 @@ export default function NetworkView({
   maxAuthors,
   maxUniversities,
   canadianFilter,
-  domain,
+  dataPath,
   onViewModeChange,
   publicationsMin,
   publicationsMax,
@@ -115,9 +115,6 @@ export default function NetworkView({
 
   const [viewMode, setViewMode] = useState<"author" | "university">("author");
   const [authorships, setAuthorships] = useState<Authorship[]>([]);
-  const [domainAuthorIds, setDomainAuthorIds] = useState<Set<string> | null>(
-    null,
-  );
   const [useSizeEncoding, setUseSizeEncoding] = useState<boolean>(true);
   const [nodeLabelMode, setNodeLabelMode] = useState<"major" | "all" | "none">(
     maxAuthors > 40 ? "major" : "all",
@@ -179,55 +176,16 @@ export default function NetworkView({
   }, [maxAuthors]);
 
   useEffect(() => {
-    fetch("/data/authorships.json")
+    fetch(`${dataPath}/authorships.json`)
       .then((res) => res.json())
       .then((data: Authorship[]) => setAuthorships(data));
-  }, []);
-
-  useEffect(() => {
-    if (domain === "All Domains") {
-      setDomainAuthorIds(null);
-      return;
-    }
-    fetch("/data/authors.json")
-      .then((res) => res.json())
-      .then(
-        (
-          data: Array<{
-            author_id: string;
-            topics?: Array<{
-              domain?: { display_name: string };
-              field?: { display_name: string };
-              subfield?: { display_name: string };
-            }>;
-          }>,
-        ) => {
-          const [level, value] = domain.split(":") as [string, string];
-          const ids = new Set(
-            data
-              .filter((a) =>
-                (a.topics || []).some((t) => {
-                  if (level === "domain")
-                    return t.domain?.display_name === value;
-                  if (level === "field") return t.field?.display_name === value;
-                  if (level === "subfield")
-                    return t.subfield?.display_name === value;
-                  return false;
-                }),
-              )
-              .map((a) => a.author_id),
-          );
-          setDomainAuthorIds(ids);
-        },
-      );
-  }, [domain]);
+  }, [dataPath]);
 
   useEffect(() => {
     // Skip author view rendering when in university mode
     if (viewMode === "university") return;
 
     if (!svgRef.current || authorships.length === 0) return;
-    if (domain !== "All Domains" && domainAuthorIds === null) return;
 
     d3.select(svgRef.current).selectAll("*").remove();
 
@@ -248,10 +206,7 @@ export default function NetworkView({
         if (citationsMin !== null && fieldCitations < citationsMin) return;
         if (citationsMax !== null && fieldCitations > citationsMax) return;
 
-        if (
-          !authorMap.has(authorId) &&
-          (domainAuthorIds === null || domainAuthorIds.has(authorId))
-        ) {
+        if (!authorMap.has(authorId)) {
           const institution = authorship.last_known_institutions[idx];
           authorMap.set(authorId, {
             id: authorId,
@@ -946,7 +901,7 @@ export default function NetworkView({
         event.stopPropagation();
         setSelectedNode((prev) => (prev === d.id ? null : d.id));
         const shortId = d.id.replace("https://openalex.org/", "");
-        router.push(`/author?id=${shortId}&from=network`);
+        router.push(`/author?id=${shortId}&from=network&dataPath=${encodeURIComponent(dataPath)}`);
       })
       .on("contextmenu", function (event, d) {
         event.preventDefault();
@@ -1390,8 +1345,6 @@ export default function NetworkView({
   }, [
     viewMode,
     authorships,
-    domainAuthorIds,
-    domain,
     maxAuthors,
     maxUniversities,
     useSizeEncoding,
@@ -1402,6 +1355,7 @@ export default function NetworkView({
     selectedNode,
     matrixUniversities,
     router,
+    dataPath,
     publicationsMin,
     publicationsMax,
     citationsMin,
@@ -1438,7 +1392,7 @@ export default function NetworkView({
           <NetworkUniversityView
             maxUniversities={maxUniversities}
             canadianFilter={canadianFilter}
-            domain={domain}
+            dataPath={dataPath}
             edgeStrength={edgeStrength}
             selectedUniversity={selectedInstitution}
             nodeLabelMode={universityLabelMode}

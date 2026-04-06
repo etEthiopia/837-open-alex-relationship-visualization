@@ -35,7 +35,7 @@ interface ScatterplotViewProps {
   maxAuthors: number;
   maxUniversities: number;
   canadianFilter: "full" | "full_partial";
-  domain: string;
+  dataPath: string;
   publicationsMin: number | null;
   publicationsMax: number | null;
   citationsMin: number | null;
@@ -46,7 +46,7 @@ export default function ScatterplotView({
   maxAuthors,
   maxUniversities,
   canadianFilter,
-  domain,
+  dataPath,
   publicationsMin,
   publicationsMax,
   citationsMin,
@@ -82,7 +82,7 @@ export default function ScatterplotView({
   >([]);
 
   useEffect(() => {
-    fetch("/data/authors.json")
+    fetch(`${dataPath}/authors.json`)
       .then((res) => res.json())
       .then((data: Author[]) => {
         const canadianAuthors = data.filter((author) => {
@@ -94,23 +94,9 @@ export default function ScatterplotView({
             author.last_known_institution?.country_code !== undefined
           );
         });
-        let domainFiltered = canadianAuthors;
-        if (domain !== "All Domains") {
-          const [level, value] = domain.split(":") as [string, string];
-          domainFiltered = canadianAuthors.filter((author) =>
-            (author.topics || []).some((t) => {
-              if (level === "domain") return t.domain?.display_name === value;
-              if (level === "field")
-                return (t as {field?: {display_name: string}}).field?.display_name === value;
-              if (level === "subfield")
-                return (t as any).subfield?.display_name === value;
-              return false;
-            }),
-          );
-        }
 
         // Apply publications and citations filters
-        let filtered = domainFiltered;
+        let filtered = canadianAuthors;
 
         if (publicationsMin !== null) {
           filtered = filtered.filter((author) => author.field_papers >= publicationsMin);
@@ -127,7 +113,7 @@ export default function ScatterplotView({
 
         setAuthors(filtered.sort((a, b) => b.aci - a.aci));
       });
-  }, [canadianFilter, domain, publicationsMin, publicationsMax, citationsMin, citationsMax]);
+  }, [canadianFilter, dataPath, publicationsMin, publicationsMax, citationsMin, citationsMax]);
 
   useEffect(() => {
     if (!svgRef.current || authors.length === 0) return;
@@ -720,11 +706,7 @@ export default function ScatterplotView({
       })
       .on("click", function (_event, d) {
         const shortId = d.author_id.replace("https://openalex.org/", "");
-        const fieldParam =
-          domain && domain !== "All Domains"
-            ? `&field=${encodeURIComponent(domain.split(":")[1] || domain)}`
-            : "";
-        router.push(`/author?id=${shortId}${fieldParam}`);
+        router.push(`/author?id=${shortId}&dataPath=${encodeURIComponent(dataPath)}`);
       });
 
     // Create a simple linear scale for zooming (used when outliers exist and user zooms)
@@ -839,7 +821,7 @@ export default function ScatterplotView({
     useSizeEncoding,
     selectedInstitution,
     router,
-    domain,
+    dataPath,
     publicationsMin,
     citationsMin,
   ]);

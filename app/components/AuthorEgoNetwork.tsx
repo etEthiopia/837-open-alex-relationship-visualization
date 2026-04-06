@@ -31,9 +31,10 @@ interface Link extends d3.SimulationLinkDatum<Node> {
 interface Props {
   authorId: string;
   authorName: string;
+  dataPath: string;
 }
 
-export default function AuthorEgoNetwork({ authorId, authorName }: Props) {
+export default function AuthorEgoNetwork({ authorId, authorName, dataPath }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const svgRef = useRef<SVGSVGElement>(null);
   const router = useRouter();
@@ -45,7 +46,7 @@ export default function AuthorEgoNetwork({ authorId, authorName }: Props) {
     const height = 420;
     let sim: d3.Simulation<Node, Link> | null = null;
 
-    fetch("/data/authorships.json")
+    fetch(`${dataPath}/authorships.json`)
       .then((r) => r.json())
       .then((authorships: Authorship[]) => {
         const relevant = authorships.filter((a) => a.ids.includes(authorId));
@@ -291,7 +292,7 @@ export default function AuthorEgoNetwork({ authorId, authorName }: Props) {
           })
           .on("click", function (_event, d) {
             const shortId = d.id.replace("https://openalex.org/", "");
-            router.push(`/author?id=${shortId}`);
+            router.push(`/author?id=${shortId}&dataPath=${encodeURIComponent(dataPath)}`);
           })
           .on("contextmenu", function (event, d) {
             event.preventDefault();
@@ -318,7 +319,7 @@ export default function AuthorEgoNetwork({ authorId, authorName }: Props) {
       sim?.stop();
       d3.select("#ego-tooltip").remove();
     };
-  }, [authorId, authorName, router]);
+  }, [authorId, authorName, router, dataPath]);
 
   return (
     <div ref={containerRef} className={styles.container}>
