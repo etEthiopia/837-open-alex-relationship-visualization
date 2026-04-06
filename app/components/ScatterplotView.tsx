@@ -374,7 +374,7 @@ export default function ScatterplotView({
 
     const xScale = d3
       .scaleLinear()
-      .domain([xMin, maxPapers * 1.1])
+      .domain([xMin, maxPapers + 1])
       .range([0, width])
       .nice();
 
@@ -423,31 +423,24 @@ export default function ScatterplotView({
     if (hasOutliers) {
       const break_at = p95 * 1.3;
       breakThreshold = break_at;
-      const upperMax = maxCitations * 1.05;
+      const upperMax = maxCitations + 50;
 
       // Generate nice ticks for bottom segment (where 95% of data lives)
       const bottomTicks = generateNiceTicks(yMin, break_at, 8);
 
-      // Calculate the step size from bottom ticks
-      const step = bottomTicks.length > 1 ? bottomTicks[1] - bottomTicks[0] : 20;
+      // Calculate the step size from bottom ticks (used for spacing calculations)
+      const bottomStep = bottomTicks.length > 1 ? bottomTicks[1] - bottomTicks[0] : 20;
 
-      // Find the minimum outlier value (first value above the break)
-      const minOutlier = Math.min(...displayAuthors
-        .map(d => d.field_citations)
-        .filter(c => c > break_at));
+      // Generate ticks for the outlier region independently based on the actual outlier range
+      // This allows different step sizes appropriate for the outlier data
+      // Start from break_at so we get nice round numbers above the break
+      const topTicksRaw = generateNiceTicks(break_at, upperMax, 4);
 
-      // First tick after break should be just below the min outlier (1 step below)
-      const firstTopTick = minOutlier - step;
+      // Filter to only include ticks above the break threshold
+      const topTicks = topTicksRaw.filter(t => t > break_at);
 
-      // Generate top ticks with the same step size, but limit to max 2 ticks
-      const topTicks: number[] = [];
-      let currentTick = firstTopTick;
-      while (currentTick <= upperMax && topTicks.length < 3) {
-        if (currentTick > break_at) {
-          topTicks.push(currentTick);
-        }
-        currentTick += step;
-      }
+      // Use the first top tick as the starting point for the top segment
+      const firstTopTick = topTicks[0];
 
       yTickValues = [...bottomTicks, ...topTicks];
 
@@ -456,7 +449,7 @@ export default function ScatterplotView({
 
       // Calculate tick spacing for bottom segment
       const bottomDataRange = break_at - yMin; // yMin to break_at
-      const numBottomIntervals = bottomDataRange / step;
+      const numBottomIntervals = bottomDataRange / bottomStep;
       const bottomTickSpacing = bottomPixels / numBottomIntervals;
 
       // Use the bottom tick spacing for the break gap to maintain consistency
@@ -474,12 +467,12 @@ export default function ScatterplotView({
     } else {
       yScale = d3
         .scaleLinear()
-        .domain([yMin, maxCitations * 1.1])
+        .domain([yMin, maxCitations * + 50])
         .range([height, 0])
         .nice();
 
       // Use nice tick generation for normal case
-      yTickValues = generateNiceTicks(yMin, maxCitations * 1.1, 8);
+      yTickValues = generateNiceTicks(yMin, maxCitations +50, 8);
     }
 
     const sizeScale = d3
@@ -489,7 +482,8 @@ export default function ScatterplotView({
 
     // Only spread points that share the exact same (papers, citations) coordinate.
     // Keep spacing extremely small so points stay near their true x value.
-    const occlusionStepData = 0.015;
+    // Use adaptive step size: smaller steps for larger groups to prevent excessive deviation.
+    const maxOcclusionOffset = 0.12; // Maximum total deviation from true x-value
     const overlapGroups = d3.group(
       displayAuthors,
       (d) => `${d.field_papers}__${d.field_citations}`,
@@ -510,6 +504,12 @@ export default function ScatterplotView({
         a.author_id.localeCompare(b.author_id),
       );
       const centerIndex = (sortedGroup.length - 1) / 2;
+
+      // Adaptive step: ensure total spread doesn't exceed maxOcclusionOffset
+      const totalSpan = (sortedGroup.length - 1);
+      const occlusionStepData = totalSpan > 0
+        ? Math.min(0.015, maxOcclusionOffset / totalSpan)
+        : 0.015;
 
       sortedGroup.forEach((author, index) => {
         authorsWithOcclusionOffset.push({
