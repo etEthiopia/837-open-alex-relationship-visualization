@@ -480,44 +480,61 @@ export default function ScatterplotView({
       .domain([0, d3.max(displayAuthors, (d) => d.aci) || 1])
       .range([3, 15]);
 
-    // Only spread points that share the exact same (papers, citations) coordinate.
-    // Keep spacing extremely small so points stay near their true x value.
-    // Use adaptive step size: smaller steps for larger groups to prevent excessive deviation.
-    const maxOcclusionOffset = 0.12; // Maximum total deviation from true x-value
-    const overlapGroups = d3.group(
-      displayAuthors,
-      (d) => `${d.field_papers}__${d.field_citations}`,
-    );
     const authorsWithOcclusionOffset: AuthorWithOcclusionOffset[] = [];
 
-    overlapGroups.forEach((group) => {
-      if (group.length === 1) {
-        authorsWithOcclusionOffset.push({
-          ...group[0],
-          occlusionXOffset: 0,
-        });
-        return;
+    // Deterministic hash jitter — same author always gets the same offset
+    const hashJitter = (id: string, range: number): number => {
+      let hash = 0;
+      for (let i = 0; i < id.length; i++) {
+        hash = ((hash << 5) - hash) + id.charCodeAt(i);
+        hash |= 0;
       }
+      return ((Math.abs(hash) % 1000) / 1000) * range * 2 - range;
+    };
 
-      // Deterministic symmetric offsets: left/right around the true x-value.
-      const sortedGroup = [...group].sort((a, b) =>
-        a.author_id.localeCompare(b.author_id),
-      );
-      const centerIndex = (sortedGroup.length - 1) / 2;
+    // Strip-chart mode: when x has very few unique values (e.g. IS where
+    // field_papers is always 1 or 2), apply per-dot deterministic x-jitter
+    // so each column spreads into a readable cloud instead of a single line.
+    const uniqueXCount = new Set(displayAuthors.map((d) => d.field_papers)).size;
+    const isStripMode = uniqueXCount <= 4;
 
-      // Adaptive step: ensure total spread doesn't exceed maxOcclusionOffset
-      const totalSpan = (sortedGroup.length - 1);
-      const occlusionStepData = totalSpan > 0
-        ? Math.min(0.015, maxOcclusionOffset / totalSpan)
-        : 0.015;
-
-      sortedGroup.forEach((author, index) => {
+    if (isStripMode) {
+      const jitterRange = 0.28; // ±28% of a column unit — readable but not misleading
+      displayAuthors.forEach((author) => {
         authorsWithOcclusionOffset.push({
           ...author,
-          occlusionXOffset: (index - centerIndex) * occlusionStepData,
+          occlusionXOffset: hashJitter(author.author_id, jitterRange),
         });
       });
-    });
+    } else {
+      // Normal mode: only spread points that share the exact same coordinate.
+      const maxOcclusionOffset = 0.12;
+      const overlapGroups = d3.group(
+        displayAuthors,
+        (d) => `${d.field_papers}__${d.field_citations}`,
+      );
+
+      overlapGroups.forEach((group) => {
+        if (group.length === 1) {
+          authorsWithOcclusionOffset.push({ ...group[0], occlusionXOffset: 0 });
+          return;
+        }
+        const sortedGroup = [...group].sort((a, b) =>
+          a.author_id.localeCompare(b.author_id),
+        );
+        const centerIndex = (sortedGroup.length - 1) / 2;
+        const totalSpan = sortedGroup.length - 1;
+        const occlusionStepData = totalSpan > 0
+          ? Math.min(0.015, maxOcclusionOffset / totalSpan)
+          : 0.015;
+        sortedGroup.forEach((author, index) => {
+          authorsWithOcclusionOffset.push({
+            ...author,
+            occlusionXOffset: (index - centerIndex) * occlusionStepData,
+          });
+        });
+      });
+    }
 
     // Generate x-axis tick values as integers only
     const xDomain = xScale.domain();
