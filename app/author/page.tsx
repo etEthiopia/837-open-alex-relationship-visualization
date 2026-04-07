@@ -231,7 +231,7 @@ function buildChart(
       .on("mouseout", function () { d3.select(this).attr("fill", colors.field); d3.select(this).attr("opacity", 0.85); tooltip.style("opacity", "0"); });
 
     // Legend
-    const leg = svg.append("g").attr("transform", `translate(${innerW - 120}, -32)`);
+    const leg = svg.append("g").attr("transform", `translate(${innerW - 100}, 4)`);
     leg.append("rect").attr("width", 10).attr("height", 10).attr("fill", colors.total).attr("opacity", 0.85).attr("rx", 2);
     leg.append("text").attr("x", 14).attr("y", 9).style("font-size", "9px").style("fill", "rgba(0,0,0,0.45)").style("font-family", "var(--font-geist-mono), monospace").text("Total");
     leg.append("rect").attr("x", 50).attr("width", 10).attr("height", 10).attr("fill", colors.field).attr("rx", 2).attr("opacity", 0.85);
