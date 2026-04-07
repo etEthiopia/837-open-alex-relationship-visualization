@@ -311,33 +311,32 @@
 
 .chartToggle {
   display: flex;
-  gap: 2px;
-  background: rgba(0, 0, 0, 0.05);
+  gap: 0;
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 6px;
-  padding: 2px;
+  overflow: hidden;
 }
 
 .chartToggleBtn {
   font-size: 10px;
   font-weight: 500;
-  padding: 3px 10px;
+  padding: 4px 12px;
   border: none;
   background: transparent;
-  color: rgba(0, 0, 0, 0.4);
-  border-radius: 4px;
+  color: rgba(0, 0, 0, 0.35);
   cursor: pointer;
   font-family: var(--font-geist-sans), system-ui, sans-serif;
   transition: background 0.15s, color 0.15s;
 }
 
 .chartToggleBtn:hover {
-  color: rgba(0, 0, 0, 0.7);
+  color: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.03);
 }
 
 .chartToggleBtnActive {
-  background: #ffffff;
-  color: #0e0e0c;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  background: rgba(0, 0, 0, 0.06);
+  color: rgba(0, 0, 0, 0.75);
 }
 
 .chartSvg {

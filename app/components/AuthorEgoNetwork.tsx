@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import * as d3 from "d3";
 import styles from "./AuthorEgoNetwork.module.css";
+import { visualPalette } from "../lib/visualPalette";
 
 interface Authorship {
   ids: string[];
@@ -81,6 +82,15 @@ export default function AuthorEgoNetwork({ authorId, authorName, dataPath }: Pro
           .slice(0, 24);
 
         if (topCollabs.length === 0) return;
+
+        // Assign a palette colour to each unique institution
+        const uniqueInstitutions = [...new Set(topCollabs.map(([, d]) => d.institution))];
+        const institutionColor = new Map<string, string>(
+          uniqueInstitutions.map((inst, i) => [
+            inst,
+            visualPalette[i % visualPalette.length].color,
+          ])
+        );
 
         const rScale = d3
           .scaleSqrt()
@@ -197,9 +207,14 @@ export default function AuthorEgoNetwork({ authorId, authorName, dataPath }: Pro
           .append("circle")
           .attr("class", "node-circle")
           .attr("r", (d) => d.r)
-          .attr("fill", (d) => (d.isCenter ? "#0e0e0c" : "rgba(0,0,0,0.1)"))
-          .attr("stroke", (d) => (d.isCenter ? "none" : "rgba(0,0,0,0.18)"))
-          .attr("stroke-width", 1);
+          .attr("fill", (d) => {
+            if (d.isCenter) return "#0e0e0c";
+            const col = institutionColor.get(d.institution) || "#808080";
+            return col;
+          })
+          .attr("opacity", (d) => d.isCenter ? 1 : 0.75)
+          .attr("stroke", (d) => (d.isCenter ? "none" : "rgba(255,255,255,0.4)"))
+          .attr("stroke-width", 1.5);
 
         // Pin dot indicator
         nodeSel
@@ -220,8 +235,8 @@ export default function AuthorEgoNetwork({ authorId, authorName, dataPath }: Pro
         function setPinVisual(id: string, pinned: boolean) {
           nodeSel.filter((d) => d.id === id)
             .select<SVGCircleElement>("circle.node-circle")
-            .attr("stroke", pinned ? "rgba(0,0,0,0.5)" : "rgba(0,0,0,0.18)")
-            .attr("stroke-width", pinned ? 1.8 : 1);
+            .attr("stroke", pinned ? "rgba(0,0,0,0.5)" : "rgba(255,255,255,0.4)")
+            .attr("stroke-width", pinned ? 2 : 1.5);
           nodeSel.filter((d) => d.id === id)
             .select<SVGCircleElement>("circle.pin-dot")
             .style("opacity", pinned ? 1 : 0);
@@ -270,7 +285,7 @@ export default function AuthorEgoNetwork({ authorId, authorName, dataPath }: Pro
           .filter((d) => !d.isCenter)
           .on("mouseover", function (event, d) {
             const isPinned = pinnedSet.has(d.id);
-            if (!isPinned) d3.select(this).select("circle.node-circle").attr("fill", "rgba(0,0,0,0.22)");
+            if (!isPinned) d3.select(this).select("circle.node-circle").attr("opacity", 1);
             tooltip
               .style("opacity", 1)
               .html(
@@ -278,7 +293,7 @@ export default function AuthorEgoNetwork({ authorId, authorName, dataPath }: Pro
                 `${d.institution}<br/>` +
                 `${d.sharedPapers} shared paper${d.sharedPapers !== 1 ? "s" : ""}<br/>` +
                 (isPinned
-                  ? `<span style="font-size:10px;opacity:0.45;text-decoration:underline;">Click to view profile</span><br/><span style="font-size:10px;opacity:0.45;text-decoration:underline;">Right-click to unpin</span>`
+                  ? `<span style="font-size:10px;opacity:0.45;text-decoration:underline;">Right-click to unpin</span>`
                   : `<span style="font-size:10px;opacity:0.45;text-decoration:underline;">Click to view profile</span>`)
               );
           })
@@ -287,7 +302,7 @@ export default function AuthorEgoNetwork({ authorId, authorName, dataPath }: Pro
           })
           .on("mouseout", function (_, d) {
             if (!pinnedSet.has(d.id))
-              d3.select(this).select("circle.node-circle").attr("fill", "rgba(0,0,0,0.1)");
+              d3.select(this).select("circle.node-circle").attr("opacity", 0.75);
             tooltip.style("opacity", 0);
           })
           .on("click", function (_event, d) {

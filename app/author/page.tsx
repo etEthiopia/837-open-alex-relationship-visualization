@@ -122,14 +122,14 @@ function buildChart(
   svgEl: SVGSVGElement,
   data: YearPoint[],
   mode: ChartMode,
-  colors: { total: string; field: string },
+  color: string,
   tooltipId: string
 ) {
   d3.select(svgEl).selectAll("*").remove();
 
   const width = 480;
   const height = 210;
-  const margin = { top: 40, right: 16, bottom: 36, left: 16 };
+  const margin = { top: 20, right: 16, bottom: 36, left: 52 };
   const innerW = width - margin.left - margin.right;
   const innerH = height - margin.top - margin.bottom;
 
@@ -153,21 +153,26 @@ function buildChart(
 
   const y = d3.scaleLinear().domain([0, maxVal * 1.15]).range([innerH, 0]);
 
-  // Subtle horizontal grid lines only
+  // Y axis — no domain line, faint dashed grid, floating labels
   svg.append("g")
-    .call(d3.axisLeft(y).ticks(3).tickSize(-innerW).tickFormat(() => ""))
+    .call(d3.axisLeft(y).ticks(4).tickSize(-innerW))
     .call((g) => g.select(".domain").remove())
     .call((g) => g.selectAll(".tick line")
-      .attr("stroke", "rgba(0,0,0,0.05)")
-      .attr("stroke-dasharray", "4,4"));
+      .attr("stroke", "rgba(0,0,0,0.08)")
+      .attr("stroke-dasharray", "4,4"))
+    .call((g) => g.selectAll(".tick text")
+      .attr("fill", "rgba(0,0,0,0.35)")
+      .attr("dx", "-4")
+      .style("font-size", "10px")
+      .style("font-family", "var(--font-geist-mono), monospace"));
 
-  // X axis — year labels only, no domain line or ticks
+  // X axis — thin baseline only, no tick lines
   svg.append("g")
     .attr("transform", `translate(0,${innerH})`)
     .call(d3.axisBottom(x).tickSize(0))
-    .call((g) => g.select(".domain").remove())
+    .call((g) => g.select(".domain").attr("stroke", "rgba(0,0,0,0.12)"))
     .selectAll("text")
-    .attr("fill", "rgba(0,0,0,0.35)")
+    .attr("fill", "rgba(0,0,0,0.4)")
     .attr("dy", "1.4em")
     .style("font-size", "11px")
     .style("font-family", "var(--font-geist-mono), monospace");
@@ -191,29 +196,14 @@ function buildChart(
   if (mode === "compare") {
     const half = x.bandwidth() / 2 - 1;
 
-    // Total bars
+    // Total bars — full opacity
     const totalBars = svg.selectAll("rect.bar-total").data(data).enter()
       .append("rect").attr("class", "bar-total")
       .attr("x", (d) => x(String(d.year))!)
       .attr("y", innerH).attr("width", half).attr("height", 0)
-      .attr("fill", colors.total).attr("rx", 4).attr("opacity", 0.85);
+      .attr("fill", color).attr("rx", 4).attr("opacity", 0.85);
     totalBars.transition().duration(700).delay((_, i) => i * 60).ease(d3.easeCubicOut)
       .attr("y", (d) => y(d.total)).attr("height", (d) => innerH - y(d.total));
-
-    // Value labels — total
-    svg.selectAll("text.val-total").data(data).enter()
-      .append("text").attr("class", "val-total")
-      .attr("x", (d) => x(String(d.year))! + half / 2)
-      .attr("y", innerH)
-      .attr("text-anchor", "middle")
-      .style("font-size", "11px")
-      .style("font-weight", "600")
-      .style("fill", colors.total)
-      .style("font-family", "var(--font-geist-sans), system-ui, sans-serif")
-      .style("pointer-events", "none")
-      .text((d) => d.total.toLocaleString())
-      .transition().duration(700).delay((_, i) => i * 60).ease(d3.easeCubicOut)
-      .attr("y", (d) => y(d.total) - 6);
 
     totalBars
       .on("mouseover", function (event, d) {
@@ -223,47 +213,31 @@ function buildChart(
       .on("mousemove", (event) => tooltip.style("left", event.pageX + 12 + "px").style("top", event.pageY - 32 + "px"))
       .on("mouseout", function () { d3.select(this).attr("opacity", 0.85); tooltip.style("opacity", "0"); });
 
-    // Field bars
+    // Field bars — same colour, lower opacity to distinguish
     const fieldBars = svg.selectAll("rect.bar-field").data(data).enter()
       .append("rect").attr("class", "bar-field")
       .attr("x", (d) => x(String(d.year))! + half + 2)
       .attr("y", innerH).attr("width", half).attr("height", 0)
-      .attr("fill", colors.field).attr("rx", 4).attr("opacity", 0.85);
+      .attr("fill", color).attr("rx", 4).attr("opacity", 0.38);
     fieldBars.transition().duration(700).delay((_, i) => i * 60).ease(d3.easeCubicOut)
       .attr("y", (d) => y(d.field)).attr("height", (d) => innerH - y(d.field));
 
-    // Value labels — field
-    svg.selectAll("text.val-field").data(data).enter()
-      .append("text").attr("class", "val-field")
-      .attr("x", (d) => x(String(d.year))! + half + 2 + half / 2)
-      .attr("y", innerH)
-      .attr("text-anchor", "middle")
-      .style("font-size", "11px")
-      .style("font-weight", "600")
-      .style("fill", colors.field)
-      .style("font-family", "var(--font-geist-sans), system-ui, sans-serif")
-      .style("pointer-events", "none")
-      .text((d) => d.field.toLocaleString())
-      .transition().duration(700).delay((_, i) => i * 60).ease(d3.easeCubicOut)
-      .attr("y", (d) => y(d.field) - 6);
-
     fieldBars
       .on("mouseover", function (event, d) {
-        d3.select(this).attr("opacity", 1);
+        d3.select(this).attr("opacity", 0.6);
         tooltip.style("opacity", "1").html(`<strong>${d.year}</strong> &nbsp; Field: ${d.field.toLocaleString()}`);
       })
       .on("mousemove", (event) => tooltip.style("left", event.pageX + 12 + "px").style("top", event.pageY - 32 + "px"))
-      .on("mouseout", function () { d3.select(this).attr("fill", colors.field); d3.select(this).attr("opacity", 0.85); tooltip.style("opacity", "0"); });
+      .on("mouseout", function () { d3.select(this).attr("opacity", 0.38); tooltip.style("opacity", "0"); });
 
-    // Legend
-    const leg = svg.append("g").attr("transform", `translate(${innerW - 120}, -32)`);
-    leg.append("rect").attr("width", 10).attr("height", 10).attr("fill", colors.total).attr("opacity", 0.85).attr("rx", 2);
+    // Legend — same colour, opacity difference
+    const leg = svg.append("g").attr("transform", `translate(${innerW - 100}, 4)`);
+    leg.append("rect").attr("width", 10).attr("height", 10).attr("fill", color).attr("opacity", 0.85).attr("rx", 2);
     leg.append("text").attr("x", 14).attr("y", 9).style("font-size", "9px").style("fill", "rgba(0,0,0,0.45)").style("font-family", "var(--font-geist-mono), monospace").text("Total");
-    leg.append("rect").attr("x", 50).attr("width", 10).attr("height", 10).attr("fill", colors.field).attr("rx", 2).attr("opacity", 0.85);
+    leg.append("rect").attr("x", 50).attr("width", 10).attr("height", 10).attr("fill", color).attr("rx", 2).attr("opacity", 0.38);
     leg.append("text").attr("x", 64).attr("y", 9).style("font-size", "9px").style("fill", "rgba(0,0,0,0.45)").style("font-family", "var(--font-geist-mono), monospace").text("Field");
   } else {
     const val = (d: YearPoint) => mode === "total" ? d.total : d.field;
-    const color = mode === "total" ? colors.total : colors.field;
 
     const bars = svg.selectAll("rect.bar").data(data).enter()
       .append("rect").attr("class", "bar")
@@ -272,21 +246,6 @@ function buildChart(
       .attr("fill", color).attr("rx", 4).style("cursor", "pointer").attr("opacity", 0.85);
     bars.transition().duration(700).delay((_, i) => i * 60).ease(d3.easeCubicOut)
       .attr("y", (d) => y(val(d))).attr("height", (d) => innerH - y(val(d)));
-
-    // Value labels on top
-    svg.selectAll("text.val-label").data(data).enter()
-      .append("text").attr("class", "val-label")
-      .attr("x", (d) => x(String(d.year))! + x.bandwidth() / 2)
-      .attr("y", innerH)
-      .attr("text-anchor", "middle")
-      .style("font-size", "13px")
-      .style("font-weight", "700")
-      .style("fill", color)
-      .style("font-family", "var(--font-geist-sans), system-ui, sans-serif")
-      .style("pointer-events", "none")
-      .text((d) => val(d).toLocaleString())
-      .transition().duration(700).delay((_, i) => i * 60).ease(d3.easeCubicOut)
-      .attr("y", (d) => y(val(d)) - 8);
 
     bars
       .on("mouseover", function (_event, d) {
@@ -344,7 +303,7 @@ function AuthorContent() {
         field: spy[String(d.year)]?.field_citations ?? 0,
       }));
     if (!data.length) return;
-    buildChart(citationsRef.current, data, citationsMode, { total: "#3b82f6", field: "#6366f1" }, "tt-citations");
+    buildChart(citationsRef.current, data, citationsMode, "rgba(0,0,0,0.55)", "tt-citations");
   }, [author, citationsMode]);
 
   const renderWorksChart = useCallback(() => {
@@ -360,7 +319,7 @@ function AuthorContent() {
         field: spy[String(d.year)]?.field_papers ?? 0,
       }));
     if (!data.length) return;
-    buildChart(worksRef.current, data, worksMode, { total: "#10b981", field: "#059669" }, "tt-works");
+    buildChart(worksRef.current, data, worksMode, "rgba(0,0,0,0.55)", "tt-works");
   }, [author, worksMode]);
 
   useEffect(() => {

@@ -879,10 +879,7 @@ export default function NetworkView({
             `Citations: ${d.field_citations}<br/>` +
             `Citation Impact: ${d.aci.toFixed(2)}<br/>` +
             `Connection: ${d.linkCount}<br/>` +
-            `<br/><span style="font-size:12px;opacity:0.6;">Click to view profile</span><br/>` +
-              (isPinned
-                ? `<br/><span style="font-size:12px;opacity:0.6;">Right-click to unpin</span><br/>`
-                : ""),
+            `<span style="font-size:12px;opacity:0.6;text-decoration:underline;">${isPinned ? "Right-click to unpin" : "Click to view profile"}</span>`,
           );
       })
       .on("mousemove", (event) => {
