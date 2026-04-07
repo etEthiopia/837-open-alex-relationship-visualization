@@ -293,8 +293,8 @@ export default function AuthorEgoNetwork({ authorId, authorName, dataPath }: Pro
                 `${d.institution}<br/>` +
                 `${d.sharedPapers} shared paper${d.sharedPapers !== 1 ? "s" : ""}<br/>` +
                 (isPinned
-                  ? `<span style="font-size:10px;opacity:0.45;text-decoration:underline;">Click to view profile</span><br/><span style="font-size:10px;opacity:0.45;text-decoration:underline;">Right-click to unpin</span>`
-                  : `<span style="font-size:10px;opacity:0.45;text-decoration:underline;">Click to view profile</span>`)
+                  ? `<span style="font-size:10px;opacity:0.45;">Right-click to unpin</span>`
+                  : ``)
               );
           })
           .on("mousemove", function (event) {
