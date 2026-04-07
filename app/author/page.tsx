@@ -303,7 +303,7 @@ function AuthorContent() {
         field: spy[String(d.year)]?.field_citations ?? 0,
       }));
     if (!data.length) return;
-    buildChart(citationsRef.current, data, citationsMode, "#3b82f6", "tt-citations");
+    buildChart(citationsRef.current, data, citationsMode, "rgba(0,0,0,0.55)", "tt-citations");
   }, [author, citationsMode]);
 
   const renderWorksChart = useCallback(() => {
@@ -319,7 +319,7 @@ function AuthorContent() {
         field: spy[String(d.year)]?.field_papers ?? 0,
       }));
     if (!data.length) return;
-    buildChart(worksRef.current, data, worksMode, "#10b981", "tt-works");
+    buildChart(worksRef.current, data, worksMode, "rgba(0,0,0,0.55)", "tt-works");
   }, [author, worksMode]);
 
   useEffect(() => {
