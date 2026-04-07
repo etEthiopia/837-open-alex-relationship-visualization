@@ -467,7 +467,7 @@ export default function ScatterplotView({
     } else {
       yScale = d3
         .scaleLinear()
-        .domain([yMin, maxCitations * + 50])
+        .domain([yMin, maxCitations + 50])
         .range([height, 0])
         .nice();
 
