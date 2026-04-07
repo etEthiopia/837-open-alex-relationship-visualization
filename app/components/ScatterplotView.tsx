@@ -378,11 +378,18 @@ export default function ScatterplotView({
       .range([0, width])
       .nice();
 
-    // Detect outliers using P95
+    // Detect outliers — two conditions:
+    // 1. Classic: max > p95 × 2.5  (catches HCI-style long tails)
+    // 2. Spread:  max > median × 2  (catches CV-style where top-N are
+    //    all high performers and the p95 of the displayed set is close to max)
     const citations = displayAuthors.map((d) => d.field_citations);
     const sortedCitations = [...citations].sort(d3.ascending);
     const p95 = d3.quantile(sortedCitations, 0.95) || 10;
-    const hasOutliers = maxCitations > p95 * 2.5;
+    const p70 = d3.quantile(sortedCitations, 0.7) || 8;
+    const median = d3.quantile(sortedCitations, 0.5) || 5;
+    const triggeredByP95 = maxCitations > p95 * 2.5;
+    const triggeredBySpread = maxCitations > median * 2.0;
+    const hasOutliers = triggeredByP95 || triggeredBySpread;
 
     // Helper to generate nice tick values with consistent step size
     const generateNiceTicks = (min: number, max: number, targetCount: number = 8): number[] => {
@@ -421,7 +428,9 @@ export default function ScatterplotView({
     let yTickValues: number[] = [];
 
     if (hasOutliers) {
-      const break_at = p95 * 1.3;
+      // p95-triggered: break just above the bulk of the data (p95 × 1.3)
+      // spread-triggered: break at p70 × 1.3 so ~70% of dots fall below
+      const break_at = triggeredByP95 ? p95 * 1.3 : p70 * 1.3;
       breakThreshold = break_at;
       const upperMax = maxCitations + 50;
 
