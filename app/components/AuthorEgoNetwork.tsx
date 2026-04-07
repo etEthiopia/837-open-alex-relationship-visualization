@@ -285,7 +285,7 @@ export default function AuthorEgoNetwork({ authorId, authorName, dataPath }: Pro
           .filter((d) => !d.isCenter)
           .on("mouseover", function (event, d) {
             const isPinned = pinnedSet.has(d.id);
-            if (!isPinned) d3.select(this).select("circle.node-circle").attr("fill", "rgba(0,0,0,0.22)");
+            if (!isPinned) d3.select(this).select("circle.node-circle").attr("opacity", 1);
             tooltip
               .style("opacity", 1)
               .html(
@@ -302,7 +302,7 @@ export default function AuthorEgoNetwork({ authorId, authorName, dataPath }: Pro
           })
           .on("mouseout", function (_, d) {
             if (!pinnedSet.has(d.id))
-              d3.select(this).select("circle.node-circle").attr("fill", "rgba(0,0,0,0.1)");
+              d3.select(this).select("circle.node-circle").attr("opacity", 0.75);
             tooltip.style("opacity", 0);
           })
           .on("click", function (_event, d) {
