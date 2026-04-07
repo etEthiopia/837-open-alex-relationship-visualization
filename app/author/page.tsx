@@ -153,24 +153,26 @@ function buildChart(
 
   const y = d3.scaleLinear().domain([0, maxVal * 1.15]).range([innerH, 0]);
 
-  // Y axis
+  // Y axis — no domain line, faint dashed grid, floating labels
   svg.append("g")
     .call(d3.axisLeft(y).ticks(4).tickSize(-innerW))
-    .call((g) => g.select(".domain").attr("stroke", "rgba(0,0,0,0.15)"))
-    .call((g) => g.selectAll(".tick line").attr("stroke", "rgba(0,0,0,0.06)").attr("stroke-dasharray", "3,3"))
+    .call((g) => g.select(".domain").remove())
+    .call((g) => g.selectAll(".tick line")
+      .attr("stroke", "rgba(0,0,0,0.08)")
+      .attr("stroke-dasharray", "4,4"))
     .call((g) => g.selectAll(".tick text")
-      .attr("fill", "rgba(0,0,0,0.4)")
+      .attr("fill", "rgba(0,0,0,0.35)")
+      .attr("dx", "-4")
       .style("font-size", "10px")
       .style("font-family", "var(--font-geist-mono), monospace"));
 
-  // X axis
+  // X axis — thin baseline only, no tick lines
   svg.append("g")
     .attr("transform", `translate(0,${innerH})`)
-    .call(d3.axisBottom(x).tickSize(4))
-    .call((g) => g.select(".domain").attr("stroke", "rgba(0,0,0,0.15)"))
-    .call((g) => g.selectAll(".tick line").attr("stroke", "rgba(0,0,0,0.15)"))
+    .call(d3.axisBottom(x).tickSize(0))
+    .call((g) => g.select(".domain").attr("stroke", "rgba(0,0,0,0.12)"))
     .selectAll("text")
-    .attr("fill", "rgba(0,0,0,0.45)")
+    .attr("fill", "rgba(0,0,0,0.4)")
     .attr("dy", "1.4em")
     .style("font-size", "11px")
     .style("font-family", "var(--font-geist-mono), monospace");
