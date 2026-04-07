@@ -466,7 +466,7 @@ export default function NetworkView({
     const sizeScale = d3
       .scaleSqrt()
       .domain([0, d3.max(displayAuthors, (d) => d.aci) || 1])
-      .range([4, 22]);
+      .range([5, 22]);
 
     const linkWidthScale = d3
       .scaleLinear()
@@ -700,7 +700,7 @@ export default function NetworkView({
               const visualWidth = d.width + (d.labelPadding || labelPadding);
               return Math.max(visualWidth, d.height) / 2 + 25;
             } else {
-              return (useSizeEncoding ? sizeScale(d.aci) : 6) + 4;
+              return (useSizeEncoding ? sizeScale(d.aci) : 10) + 4;
             }
           })
           .strength(0.8),
@@ -818,7 +818,7 @@ export default function NetworkView({
     nodeGroup
       .append("circle")
       .attr("class", "node-circle")
-      .attr("r", (d) => (useSizeEncoding ? sizeScale(d.aci) : 6))
+      .attr("r", (d) => (useSizeEncoding ? sizeScale(d.aci) : 10))
       .attr("fill", (d) => getFillForUniversity(d.institution))
       .attr("stroke", "rgba(255,255,255,0.5)")
       .attr("stroke-width", 0.8)
@@ -850,7 +850,7 @@ export default function NetworkView({
         const label = parts.length >= 2 ? parts[parts.length - 1] : d.name;
         return label.length > 12 ? label.slice(0, 12) + "..." : label;
       })
-      .attr("dy", (d) => (useSizeEncoding ? sizeScale(d.aci) : 6) + 12)
+      .attr("dy", (d) => (useSizeEncoding ? sizeScale(d.aci) : 10) + 12)
       .attr("text-anchor", "middle")
       .style("font-size", "10px")
       .style("fill", "rgba(0,0,0,0.55)")

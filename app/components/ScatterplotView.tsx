@@ -139,7 +139,6 @@ export default function ScatterplotView({
         authors: instAuthors.sort((a, b) => b.aci - a.aci), // Sort authors by ACI within the institution
       }),
     );
-    console.log(allUniList);
     allUniList.sort((a, b) => b.totalACI - a.totalACI);
 
     const topUniversities = allUniList.slice(0, maxUniversities);
@@ -467,23 +466,23 @@ export default function ScatterplotView({
     } else {
       yScale = d3
         .scaleLinear()
-        .domain([yMin, maxCitations * + 50])
+        .domain([yMin, maxCitations * 1.1])
         .range([height, 0])
         .nice();
 
       // Use nice tick generation for normal case
-      yTickValues = generateNiceTicks(yMin, maxCitations +50, 8);
+      yTickValues = generateNiceTicks(yMin, maxCitations*1.1, 8);
     }
 
     const sizeScale = d3
       .scaleSqrt()
       .domain([0, d3.max(displayAuthors, (d) => d.aci) || 1])
-      .range([3, 15]);
+      .range([5, 20]);
 
     // Only spread points that share the exact same (papers, citations) coordinate.
     // Keep spacing extremely small so points stay near their true x value.
     // Use adaptive step size: smaller steps for larger groups to prevent excessive deviation.
-    const maxOcclusionOffset = 0.12; // Maximum total deviation from true x-value
+    const maxOcclusionOffset = 0.15; // Maximum total deviation from true x-value
     const overlapGroups = d3.group(
       displayAuthors,
       (d) => `${d.field_papers}__${d.field_citations}`,
@@ -677,7 +676,7 @@ export default function ScatterplotView({
       .append("circle")
       .attr("cx", (d) => xScale(getAdjustedX(d))) // xScale(d.field_papers))
       .attr("cy", (d) => yScale(d.field_citations))
-      .attr("r", (d) => (useSizeEncoding ? sizeScale(d.aci) : 5))
+      .attr("r", (d) => (useSizeEncoding ? sizeScale(d.aci) : 8))
       .attr("fill", (d) => {
         const institutionName =
           d.last_known_institution?.label_name ||
@@ -860,7 +859,7 @@ export default function ScatterplotView({
               checked={useSizeEncoding}
               onChange={(e) => setUseSizeEncoding(e.target.checked)}
             />
-            <span>Use Citation Impact for bubble size</span>
+            <span>Use Citation Impact for<br/> data point size</span>
           </label>
           {hasZoomed && (
             <button onClick={resetZoom} className={styles.resetButton}>
