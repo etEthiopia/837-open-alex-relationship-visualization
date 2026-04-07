@@ -122,7 +122,7 @@ function buildChart(
   svgEl: SVGSVGElement,
   data: YearPoint[],
   mode: ChartMode,
-  colors: { total: string; field: string },
+  color: string,
   tooltipId: string
 ) {
   d3.select(svgEl).selectAll("*").remove();
@@ -196,12 +196,12 @@ function buildChart(
   if (mode === "compare") {
     const half = x.bandwidth() / 2 - 1;
 
-    // Total bars
+    // Total bars — full opacity
     const totalBars = svg.selectAll("rect.bar-total").data(data).enter()
       .append("rect").attr("class", "bar-total")
       .attr("x", (d) => x(String(d.year))!)
       .attr("y", innerH).attr("width", half).attr("height", 0)
-      .attr("fill", colors.total).attr("rx", 4).attr("opacity", 0.85);
+      .attr("fill", color).attr("rx", 4).attr("opacity", 0.85);
     totalBars.transition().duration(700).delay((_, i) => i * 60).ease(d3.easeCubicOut)
       .attr("y", (d) => y(d.total)).attr("height", (d) => innerH - y(d.total));
 
@@ -213,32 +213,31 @@ function buildChart(
       .on("mousemove", (event) => tooltip.style("left", event.pageX + 12 + "px").style("top", event.pageY - 32 + "px"))
       .on("mouseout", function () { d3.select(this).attr("opacity", 0.85); tooltip.style("opacity", "0"); });
 
-    // Field bars
+    // Field bars — same colour, lower opacity to distinguish
     const fieldBars = svg.selectAll("rect.bar-field").data(data).enter()
       .append("rect").attr("class", "bar-field")
       .attr("x", (d) => x(String(d.year))! + half + 2)
       .attr("y", innerH).attr("width", half).attr("height", 0)
-      .attr("fill", colors.field).attr("rx", 4).attr("opacity", 0.85);
+      .attr("fill", color).attr("rx", 4).attr("opacity", 0.38);
     fieldBars.transition().duration(700).delay((_, i) => i * 60).ease(d3.easeCubicOut)
       .attr("y", (d) => y(d.field)).attr("height", (d) => innerH - y(d.field));
 
     fieldBars
       .on("mouseover", function (event, d) {
-        d3.select(this).attr("opacity", 1);
+        d3.select(this).attr("opacity", 0.6);
         tooltip.style("opacity", "1").html(`<strong>${d.year}</strong> &nbsp; Field: ${d.field.toLocaleString()}`);
       })
       .on("mousemove", (event) => tooltip.style("left", event.pageX + 12 + "px").style("top", event.pageY - 32 + "px"))
-      .on("mouseout", function () { d3.select(this).attr("fill", colors.field); d3.select(this).attr("opacity", 0.85); tooltip.style("opacity", "0"); });
+      .on("mouseout", function () { d3.select(this).attr("opacity", 0.38); tooltip.style("opacity", "0"); });
 
-    // Legend
+    // Legend — same colour, opacity difference
     const leg = svg.append("g").attr("transform", `translate(${innerW - 100}, 4)`);
-    leg.append("rect").attr("width", 10).attr("height", 10).attr("fill", colors.total).attr("opacity", 0.85).attr("rx", 2);
+    leg.append("rect").attr("width", 10).attr("height", 10).attr("fill", color).attr("opacity", 0.85).attr("rx", 2);
     leg.append("text").attr("x", 14).attr("y", 9).style("font-size", "9px").style("fill", "rgba(0,0,0,0.45)").style("font-family", "var(--font-geist-mono), monospace").text("Total");
-    leg.append("rect").attr("x", 50).attr("width", 10).attr("height", 10).attr("fill", colors.field).attr("rx", 2).attr("opacity", 0.85);
+    leg.append("rect").attr("x", 50).attr("width", 10).attr("height", 10).attr("fill", color).attr("rx", 2).attr("opacity", 0.38);
     leg.append("text").attr("x", 64).attr("y", 9).style("font-size", "9px").style("fill", "rgba(0,0,0,0.45)").style("font-family", "var(--font-geist-mono), monospace").text("Field");
   } else {
     const val = (d: YearPoint) => mode === "total" ? d.total : d.field;
-    const color = mode === "total" ? colors.total : colors.field;
 
     const bars = svg.selectAll("rect.bar").data(data).enter()
       .append("rect").attr("class", "bar")
@@ -304,7 +303,7 @@ function AuthorContent() {
         field: spy[String(d.year)]?.field_citations ?? 0,
       }));
     if (!data.length) return;
-    buildChart(citationsRef.current, data, citationsMode, { total: "#3b82f6", field: "#6366f1" }, "tt-citations");
+    buildChart(citationsRef.current, data, citationsMode, "#3b82f6", "tt-citations");
   }, [author, citationsMode]);
 
   const renderWorksChart = useCallback(() => {
@@ -320,7 +319,7 @@ function AuthorContent() {
         field: spy[String(d.year)]?.field_papers ?? 0,
       }));
     if (!data.length) return;
-    buildChart(worksRef.current, data, worksMode, { total: "#10b981", field: "#059669" }, "tt-works");
+    buildChart(worksRef.current, data, worksMode, "#10b981", "tt-works");
   }, [author, worksMode]);
 
   useEffect(() => {
