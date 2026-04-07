@@ -294,7 +294,7 @@ export default function AuthorEgoNetwork({ authorId, authorName, dataPath }: Pro
                 `${d.sharedPapers} shared paper${d.sharedPapers !== 1 ? "s" : ""}<br/>` +
                 (isPinned
                   ? `<span style="font-size:10px;opacity:0.45;">Right-click to unpin</span>`
-                  : ``)
+                  : `<span style="font-size:10px;opacity:0.45;">Click to view profile</span>`)
               );
           })
           .on("mousemove", function (event) {
