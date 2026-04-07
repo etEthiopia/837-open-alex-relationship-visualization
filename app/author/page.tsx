@@ -129,7 +129,7 @@ function buildChart(
 
   const width = 480;
   const height = 210;
-  const margin = { top: 40, right: 16, bottom: 36, left: 16 };
+  const margin = { top: 20, right: 16, bottom: 36, left: 52 };
   const innerW = width - margin.left - margin.right;
   const innerH = height - margin.top - margin.bottom;
 
@@ -153,21 +153,24 @@ function buildChart(
 
   const y = d3.scaleLinear().domain([0, maxVal * 1.15]).range([innerH, 0]);
 
-  // Subtle horizontal grid lines only
+  // Y axis
   svg.append("g")
-    .call(d3.axisLeft(y).ticks(3).tickSize(-innerW).tickFormat(() => ""))
-    .call((g) => g.select(".domain").remove())
-    .call((g) => g.selectAll(".tick line")
-      .attr("stroke", "rgba(0,0,0,0.05)")
-      .attr("stroke-dasharray", "4,4"));
+    .call(d3.axisLeft(y).ticks(4).tickSize(-innerW))
+    .call((g) => g.select(".domain").attr("stroke", "rgba(0,0,0,0.15)"))
+    .call((g) => g.selectAll(".tick line").attr("stroke", "rgba(0,0,0,0.06)").attr("stroke-dasharray", "3,3"))
+    .call((g) => g.selectAll(".tick text")
+      .attr("fill", "rgba(0,0,0,0.4)")
+      .style("font-size", "10px")
+      .style("font-family", "var(--font-geist-mono), monospace"));
 
-  // X axis — year labels only, no domain line or ticks
+  // X axis
   svg.append("g")
     .attr("transform", `translate(0,${innerH})`)
-    .call(d3.axisBottom(x).tickSize(0))
-    .call((g) => g.select(".domain").remove())
+    .call(d3.axisBottom(x).tickSize(4))
+    .call((g) => g.select(".domain").attr("stroke", "rgba(0,0,0,0.15)"))
+    .call((g) => g.selectAll(".tick line").attr("stroke", "rgba(0,0,0,0.15)"))
     .selectAll("text")
-    .attr("fill", "rgba(0,0,0,0.35)")
+    .attr("fill", "rgba(0,0,0,0.45)")
     .attr("dy", "1.4em")
     .style("font-size", "11px")
     .style("font-family", "var(--font-geist-mono), monospace");
@@ -200,21 +203,6 @@ function buildChart(
     totalBars.transition().duration(700).delay((_, i) => i * 60).ease(d3.easeCubicOut)
       .attr("y", (d) => y(d.total)).attr("height", (d) => innerH - y(d.total));
 
-    // Value labels — total
-    svg.selectAll("text.val-total").data(data).enter()
-      .append("text").attr("class", "val-total")
-      .attr("x", (d) => x(String(d.year))! + half / 2)
-      .attr("y", innerH)
-      .attr("text-anchor", "middle")
-      .style("font-size", "11px")
-      .style("font-weight", "600")
-      .style("fill", colors.total)
-      .style("font-family", "var(--font-geist-sans), system-ui, sans-serif")
-      .style("pointer-events", "none")
-      .text((d) => d.total.toLocaleString())
-      .transition().duration(700).delay((_, i) => i * 60).ease(d3.easeCubicOut)
-      .attr("y", (d) => y(d.total) - 6);
-
     totalBars
       .on("mouseover", function (event, d) {
         d3.select(this).attr("opacity", 1);
@@ -231,21 +219,6 @@ function buildChart(
       .attr("fill", colors.field).attr("rx", 4).attr("opacity", 0.85);
     fieldBars.transition().duration(700).delay((_, i) => i * 60).ease(d3.easeCubicOut)
       .attr("y", (d) => y(d.field)).attr("height", (d) => innerH - y(d.field));
-
-    // Value labels — field
-    svg.selectAll("text.val-field").data(data).enter()
-      .append("text").attr("class", "val-field")
-      .attr("x", (d) => x(String(d.year))! + half + 2 + half / 2)
-      .attr("y", innerH)
-      .attr("text-anchor", "middle")
-      .style("font-size", "11px")
-      .style("font-weight", "600")
-      .style("fill", colors.field)
-      .style("font-family", "var(--font-geist-sans), system-ui, sans-serif")
-      .style("pointer-events", "none")
-      .text((d) => d.field.toLocaleString())
-      .transition().duration(700).delay((_, i) => i * 60).ease(d3.easeCubicOut)
-      .attr("y", (d) => y(d.field) - 6);
 
     fieldBars
       .on("mouseover", function (event, d) {
@@ -272,21 +245,6 @@ function buildChart(
       .attr("fill", color).attr("rx", 4).style("cursor", "pointer").attr("opacity", 0.85);
     bars.transition().duration(700).delay((_, i) => i * 60).ease(d3.easeCubicOut)
       .attr("y", (d) => y(val(d))).attr("height", (d) => innerH - y(val(d)));
-
-    // Value labels on top
-    svg.selectAll("text.val-label").data(data).enter()
-      .append("text").attr("class", "val-label")
-      .attr("x", (d) => x(String(d.year))! + x.bandwidth() / 2)
-      .attr("y", innerH)
-      .attr("text-anchor", "middle")
-      .style("font-size", "13px")
-      .style("font-weight", "700")
-      .style("fill", color)
-      .style("font-family", "var(--font-geist-sans), system-ui, sans-serif")
-      .style("pointer-events", "none")
-      .text((d) => val(d).toLocaleString())
-      .transition().duration(700).delay((_, i) => i * 60).ease(d3.easeCubicOut)
-      .attr("y", (d) => y(val(d)) - 8);
 
     bars
       .on("mouseover", function (_event, d) {
