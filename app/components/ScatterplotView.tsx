@@ -377,18 +377,11 @@ export default function ScatterplotView({
       .range([0, width])
       .nice();
 
-    // Detect outliers — two conditions:
-    // 1. Classic: max > p95 × 2.5  (catches HCI-style long tails)
-    // 2. Spread:  max > median × 2  (catches CV-style where top-N are
-    //    all high performers and the p95 of the displayed set is close to max)
+    // Detect outliers using P95
     const citations = displayAuthors.map((d) => d.field_citations);
     const sortedCitations = [...citations].sort(d3.ascending);
     const p95 = d3.quantile(sortedCitations, 0.95) || 10;
-    const p70 = d3.quantile(sortedCitations, 0.7) || 8;
-    const median = d3.quantile(sortedCitations, 0.5) || 5;
-    const triggeredByP95 = maxCitations > p95 * 2.5;
-    const triggeredBySpread = maxCitations > median * 2.0;
-    const hasOutliers = triggeredByP95 || triggeredBySpread;
+    const hasOutliers = maxCitations > p95 * 2.5;
 
     // Helper to generate nice tick values with consistent step size
     const generateNiceTicks = (min: number, max: number, targetCount: number = 8): number[] => {
@@ -427,9 +420,7 @@ export default function ScatterplotView({
     let yTickValues: number[] = [];
 
     if (hasOutliers) {
-      // p95-triggered: break just above the bulk of the data (p95 × 1.3)
-      // spread-triggered: break at p70 × 1.3 so ~70% of dots fall below
-      const break_at = triggeredByP95 ? p95 * 1.3 : p70 * 1.3;
+      const break_at = p95 * 1.3;
       breakThreshold = break_at;
       const upperMax = maxCitations + 50;
 
@@ -498,27 +489,34 @@ export default function ScatterplotView({
     );
     const authorsWithOcclusionOffset: AuthorWithOcclusionOffset[] = [];
 
-      overlapGroups.forEach((group) => {
-        if (group.length === 1) {
-          authorsWithOcclusionOffset.push({ ...group[0], occlusionXOffset: 0 });
-          return;
-        }
-        const sortedGroup = [...group].sort((a, b) =>
-          a.author_id.localeCompare(b.author_id),
-        );
-        const centerIndex = (sortedGroup.length - 1) / 2;
-        const totalSpan = sortedGroup.length - 1;
-        const occlusionStepData = totalSpan > 0
-          ? Math.min(0.015, maxOcclusionOffset / totalSpan)
-          : 0.015;
-        sortedGroup.forEach((author, index) => {
-          authorsWithOcclusionOffset.push({
-            ...author,
-            occlusionXOffset: (index - centerIndex) * occlusionStepData,
-          });
+    overlapGroups.forEach((group) => {
+      if (group.length === 1) {
+        authorsWithOcclusionOffset.push({
+          ...group[0],
+          occlusionXOffset: 0,
+        });
+        return;
+      }
+
+      // Deterministic symmetric offsets: left/right around the true x-value.
+      const sortedGroup = [...group].sort((a, b) =>
+        a.author_id.localeCompare(b.author_id),
+      );
+      const centerIndex = (sortedGroup.length - 1) / 2;
+
+      // Adaptive step: ensure total spread doesn't exceed maxOcclusionOffset
+      const totalSpan = (sortedGroup.length - 1);
+      const occlusionStepData = totalSpan > 0
+        ? Math.min(0.015, maxOcclusionOffset / totalSpan)
+        : 0.015;
+
+      sortedGroup.forEach((author, index) => {
+        authorsWithOcclusionOffset.push({
+          ...author,
+          occlusionXOffset: (index - centerIndex) * occlusionStepData,
         });
       });
-    }
+    });
 
     // Generate x-axis tick values as integers only
     const xDomain = xScale.domain();
