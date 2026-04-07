@@ -598,8 +598,8 @@ export default function NetworkUniversityView({
         const instData = institutionMap.get(d.name);
         const connections = connectionCounts.get(d.id) || 0;
         const pinHint = pinnedSet.has(d.id)
-          ? "<span style='opacity:0.6'>Right-click to unpin</span>"
-          : "<span style='opacity:0.6'>Click to view profile</span>";
+          ? "<span style='opacity:0.6;text-decoration:underline;'>Right-click to unpin</span>"
+          : "<span style='opacity:0.6;text-decoration:underline;'>Click to view profile</span>";
         tooltip.style("opacity", 1).html(`
           <strong>${d.display_name}</strong><br/>
           ICI: ${d.totalICI.toFixed(2)}<br/>
