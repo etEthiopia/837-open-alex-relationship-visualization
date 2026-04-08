@@ -232,8 +232,8 @@ export default function AuthorEgoNetwork({ authorId, authorName, dataPath }: Pro
             return col;
           })
           .attr("opacity", (d) => 0.85)
-          .attr("stroke", (d) => (d.isCenter ? "#0e0e0c" : ""))
-          .attr("stroke-width", (d) => d.isCenter ? 4 : 0);
+          .attr("stroke", "none")
+          .attr("stroke-width", 0);
 
         // Pin dot indicator
         nodeSel
