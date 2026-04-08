@@ -34,7 +34,7 @@ function ExploreContent() {
     searchParams.get("tab") === "network" ? "network" : "scatterplot"
   );
   const [maxAuthors, setMaxAuthors] = useState<number>(30);
-  const [maxUniversities, setMaxUniversities] = useState<number>(10);
+  const [maxUniversities, setMaxUniversities] = useState<number>(12);
   const [canadianFilter, setCanadianFilter] = useState<CanadianFilter>("full");
   const [dataSource, setDataSource] = useState<DataSource>(initialField);
   const [networkViewMode, setNetworkViewMode] = useState<"author" | "university">("author");
