@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
 import Link from "next/link";
@@ -290,7 +290,7 @@ function AuthorContent() {
       });
   }, [authorId, dataPath]);
 
-  const renderCitationsChart = useCallback(() => {
+  useEffect(() => {
     if (!author || !citationsRef.current) return;
     const spy = author.stats_per_year || {};
     const data: YearPoint[] = [...author.counts_by_year]
@@ -304,9 +304,10 @@ function AuthorContent() {
       }));
     if (!data.length) return;
     buildChart(citationsRef.current, data, citationsMode, "rgba(0,0,0,0.55)", "tt-citations");
+    return () => { d3.select("#tt-citations").remove(); };
   }, [author, citationsMode]);
 
-  const renderWorksChart = useCallback(() => {
+  useEffect(() => {
     if (!author || !worksRef.current) return;
     const spy = author.stats_per_year || {};
     const data: YearPoint[] = [...author.counts_by_year]
@@ -320,17 +321,8 @@ function AuthorContent() {
       }));
     if (!data.length) return;
     buildChart(worksRef.current, data, worksMode, "rgba(0,0,0,0.55)", "tt-works");
-  }, [author, worksMode]);
-
-  useEffect(() => {
-    renderCitationsChart();
-    return () => { d3.select("#tt-citations").remove(); };
-  }, [renderCitationsChart]);
-
-  useEffect(() => {
-    renderWorksChart();
     return () => { d3.select("#tt-works").remove(); };
-  }, [renderWorksChart]);
+  }, [author, worksMode]);
 
   const initials = author?.display_name
     .split(" ")
@@ -543,7 +535,7 @@ function AuthorContent() {
         <section className={styles.decisionSection}>
           <p className={styles.decisionEye}>Decision</p>
           <h2 className={styles.decisionTitle}>
-            Consider {author.display_name.split(" ")[0]} as your supervisor?
+            Consider {author.display_name} as your supervisor?
           </h2>
           <p className={styles.decisionBody}>
             {author.summary_stats.h_index} h-index · {author.cited_by_count.toLocaleString()} citations · {author.field_papers} field papers

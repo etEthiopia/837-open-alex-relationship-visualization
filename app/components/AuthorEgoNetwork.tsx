@@ -10,8 +10,9 @@ interface Authorship {
   ids: string[];
   names: string[];
   ACIs: number[];
-  last_known_institutions: Array<{ display_name: string } | null>;
+  last_known_institutions: Array<{ display_name: string; label_name?: string } | null>;
   total_papers: number;
+  field_citations: number[];
 }
 
 interface Node extends d3.SimulationNodeDatum {
@@ -21,6 +22,7 @@ interface Node extends d3.SimulationNodeDatum {
   institution: string;
   isCenter: boolean;
   sharedPapers: number;
+  totalCitations: number;
   r: number;
 }
 
@@ -56,22 +58,26 @@ export default function AuthorEgoNetwork({ authorId, authorName, dataPath }: Pro
         // Aggregate collaborators
         const collabMap = new Map<
           string,
-          { name: string; aci: number; institution: string; sharedPapers: number }
+          { name: string; aci: number; institution: string; sharedPapers: number; totalCitations: number }
         >();
         relevant.forEach((authorship) => {
           authorship.ids.forEach((id, idx) => {
             if (id === authorId) return;
             const existing = collabMap.get(id);
+            const citations = authorship.field_citations?.[idx] || 0;
             if (existing) {
               existing.sharedPapers += authorship.total_papers;
+              existing.totalCitations += citations;
             } else {
               collabMap.set(id, {
                 name: authorship.names[idx] || "Unknown",
                 aci: authorship.ACIs[idx] || 0,
                 institution:
+                  authorship.last_known_institutions[idx]?.label_name ||
                   authorship.last_known_institutions[idx]?.display_name ||
                   "Unknown",
                 sharedPapers: authorship.total_papers,
+                totalCitations: citations,
               });
             }
           });
@@ -83,8 +89,20 @@ export default function AuthorEgoNetwork({ authorId, authorName, dataPath }: Pro
 
         if (topCollabs.length === 0) return;
 
-        // Assign a palette colour to each unique institution
-        const uniqueInstitutions = [...new Set(topCollabs.map(([, d]) => d.institution))];
+        // Find center author's institution
+        let centerInstitution = "";
+        for (const authorship of relevant) {
+          const idx = authorship.ids.indexOf(authorId);
+          if (idx !== -1) {
+            centerInstitution = authorship.last_known_institutions[idx]?.label_name ||
+                               authorship.last_known_institutions[idx]?.display_name ||
+                               "Unknown";
+            break;
+          }
+        }
+
+        // Assign a palette colour to each unique institution (including center)
+        const uniqueInstitutions = [...new Set([centerInstitution, ...topCollabs.map(([, d]) => d.institution)])];
         const institutionColor = new Map<string, string>(
           uniqueInstitutions.map((inst, i) => [
             inst,
@@ -95,7 +113,7 @@ export default function AuthorEgoNetwork({ authorId, authorName, dataPath }: Pro
         const rScale = d3
           .scaleSqrt()
           .domain([0, d3.max(topCollabs, ([, d]) => d.aci) || 1])
-          .range([4, 11]);
+          .range([6, 12]);
 
         const strokeScale = d3
           .scaleLinear()
@@ -107,10 +125,11 @@ export default function AuthorEgoNetwork({ authorId, authorName, dataPath }: Pro
             id: authorId,
             name: authorName,
             aci: 0,
-            institution: "",
+            institution: centerInstitution,
             isCenter: true,
             sharedPapers: 0,
-            r: 20,
+            totalCitations: 0,
+            r: 22,
             x: width / 2,
             y: height / 2,
           },
@@ -121,6 +140,7 @@ export default function AuthorEgoNetwork({ authorId, authorName, dataPath }: Pro
             institution: data.institution,
             isCenter: false,
             sharedPapers: data.sharedPapers,
+            totalCitations: data.totalCitations,
             r: Math.max(rScale(data.aci), 4),
           })),
         ];
@@ -208,13 +228,12 @@ export default function AuthorEgoNetwork({ authorId, authorName, dataPath }: Pro
           .attr("class", "node-circle")
           .attr("r", (d) => d.r)
           .attr("fill", (d) => {
-            if (d.isCenter) return "#0e0e0c";
             const col = institutionColor.get(d.institution) || "#808080";
             return col;
           })
-          .attr("opacity", (d) => d.isCenter ? 1 : 0.75)
-          .attr("stroke", (d) => (d.isCenter ? "none" : "rgba(255,255,255,0.4)"))
-          .attr("stroke-width", 1.5);
+          .attr("opacity", (d) => 0.85)
+          .attr("stroke", (d) => (d.isCenter ? "#0e0e0c" : ""))
+          .attr("stroke-width", (d) => d.isCenter ? 4 : 0);
 
         // Pin dot indicator
         nodeSel
@@ -268,16 +287,16 @@ export default function AuthorEgoNetwork({ authorId, authorName, dataPath }: Pro
             })
         );
 
-        // Center label (last name below node)
+        // Labels (last name below all nodes)
         nodeSel
-          .filter((d) => d.isCenter)
           .append("text")
-          .attr("dy", (d) => d.r + 14)
+          .attr("dy", (d) => d.r + (d.isCenter ? 14 : 12))
           .attr("text-anchor", "middle")
-          .style("font-size", "11px")
-          .style("font-weight", "600")
-          .style("fill", "#0e0e0c")
+          .style("font-size", (d) => d.isCenter ? "11px" : "10px")
+          .style("font-weight", (d) => d.isCenter ? "600" : "500")
+          .style("fill", (d) => d.isCenter ? "#0e0e0c" : "#070706")
           .style("font-family", "var(--font-geist-sans), system-ui, sans-serif")
+          .style("pointer-events", "none")
           .text((d) => d.name.split(" ").slice(-1)[0]);
 
         // Collaborator hover/click
@@ -292,9 +311,10 @@ export default function AuthorEgoNetwork({ authorId, authorName, dataPath }: Pro
                 `<strong>${d.name}</strong><br/>` +
                 `${d.institution}<br/>` +
                 `${d.sharedPapers} shared paper${d.sharedPapers !== 1 ? "s" : ""}<br/>` +
+                `${d.totalCitations.toLocaleString()} citation${d.totalCitations !== 1 ? "s" : ""}<br/>` +
                 (isPinned
-                  ? `<span style="font-size:10px;opacity:0.45;text-decoration:underline;">Right-click to unpin</span>`
-                  : `<span style="font-size:10px;opacity:0.45;text-decoration:underline;">Click to view profile</span>`)
+                  ? `<span style="font-size:10px;opacity:0.45;">Right-click to unpin</span>`
+                  : `<span style="font-size:10px;opacity:0.45;">Click to view profile</span>`)
               );
           })
           .on("mousemove", function (event) {
@@ -328,6 +348,38 @@ export default function AuthorEgoNetwork({ authorId, authorName, dataPath }: Pro
             .attr("y2", (d) => (d.target as Node).y!);
           nodeSel.attr("transform", (d) => `translate(${d.x},${d.y})`);
         });
+
+        // Legend — institutions and their colors
+        const legendData = Array.from(institutionColor.entries());
+        const legend = svg.append("g")
+          .attr("class", "institution-legend")
+          .attr("transform", `translate(${width - 160}, ${height - (legendData.length * 18) - 10})`);
+
+        legend.selectAll("g")
+          .data(legendData)
+          .enter()
+          .append("g")
+          .attr("transform", (_, i) => `translate(0, ${i * 18})`)
+          .each(function([institution, color]) {
+            const g = d3.select(this);
+
+            // Color box
+            g.append("circle")
+              .attr("r", 5)
+              .attr("cx", 5)
+              .attr("cy", 0)
+              .attr("fill", color)
+              .attr("opacity", 0.85);
+
+            // Institution name
+            g.append("text")
+              .attr("x", 15)
+              .attr("y", 4)
+              .style("font-size", "9px")
+              .style("font-family", "var(--font-geist-sans), system-ui, sans-serif")
+              .style("fill", "rgba(0,0,0,0.6)")
+              .text(institution.length > 20 ? institution.substring(0, 20) + "..." : institution);
+          });
       });
 
     return () => {
