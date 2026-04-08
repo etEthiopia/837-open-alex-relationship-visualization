@@ -967,11 +967,70 @@ export default function NetworkView({
         return parts.length >= 2 ? parts[parts.length - 1] : name;
       };
 
-      const authors = [...matrixNode.authors].sort((a, b) =>
-        getLastName(a.name)
-          .toLowerCase()
-          .localeCompare(getLastName(b.name).toLowerCase()),
-      );
+      // Build adjacency information for seriation
+      const authorLinks = new Map<string, Set<string>>();
+      matrixNode.authors.forEach((author) => {
+        authorLinks.set(author.id, new Set());
+      });
+
+      internalLinks.forEach((link) => {
+        const srcId = typeof link.source === "string" ? link.source : link.source.id;
+        const tgtId = typeof link.target === "string" ? link.target : link.target.id;
+
+        if (authorLinks.has(srcId) && authorLinks.has(tgtId)) {
+          authorLinks.get(srcId)!.add(tgtId);
+          authorLinks.get(tgtId)!.add(srcId);
+        }
+      });
+
+      // Greedy seriation algorithm to reveal cliques:
+      // Place nodes with many shared neighbors adjacent to each other
+      const ordered: Node[] = [];
+      const remaining = new Set(matrixNode.authors.map(a => a.id));
+
+      // Start with the most connected node
+      let currentId = matrixNode.authors.reduce((max, author) =>
+        (authorLinks.get(author.id)?.size || 0) > (authorLinks.get(max.id)?.size || 0) ? author : max
+      ).id;
+
+      while (remaining.size > 0) {
+        if (!remaining.has(currentId)) {
+          // Pick next most connected from remaining
+          const remainingAuthors = matrixNode.authors.filter(a => remaining.has(a.id));
+          if (remainingAuthors.length === 0) break;
+          currentId = remainingAuthors.reduce((max, author) =>
+            (authorLinks.get(author.id)?.size || 0) > (authorLinks.get(max.id)?.size || 0) ? author : max
+          ).id;
+        }
+
+        const current = matrixNode.authors.find(a => a.id === currentId)!;
+        ordered.push(current);
+        remaining.delete(currentId);
+
+        // Find next node: the unvisited node with most shared connections to current
+        let nextId: string | null = null;
+        let maxShared = -1;
+
+        remaining.forEach(candidateId => {
+          const currentNeighbors = authorLinks.get(currentId) || new Set();
+          const candidateNeighbors = authorLinks.get(candidateId) || new Set();
+
+          // Count shared neighbors + direct connection
+          let shared = currentNeighbors.has(candidateId) ? 100 : 0; // Bonus for direct connection
+          currentNeighbors.forEach(n => {
+            if (candidateNeighbors.has(n)) shared++;
+          });
+
+          if (shared > maxShared) {
+            maxShared = shared;
+            nextId = candidateId;
+          }
+        });
+
+        currentId = nextId || currentId;
+      }
+
+      const authors = ordered;
 
       const maxLabelWidth = Math.max(
         ...authors.map(

@@ -709,15 +709,73 @@ export default function NetworkUniversityView({
       }
     });
 
-    // Sort authors alphabetically by last name
+    // Helper to get last name
     const getLastName = (name: string) => {
       const parts = name.split(" ");
       return parts.length >= 2 ? parts[parts.length - 1] : name;
     };
 
-    const sortedAuthors = [...authors].sort((a, b) =>
-      getLastName(a.name).toLowerCase().localeCompare(getLastName(b.name).toLowerCase())
-    );
+    // Build adjacency information for greedy seriation
+    const authorLinks = new Map<string, Set<string>>();
+    authors.forEach((author) => {
+      authorLinks.set(author.id, new Set());
+    });
+
+    links.forEach((link) => {
+      if (authorLinks.has(link.source) && authorLinks.has(link.target)) {
+        authorLinks.get(link.source)!.add(link.target);
+        authorLinks.get(link.target)!.add(link.source);
+      }
+    });
+
+    // Greedy seriation algorithm to reveal cliques:
+    // Place nodes with many shared neighbors adjacent to each other
+    const ordered: Author[] = [];
+    const remaining = new Set(authors.map(a => a.id));
+
+    // Start with the most connected author
+    let currentId = authors.reduce((max, author) =>
+      (authorLinks.get(author.id)?.size || 0) > (authorLinks.get(max.id)?.size || 0) ? author : max
+    ).id;
+
+    while (remaining.size > 0) {
+      if (!remaining.has(currentId)) {
+        // Pick next most connected from remaining
+        const remainingAuthors = authors.filter(a => remaining.has(a.id));
+        if (remainingAuthors.length === 0) break;
+        currentId = remainingAuthors.reduce((max, author) =>
+          (authorLinks.get(author.id)?.size || 0) > (authorLinks.get(max.id)?.size || 0) ? author : max
+        ).id;
+      }
+
+      const current = authors.find(a => a.id === currentId)!;
+      ordered.push(current);
+      remaining.delete(currentId);
+
+      // Find next node: the unvisited node with most shared connections to current
+      let nextId: string | null = null;
+      let maxShared = -1;
+
+      remaining.forEach(candidateId => {
+        const currentNeighbors = authorLinks.get(currentId) || new Set();
+        const candidateNeighbors = authorLinks.get(candidateId) || new Set();
+
+        // Count shared neighbors + direct connection
+        let shared = currentNeighbors.has(candidateId) ? 100 : 0; // Bonus for direct connection
+        currentNeighbors.forEach(n => {
+          if (candidateNeighbors.has(n)) shared++;
+        });
+
+        if (shared > maxShared) {
+          maxShared = shared;
+          nextId = candidateId;
+        }
+      });
+
+      currentId = nextId || currentId;
+    }
+
+    const sortedAuthors = ordered;
 
     // Matrix layout
     const cellSize = 15;
