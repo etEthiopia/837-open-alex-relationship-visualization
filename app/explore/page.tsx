@@ -462,7 +462,7 @@ function ExploreContent() {
             }}
           >
             <label htmlFor="universitySearch">
-              University Search
+              Search University
               {selectedUniversities.size > 0 &&
                 ` (${selectedUniversities.size} selected)`}
             </label>
