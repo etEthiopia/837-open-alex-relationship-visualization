@@ -53,10 +53,10 @@
 /* ─── Filter Bar ─── */
 .filterBar {
   display: flex;
-  align-items: center;
-  gap: 0;
-  padding: 0 32px;
-  height: 72px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 20px 32px;
+  padding: 14px 32px;
   background: #f2f2ee;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   flex-shrink: 0;
@@ -65,15 +65,8 @@
 .filterGroup {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 7px;
-  padding-right: 32px;
-  height: 100%;
-}
-
-.filterGroup:not(:last-child) {
-  border-right: 1px solid rgba(0, 0, 0, 0.07);
-  margin-right: 32px;
+  justify-content: space-between;
+  height: 52px;
 }
 
 .filterGroup label {
@@ -176,7 +169,7 @@
 
 /* University Search Input */
 .searchInput {
-  width: 160px;
+  width: 140px;
   height: 32px;
   min-height: 0;
   padding: 0 10px;
@@ -255,18 +248,8 @@
 /* ─── Responsive ─── */
 @media (max-width: 900px) {
   .filterBar {
-    height: auto;
-    padding: 16px 20px;
-    flex-wrap: wrap;
-    gap: 16px;
-    align-items: flex-start;
-  }
-
-  .filterGroup {
-    height: auto;
-    padding-right: 0;
-    border-right: none !important;
-    margin-right: 0 !important;
+    padding: 14px 20px;
+    gap: 18px 24px;
   }
 
   .header {
