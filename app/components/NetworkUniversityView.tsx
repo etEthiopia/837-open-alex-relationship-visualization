@@ -13,16 +13,6 @@ interface Institution {
   type: string;
 }
 
-interface InstitutionData {
-  id: string;
-  name: string;
-  label_name: string;
-  country_code: string;
-  type: string;
-  field_citations: number;
-  field_papers: number;
-  ICI: number;
-}
 
 interface Author {
   id: string;
@@ -55,6 +45,7 @@ interface UniversityNode {
   institutionId: string;
   authors: Author[];
   totalICI: number;
+  totalACI: number;
   authorCount: number;
   x?: number;
   y?: number;
@@ -79,6 +70,17 @@ type EdgeStrengthMetric =
   | "total_papers"
   | "none";
 
+interface InstitutionProp {
+  id: string;
+  name: string;
+  label_name?: string;
+  display_name: string;
+  country_code: string;
+  type: string;
+  ICI: number;
+  totalACI?: number;
+}
+
 interface NetworkUniversityViewProps {
   maxUniversities: number;
   canadianFilter: "full" | "full_partial";
@@ -92,6 +94,9 @@ interface NetworkUniversityViewProps {
   publicationsMax: number | null;
   citationsMin: number | null;
   citationsMax: number | null;
+  selectedUniversities: Set<string>;
+  universityColorMap: Map<string, typeof visualPalette[0]>;
+  institutions: InstitutionProp[];
 }
 
 const UNIVERSITY_VIEW_AUTHOR_SAMPLE = 500;
@@ -109,23 +114,21 @@ export default function NetworkUniversityView({
   publicationsMax,
   citationsMin,
   citationsMax,
+  selectedUniversities,
+  universityColorMap,
+  institutions,
 }: NetworkUniversityViewProps) {
   const svgRef = useRef<SVGSVGElement>(null);
   const matrixSvgRef = useRef<SVGSVGElement>(null);
   const tooltipRef = useRef<d3.Selection<HTMLDivElement, unknown, HTMLElement, unknown> | null>(null);
 
   const [authorships, setAuthorships] = useState<Authorship[]>([]);
-  const [institutions, setInstitutions] = useState<InstitutionData[]>([]);
   const [universityColors, setUniversityColors] = useState<Map<string, { color: string; texture: string; luminance: "dark" | "light" }>>(new Map());
 
   useEffect(() => {
     fetch(`${dataPath}/authorships_canadian.json`)
       .then((res) => res.json())
       .then((data: Authorship[]) => setAuthorships(data));
-
-    fetch(`${dataPath}/institutions_canadian.json`)
-      .then((res) => res.json())
-      .then((data: InstitutionData[]) => setInstitutions(data));
   }, [dataPath]);
 
   useEffect(() => {
@@ -134,7 +137,7 @@ export default function NetworkUniversityView({
     d3.select(svgRef.current).selectAll("*").remove();
 
     // Create institution lookup map
-    const institutionMap = new Map<string, InstitutionData>();
+    const institutionMap = new Map<string, InstitutionProp>();
     institutions.forEach(inst => {
       institutionMap.set(inst.label_name, inst);
       institutionMap.set(inst.name, inst);
@@ -157,7 +160,15 @@ export default function NetworkUniversityView({
           if (publicationsMax !== null && fieldPapers > publicationsMax) return;
           if (citationsMin !== null && fieldCitations < citationsMin) return;
           if (citationsMax !== null && fieldCitations > citationsMax) return;
+
           const institution = authorship.last_known_institutions[idx];
+
+          // Apply university filter
+          if (selectedUniversities.size > 0) {
+            if (!institution || !selectedUniversities.has(institution.display_name)) {
+              return;
+            }
+          }
           authorMap.set(authorId, {
             id: authorId,
             name: authorship.names[idx],
@@ -171,22 +182,31 @@ export default function NetworkUniversityView({
       });
     });
 
-    const institutionGroups = new Map<string, { authors: Author[]; totalACI: number }>();
+    // Group authors by institution
+    const institutionGroups = new Map<string, Author[]>();
     authorMap.forEach((author) => {
       if (!institutionGroups.has(author.institution)) {
-        institutionGroups.set(author.institution, { authors: [], totalACI: 0 });
+        institutionGroups.set(author.institution, []);
       }
-      const group = institutionGroups.get(author.institution)!;
-      group.authors.push(author);
-      group.totalACI += author.aci;
+      institutionGroups.get(author.institution)!.push(author);
     });
 
-    // Determine Top Universities based on total ACI
-    const sortedInstitutions = Array.from(institutionGroups.entries())
-      .sort((a, b) => b[1].totalACI - a[1].totalACI)
+    // Use institutions list (already sorted by global totalACI from parent)
+    const topUniversities = institutions
+      .map((inst) => {
+        const instName = inst.label_name || inst.display_name || inst.name;
+        const instAuthors = institutionGroups.get(instName) || institutionGroups.get(inst.name) || [];
+        return {
+          name: instName,
+          fullName: inst.name,
+          institutionData: inst,
+          authors: instAuthors,
+        };
+      })
+      .filter(uni => uni.authors.length > 0) // Only keep universities with authors
       .slice(0, maxUniversities);
 
-    const topInstitutionNames = new Set(sortedInstitutions.map(([name]) => name));
+    const topInstitutionNames = new Set(topUniversities.map((u) => u.name));
 
     // Sample the top 500 authors overall to build university-level links
     const filteredAuthors = Array.from(authorMap.values())
@@ -197,23 +217,25 @@ export default function NetworkUniversityView({
     const displayAuthorIds = new Set(filteredAuthors.map((a) => a.id));
 
     // Create university nodes
-    const universityNodes: UniversityNode[] = sortedInstitutions.map(([name, group]) => {
+    const universityNodes: UniversityNode[] = topUniversities.map((uni) => {
         // We still use the filteredAuthors sample to represent the "weight" of the university in this context
-        const authorsInSample = filteredAuthors.filter((a) => a.institution === name);
-        const instData = institutionMap.get(name);
-        const institutionId = instData?.id || group.authors[0]?.institutionId || "unknown";
-        const totalICI = instData?.ICI || 0;
+        const authorsInSample = filteredAuthors.filter((a) => a.institution === uni.name);
+        const instData = uni.institutionData;
+        const institutionId = instData.id;
+        const totalICI = instData.ICI || 0;
+        const totalACI = instData.totalACI || 0;
 
         return {
-            id: name,
-            name,
-            display_name: instData?.name || name,
+            id: uni.name,
+            name: uni.name,
+            display_name: instData.display_name || instData.label_name || uni.name,
             institutionId,
             authors: authorsInSample,
             totalICI,
-            authorCount: group.authors.length, // Use full group count for labels
+            totalACI,
+            authorCount: uni.authors.length, // Use full group count for labels
         };
-    }).filter(node => node.authorCount > 0);
+    }).filter((node: UniversityNode) => node.authorCount > 0);
 
     const links: Link[] = [];
     const linkMap = new Map<string, Link>();
@@ -258,14 +280,22 @@ export default function NetworkUniversityView({
     });
 
     const sizeScale = d3.scaleSqrt()
-      .domain([0, d3.max(universityNodes, d => d.totalICI) || 1])
+      .domain([0, d3.max(universityNodes, d => d.totalACI) || 1])
       .range([10, 40]);
 
-    // Map each university to its visual variable (color + texture)
+    // Map each university to its visual variable using persistent color mapping
     const universityVisuals = new Map(
-      universityNodes.map((node, idx) => {
-        const paletteItem = visualPalette[idx % visualPalette.length];
-        return [node.name, paletteItem];
+      universityNodes.map((node) => {
+        // Try to get palette item from persistent map using display_name or name
+        const paletteItem = universityColorMap.get(node.display_name) ||
+                           universityColorMap.get(node.name);
+
+        if (paletteItem) {
+          // Use the palette item directly from the map
+          return [node.name, paletteItem];
+        }
+        // Fallback to first palette item if not found
+        return [node.name, visualPalette[0]];
       })
     );
 
@@ -595,17 +625,22 @@ export default function NetworkUniversityView({
     nodeGroup
       .on("mouseover", function (_event, d) {
         d3.select(this).select("circle.node-circle").attr("stroke-width", pinnedSet.has(d.id) ? 2.5 : 3);
-        const instData = institutionMap.get(d.name);
         const connections = connectionCounts.get(d.id) || 0;
         const pinHint = pinnedSet.has(d.id)
           ? "<span style='opacity:0.6;text-decoration:underline;'>Right-click to unpin</span>"
           : "<span style='opacity:0.6;text-decoration:underline;'>Click to view profile</span>";
+
+        // Calculate papers and citations from all authors in this university
+        const totalPapers = d.authors.reduce((sum, author) => sum + author.field_papers, 0);
+        const totalCitations = d.authors.reduce((sum, author) => sum + author.field_citations, 0);
+
         tooltip.style("opacity", 1).html(`
           <strong>${d.display_name}</strong><br/>
+          Total ACI: ${d.totalACI.toFixed(2)}<br/>
           ICI: ${d.totalICI.toFixed(2)}<br/>
           Authors: ${d.authorCount}<br/>
-          Papers: ${instData?.field_papers || 0}<br/>
-          Citations: ${instData?.field_citations || 0}<br/>
+          Papers: ${totalPapers}<br/>
+          Citations: ${totalCitations}<br/>
           Connections: ${connections}<br/>
           ${pinHint}
         `);
@@ -636,7 +671,7 @@ export default function NetworkUniversityView({
         tooltipRef.current = null;
       }
     };
-  }, [authorships, maxUniversities, edgeStrength, canadianFilter, selectedUniversity, nodeLabelMode, onUniversitiesChange, institutions, publicationsMin, publicationsMax, citationsMin, citationsMax]);
+  }, [authorships, maxUniversities, edgeStrength, canadianFilter, selectedUniversity, nodeLabelMode, onUniversitiesChange, institutions, publicationsMin, publicationsMax, citationsMin, citationsMax, selectedUniversities, universityColorMap]);
 
   // Render adjacency matrix for matrix university
   useEffect(() => {

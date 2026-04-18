@@ -81,6 +81,17 @@ type EdgeStrengthMetric =
   | "total_papers"
   | "none";
 
+interface InstitutionProp {
+  id: string;
+  name: string;
+  label_name?: string;
+  display_name: string;
+  country_code: string;
+  type: string;
+  ICI: number;
+  totalACI?: number;
+}
+
 interface NetworkViewProps {
   maxAuthors: number;
   maxUniversities: number;
@@ -91,11 +102,15 @@ interface NetworkViewProps {
   publicationsMax: number | null;
   citationsMin: number | null;
   citationsMax: number | null;
+  selectedUniversities: Set<string>;
+  universityColorMap: Map<string, typeof visualPalette[0]>;
+  institutions: InstitutionProp[];
 }
 
 export default function NetworkView({
   maxAuthors,
   maxUniversities,
+  institutions,
   canadianFilter,
   dataPath,
   onViewModeChange,
@@ -103,6 +118,8 @@ export default function NetworkView({
   publicationsMax,
   citationsMin,
   citationsMax,
+  selectedUniversities,
+  universityColorMap,
 }: NetworkViewProps) {
   const router = useRouter();
   const svgRef = useRef<SVGSVGElement>(null);
@@ -206,8 +223,15 @@ export default function NetworkView({
         if (citationsMin !== null && fieldCitations < citationsMin) return;
         if (citationsMax !== null && fieldCitations > citationsMax) return;
 
+        // Apply university filter
+        const institution = authorship.last_known_institutions[idx];
+        if (selectedUniversities.size > 0) {
+          if (!institution || !selectedUniversities.has(institution.display_name)) {
+            return;
+          }
+        }
+
         if (!authorMap.has(authorId)) {
-          const institution = authorship.last_known_institutions[idx];
           authorMap.set(authorId, {
             id: authorId,
             name: authorship.names[idx],
@@ -224,33 +248,35 @@ export default function NetworkView({
       });
     });
 
-    const institutionGroups = new Map<
-      string,
-      { authors: Node[]; totalACI: number }
-    >();
+    // Group authors by institution
+    const institutionGroups = new Map<string, Node[]>();
     authorMap.forEach((author) => {
       if (!institutionGroups.has(author.institution)) {
-        institutionGroups.set(author.institution, {
-          authors: [],
-          totalACI: 0,
-        });
+        institutionGroups.set(author.institution, []);
       }
-      const group = institutionGroups.get(author.institution)!;
-      group.authors.push(author);
-      group.totalACI += author.aci;
+      institutionGroups.get(author.institution)!.push(author);
     });
 
-    const sortedInstitutions = Array.from(institutionGroups.entries())
-      .sort((a, b) => b[1].totalACI - a[1].totalACI)
+    // Use institutions list (already sorted by global totalACI from parent)
+    // Map to include author information
+    const topUniversities = institutions
+      .map((inst) => {
+        const instName = inst.label_name || inst.name;
+        const instAuthors = institutionGroups.get(instName) || institutionGroups.get(inst.name) || [];
+        return {
+          name: instName,
+          fullName: inst.name,
+          authors: instAuthors,
+        };
+      })
+      .filter(uni => uni.authors.length > 0) // Only keep universities with authors
       .slice(0, maxUniversities);
 
-    const topInstitutionNames = new Set(
-      sortedInstitutions.map(([name]) => name),
-    );
+    const topInstitutionNames = new Set(topUniversities.map((u) => u.name));
 
     const institutionToCluster = new Map<string, number>();
-    sortedInstitutions.forEach(([name], idx) => {
-      institutionToCluster.set(name, idx);
+    topUniversities.forEach((uni, idx) => {
+      institutionToCluster.set(uni.name, idx);
     });
 
     const filteredAuthors = Array.from(authorMap.values())
@@ -385,11 +411,18 @@ export default function NetworkView({
 
     const topInstArray = Array.from(topInstitutionNames);
 
-    // Map each university to its visual variable (color + texture)
+    // Map each university to its visual variable using persistent color mapping
     const universityVisuals = new Map(
-      topInstArray.map((name, idx) => {
-        const paletteItem = visualPalette[idx % visualPalette.length];
-        return [name, paletteItem];
+      topInstArray.map((name) => {
+        // Try to get palette item from persistent map
+        const paletteItem = universityColorMap.get(name);
+
+        if (paletteItem) {
+          // Use the palette item directly from the map
+          return [name, paletteItem];
+        }
+        // Fallback to first palette item if not found
+        return [name, visualPalette[0]];
       })
     );
 
@@ -414,13 +447,13 @@ export default function NetworkView({
       );
     });
 
-    const uniList = sortedInstitutions.map(([name, group]) => ({
-      name,
-      color: universityVisuals.get(name)?.color || "#808080",
-      texture: universityVisuals.get(name)?.texture || "none",
-      luminance: universityVisuals.get(name)?.luminance || "dark",
-      totalACI: group.totalACI,
-      count: displayedUniversityCounts.get(name) || 0,
+    const uniList = topUniversities.map((uni) => ({
+      name: uni.name,
+      color: universityVisuals.get(uni.name)?.color || "#808080",
+      texture: universityVisuals.get(uni.name)?.texture || "none",
+      luminance: universityVisuals.get(uni.name)?.luminance || "dark",
+      totalACI: uni.authors.reduce((sum, a) => sum + a.aci, 0),
+      count: displayedUniversityCounts.get(uni.name) || 0,
     }));
     setUniversities(uniList);
 
@@ -432,7 +465,7 @@ export default function NetworkView({
     const cx = width / 2;
     const cy = height / 2;
 
-    const numClusters = sortedInstitutions.length;
+    const numClusters = topUniversities.length;
     const clusterCentroids: { x: number; y: number }[] = [];
 
     // Use elliptical radii to fit rectangular canvas
@@ -1420,6 +1453,9 @@ export default function NetworkView({
     publicationsMax,
     citationsMin,
     citationsMax,
+    selectedUniversities,
+    universityColorMap,
+    institutions,
   ]);
 
   const ViewModeToggle = () => (
@@ -1462,6 +1498,9 @@ export default function NetworkView({
             publicationsMax={publicationsMax}
             citationsMin={citationsMin}
             citationsMax={citationsMax}
+            selectedUniversities={selectedUniversities}
+            universityColorMap={universityColorMap}
+            institutions={institutions}
           />
         </div>
         <div className={styles.sidebar}>
@@ -1501,19 +1540,20 @@ export default function NetworkView({
             {universityViewUniversities.map((uni) => (
               <div
                 key={uni.name}
-                className={`${styles.universityItem} ${selectedInstitution === uni.name ? styles.selected : ""}`}
+                className={`${styles.universityItem} ${selectedInstitution === uni.name ? styles.selected : ""} ${uni.count === 0 ? styles.disabled : ""}`}
+                title={uni.count === 0 ? "Increase number of Authors to see authors of this institution" : ""}
               >
                 {(!uni.texture || uni.texture === "none") ? (
                   <div
                     className={styles.colorBox}
                     style={{ backgroundColor: uni.color }}
                     onClick={() =>
-                      setSelectedInstitution(selectedInstitution === uni.name ? null : uni.name)
+                      uni.count > 0 && setSelectedInstitution(selectedInstitution === uni.name ? null : uni.name)
                     }
                   />
                 ) : (
                   <svg className={styles.colorBox} viewBox="0 0 90 90" onClick={() =>
-                    setSelectedInstitution(selectedInstitution === uni.name ? null : uni.name)
+                    uni.count > 0 && setSelectedInstitution(selectedInstitution === uni.name ? null : uni.name)
                   }>
                     <defs>
                       <pattern
@@ -1578,7 +1618,7 @@ export default function NetworkView({
                 <span
                   className={styles.universityName}
                   onClick={() =>
-                    setSelectedInstitution(selectedInstitution === uni.name ? null : uni.name)
+                    uni.count > 0 && setSelectedInstitution(selectedInstitution === uni.name ? null : uni.name)
                   }
                 >
                   {uni.name} ({uni.count})
@@ -1586,10 +1626,13 @@ export default function NetworkView({
                 <button
                   className={`${styles.matrixToggle} ${matrixUniversity === uni.name ? styles.matrixActive : ""}`}
                   onClick={(e) => {
-                    e.stopPropagation();
-                    toggleUniversityMatrix(uni.name);
+                    if (uni.count > 0) {
+                      e.stopPropagation();
+                      toggleUniversityMatrix(uni.name);
+                    }
                   }}
-                  title={matrixUniversity === uni.name ? "Hide matrix view" : "Show matrix view"}
+                  disabled={uni.count === 0}
+                  title={uni.count === 0 ? "Increase number of Authors to see matrix" : (matrixUniversity === uni.name ? "Hide matrix view" : "Show matrix view")}
                 >
                   ▦
                 </button>
@@ -1651,21 +1694,22 @@ export default function NetworkView({
           {universities.map((uni) => (
             <div
               key={uni.name}
-              className={`${styles.universityItem} ${selectedInstitution === uni.name ? styles.selected : ""}`}
+              className={`${styles.universityItem} ${selectedInstitution === uni.name ? styles.selected : ""} ${uni.count === 0 ? styles.disabled : ""}`}
+              title={uni.count === 0 ? "Increase number of Authors to see authors of this institution" : ""}
             >
               {uni.texture === "none" ? (
                 <div
                   className={styles.colorBox}
                   style={{ backgroundColor: uni.color }}
                   onClick={() =>
-                    setSelectedInstitution(
+                    uni.count > 0 && setSelectedInstitution(
                       selectedInstitution === uni.name ? null : uni.name,
                     )
                   }
                 />
               ) : (
                 <svg className={styles.colorBox} viewBox="0 0 90 90" onClick={() =>
-                  setSelectedInstitution(
+                  uni.count > 0 && setSelectedInstitution(
                     selectedInstitution === uni.name ? null : uni.name,
                   )
                 }>
@@ -1732,7 +1776,7 @@ export default function NetworkView({
               <span
                 className={styles.universityName}
                 onClick={() =>
-                  setSelectedInstitution(
+                  uni.count > 0 && setSelectedInstitution(
                     selectedInstitution === uni.name ? null : uni.name,
                   )
                 }
@@ -1745,7 +1789,8 @@ export default function NetworkView({
                     e.stopPropagation();
                     toggleMatrixMode(uni.name);
                   }}
-                  title={matrixUniversities.has(uni.name) ? "Hide matrix view" : "Show matrix view"}
+                  disabled={uni.count === 0}
+                  title={uni.count === 0 ? "Increase number of Authors to see matrix" : (matrixUniversities.has(uni.name) ? "Hide matrix view" : "Show matrix view")}
                 >
                   ▦
                 </button>

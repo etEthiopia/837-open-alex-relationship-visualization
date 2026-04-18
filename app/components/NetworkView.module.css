@@ -167,12 +167,21 @@
   transition: background 0.2s;
 }
 
-.universityItem:hover {
+.universityItem:hover:not(.disabled) {
   background: rgba(0, 0, 0, 0.05);
 }
 
 .universityItem.selected {
   background: rgba(0, 0, 0, 0.07);
+}
+
+.universityItem.disabled {
+  cursor: not-allowed;
+}
+
+.universityItem.disabled .universityName {
+  color: rgba(0, 0, 0, 0.3);
+  opacity: 0.8;
 }
 
 .colorBox {
@@ -193,9 +202,13 @@
   transition: color 0.2s;
 }
 
-.universityItem:hover .universityName,
+.universityItem:hover:not(.disabled) .universityName,
 .universityItem.selected .universityName {
   color: rgba(0, 0, 0, 0.8);
+}
+
+.universityItem.disabled:hover .universityName {
+  color: rgba(0, 0, 0, 0.3);
 }
 
 /* ─── Matrix Toggle Button ─── */
@@ -230,6 +243,12 @@
 
 .matrixToggle.matrixActive:hover {
   background: rgba(0, 0, 0, 0.8);
+}
+
+.matrixToggle:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
 @media (max-width: 1024px) {

@@ -7,12 +7,16 @@ import Link from "next/link";
 import * as d3 from "d3";
 import styles from "./author.module.css";
 import AuthorEgoNetwork from "../components/AuthorEgoNetwork";
+import { visualPalette } from "../lib/visualPalette";
 
 interface Institution {
   id: string;
+  name: string;
+  label_name?: string;
   display_name: string;
   country_code: string;
   type: string;
+  totalACI?: number;
 }
 
 interface Topic {
@@ -279,6 +283,34 @@ function AuthorContent() {
   const citationsRef = useRef<SVGSVGElement>(null);
   const worksRef = useRef<SVGSVGElement>(null);
 
+  // Persistent university color mapping based on totalACI ranking
+  const [universityColorMap, setUniversityColorMap] = useState<Map<string, typeof visualPalette[0]>>(new Map());
+
+  // Load institutions to create persistent color mapping
+  useEffect(() => {
+    fetch(`${dataPath}/institutions_canadian.json`)
+      .then((res) => res.json())
+      .then((data: Institution[]) => {
+        console.log(data.map((uni) => `${uni.name} - totalACI: ${uni.totalACI} - ICI: ${uni.ICI}`));
+        // Create persistent color mapping based on totalACI ranking
+        // Map directly to palette items (index in sorted institutions array)
+        const colorMap = new Map<string, typeof visualPalette[0]>();
+        data.forEach((inst, index) => {
+          const paletteItem = visualPalette[index % visualPalette.length];
+          // Map by name, label_name, and display_name for flexibility
+          colorMap.set(inst.name, paletteItem);
+          if (inst.label_name) {
+            colorMap.set(inst.label_name, paletteItem);
+          }
+          if (inst.display_name) {
+            colorMap.set(inst.display_name, paletteItem);
+          }
+        });
+        setUniversityColorMap(colorMap);
+      })
+      .catch((err) => console.error("Failed to load institutions:", err));
+  }, [dataPath]);
+
   useEffect(() => {
     if (!authorId) { setLoading(false); return; }
     fetch(`${dataPath}/authors.json`)
@@ -469,6 +501,7 @@ function AuthorContent() {
             authorId={author.author_id}
             authorName={author.display_name}
             dataPath={dataPath}
+            universityColorMap={universityColorMap}
           />
         </section>
 

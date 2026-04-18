@@ -31,26 +31,28 @@ interface AuthorWithOcclusionOffset extends Author {
   occlusionXOffset: number;
 }
 
+interface Institution {
+  id: string;
+  name: string;
+  label_name?: string;
+  country_code: string;
+  ICI: number;
+}
+
 interface ScatterplotViewProps {
+  authors: Author[];
+  institutions: Institution[];
   maxAuthors: number;
-  maxUniversities: number;
-  canadianFilter: "full" | "full_partial";
+  universityColorMap: Map<string, typeof visualPalette[0]>;
   dataPath: string;
-  publicationsMin: number | null;
-  publicationsMax: number | null;
-  citationsMin: number | null;
-  citationsMax: number | null;
 }
 
 export default function ScatterplotView({
+  authors,
+  institutions,
   maxAuthors,
-  maxUniversities,
-  canadianFilter,
+  universityColorMap,
   dataPath,
-  publicationsMin,
-  publicationsMax,
-  citationsMin,
-  citationsMax,
 }: ScatterplotViewProps) {
   const router = useRouter();
   const svgRef = useRef<SVGSVGElement>(null);
@@ -64,7 +66,6 @@ export default function ScatterplotView({
     SVGSVGElement,
     unknown
   > | null>(null);
-  const [authors, setAuthors] = useState<Author[]>([]);
   const [useSizeEncoding, setUseSizeEncoding] = useState<boolean>(true);
   const [hasZoomed, setHasZoomed] = useState<boolean>(false);
   const [selectedInstitution, setSelectedInstitution] = useState<string | null>(
@@ -82,68 +83,41 @@ export default function ScatterplotView({
   >([]);
 
   useEffect(() => {
-    fetch(`${dataPath}/authors_canadian.json`)
-      .then((res) => res.json())
-      .then((data: Author[]) => {
-        const canadianAuthors = data.filter((author) => {
-          if (canadianFilter === "full") {
-            return author.last_known_institution?.country_code === "CA";
-          }
-          return (
-            author.last_known_institution?.country_code === "CA" ||
-            author.last_known_institution?.country_code !== undefined
-          );
-        });
-
-        // Apply publications and citations filters
-        let filtered = canadianAuthors;
-
-        if (publicationsMin !== null) {
-          filtered = filtered.filter((author) => author.field_papers >= publicationsMin);
-        }
-        if (publicationsMax !== null) {
-          filtered = filtered.filter((author) => author.field_papers <= publicationsMax);
-        }
-        if (citationsMin !== null) {
-          filtered = filtered.filter((author) => author.field_citations >= citationsMin);
-        }
-        if (citationsMax !== null) {
-          filtered = filtered.filter((author) => author.field_citations <= citationsMax);
-        }
-
-        setAuthors(filtered.sort((a, b) => b.aci - a.aci));
-      });
-  }, [canadianFilter, dataPath, publicationsMin, publicationsMax, citationsMin, citationsMax]);
-
-  useEffect(() => {
-    if (!svgRef.current || authors.length === 0) return;
+    if (!svgRef.current || authors.length === 0 || institutions.length === 0) return;
 
     d3.select(svgRef.current).selectAll("*").remove();
 
-    const allInstitutionMap = new Map<string, Author[]>();
+    // Build map of institution names to their authors
+    const institutionMap = new Map<string, Author[]>();
     authors.forEach((author) => {
-      const inst =
+      const instName =
         author.last_known_institution?.label_name ||
         author.last_known_institution?.display_name ||
         "Unknown";
-      if (!allInstitutionMap.has(inst)) {
-        allInstitutionMap.set(inst, []);
+      if (!institutionMap.has(instName)) {
+        institutionMap.set(instName, []);
       }
-      allInstitutionMap.get(inst)!.push(author);
+      institutionMap.get(instName)!.push(author);
     });
 
-    const allUniList = Array.from(allInstitutionMap.entries()).map(
-      ([inst, instAuthors]) => ({
-        name: inst,
+    // Use institutions list (already sorted by ICI from parent)
+    // Map to include author information
+    const topUniversities = institutions.map((inst) => {
+      const instName = inst.label_name || inst.name;
+      const instAuthors = institutionMap.get(instName) || institutionMap.get(inst.name) || [];
+      return {
+        name: instName,
+        fullName: inst.name,
+        label_name: inst.label_name,
         totalACI: instAuthors.reduce((sum, a) => sum + a.aci, 0),
-        authors: instAuthors.sort((a, b) => b.aci - a.aci), // Sort authors by ACI within the institution
-      }),
-    );
-    allUniList.sort((a, b) => b.totalACI - a.totalACI);
+        ICI: inst.ICI,
+        authors: instAuthors.sort((a, b) => b.aci - a.aci),
+      };
+    }).filter(uni => uni.authors.length > 0); // Only keep universities with authors
 
-    const topUniversities = allUniList.slice(0, maxUniversities);
     const topUniversityNames = new Set(topUniversities.map((u) => u.name));
 
+    // Filter authors to only those from top universities
     const filteredAuthors = authors.filter((author) =>
       topUniversityNames.has(
         author.last_known_institution?.label_name ||
@@ -153,14 +127,22 @@ export default function ScatterplotView({
     );
     const displayAuthors = filteredAuthors.slice(0, maxAuthors);
 
-    // Use custom visual palette based on Opponent Color Theory + Mackinlay's Model
-    const universityNames = topUniversities.map((u) => u.name);
+    console.log(universityColorMap);
 
-    // Map each university to its visual variable (color + texture)
+    // Use persistent color mapping based on totalACI ranking
     const universityVisuals = new Map(
-      universityNames.map((name, idx) => {
-        const paletteItem = visualPalette[idx % visualPalette.length];
-        return [name, paletteItem];
+      topUniversities.map((uni) => {
+        // Try to get color from map using fullName, label_name, or display name
+        const paletteItem = universityColorMap.get(uni.fullName) ||
+                           universityColorMap.get(uni.label_name || '') ||
+                           universityColorMap.get(uni.name);
+
+        if (paletteItem) {
+          // Use the palette item directly from the map
+          return [uni.name, paletteItem];
+        }
+        // Fallback to first palette item if not found
+        return [uni.name, visualPalette[0]];
       }),
     );
 
@@ -353,22 +335,25 @@ export default function ScatterplotView({
     const maxCitations =
       d3.max(displayAuthors, (d) => d.field_citations) || 100;
 
-    // Calculate axis origins based on filter values
-    const xMin = publicationsMin !== null ? publicationsMin - 1 : 0;
+    // Calculate axis origins based on actual data
+    const minPapers = d3.min(displayAuthors, (d) => d.field_papers) || 0;
+    const minCitations = d3.min(displayAuthors, (d) => d.field_citations) || 0;
 
-    // For Y-axis, calculate a nice round number below citationsMin
+    const xMin = Math.max(0, minPapers - 1);
+
+    // For Y-axis, calculate a nice round number below minCitations
     let yMin = 0;
-    if (citationsMin !== null) {
-      const magnitude = Math.pow(10, Math.floor(Math.log10(citationsMin)));
+    if (minCitations > 0) {
+      const magnitude = Math.pow(10, Math.floor(Math.log10(minCitations)));
       let niceStep: number;
-      const normalized = citationsMin / magnitude;
+      const normalized = minCitations / magnitude;
 
       if (normalized <= 1) niceStep = magnitude;
       else if (normalized <= 2) niceStep = magnitude;
       else if (normalized <= 5) niceStep = 2 * magnitude;
       else niceStep = 5 * magnitude;
 
-      yMin = Math.max(0, Math.floor(citationsMin / niceStep) * niceStep - niceStep);
+      yMin = Math.max(0, Math.floor(minCitations / niceStep) * niceStep - niceStep);
     }
 
     const xScale = d3
@@ -611,8 +596,8 @@ export default function ScatterplotView({
       .style("text-transform", "uppercase")
       .text("Citations");
 
-    // Add zigzag indicator if publications filter is set
-    if (publicationsMin !== null && publicationsMin > 0) {
+    // Add zigzag indicator if x-axis doesn't start at 0
+    if (xMin > 0) {
       const xZigzagGroup = svg
         .append("g")
         .attr("class", "x-axis-break-indicator")
@@ -628,8 +613,8 @@ export default function ScatterplotView({
         .attr("fill", "none");
     }
 
-    // Add zigzag indicator if citations filter is set
-    if (citationsMin !== null && citationsMin > 0) {
+    // Add zigzag indicator if y-axis doesn't start at 0
+    if (yMin > 0) {
       const yZigzagGroup = svg
         .append("g")
         .attr("class", "y-axis-break-indicator")
@@ -826,14 +811,12 @@ export default function ScatterplotView({
     };
   }, [
     authors,
+    institutions,
     maxAuthors,
-    maxUniversities,
     useSizeEncoding,
     selectedInstitution,
     router,
-    dataPath,
-    publicationsMin,
-    citationsMin,
+    universityColorMap,
   ]);
 
   const resetZoom = () => {
@@ -874,12 +857,14 @@ export default function ScatterplotView({
               key={uni.name}
               className={`${styles.universityItem} ${
                 selectedInstitution === uni.name ? styles.selected : ""
-              }`}
+              } ${uni.count === 0 ? styles.disabled : ""}`}
               onClick={() =>
+                uni.count > 0 &&
                 setSelectedInstitution(
                   selectedInstitution === uni.name ? null : uni.name,
                 )
               }
+              title={uni.count === 0 ? "Increase number of Authors to see authors of this institution" : ""}
             >
               {uni.texture === "none" ? (
                 <div

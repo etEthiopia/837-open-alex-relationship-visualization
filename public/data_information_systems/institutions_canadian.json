@@ -23,37 +23,8 @@
     "works_count": 22,
     "cited_by_count": 37,
     "ICI": 23.68095238095238,
-    "label_name": "U. of Toronto"
-  },
-  {
-    "id": "https://openalex.org/I125749732",
-    "name": "Western University",
-    "ror": "https://ror.org/02grkyz14",
-    "country_code": "CA",
-    "type": "education",
-    "lineage": [
-      "https://openalex.org/I125749732"
-    ],
-    "field_citations": 27,
-    "field_papers": 16,
-    "stats_per_year": {
-      "2024": {
-        "field_citations": 22,
-        "field_papers": 5
-      },
-      "2025": {
-        "field_citations": 5,
-        "field_papers": 10
-      },
-      "2026": {
-        "field_citations": 0,
-        "field_papers": 1
-      }
-    },
-    "works_count": 16,
-    "cited_by_count": 27,
-    "ICI": 15.427777777777777,
-    "label_name": "Western U."
+    "label_name": "U. of Toronto",
+    "totalACI": 16.990000000000002
   },
   {
     "id": "https://openalex.org/I151746483",
@@ -83,7 +54,8 @@
     "works_count": 13,
     "cited_by_count": 29,
     "ICI": 25.241666666666667,
-    "label_name": "U. of Waterloo"
+    "label_name": "U. of Waterloo",
+    "totalACI": 15.98
   },
   {
     "id": "https://openalex.org/I141945490",
@@ -109,93 +81,39 @@
     "works_count": 12,
     "cited_by_count": 47,
     "ICI": 24.648809523809526,
-    "label_name": "U. of British Columbia"
+    "label_name": "U. of British Columbia",
+    "totalACI": 15.73
   },
   {
-    "id": "https://openalex.org/I18014758",
-    "name": "Simon Fraser University",
-    "ror": "https://ror.org/0213rcc28",
+    "id": "https://openalex.org/I125749732",
+    "name": "Western University",
+    "ror": "https://ror.org/02grkyz14",
     "country_code": "CA",
     "type": "education",
     "lineage": [
-      "https://openalex.org/I18014758"
+      "https://openalex.org/I125749732"
     ],
-    "field_citations": 15,
-    "field_papers": 12,
+    "field_citations": 27,
+    "field_papers": 16,
     "stats_per_year": {
       "2024": {
-        "field_citations": 8,
-        "field_papers": 3
+        "field_citations": 22,
+        "field_papers": 5
       },
       "2025": {
-        "field_citations": 7,
-        "field_papers": 8
+        "field_citations": 5,
+        "field_papers": 10
       },
       "2026": {
         "field_citations": 0,
         "field_papers": 1
       }
     },
-    "works_count": 12,
-    "cited_by_count": 15,
-    "ICI": 9.269047619047619,
-    "label_name": "Simon Fraser U."
-  },
-  {
-    "id": "https://openalex.org/I153718931",
-    "name": "University of Ottawa",
-    "ror": "https://ror.org/03c4mmv16",
-    "country_code": "CA",
-    "type": "education",
-    "lineage": [
-      "https://openalex.org/I153718931"
-    ],
-    "field_citations": 10,
-    "field_papers": 11,
-    "stats_per_year": {
-      "2025": {
-        "field_citations": 2,
-        "field_papers": 8
-      },
-      "2024": {
-        "field_citations": 8,
-        "field_papers": 2
-      },
-      "2026": {
-        "field_citations": 0,
-        "field_papers": 1
-      }
-    },
-    "works_count": 11,
-    "cited_by_count": 10,
-    "ICI": 6.547222222222222,
-    "label_name": "U. of Ottawa"
-  },
-  {
-    "id": "https://openalex.org/I168635309",
-    "name": "University of Calgary",
-    "ror": "https://ror.org/03yjb2x39",
-    "country_code": "CA",
-    "type": "education",
-    "lineage": [
-      "https://openalex.org/I168635309"
-    ],
-    "field_citations": 16,
-    "field_papers": 10,
-    "stats_per_year": {
-      "2025": {
-        "field_citations": 13,
-        "field_papers": 7
-      },
-      "2024": {
-        "field_citations": 3,
-        "field_papers": 3
-      }
-    },
-    "works_count": 10,
-    "cited_by_count": 16,
-    "ICI": 10.180555555555555,
-    "label_name": "U. of Calgary"
+    "works_count": 16,
+    "cited_by_count": 27,
+    "ICI": 15.427777777777777,
+    "label_name": "Western U.",
+    "totalACI": 15.049999999999999
   },
   {
     "id": "https://openalex.org/I5023651",
@@ -221,205 +139,8 @@
     "works_count": 9,
     "cited_by_count": 49,
     "ICI": 13.715131578947368,
-    "label_name": "McGill U."
-  },
-  {
-    "id": "https://openalex.org/I129902397",
-    "name": "Dalhousie University",
-    "ror": "https://ror.org/01e6qks80",
-    "country_code": "CA",
-    "type": "education",
-    "lineage": [
-      "https://openalex.org/I129902397"
-    ],
-    "field_citations": 10,
-    "field_papers": 9,
-    "stats_per_year": {
-      "2024": {
-        "field_citations": 9,
-        "field_papers": 4
-      },
-      "2025": {
-        "field_citations": 1,
-        "field_papers": 5
-      }
-    },
-    "works_count": 9,
-    "cited_by_count": 10,
-    "ICI": 3.1708333333333334,
-    "label_name": "Dalhousie U."
-  },
-  {
-    "id": "https://openalex.org/I43406934",
-    "name": "Université Laval",
-    "ror": "https://ror.org/04sjchr03",
-    "country_code": "CA",
-    "type": "education",
-    "lineage": [
-      "https://openalex.org/I43406934"
-    ],
-    "field_citations": 5,
-    "field_papers": 9,
-    "stats_per_year": {
-      "2024": {
-        "field_citations": 4,
-        "field_papers": 5
-      },
-      "2025": {
-        "field_citations": 1,
-        "field_papers": 4
-      }
-    },
-    "works_count": 9,
-    "cited_by_count": 5,
-    "ICI": 16.25,
-    "label_name": "U. Laval"
-  },
-  {
-    "id": "https://openalex.org/I192455969",
-    "name": "York University",
-    "ror": "https://ror.org/05fq50484",
-    "country_code": "CA",
-    "type": "education",
-    "lineage": [
-      "https://openalex.org/I192455969"
-    ],
-    "field_citations": 11,
-    "field_papers": 9,
-    "stats_per_year": {
-      "2024": {
-        "field_citations": 11,
-        "field_papers": 4
-      },
-      "2025": {
-        "field_citations": 0,
-        "field_papers": 5
-      }
-    },
-    "works_count": 9,
-    "cited_by_count": 11,
-    "ICI": 12.95,
-    "label_name": "York U."
-  },
-  {
-    "id": "https://openalex.org/I154425047",
-    "name": "University of Alberta",
-    "ror": "https://ror.org/0160cpw27",
-    "country_code": "CA",
-    "type": "education",
-    "lineage": [
-      "https://openalex.org/I154425047"
-    ],
-    "field_citations": 5,
-    "field_papers": 8,
-    "stats_per_year": {
-      "2024": {
-        "field_citations": 5,
-        "field_papers": 4
-      },
-      "2025": {
-        "field_citations": 0,
-        "field_papers": 3
-      },
-      "2026": {
-        "field_citations": 0,
-        "field_papers": 1
-      }
-    },
-    "works_count": 8,
-    "cited_by_count": 5,
-    "ICI": 5.6,
-    "label_name": "U. of Alberta"
-  },
-  {
-    "id": "https://openalex.org/I186803428",
-    "name": "Brock University",
-    "ror": "https://ror.org/056am2717",
-    "country_code": "CA",
-    "type": "education",
-    "lineage": [
-      "https://openalex.org/I186803428"
-    ],
-    "field_citations": 11,
-    "field_papers": 7,
-    "stats_per_year": {
-      "2024": {
-        "field_citations": 8,
-        "field_papers": 3
-      },
-      "2025": {
-        "field_citations": 3,
-        "field_papers": 3
-      },
-      "2026": {
-        "field_citations": 0,
-        "field_papers": 1
-      }
-    },
-    "works_count": 7,
-    "cited_by_count": 11,
-    "ICI": 6.2875,
-    "label_name": "Brock U."
-  },
-  {
-    "id": "https://openalex.org/I32625721",
-    "name": "University of Saskatchewan",
-    "ror": "https://ror.org/010x8gc63",
-    "country_code": "CA",
-    "type": "education",
-    "lineage": [
-      "https://openalex.org/I32625721"
-    ],
-    "field_citations": 22,
-    "field_papers": 6,
-    "stats_per_year": {
-      "2024": {
-        "field_citations": 21,
-        "field_papers": 2
-      },
-      "2025": {
-        "field_citations": 1,
-        "field_papers": 3
-      },
-      "2026": {
-        "field_citations": 0,
-        "field_papers": 1
-      }
-    },
-    "works_count": 6,
-    "cited_by_count": 22,
-    "ICI": 4.628571428571428,
-    "label_name": "U. of Saskatchewan"
-  },
-  {
-    "id": "https://openalex.org/I67031392",
-    "name": "Carleton University",
-    "ror": "https://ror.org/02qtvee93",
-    "country_code": "CA",
-    "type": "education",
-    "lineage": [
-      "https://openalex.org/I67031392"
-    ],
-    "field_citations": 19,
-    "field_papers": 6,
-    "stats_per_year": {
-      "2024": {
-        "field_citations": 17,
-        "field_papers": 3
-      },
-      "2025": {
-        "field_citations": 2,
-        "field_papers": 2
-      },
-      "2026": {
-        "field_citations": 0,
-        "field_papers": 1
-      }
-    },
-    "works_count": 6,
-    "cited_by_count": 19,
-    "ICI": 7.038461538461538,
-    "label_name": "Carleton U."
+    "label_name": "McGill U.",
+    "totalACI": 13.860000000000001
   },
   {
     "id": "https://openalex.org/I79817857",
@@ -445,7 +166,31 @@
     "works_count": 5,
     "cited_by_count": 35,
     "ICI": 3.6547619047619047,
-    "label_name": "U. of Guelph"
+    "label_name": "U. of Guelph",
+    "totalACI": 12.040000000000001
+  },
+  {
+    "id": "https://openalex.org/I46247651",
+    "name": "University of Manitoba",
+    "ror": "https://ror.org/02gfys938",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I46247651"
+    ],
+    "field_citations": 41,
+    "field_papers": 3,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 41,
+        "field_papers": 3
+      }
+    },
+    "works_count": 3,
+    "cited_by_count": 41,
+    "ICI": 6.180978260869566,
+    "label_name": "U. of Manitoba",
+    "totalACI": 10.299999999999999
   },
   {
     "id": "https://openalex.org/I194028371",
@@ -471,7 +216,35 @@
     "works_count": 5,
     "cited_by_count": 21,
     "ICI": 7.376623376623376,
-    "label_name": null
+    "label_name": null,
+    "totalACI": 10.280000000000001
+  },
+  {
+    "id": "https://openalex.org/I168635309",
+    "name": "University of Calgary",
+    "ror": "https://ror.org/03yjb2x39",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I168635309"
+    ],
+    "field_citations": 16,
+    "field_papers": 10,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 3,
+        "field_papers": 3
+      },
+      "2025": {
+        "field_citations": 13,
+        "field_papers": 7
+      }
+    },
+    "works_count": 10,
+    "cited_by_count": 16,
+    "ICI": 10.180555555555555,
+    "label_name": "U. of Calgary",
+    "totalACI": 7.27
   },
   {
     "id": "https://openalex.org/I159129438",
@@ -502,48 +275,120 @@
     "works_count": 5,
     "cited_by_count": 15,
     "ICI": 9.38888888888889,
-    "label_name": "UQAM"
+    "label_name": "UQAM",
+    "totalACI": 6.99
   },
   {
-    "id": "https://openalex.org/I70931966",
-    "name": "Université de Montréal",
-    "ror": "https://ror.org/0161xgx34",
+    "id": "https://openalex.org/I18014758",
+    "name": "Simon Fraser University",
+    "ror": "https://ror.org/0213rcc28",
     "country_code": "CA",
     "type": "education",
     "lineage": [
-      "https://openalex.org/I70931966"
+      "https://openalex.org/I18014758"
     ],
-    "field_citations": 3,
-    "field_papers": 5,
-    "stats_per_year": {
-      "2025": {
-        "field_citations": 3,
-        "field_papers": 5
-      }
-    },
-    "works_count": 5,
-    "cited_by_count": 3,
-    "ICI": 5.088888888888889,
-    "label_name": "U. de Montréal"
-  },
-  {
-    "id": "https://openalex.org/I212119943",
-    "name": "University of Victoria",
-    "ror": "https://ror.org/04s5mat29",
-    "country_code": "CA",
-    "type": "education",
-    "lineage": [
-      "https://openalex.org/I212119943"
-    ],
-    "field_citations": 3,
-    "field_papers": 5,
+    "field_citations": 15,
+    "field_papers": 12,
     "stats_per_year": {
       "2024": {
-        "field_citations": 3,
+        "field_citations": 8,
+        "field_papers": 3
+      },
+      "2025": {
+        "field_citations": 7,
+        "field_papers": 8
+      },
+      "2026": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 12,
+    "cited_by_count": 15,
+    "ICI": 9.269047619047619,
+    "label_name": "Simon Fraser U.",
+    "totalACI": 6.88
+  },
+  {
+    "id": "https://openalex.org/I32625721",
+    "name": "University of Saskatchewan",
+    "ror": "https://ror.org/010x8gc63",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I32625721"
+    ],
+    "field_citations": 22,
+    "field_papers": 6,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 21,
         "field_papers": 2
       },
       "2025": {
+        "field_citations": 1,
+        "field_papers": 3
+      },
+      "2026": {
         "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 6,
+    "cited_by_count": 22,
+    "ICI": 4.628571428571428,
+    "label_name": "U. of Saskatchewan",
+    "totalACI": 4.93
+  },
+  {
+    "id": "https://openalex.org/I186803428",
+    "name": "Brock University",
+    "ror": "https://ror.org/056am2717",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I186803428"
+    ],
+    "field_citations": 11,
+    "field_papers": 7,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 8,
+        "field_papers": 3
+      },
+      "2025": {
+        "field_citations": 3,
+        "field_papers": 3
+      },
+      "2026": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 7,
+    "cited_by_count": 11,
+    "ICI": 6.2875,
+    "label_name": "Brock U.",
+    "totalACI": 4.569999999999999
+  },
+  {
+    "id": "https://openalex.org/I67031392",
+    "name": "Carleton University",
+    "ror": "https://ror.org/02qtvee93",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I67031392"
+    ],
+    "field_citations": 19,
+    "field_papers": 6,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 17,
+        "field_papers": 3
+      },
+      "2025": {
+        "field_citations": 2,
         "field_papers": 2
       },
       "2026": {
@@ -551,36 +396,61 @@
         "field_papers": 1
       }
     },
-    "works_count": 5,
-    "cited_by_count": 3,
-    "ICI": 1.0,
-    "label_name": "U. of Victoria"
+    "works_count": 6,
+    "cited_by_count": 19,
+    "ICI": 7.038461538461538,
+    "label_name": "Carleton U.",
+    "totalACI": 4.5600000000000005
   },
   {
-    "id": "https://openalex.org/I204722609",
-    "name": "Queen's University",
-    "ror": "https://ror.org/02y72wh86",
+    "id": "https://openalex.org/I160262251",
+    "name": "Thompson Rivers University",
+    "ror": "https://ror.org/01v9wj339",
     "country_code": "CA",
     "type": "education",
     "lineage": [
-      "https://openalex.org/I204722609"
+      "https://openalex.org/I160262251"
     ],
-    "field_citations": 0,
-    "field_papers": 5,
+    "field_citations": 5,
+    "field_papers": 1,
     "stats_per_year": {
       "2024": {
-        "field_citations": 0,
-        "field_papers": 2
-      },
-      "2025": {
-        "field_citations": 0,
-        "field_papers": 3
+        "field_citations": 5,
+        "field_papers": 1
       }
     },
-    "works_count": 5,
-    "cited_by_count": 0,
-    "ICI": 0.0,
-    "label_name": "Queen's U."
+    "works_count": 1,
+    "cited_by_count": 5,
+    "ICI": 2.3999999999999995,
+    "label_name": null,
+    "totalACI": 4.34
+  },
+  {
+    "id": "https://openalex.org/I43406934",
+    "name": "Université Laval",
+    "ror": "https://ror.org/04sjchr03",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I43406934"
+    ],
+    "field_citations": 5,
+    "field_papers": 9,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 4,
+        "field_papers": 5
+      },
+      "2025": {
+        "field_citations": 1,
+        "field_papers": 4
+      }
+    },
+    "works_count": 9,
+    "cited_by_count": 5,
+    "ICI": 16.25,
+    "label_name": "U. Laval",
+    "totalACI": 3.8899999999999997
   },
   {
     "id": "https://openalex.org/I60158472",
@@ -606,55 +476,170 @@
     "works_count": 4,
     "cited_by_count": 7,
     "ICI": 8.057142857142857,
-    "label_name": "Concordia U."
+    "label_name": "Concordia U.",
+    "totalACI": 3.56
   },
   {
-    "id": "https://openalex.org/I46247651",
-    "name": "University of Manitoba",
-    "ror": "https://ror.org/02gfys938",
+    "id": "https://openalex.org/I154425047",
+    "name": "University of Alberta",
+    "ror": "https://ror.org/0160cpw27",
     "country_code": "CA",
     "type": "education",
     "lineage": [
-      "https://openalex.org/I46247651"
+      "https://openalex.org/I154425047"
     ],
-    "field_citations": 41,
-    "field_papers": 3,
+    "field_citations": 5,
+    "field_papers": 8,
     "stats_per_year": {
       "2024": {
-        "field_citations": 41,
-        "field_papers": 3
-      }
-    },
-    "works_count": 3,
-    "cited_by_count": 41,
-    "ICI": 6.180978260869566,
-    "label_name": "U. of Manitoba"
-  },
-  {
-    "id": "https://openalex.org/I74413500",
-    "name": "University of Windsor",
-    "ror": "https://ror.org/01gw3d370",
-    "country_code": "CA",
-    "type": "education",
-    "lineage": [
-      "https://openalex.org/I74413500"
-    ],
-    "field_citations": 2,
-    "field_papers": 3,
-    "stats_per_year": {
-      "2024": {
-        "field_citations": 1,
-        "field_papers": 2
+        "field_citations": 5,
+        "field_papers": 4
       },
       "2025": {
-        "field_citations": 1,
+        "field_citations": 0,
+        "field_papers": 3
+      },
+      "2026": {
+        "field_citations": 0,
         "field_papers": 1
       }
     },
-    "works_count": 3,
-    "cited_by_count": 2,
-    "ICI": 10.0,
-    "label_name": "U. of Windsor"
+    "works_count": 8,
+    "cited_by_count": 5,
+    "ICI": 5.6,
+    "label_name": "U. of Alberta",
+    "totalACI": 3
+  },
+  {
+    "id": "https://openalex.org/I108192572",
+    "name": "HEC Montréal",
+    "ror": "https://ror.org/05ww3wq27",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I108192572"
+    ],
+    "field_citations": 3,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 3,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 3,
+    "ICI": 1.3333333333333333,
+    "label_name": null,
+    "totalACI": 2.8600000000000003
+  },
+  {
+    "id": "https://openalex.org/I530967",
+    "name": "Toronto Metropolitan University",
+    "ror": "https://ror.org/05g13zd79",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I530967"
+    ],
+    "field_citations": 9,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 9,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 9,
+    "ICI": 0.5555555555555556,
+    "label_name": "Toronto Metropolitan U.",
+    "totalACI": 2.83
+  },
+  {
+    "id": "https://openalex.org/I129902397",
+    "name": "Dalhousie University",
+    "ror": "https://ror.org/01e6qks80",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I129902397"
+    ],
+    "field_citations": 10,
+    "field_papers": 9,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 9,
+        "field_papers": 4
+      },
+      "2025": {
+        "field_citations": 1,
+        "field_papers": 5
+      }
+    },
+    "works_count": 9,
+    "cited_by_count": 10,
+    "ICI": 3.1708333333333334,
+    "label_name": "Dalhousie U.",
+    "totalACI": 2.77
+  },
+  {
+    "id": "https://openalex.org/I153718931",
+    "name": "University of Ottawa",
+    "ror": "https://ror.org/03c4mmv16",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I153718931"
+    ],
+    "field_citations": 10,
+    "field_papers": 11,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 8,
+        "field_papers": 2
+      },
+      "2025": {
+        "field_citations": 2,
+        "field_papers": 8
+      },
+      "2026": {
+        "field_citations": 0,
+        "field_papers": 1
+      }
+    },
+    "works_count": 11,
+    "cited_by_count": 10,
+    "ICI": 6.547222222222222,
+    "label_name": "U. of Ottawa",
+    "totalACI": 1.95
+  },
+  {
+    "id": "https://openalex.org/I192455969",
+    "name": "York University",
+    "ror": "https://ror.org/05fq50484",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I192455969"
+    ],
+    "field_citations": 11,
+    "field_papers": 9,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 11,
+        "field_papers": 4
+      },
+      "2025": {
+        "field_citations": 0,
+        "field_papers": 5
+      }
+    },
+    "works_count": 9,
+    "cited_by_count": 11,
+    "ICI": 12.95,
+    "label_name": "York U.",
+    "totalACI": 1.8199999999999998
   },
   {
     "id": "https://openalex.org/I98251732",
@@ -676,7 +661,8 @@
     "works_count": 2,
     "cited_by_count": 5,
     "ICI": 1.7999999999999998,
-    "label_name": "McMaster U."
+    "label_name": "McMaster U.",
+    "totalACI": 1.79
   },
   {
     "id": "https://openalex.org/I106938459",
@@ -702,7 +688,81 @@
     "works_count": 2,
     "cited_by_count": 3,
     "ICI": 3.857142857142857,
-    "label_name": "U. of New Brunswick"
+    "label_name": "U. of New Brunswick",
+    "totalACI": 1.15
+  },
+  {
+    "id": "https://openalex.org/I75381157",
+    "name": "Wilfrid Laurier University",
+    "ror": "https://ror.org/00fn7gb05",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I75381157"
+    ],
+    "field_citations": 9,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 9,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 9,
+    "ICI": 1.1111111111111112,
+    "label_name": null,
+    "totalACI": 1.14
+  },
+  {
+    "id": "https://openalex.org/I70931966",
+    "name": "Université de Montréal",
+    "ror": "https://ror.org/0161xgx34",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I70931966"
+    ],
+    "field_citations": 3,
+    "field_papers": 5,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 3,
+        "field_papers": 5
+      }
+    },
+    "works_count": 5,
+    "cited_by_count": 3,
+    "ICI": 5.088888888888889,
+    "label_name": "U. de Montréal",
+    "totalACI": 1.1199999999999999
+  },
+  {
+    "id": "https://openalex.org/I74413500",
+    "name": "University of Windsor",
+    "ror": "https://ror.org/01gw3d370",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I74413500"
+    ],
+    "field_citations": 2,
+    "field_papers": 3,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 1,
+        "field_papers": 2
+      },
+      "2025": {
+        "field_citations": 1,
+        "field_papers": 1
+      }
+    },
+    "works_count": 3,
+    "cited_by_count": 2,
+    "ICI": 10,
+    "label_name": "U. of Windsor",
+    "totalACI": 1.02
   },
   {
     "id": "https://openalex.org/I52353378",
@@ -727,118 +787,32 @@
     },
     "works_count": 2,
     "cited_by_count": 3,
-    "ICI": 2.0,
-    "label_name": null
+    "ICI": 2,
+    "label_name": null,
+    "totalACI": 0.85
   },
   {
-    "id": "https://openalex.org/I530967",
-    "name": "Toronto Metropolitan University",
-    "ror": "https://ror.org/05g13zd79",
+    "id": "https://openalex.org/I135117807",
+    "name": "Université de Sherbrooke",
+    "ror": "https://ror.org/00kybxq39",
     "country_code": "CA",
     "type": "education",
     "lineage": [
-      "https://openalex.org/I530967"
+      "https://openalex.org/I135117807"
     ],
-    "field_citations": 9,
+    "field_citations": 4,
     "field_papers": 1,
     "stats_per_year": {
       "2024": {
-        "field_citations": 9,
+        "field_citations": 4,
         "field_papers": 1
       }
     },
     "works_count": 1,
-    "cited_by_count": 9,
-    "ICI": 0.5555555555555556,
-    "label_name": "Toronto Metropolitan U."
-  },
-  {
-    "id": "https://openalex.org/I75381157",
-    "name": "Wilfrid Laurier University",
-    "ror": "https://ror.org/00fn7gb05",
-    "country_code": "CA",
-    "type": "education",
-    "lineage": [
-      "https://openalex.org/I75381157"
-    ],
-    "field_citations": 9,
-    "field_papers": 1,
-    "stats_per_year": {
-      "2024": {
-        "field_citations": 9,
-        "field_papers": 1
-      }
-    },
-    "works_count": 1,
-    "cited_by_count": 9,
-    "ICI": 1.1111111111111112,
-    "label_name": null
-  },
-  {
-    "id": "https://openalex.org/I160262251",
-    "name": "Thompson Rivers University",
-    "ror": "https://ror.org/01v9wj339",
-    "country_code": "CA",
-    "type": "education",
-    "lineage": [
-      "https://openalex.org/I160262251"
-    ],
-    "field_citations": 5,
-    "field_papers": 1,
-    "stats_per_year": {
-      "2024": {
-        "field_citations": 5,
-        "field_papers": 1
-      }
-    },
-    "works_count": 1,
-    "cited_by_count": 5,
-    "ICI": 2.3999999999999995,
-    "label_name": null
-  },
-  {
-    "id": "https://openalex.org/I108192572",
-    "name": "HEC Montréal",
-    "ror": "https://ror.org/05ww3wq27",
-    "country_code": "CA",
-    "type": "education",
-    "lineage": [
-      "https://openalex.org/I108192572"
-    ],
-    "field_citations": 3,
-    "field_papers": 1,
-    "stats_per_year": {
-      "2025": {
-        "field_citations": 3,
-        "field_papers": 1
-      }
-    },
-    "works_count": 1,
-    "cited_by_count": 3,
-    "ICI": 1.3333333333333333,
-    "label_name": null
-  },
-  {
-    "id": "https://openalex.org/I51768193",
-    "name": "Royal Military College of Canada",
-    "ror": "https://ror.org/04yr71909",
-    "country_code": "CA",
-    "type": "education",
-    "lineage": [
-      "https://openalex.org/I51768193"
-    ],
-    "field_citations": 3,
-    "field_papers": 1,
-    "stats_per_year": {
-      "2025": {
-        "field_citations": 3,
-        "field_papers": 1
-      }
-    },
-    "works_count": 1,
-    "cited_by_count": 3,
-    "ICI": 0.6666666666666666,
-    "label_name": null
+    "cited_by_count": 4,
+    "ICI": 1.875,
+    "label_name": "U. de Sherbrooke",
+    "totalACI": 0.85
   },
   {
     "id": "https://openalex.org/I63341726",
@@ -861,29 +835,58 @@
     "works_count": 1,
     "cited_by_count": 1,
     "ICI": 1.3333333333333333,
-    "label_name": null
+    "label_name": null,
+    "totalACI": 0.76
   },
   {
-    "id": "https://openalex.org/I135117807",
-    "name": "Université de Sherbrooke",
-    "ror": "https://ror.org/00kybxq39",
+    "id": "https://openalex.org/I204722609",
+    "name": "Queen's University",
+    "ror": "https://ror.org/02y72wh86",
     "country_code": "CA",
     "type": "education",
     "lineage": [
-      "https://openalex.org/I135117807"
+      "https://openalex.org/I204722609"
     ],
-    "field_citations": 4,
-    "field_papers": 1,
+    "field_citations": 0,
+    "field_papers": 5,
     "stats_per_year": {
       "2024": {
-        "field_citations": 4,
+        "field_citations": 0,
+        "field_papers": 2
+      },
+      "2025": {
+        "field_citations": 0,
+        "field_papers": 3
+      }
+    },
+    "works_count": 5,
+    "cited_by_count": 0,
+    "ICI": 0,
+    "label_name": "Queen's U.",
+    "totalACI": 0.76
+  },
+  {
+    "id": "https://openalex.org/I51768193",
+    "name": "Royal Military College of Canada",
+    "ror": "https://ror.org/04yr71909",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I51768193"
+    ],
+    "field_citations": 3,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 3,
         "field_papers": 1
       }
     },
     "works_count": 1,
-    "cited_by_count": 4,
-    "ICI": 1.875,
-    "label_name": "U. de Sherbrooke"
+    "cited_by_count": 3,
+    "ICI": 0.6666666666666666,
+    "label_name": null,
+    "totalACI": 0.64
   },
   {
     "id": "https://openalex.org/I200745827",
@@ -906,7 +909,31 @@
     "works_count": 1,
     "cited_by_count": 1,
     "ICI": 2.6666666666666665,
-    "label_name": null
+    "label_name": null,
+    "totalACI": 0.59
+  },
+  {
+    "id": "https://openalex.org/I66890659",
+    "name": "Saint Mary's University",
+    "ror": "https://ror.org/010zh7098",
+    "country_code": "CA",
+    "type": "education",
+    "lineage": [
+      "https://openalex.org/I66890659"
+    ],
+    "field_citations": 1,
+    "field_papers": 1,
+    "stats_per_year": {
+      "2025": {
+        "field_citations": 1,
+        "field_papers": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 1,
+    "ICI": 2,
+    "label_name": null,
+    "totalACI": 0.42
   },
   {
     "id": "https://openalex.org/I112532030",
@@ -928,73 +955,8 @@
     "works_count": 1,
     "cited_by_count": 1,
     "ICI": 1.3333333333333333,
-    "label_name": null
-  },
-  {
-    "id": "https://openalex.org/I66890659",
-    "name": "Saint Mary's University",
-    "ror": "https://ror.org/010zh7098",
-    "country_code": "CA",
-    "type": "education",
-    "lineage": [
-      "https://openalex.org/I66890659"
-    ],
-    "field_citations": 1,
-    "field_papers": 1,
-    "stats_per_year": {
-      "2025": {
-        "field_citations": 1,
-        "field_papers": 1
-      }
-    },
-    "works_count": 1,
-    "cited_by_count": 1,
-    "ICI": 2.0,
-    "label_name": null
-  },
-  {
-    "id": "https://openalex.org/I49663120",
-    "name": "Université du Québec",
-    "ror": "https://ror.org/010gxg263",
-    "country_code": "CA",
-    "type": "education",
-    "lineage": [
-      "https://openalex.org/I49663120"
-    ],
-    "field_citations": 1,
-    "field_papers": 1,
-    "stats_per_year": {
-      "2025": {
-        "field_citations": 1,
-        "field_papers": 1
-      }
-    },
-    "works_count": 1,
-    "cited_by_count": 1,
-    "ICI": 0.08888888888888889,
-    "label_name": null
-  },
-  {
-    "id": "https://openalex.org/I107949126",
-    "name": "University of Lethbridge",
-    "ror": "https://ror.org/044j76961",
-    "country_code": "CA",
-    "type": "education",
-    "lineage": [
-      "https://openalex.org/I107949126"
-    ],
-    "field_citations": 0,
-    "field_papers": 1,
-    "stats_per_year": {
-      "2024": {
-        "field_citations": 0,
-        "field_papers": 1
-      }
-    },
-    "works_count": 1,
-    "cited_by_count": 0,
-    "ICI": 0.0,
-    "label_name": null
+    "label_name": null,
+    "totalACI": 0.34
   },
   {
     "id": "https://openalex.org/I45683168",
@@ -1015,7 +977,8 @@
     },
     "works_count": 1,
     "cited_by_count": 0,
-    "ICI": 0.0,
-    "label_name": null
+    "ICI": 0,
+    "label_name": null,
+    "totalACI": 0.17
   }
 ]

@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import * as d3 from "d3";
 import styles from "./AuthorEgoNetwork.module.css";
-import { visualPalette } from "../lib/visualPalette";
+import { visualPalette, getTextureStrokeForVariable } from "../lib/visualPalette";
 
 interface Authorship {
   ids: string[];
@@ -35,9 +35,10 @@ interface Props {
   authorId: string;
   authorName: string;
   dataPath: string;
+  universityColorMap: Map<string, typeof visualPalette[0]>;
 }
 
-export default function AuthorEgoNetwork({ authorId, authorName, dataPath }: Props) {
+export default function AuthorEgoNetwork({ authorId, authorName, dataPath, universityColorMap }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const svgRef = useRef<SVGSVGElement>(null);
   const router = useRouter();
@@ -101,13 +102,18 @@ export default function AuthorEgoNetwork({ authorId, authorName, dataPath }: Pro
           }
         }
 
-        // Assign a palette colour to each unique institution (including center)
+        // Assign a palette colour to each unique institution using persistent color mapping
         const uniqueInstitutions = [...new Set([centerInstitution, ...topCollabs.map(([, d]) => d.institution)])];
-        const institutionColor = new Map<string, string>(
-          uniqueInstitutions.map((inst, i) => [
-            inst,
-            visualPalette[i % visualPalette.length].color,
-          ])
+        const institutionVisuals = new Map<string, typeof visualPalette[0]>(
+          uniqueInstitutions.map((inst) => {
+            const paletteItem = universityColorMap.get(inst);
+            if (paletteItem) {
+              // Use the palette item directly from the map
+              return [inst, paletteItem];
+            }
+            // Fallback if institution not in map
+            return [inst, visualPalette[0]];
+          })
         );
 
         const rScale = d3
@@ -158,6 +164,72 @@ export default function AuthorEgoNetwork({ authorId, authorName, dataPath }: Pro
           .select(svgRef.current)
           .attr("width", width)
           .attr("height", height);
+
+        // Create texture patterns for institutions
+        const defs = svg.append("defs");
+        institutionVisuals.forEach((visual, institution) => {
+          if (visual.texture === "none") return;
+
+          const patternId = `ego-pattern-${institution.replace(/[^a-zA-Z0-9]/g, "-")}`;
+          const strokeColor = getTextureStrokeForVariable(visual);
+
+          const pattern = defs
+            .append("pattern")
+            .attr("id", patternId)
+            .attr("patternUnits", "userSpaceOnUse")
+            .attr("width", 20)
+            .attr("height", 20);
+
+          // Background
+          pattern.append("rect")
+            .attr("width", 20)
+            .attr("height", 20)
+            .attr("fill", visual.color);
+
+          // Texture lines/dots
+          if (visual.texture === "vertical") {
+            [4, 10, 16].forEach((x) => {
+              pattern.append("line")
+                .attr("x1", x).attr("y1", 0)
+                .attr("x2", x).attr("y2", 20)
+                .attr("stroke", strokeColor)
+                .attr("stroke-width", 2);
+            });
+          } else if (visual.texture === "horizontal") {
+            [4, 10, 16].forEach((y) => {
+              pattern.append("line")
+                .attr("x1", 0).attr("y1", y)
+                .attr("x2", 20).attr("y2", y)
+                .attr("stroke", strokeColor)
+                .attr("stroke-width", 2);
+            });
+          } else if (visual.texture === "diagonal") {
+            pattern.append("line")
+              .attr("x1", 10).attr("y1", 0)
+              .attr("x2", 20).attr("y2", 10)
+              .attr("stroke", strokeColor)
+              .attr("stroke-width", 2);
+            pattern.append("line")
+              .attr("x1", 0).attr("y1", 0)
+              .attr("x2", 20).attr("y2", 20)
+              .attr("stroke", strokeColor)
+              .attr("stroke-width", 2);
+            pattern.append("line")
+              .attr("x1", 0).attr("y1", 10)
+              .attr("x2", 10).attr("y2", 20)
+              .attr("stroke", strokeColor)
+              .attr("stroke-width", 2);
+          } else if (visual.texture === "dots") {
+            [3, 10, 17].forEach((x) => {
+              [3, 10, 17].forEach((y) => {
+                pattern.append("circle")
+                  .attr("cx", x).attr("cy", y)
+                  .attr("r", 1.5)
+                  .attr("fill", strokeColor);
+              });
+            });
+          }
+        });
 
         // Tooltip
         d3.select("#ego-tooltip").remove();
@@ -228,8 +300,13 @@ export default function AuthorEgoNetwork({ authorId, authorName, dataPath }: Pro
           .attr("class", "node-circle")
           .attr("r", (d) => d.r)
           .attr("fill", (d) => {
-            const col = institutionColor.get(d.institution) || "#808080";
-            return col;
+            const visual = institutionVisuals.get(d.institution) || visualPalette[0];
+            if (visual.texture === "none") {
+              return visual.color;
+            } else {
+              const patternId = `ego-pattern-${d.institution.replace(/[^a-zA-Z0-9]/g, "-")}`;
+              return `url(#${patternId})`;
+            }
           })
           .attr("opacity", (d) => 0.85)
           .attr("stroke", "none")
@@ -350,7 +427,7 @@ export default function AuthorEgoNetwork({ authorId, authorName, dataPath }: Pro
         });
 
         // Legend — institutions and their colors
-        const legendData = Array.from(institutionColor.entries());
+        const legendData = Array.from(institutionVisuals.entries());
         const legend = svg.append("g")
           .attr("class", "institution-legend")
           .attr("transform", `translate(${width - 160}, ${height - (legendData.length * 18) - 10})`);
@@ -360,7 +437,7 @@ export default function AuthorEgoNetwork({ authorId, authorName, dataPath }: Pro
           .enter()
           .append("g")
           .attr("transform", (_, i) => `translate(0, ${i * 18})`)
-          .each(function([institution, color]) {
+          .each(function([institution, visual]) {
             const g = d3.select(this);
 
             // Color box
@@ -368,7 +445,14 @@ export default function AuthorEgoNetwork({ authorId, authorName, dataPath }: Pro
               .attr("r", 5)
               .attr("cx", 5)
               .attr("cy", 0)
-              .attr("fill", color)
+              .attr("fill", () => {
+                if (visual.texture === "none") {
+                  return visual.color;
+                } else {
+                  const patternId = `ego-pattern-${institution.replace(/[^a-zA-Z0-9]/g, "-")}`;
+                  return `url(#${patternId})`;
+                }
+              })
               .attr("opacity", 0.85);
 
             // Institution name
@@ -386,7 +470,7 @@ export default function AuthorEgoNetwork({ authorId, authorName, dataPath }: Pro
       sim?.stop();
       d3.select("#ego-tooltip").remove();
     };
-  }, [authorId, authorName, router, dataPath]);
+  }, [authorId, authorName, router, dataPath, universityColorMap]);
 
   return (
     <div ref={containerRef} className={styles.container}>
