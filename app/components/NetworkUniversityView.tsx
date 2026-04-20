@@ -139,7 +139,7 @@ export default function NetworkUniversityView({
     // Create institution lookup map
     const institutionMap = new Map<string, InstitutionProp>();
     institutions.forEach(inst => {
-      institutionMap.set(inst.label_name, inst);
+      if (inst.label_name) institutionMap.set(inst.label_name, inst);
       institutionMap.set(inst.name, inst);
       institutionMap.set(inst.id, inst);
     });

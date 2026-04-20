@@ -20,7 +20,9 @@ interface Institution {
   id: string;
   name: string;
   label_name?: string;
+  display_name: string;
   country_code: string;
+  type: string;
   ICI: number;
   field_citations: number;
   field_papers: number;
