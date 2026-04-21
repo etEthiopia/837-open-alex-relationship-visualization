@@ -314,7 +314,7 @@ export default function NetworkUniversityView({
 
     const simulation = d3
       .forceSimulation<UniversityNode>(universityNodes)
-      .force("link", d3.forceLink<UniversityNode, Link>(links)
+      .force("link", d3.forceLink<UniversityNode, any>(links)
         .id((d: any) => d.id)
         .distance(250) // More breathing room for large nodes
         .strength(d => edgeStrength === "none" ? 0.1 : d.value / 400))
@@ -594,11 +594,11 @@ export default function NetworkUniversityView({
     });
 
     // Use shared greedy seriation algorithm to reveal cliques
-    const sortedAuthors = greedySeriation(authors as any, links);
+    const sortedAuthors = greedySeriation(authors as any, links as any);
 
     // Matrix layout
     const cellSize = 15;
-    const getLabelText = (d: Author) => truncateLabel(getLastName(d.name));
+    const getLabelText = (d: any) => truncateLabel(getLastName(d.name));
 
     const maxLabelWidth = Math.max(...sortedAuthors.map((d) => getLabelText(d).length * 6));
     const labelPadding = maxLabelWidth + 10;
