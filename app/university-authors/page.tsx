@@ -713,7 +713,7 @@ export default function UniversityAuthorsPage() {
           </div>
 
           <div className={styles.controlGroup}>
-            <label htmlFor="maxUniversities">Max Universities: {maxUniversities}</label>
+            <label htmlFor="maxUniversities">Max Institutions: {maxUniversities}</label>
             <input
               id="maxUniversities"
               type="range"
@@ -765,7 +765,7 @@ export default function UniversityAuthorsPage() {
           </div>
         </div>
 
-        <h2>Universities</h2>
+        <h2>Institutions</h2>
         <div className={styles.universityList}>
           {universities.map((uni) => (
             <div

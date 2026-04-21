@@ -57,7 +57,7 @@ export default function Home() {
             Find the researcher<br />who changes everything
           </h1>
           <p className={`${styles.heroSub} ${styles.entrance} ${styles.d2}`}>
-            Explore 200,000+ Canadian researchers through interactive
+            Explore Canadian researchers through interactive
             visualizations — publications, citations, co-authorship networks,
             and detailed profiles.
           </p>
@@ -106,9 +106,9 @@ export default function Home() {
       <section className={styles.stats}>
         <div className={styles.statsInner}>
           {[
-            { val: "200K+", label: "Researchers indexed" },
-            { val: "140K+", label: "Co-authorship links" },
-            { val: "100+",  label: "Canadian institutions" },
+            { val: "1,724", label: "Researchers indexed" },
+            { val: "2,307", label: "Co-authorship links" },
+            { val: "112",  label: "Canadian institutions" },
           ].map((s, i) => (
             <div key={i} className={`${styles.statItem} reveal`} ref={addRef}>
               <span className={styles.statVal}>{s.val}</span>

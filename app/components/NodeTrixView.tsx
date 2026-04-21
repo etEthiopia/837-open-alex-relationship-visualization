@@ -656,7 +656,7 @@ export default function NodeTrixView({ maxAuthors, maxUniversities, canadianFilt
         </div>
 
         <div className={styles.sideSection}>
-          <p className={styles.sideLabel}>Universities</p>
+          <p className={styles.sideLabel}>Institutions</p>
           <div className={styles.uniList}>
             {universities.map((u) => (
               <div key={u.name} className={styles.uniItem}>

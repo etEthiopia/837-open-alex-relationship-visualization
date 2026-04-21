@@ -409,7 +409,7 @@ export default function ScatterplotPage() {
           </div>
           <div className={styles.controlGroup}>
             <label htmlFor="maxUniversities">
-              Max Universities: {maxUniversities}
+              Max Institutions: {maxUniversities}
             </label>
             <input
               id="maxUniversities"
@@ -439,7 +439,7 @@ export default function ScatterplotPage() {
             </div>
           )}
         </div>
-        <h2>Universities</h2>
+        <h2>Institutions</h2>
         <div className={styles.universityList}>
           {universities.map((uni) => (
             <div

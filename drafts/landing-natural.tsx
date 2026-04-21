@@ -93,7 +93,7 @@ export default function Home() {
               <h3 className={styles.featureTitle}>Scatterplot Analysis</h3>
               <p className={styles.featureText}>
                 Compare researchers across institutions by publications,
-                citations, and author citation index. Filter by university to
+                citations, and author citation index. Filter by institution to
                 find patterns.
               </p>
             </div>

@@ -341,7 +341,7 @@ function ExploreContent() {
         {/* Universities Range */}
         <div className={styles.filterGroup}>
           <label htmlFor="maxUniversities">
-            Universities — {maxUniversities}
+            Institutions — {maxUniversities}
           </label>
           <input
             id="maxUniversities"
@@ -462,7 +462,7 @@ function ExploreContent() {
             }}
           >
             <label htmlFor="universitySearch">
-              University Search
+              Institution Search
               {selectedUniversities.size > 0 &&
                 ` (${selectedUniversities.size} selected)`}
             </label>
@@ -486,7 +486,7 @@ function ExploreContent() {
           <input
             id="universitySearch"
             type="text"
-            placeholder="Type to filter universities..."
+            placeholder="Type to filter institutions..."
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
             onFocus={() => setShowDropdown(true)}
@@ -527,7 +527,7 @@ function ExploreContent() {
                     fontSize: "14px",
                   }}
                 >
-                  No universities found
+                  No institutions found
                 </div>
               ) : (
                 universities

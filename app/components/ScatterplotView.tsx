@@ -850,7 +850,7 @@ export default function ScatterplotView({
             </button>
           )}
         </div>
-        <h3>Universities</h3>
+        <h3>Institutions</h3>
         <div className={styles.universityList}>
           {universities.map((uni) => (
             <div
