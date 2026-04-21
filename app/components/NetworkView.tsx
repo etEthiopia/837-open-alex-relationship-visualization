@@ -5,9 +5,16 @@ import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import * as d3 from "d3";
 import styles from "./NetworkView.module.css";
-import { visualPalette, getTextureStrokeForVariable, getTextureStrokeColor } from "../lib/visualPalette";
+import { visualPalette, getTextureStrokeColor } from "../lib/visualPalette";
 import NetworkUniversityView from "./NetworkUniversityView";
+import {
+  createTooltip,
+  createTexturePatterns,
+  getFillForUniversity,
+  createUniversityVisualMapping,
+} from "./shared";
 
+// Keep local types for NetworkView-specific structures
 interface Institution {
   id: string;
   display_name: string;
@@ -412,32 +419,16 @@ export default function NetworkView({
     const topInstArray = Array.from(topInstitutionNames);
 
     // Map each university to its visual variable using persistent color mapping
-    const universityVisuals = new Map(
-      topInstArray.map((name) => {
-        // Try to get palette item from persistent map
-        const paletteItem = universityColorMap.get(name);
-
-        if (paletteItem) {
-          // Use the palette item directly from the map
-          return [name, paletteItem];
-        }
-        // Fallback to first palette item if not found
-        return [name, visualPalette[0]];
-      })
+    // Using shared utility to create visual mapping
+    const universityVisuals = createUniversityVisualMapping(
+      topInstArray.map(name => ({ name })),
+      universityColorMap
     );
 
     // Helper function to get fill value (solid color or pattern URL)
-    const getFillForUniversity = (universityName: string): string => {
-      const visual = universityVisuals.get(universityName);
-      if (!visual) return "#808080"; // Fallback gray
-
-      if (visual.texture === "none") {
-        return visual.color;
-      } else {
-        const patternId = `pattern-${universityName.replace(/[^a-zA-Z0-9]/g, "-")}`;
-        return `url(#${patternId})`;
-      }
-    };
+    // Using shared utility with local closure
+    const getUniversityFill = (universityName: string): string =>
+      getFillForUniversity(universityName, universityVisuals);
 
     const displayedUniversityCounts = new Map<string, number>();
     displayAuthors.forEach((author) => {
@@ -516,110 +507,9 @@ export default function NetworkView({
       .attr("width", containerWidth)
       .attr("height", containerHeight);
 
-    // Definitions: texture patterns
+    // Definitions: texture patterns - using shared utility
     const defs = svgEl.append("defs");
-
-    // Create texture patterns for each university that needs one
-    universityVisuals.forEach((visual, universityName) => {
-      if (visual.texture === "none") return;
-
-      const patternId = `pattern-${universityName.replace(/[^a-zA-Z0-9]/g, "-")}`;
-      const strokeColor = getTextureStrokeForVariable(visual);
-
-      // Small repeating pattern that works well for circles of all sizes
-      const pattern = defs
-        .append("pattern")
-        .attr("id", patternId)
-        .attr("patternUnits", "userSpaceOnUse")
-        .attr("width", 8)
-        .attr("height", 8);
-
-      // Background color
-      pattern.append("rect")
-        .attr("width", 8)
-        .attr("height", 8)
-        .attr("fill", visual.color);
-
-      // Add lines based on texture type
-      if (visual.texture === "vertical") {
-        // Vertical stripes
-        pattern.append("line")
-          .attr("x1", 2)
-          .attr("y1", 0)
-          .attr("x2", 2)
-          .attr("y2", 8)
-          .attr("stroke", strokeColor)
-          .attr("stroke-width", 2);
-        pattern.append("line")
-          .attr("x1", 6)
-          .attr("y1", 0)
-          .attr("x2", 6)
-          .attr("y2", 8)
-          .attr("stroke", strokeColor)
-          .attr("stroke-width", 2);
-      } else if (visual.texture === "horizontal") {
-        // Horizontal stripes
-        pattern.append("line")
-          .attr("x1", 0)
-          .attr("y1", 2)
-          .attr("x2", 8)
-          .attr("y2", 2)
-          .attr("stroke", strokeColor)
-          .attr("stroke-width", 2);
-        pattern.append("line")
-          .attr("x1", 0)
-          .attr("y1", 6)
-          .attr("x2", 8)
-          .attr("y2", 6)
-          .attr("stroke", strokeColor)
-          .attr("stroke-width", 2);
-      } else if (visual.texture === "diagonal") {
-        // Diagonal stripes (45 degree)
-        pattern.append("line")
-          .attr("x1", 0)
-          .attr("y1", 0)
-          .attr("x2", 8)
-          .attr("y2", 8)
-          .attr("stroke", strokeColor)
-          .attr("stroke-width", 2);
-        pattern.append("line")
-          .attr("x1", -2)
-          .attr("y1", 6)
-          .attr("x2", 2)
-          .attr("y2", 10)
-          .attr("stroke", strokeColor)
-          .attr("stroke-width", 2);
-        pattern.append("line")
-          .attr("x1", 6)
-          .attr("y1", -2)
-          .attr("x2", 10)
-          .attr("y2", 2)
-          .attr("stroke", strokeColor)
-          .attr("stroke-width", 2);
-      } else if (visual.texture === "dots") {
-        // Dot pattern - 4 dots in a grid
-        pattern.append("circle")
-          .attr("cx", 2)
-          .attr("cy", 2)
-          .attr("r", 1)
-          .attr("fill", strokeColor);
-        pattern.append("circle")
-          .attr("cx", 6)
-          .attr("cy", 2)
-          .attr("r", 1)
-          .attr("fill", strokeColor);
-        pattern.append("circle")
-          .attr("cx", 2)
-          .attr("cy", 6)
-          .attr("r", 1)
-          .attr("fill", strokeColor);
-        pattern.append("circle")
-          .attr("cx", 6)
-          .attr("cy", 6)
-          .attr("r", 1)
-          .attr("fill", strokeColor);
-      }
-    });
+    createTexturePatterns(defs, universityVisuals);
 
     const g = svgEl.append("g");
 
@@ -756,19 +646,8 @@ export default function NetworkView({
       .velocityDecay(0.55); // Increased friction to stop the drift
 
     if (!tooltipRef.current) {
-      tooltipRef.current = d3
-        .select("body")
-        .append("div")
-        .style("position", "absolute")
-        .style("background", "rgba(0, 0, 0, 0.8)")
-        .style("color", "white")
-        .style("padding", "8px")
-        .style("border-radius", "4px")
-        .style("font-size", "12px")
-        .style("font-family", "Outfit, system-ui, sans-serif")
-        .style("pointer-events", "none")
-        .style("opacity", 0)
-        .style("z-index", "1000");
+      tooltipRef.current = createTooltip("network-author-tooltip")
+        .style("font-family", "Outfit, system-ui, sans-serif");
     }
     const tooltip = tooltipRef.current;
 
@@ -866,7 +745,7 @@ export default function NetworkView({
       .append("circle")
       .attr("class", "node-circle")
       .attr("r", (d) => (useSizeEncoding ? sizeScale(d.aci) : 10))
-      .attr("fill", (d) => getFillForUniversity(d.institution))
+      .attr("fill", (d) => getUniversityFill(d.institution))
       .attr("stroke", "rgba(255,255,255,0.5)")
       .attr("stroke-width", 0.8)
       .style("opacity", (d) => {
@@ -1030,19 +909,16 @@ export default function NetworkView({
         }
       });
 
-      // Greedy seriation algorithm to reveal cliques:
-      // Place nodes with many shared neighbors adjacent to each other
+      // Greedy seriation algorithm to reveal cliques
       const ordered: Node[] = [];
       const remaining = new Set(matrixNode.authors.map(a => a.id));
 
-      // Start with the most connected node
       let currentId = matrixNode.authors.reduce((max, author) =>
         (authorLinks.get(author.id)?.size || 0) > (authorLinks.get(max.id)?.size || 0) ? author : max
       ).id;
 
       while (remaining.size > 0) {
         if (!remaining.has(currentId)) {
-          // Pick next most connected from remaining
           const remainingAuthors = matrixNode.authors.filter(a => remaining.has(a.id));
           if (remainingAuthors.length === 0) break;
           currentId = remainingAuthors.reduce((max, author) =>
@@ -1054,7 +930,6 @@ export default function NetworkView({
         ordered.push(current);
         remaining.delete(currentId);
 
-        // Find next node: the unvisited node with most shared connections to current
         let nextId: string | null = null;
         let maxShared = -1;
 
@@ -1062,8 +937,7 @@ export default function NetworkView({
           const currentNeighbors = authorLinks.get(currentId) || new Set();
           const candidateNeighbors = authorLinks.get(candidateId) || new Set();
 
-          // Count shared neighbors + direct connection
-          let shared = currentNeighbors.has(candidateId) ? 100 : 0; // Bonus for direct connection
+          let shared = currentNeighbors.has(candidateId) ? 100 : 0;
           currentNeighbors.forEach(n => {
             if (candidateNeighbors.has(n)) shared++;
           });
@@ -1481,7 +1355,7 @@ export default function NetworkView({
           onViewModeChange?.("author");
         }}
       >
-        Author
+        Researcher
       </button>
       <button
         className={`${styles.viewModeButton} ${viewMode === "university" ? styles.active : ""}`}

@@ -1,0 +1,94 @@
+[
+    {
+        "id": "https://openalex.org/I18014758",
+        "name": "Simon Fraser University",
+        "ror": "https://ror.org/0213rcc28",
+        "country_code": "CA",
+        "type": "education",
+        "lineage": [
+            "https://openalex.org/I18014758"
+        ],
+        "field_citations": 203,
+        "field_papers": 58,
+        "stats_per_year": {
+            "2024": {
+                "field_citations": 164,
+                "field_papers": 30
+            },
+            "2025": {
+                "field_citations": 39,
+                "field_papers": 26
+            },
+            "2026": {
+                "field_citations": 0,
+                "field_papers": 2
+            }
+        },
+        "works_count": 58,
+        "cited_by_count": 203,
+        "ICI": 86.50309012746511,
+        "shortand_name": "SFU",
+        "label_name": "Simon Fraser U.",
+        "totalACI": 146.95000000000007
+    },
+    {
+        "id": "https://openalex.org/I151746483",
+        "name": "University of Waterloo",
+        "ror": "https://ror.org/01aff2v68",
+        "country_code": "CA",
+        "type": "education",
+        "lineage": [
+            "https://openalex.org/I151746483"
+        ],
+        "field_citations": 199,
+        "field_papers": 46,
+        "stats_per_year": {
+            "2024": {
+                "field_citations": 173,
+                "field_papers": 28
+            },
+            "2025": {
+                "field_citations": 26,
+                "field_papers": 17
+            },
+            "2026": {
+                "field_citations": 0,
+                "field_papers": 1
+            }
+        },
+        "works_count": 46,
+        "cited_by_count": 199,
+        "ICI": 82.88291666666667,
+        "shortand_name": "UW",
+        "label_name": "U. of Waterloo",
+        "totalACI": 124.08000000000001
+    },
+    {
+        "id": "https://openalex.org/I185261750",
+        "name": "University of Toronto",
+        "ror": "https://ror.org/03dbr7087",
+        "country_code": "CA",
+        "type": "education",
+        "lineage": [
+            "https://openalex.org/I185261750"
+        ],
+        "field_citations": 313,
+        "field_papers": 53,
+        "stats_per_year": {
+            "2024": {
+                "field_citations": 290,
+                "field_papers": 34
+            },
+            "2025": {
+                "field_citations": 23,
+                "field_papers": 19
+            }
+        },
+        "works_count": 53,
+        "cited_by_count": 313,
+        "ICI": 73.50018906789093,
+        "shortand_name": "U of T",
+        "label_name": "U. of Toronto",
+        "totalACI": 106.51
+    }
+]

@@ -113,7 +113,7 @@ export default function Home() {
               ref={addRevealRef}
             >
               <div className={styles.featureNumber}>03</div>
-              <h3 className={styles.featureTitle}>Author Profiles</h3>
+              <h3 className={styles.featureTitle}>Researchers Profiles</h3>
               <p className={styles.featureText}>
                 Dive deep into any researcher — h-index, topics, publication
                 history, institutional affiliations, and citation trends over

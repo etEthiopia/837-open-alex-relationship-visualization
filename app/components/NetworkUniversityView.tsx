@@ -3,40 +3,26 @@
 
 import { useEffect, useRef, useState } from "react";
 import * as d3 from "d3";
-import { visualPalette, getTextureStrokeForVariable } from "../lib/visualPalette";
+import { visualPalette } from "../lib/visualPalette";
+import {
+  Institution,
+  Author,
+  Authorship,
+  Link,
+  EdgeStrengthMetric,
+  createTooltip,
+  removeTooltip,
+  createTexturePatterns,
+  getFillForUniversity,
+  createUniversityVisualMapping,
+  createInstitutionMap,
+  greedySeriation,
+  createMatrixData,
+  getLastName,
+  truncateLabel,
+} from "./shared";
 
-interface Institution {
-  id: string;
-  display_name: string;
-  label_name: string;
-  country_code: string;
-  type: string;
-}
-
-
-interface Author {
-  id: string;
-  name: string;
-  aci: number;
-  field_citations: number;
-  field_papers: number;
-  institution: string;
-  institutionId: string;
-}
-
-interface Authorship {
-  id: string;
-  ids: string[];
-  names: string[];
-  ACIs: number[];
-  field_citations: number[];
-  field_papers: number[];
-  last_known_institutions: Institution[];
-  total_cited_by_count: number;
-  total_papers: number;
-  total_fwci: number;
-  canadian_status: string;
-}
+// Using shared types: Institution, Author, Authorship, Link, EdgeStrengthMetric
 
 interface UniversityNode {
   id: string;
@@ -55,20 +41,7 @@ interface UniversityNode {
   fy?: number | null;
 }
 
-interface Link {
-  source: string | UniversityNode;
-  target: string | UniversityNode;
-  value: number;
-  fwci?: number;
-  citations?: number;
-  papers?: number;
-}
-
-type EdgeStrengthMetric =
-  | "total_fwci"
-  | "total_cited_by_count"
-  | "total_papers"
-  | "none";
+// Using shared Link and EdgeStrengthMetric types
 
 interface InstitutionProp {
   id: string;
@@ -136,13 +109,8 @@ export default function NetworkUniversityView({
 
     d3.select(svgRef.current).selectAll("*").remove();
 
-    // Create institution lookup map
-    const institutionMap = new Map<string, InstitutionProp>();
-    institutions.forEach(inst => {
-      if (inst.label_name) institutionMap.set(inst.label_name, inst);
-      institutionMap.set(inst.name, inst);
-      institutionMap.set(inst.id, inst);
-    });
+    // Create institution lookup map using shared utility
+    const institutionMap = createInstitutionMap(institutions);
 
     // --- Data Processing ---
     const filteredAuthorships = authorships.filter((a) => {
@@ -283,34 +251,18 @@ export default function NetworkUniversityView({
       .domain([0, d3.max(universityNodes, d => d.totalACI) || 1])
       .range([10, 40]);
 
-    // Map each university to its visual variable using persistent color mapping
-    const universityVisuals = new Map(
-      universityNodes.map((node) => {
-        // Try to get palette item from persistent map using display_name or name
-        const paletteItem = universityColorMap.get(node.display_name) ||
-                           universityColorMap.get(node.name);
-
-        if (paletteItem) {
-          // Use the palette item directly from the map
-          return [node.name, paletteItem];
-        }
-        // Fallback to first palette item if not found
-        return [node.name, visualPalette[0]];
-      })
+    // Map each university to its visual variable using shared utility
+    const universityVisuals = createUniversityVisualMapping(
+      universityNodes.map(node => ({
+        name: node.name,
+        fullName: node.display_name,
+      })),
+      universityColorMap
     );
 
-    // Helper function to get fill value (solid color or pattern URL)
-    const getFillForUniversity = (universityName: string): string => {
-      const visual = universityVisuals.get(universityName);
-      if (!visual) return "#808080"; // Fallback gray
-
-      if (visual.texture === "none") {
-        return visual.color;
-      } else {
-        const patternId = `pattern-uni-${universityName.replace(/[^a-zA-Z0-9]/g, "-")}`;
-        return `url(#${patternId})`;
-      }
-    };
+    // Helper function to get fill value (solid color or pattern URL) using shared utility
+    const getUniversityFill = (universityName: string): string =>
+      getFillForUniversity(`uni-${universityName}`, uniPatternVisuals);
 
     // Store visuals in state for matrix rendering
     const colorMap = new Map<string, { color: string; texture: string; luminance: "dark" | "light" }>();
@@ -386,127 +338,24 @@ export default function NetworkUniversityView({
     // Definitions: texture patterns
     const defs = svgEl.append("defs");
 
-    // Create texture patterns for each university that needs one
-    universityVisuals.forEach((visual, universityName) => {
-      if (visual.texture === "none") return;
-
-      const patternId = `pattern-uni-${universityName.replace(/[^a-zA-Z0-9]/g, "-")}`;
-      const strokeColor = getTextureStrokeForVariable(visual);
-
-      // Small repeating pattern that works well for circles of all sizes
-      const pattern = defs
-        .append("pattern")
-        .attr("id", patternId)
-        .attr("patternUnits", "userSpaceOnUse")
-        .attr("width", 8)
-        .attr("height", 8);
-
-      // Background color
-      pattern.append("rect")
-        .attr("width", 8)
-        .attr("height", 8)
-        .attr("fill", visual.color);
-
-      // Add lines based on texture type
-      if (visual.texture === "vertical") {
-        // Vertical stripes
-        pattern.append("line")
-          .attr("x1", 2)
-          .attr("y1", 0)
-          .attr("x2", 2)
-          .attr("y2", 8)
-          .attr("stroke", strokeColor)
-          .attr("stroke-width", 2);
-        pattern.append("line")
-          .attr("x1", 6)
-          .attr("y1", 0)
-          .attr("x2", 6)
-          .attr("y2", 8)
-          .attr("stroke", strokeColor)
-          .attr("stroke-width", 2);
-      } else if (visual.texture === "horizontal") {
-        // Horizontal stripes
-        pattern.append("line")
-          .attr("x1", 0)
-          .attr("y1", 2)
-          .attr("x2", 8)
-          .attr("y2", 2)
-          .attr("stroke", strokeColor)
-          .attr("stroke-width", 2);
-        pattern.append("line")
-          .attr("x1", 0)
-          .attr("y1", 6)
-          .attr("x2", 8)
-          .attr("y2", 6)
-          .attr("stroke", strokeColor)
-          .attr("stroke-width", 2);
-      } else if (visual.texture === "diagonal") {
-        // Diagonal stripes (45 degree)
-        pattern.append("line")
-          .attr("x1", 0)
-          .attr("y1", 0)
-          .attr("x2", 8)
-          .attr("y2", 8)
-          .attr("stroke", strokeColor)
-          .attr("stroke-width", 2);
-        pattern.append("line")
-          .attr("x1", -2)
-          .attr("y1", 6)
-          .attr("x2", 2)
-          .attr("y2", 10)
-          .attr("stroke", strokeColor)
-          .attr("stroke-width", 2);
-        pattern.append("line")
-          .attr("x1", 6)
-          .attr("y1", -2)
-          .attr("x2", 10)
-          .attr("y2", 2)
-          .attr("stroke", strokeColor)
-          .attr("stroke-width", 2);
-      } else if (visual.texture === "dots") {
-        // Dot pattern - 4 dots in a grid
-        pattern.append("circle")
-          .attr("cx", 2)
-          .attr("cy", 2)
-          .attr("r", 1)
-          .attr("fill", strokeColor);
-        pattern.append("circle")
-          .attr("cx", 6)
-          .attr("cy", 2)
-          .attr("r", 1)
-          .attr("fill", strokeColor);
-        pattern.append("circle")
-          .attr("cx", 2)
-          .attr("cy", 6)
-          .attr("r", 1)
-          .attr("fill", strokeColor);
-        pattern.append("circle")
-          .attr("cx", 6)
-          .attr("cy", 6)
-          .attr("r", 1)
-          .attr("fill", strokeColor);
-      }
-    });
+    // Create texture patterns using shared utility
+    // Adjust pattern names to use 'pattern-uni-' prefix
+    const uniPatternVisuals = new Map(
+      Array.from(universityVisuals.entries()).map(([name, visual]) => [
+        `uni-${name}`,
+        visual
+      ])
+    );
+    createTexturePatterns(defs, uniPatternVisuals);
 
     const g = svgEl.append("g");
     const zoom = d3.zoom<SVGSVGElement, unknown>().scaleExtent([0.2, 6]).on("zoom", (e) => g.attr("transform", e.transform));
     svgEl.call(zoom);
 
-    // Setup tooltip
+    // Setup tooltip using shared utility
     if (!tooltipRef.current) {
-      tooltipRef.current = d3
-        .select("body")
-        .append("div")
-        .style("position", "absolute")
-        .style("background", "rgba(0, 0, 0, 0.8)")
-        .style("color", "white")
-        .style("padding", "8px")
-        .style("border-radius", "4px")
-        .style("font-size", "12px")
-        .style("font-family", "Outfit, system-ui, sans-serif")
-        .style("pointer-events", "none")
-        .style("opacity", 0)
-        .style("z-index", "1000");
+      tooltipRef.current = createTooltip("network-uni-tooltip")
+        .style("font-family", "Outfit, system-ui, sans-serif");
     }
     const tooltip = tooltipRef.current;
 
@@ -529,7 +378,7 @@ export default function NetworkUniversityView({
     nodeGroup.append("circle")
       .attr("class", "node-circle")
       .attr("r", d => sizeScale(d.totalICI))
-      .attr("fill", d => getFillForUniversity(d.name))
+      .attr("fill", d => getUniversityFill(d.name))
       .attr("stroke", "rgba(255,255,255,0.9)")
       .attr("stroke-width", 2)
       .style("opacity", d => !selectedUniversity || d.name === selectedUniversity ? 0.9 : 0.2);
@@ -744,80 +593,12 @@ export default function NetworkUniversityView({
       }
     });
 
-    // Helper to get last name
-    const getLastName = (name: string) => {
-      const parts = name.split(" ");
-      return parts.length >= 2 ? parts[parts.length - 1] : name;
-    };
-
-    // Build adjacency information for greedy seriation
-    const authorLinks = new Map<string, Set<string>>();
-    authors.forEach((author) => {
-      authorLinks.set(author.id, new Set());
-    });
-
-    links.forEach((link) => {
-      if (authorLinks.has(link.source) && authorLinks.has(link.target)) {
-        authorLinks.get(link.source)!.add(link.target);
-        authorLinks.get(link.target)!.add(link.source);
-      }
-    });
-
-    // Greedy seriation algorithm to reveal cliques:
-    // Place nodes with many shared neighbors adjacent to each other
-    const ordered: Author[] = [];
-    const remaining = new Set(authors.map(a => a.id));
-
-    // Start with the most connected author
-    let currentId = authors.reduce((max, author) =>
-      (authorLinks.get(author.id)?.size || 0) > (authorLinks.get(max.id)?.size || 0) ? author : max
-    ).id;
-
-    while (remaining.size > 0) {
-      if (!remaining.has(currentId)) {
-        // Pick next most connected from remaining
-        const remainingAuthors = authors.filter(a => remaining.has(a.id));
-        if (remainingAuthors.length === 0) break;
-        currentId = remainingAuthors.reduce((max, author) =>
-          (authorLinks.get(author.id)?.size || 0) > (authorLinks.get(max.id)?.size || 0) ? author : max
-        ).id;
-      }
-
-      const current = authors.find(a => a.id === currentId)!;
-      ordered.push(current);
-      remaining.delete(currentId);
-
-      // Find next node: the unvisited node with most shared connections to current
-      let nextId: string | null = null;
-      let maxShared = -1;
-
-      remaining.forEach(candidateId => {
-        const currentNeighbors = authorLinks.get(currentId) || new Set();
-        const candidateNeighbors = authorLinks.get(candidateId) || new Set();
-
-        // Count shared neighbors + direct connection
-        let shared = currentNeighbors.has(candidateId) ? 100 : 0; // Bonus for direct connection
-        currentNeighbors.forEach(n => {
-          if (candidateNeighbors.has(n)) shared++;
-        });
-
-        if (shared > maxShared) {
-          maxShared = shared;
-          nextId = candidateId;
-        }
-      });
-
-      currentId = nextId || currentId;
-    }
-
-    const sortedAuthors = ordered;
+    // Use shared greedy seriation algorithm to reveal cliques
+    const sortedAuthors = greedySeriation(authors as any, links);
 
     // Matrix layout
     const cellSize = 15;
-    const getLabelText = (d: Author) => {
-      const ln = getLastName(d.name);
-      return ln.length > 12 ? ln.slice(0, 12) + "..." : ln;
-    };
+    const getLabelText = (d: Author) => truncateLabel(getLastName(d.name));
 
     const maxLabelWidth = Math.max(...sortedAuthors.map((d) => getLabelText(d).length * 6));
     const labelPadding = maxLabelWidth + 10;
@@ -927,23 +708,12 @@ export default function NetworkUniversityView({
       .domain([d3.min(sortedAuthors, a => a.aci) || 0, d3.max(sortedAuthors, a => a.aci) || 1])
       .range([0.4, 1.0]);
 
-    // Setup matrix tooltip
+    // Setup matrix tooltip (reuse existing tooltip from network view)
+    const matrixTooltip = tooltipRef.current || createTooltip("network-uni-matrix-tooltip")
+      .style("font-family", "Outfit, system-ui, sans-serif");
     if (!tooltipRef.current) {
-      tooltipRef.current = d3
-        .select("body")
-        .append("div")
-        .style("position", "absolute")
-        .style("background", "rgba(0, 0, 0, 0.8)")
-        .style("color", "white")
-        .style("padding", "8px")
-        .style("border-radius", "4px")
-        .style("font-size", "12px")
-        .style("font-family", "Outfit, system-ui, sans-serif")
-        .style("pointer-events", "none")
-        .style("opacity", 0)
-        .style("z-index", "1000");
+      tooltipRef.current = matrixTooltip;
     }
-    const matrixTooltip = tooltipRef.current;
 
     // Get the color for this university
     const universityVisual = universityColors.get(matrixUniversity);

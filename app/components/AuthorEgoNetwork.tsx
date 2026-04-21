@@ -4,7 +4,14 @@ import { useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import * as d3 from "d3";
 import styles from "./AuthorEgoNetwork.module.css";
-import { visualPalette, getTextureStrokeForVariable } from "../lib/visualPalette";
+import { visualPalette } from "../lib/visualPalette";
+import {
+  createTooltip,
+  removeTooltip,
+  createTexturePatterns,
+  getFillForUniversity,
+  createPinSystem,
+} from "./shared";
 
 interface Authorship {
   ids: string[];
@@ -15,7 +22,7 @@ interface Authorship {
   field_citations: number[];
 }
 
-interface Node extends d3.SimulationNodeDatum {
+interface EgoNode extends d3.SimulationNodeDatum {
   id: string;
   name: string;
   aci: number;
@@ -26,7 +33,7 @@ interface Node extends d3.SimulationNodeDatum {
   r: number;
 }
 
-interface Link extends d3.SimulationLinkDatum<Node> {
+interface EgoLink extends d3.SimulationLinkDatum<EgoNode> {
   value: number;
   strokeWidth: number;
 }
@@ -48,7 +55,7 @@ export default function AuthorEgoNetwork({ authorId, authorName, dataPath, unive
 
     const width = containerRef.current.clientWidth || 700;
     const height = 420;
-    let sim: d3.Simulation<Node, Link> | null = null;
+    let sim: d3.Simulation<EgoNode, EgoLink> | null = null;
 
     fetch(`${dataPath}/authorships_canadian.json`)
       .then((r) => r.json())
@@ -126,7 +133,7 @@ export default function AuthorEgoNetwork({ authorId, authorName, dataPath, unive
           .domain([1, d3.max(topCollabs, ([, d]) => d.sharedPapers) || 1])
           .range([1, 3.5]);
 
-        const nodes: Node[] = [
+        const nodes: EgoNode[] = [
           {
             id: authorId,
             name: authorName,
@@ -151,7 +158,7 @@ export default function AuthorEgoNetwork({ authorId, authorName, dataPath, unive
           })),
         ];
 
-        const links: Link[] = topCollabs.map(([id, data]) => ({
+        const links: EgoLink[] = topCollabs.map(([id, data]) => ({
           source: authorId,
           target: id,
           value: data.sharedPapers,
@@ -167,103 +174,36 @@ export default function AuthorEgoNetwork({ authorId, authorName, dataPath, unive
 
         // Create texture patterns for institutions
         const defs = svg.append("defs");
-        institutionVisuals.forEach((visual, institution) => {
-          if (visual.texture === "none") return;
 
-          const patternId = `ego-pattern-${institution.replace(/[^a-zA-Z0-9]/g, "-")}`;
-          const strokeColor = getTextureStrokeForVariable(visual);
-
-          const pattern = defs
-            .append("pattern")
-            .attr("id", patternId)
-            .attr("patternUnits", "userSpaceOnUse")
-            .attr("width", 20)
-            .attr("height", 20);
-
-          // Background
-          pattern.append("rect")
-            .attr("width", 20)
-            .attr("height", 20)
-            .attr("fill", visual.color);
-
-          // Texture lines/dots
-          if (visual.texture === "vertical") {
-            [4, 10, 16].forEach((x) => {
-              pattern.append("line")
-                .attr("x1", x).attr("y1", 0)
-                .attr("x2", x).attr("y2", 20)
-                .attr("stroke", strokeColor)
-                .attr("stroke-width", 2);
-            });
-          } else if (visual.texture === "horizontal") {
-            [4, 10, 16].forEach((y) => {
-              pattern.append("line")
-                .attr("x1", 0).attr("y1", y)
-                .attr("x2", 20).attr("y2", y)
-                .attr("stroke", strokeColor)
-                .attr("stroke-width", 2);
-            });
-          } else if (visual.texture === "diagonal") {
-            pattern.append("line")
-              .attr("x1", 10).attr("y1", 0)
-              .attr("x2", 20).attr("y2", 10)
-              .attr("stroke", strokeColor)
-              .attr("stroke-width", 2);
-            pattern.append("line")
-              .attr("x1", 0).attr("y1", 0)
-              .attr("x2", 20).attr("y2", 20)
-              .attr("stroke", strokeColor)
-              .attr("stroke-width", 2);
-            pattern.append("line")
-              .attr("x1", 0).attr("y1", 10)
-              .attr("x2", 10).attr("y2", 20)
-              .attr("stroke", strokeColor)
-              .attr("stroke-width", 2);
-          } else if (visual.texture === "dots") {
-            [3, 10, 17].forEach((x) => {
-              [3, 10, 17].forEach((y) => {
-                pattern.append("circle")
-                  .attr("cx", x).attr("cy", y)
-                  .attr("r", 1.5)
-                  .attr("fill", strokeColor);
-              });
-            });
-          }
-        });
+        // Adjust pattern names to use 'ego-pattern-' prefix
+        const egoInstitutionVisuals = new Map(
+          Array.from(institutionVisuals.entries()).map(([inst, visual]) => [
+            `ego-${inst}`,
+            visual
+          ])
+        );
+        createTexturePatterns(defs, egoInstitutionVisuals, { width: 20, height: 20 });
 
         // Tooltip
-        d3.select("#ego-tooltip").remove();
-        const tooltip = d3
-          .select("body")
-          .append("div")
-          .attr("id", "ego-tooltip")
-          .style("position", "absolute")
-          .style("background", "rgba(0,0,0,0.8)")
-          .style("color", "white")
-          .style("padding", "8px")
-          .style("border-radius", "4px")
-          .style("font-size", "12px")
-          .style("font-family", "Outfit, system-ui, sans-serif")
-          .style("pointer-events", "none")
-          .style("opacity", 0)
-          .style("z-index", "1000");
+        const tooltip = createTooltip("ego-tooltip")
+          .style("font-family", "Outfit, system-ui, sans-serif");
 
         // Force simulation
         sim = d3
-          .forceSimulation<Node>(nodes)
+          .forceSimulation<EgoNode>(nodes)
           .force(
             "link",
             d3
-              .forceLink<Node, Link>(links)
+              .forceLink<EgoNode, EgoLink>(links)
               .id((d) => d.id)
               .distance(110)
               .strength(0.4)
           )
-          .force("charge", d3.forceManyBody<Node>().strength(-140))
+          .force("charge", d3.forceManyBody<EgoNode>().strength(-140))
           .force("center", d3.forceCenter(width / 2, height / 2))
           .force(
             "collide",
-            d3.forceCollide<Node>((d) => d.r + 8)
+            d3.forceCollide<EgoNode>((d) => d.r + 8)
           )
           .force(
             "x",
@@ -277,7 +217,7 @@ export default function AuthorEgoNetwork({ authorId, authorName, dataPath, unive
         // Links
         const linkSel = svg
           .append("g")
-          .selectAll<SVGLineElement, Link>("line")
+          .selectAll<SVGLineElement, EgoLink>("line")
           .data(links)
           .enter()
           .append("line")
@@ -287,7 +227,7 @@ export default function AuthorEgoNetwork({ authorId, authorName, dataPath, unive
         // Node groups — built first so setPinVisual can reference nodeSel cleanly
         const nodeSel = svg
           .append("g")
-          .selectAll<SVGGElement, Node>("g")
+          .selectAll<SVGGElement, EgoNode>("g")
           .data(nodes)
           .enter()
           .append("g")
@@ -299,15 +239,7 @@ export default function AuthorEgoNetwork({ authorId, authorName, dataPath, unive
           .append("circle")
           .attr("class", "node-circle")
           .attr("r", (d) => d.r)
-          .attr("fill", (d) => {
-            const visual = institutionVisuals.get(d.institution) || visualPalette[0];
-            if (visual.texture === "none") {
-              return visual.color;
-            } else {
-              const patternId = `ego-pattern-${d.institution.replace(/[^a-zA-Z0-9]/g, "-")}`;
-              return `url(#${patternId})`;
-            }
-          })
+          .attr("fill", (d) => getFillForUniversity(`ego-${d.institution}`, egoInstitutionVisuals))
           .attr("opacity", (d) => 0.85)
           .attr("stroke", "none")
           .attr("stroke-width", 0);
@@ -325,7 +257,7 @@ export default function AuthorEgoNetwork({ authorId, authorName, dataPath, unive
           .style("pointer-events", "none");
 
         // Pin tracking — defined after nodeSel so setPinVisual has full access
-        const pinnedSet = new Set<string>();
+        const pinSystem = createPinSystem();
         let dragMoved = false;
 
         function setPinVisual(id: string, pinned: boolean) {
@@ -340,7 +272,7 @@ export default function AuthorEgoNetwork({ authorId, authorName, dataPath, unive
 
         // Attach drag after nodeSel and setPinVisual are ready
         nodeSel.call(
-          d3.drag<SVGGElement, Node>()
+          d3.drag<SVGGElement, EgoNode>()
             .on("start", (event, d) => {
               dragMoved = false;
               if (!event.active) sim!.alphaTarget(0.3).restart();
@@ -355,9 +287,9 @@ export default function AuthorEgoNetwork({ authorId, authorName, dataPath, unive
             .on("end", (event, d) => {
               if (!event.active) sim!.alphaTarget(0);
               if (dragMoved && !d.isCenter) {
-                pinnedSet.add(d.id);
+                pinSystem.pinnedSet.add(d.id);
                 setPinVisual(d.id, true);
-              } else if (!pinnedSet.has(d.id)) {
+              } else if (!pinSystem.pinnedSet.has(d.id)) {
                 d.fx = null;
                 d.fy = null;
               }
@@ -380,7 +312,7 @@ export default function AuthorEgoNetwork({ authorId, authorName, dataPath, unive
         nodeSel
           .filter((d) => !d.isCenter)
           .on("mouseover", function (event, d) {
-            const isPinned = pinnedSet.has(d.id);
+            const isPinned = pinSystem.pinnedSet.has(d.id);
             if (!isPinned) d3.select(this).select("circle.node-circle").attr("opacity", 1);
             tooltip
               .style("opacity", 1)
@@ -398,7 +330,7 @@ export default function AuthorEgoNetwork({ authorId, authorName, dataPath, unive
             tooltip.style("left", event.pageX + 10 + "px").style("top", event.pageY - 10 + "px");
           })
           .on("mouseout", function (_, d) {
-            if (!pinnedSet.has(d.id))
+            if (!pinSystem.pinnedSet.has(d.id))
               d3.select(this).select("circle.node-circle").attr("opacity", 0.75);
             tooltip.style("opacity", 0);
           })
@@ -408,10 +340,10 @@ export default function AuthorEgoNetwork({ authorId, authorName, dataPath, unive
           })
           .on("contextmenu", function (event, d) {
             event.preventDefault();
-            if (!pinnedSet.has(d.id)) return;
+            if (!pinSystem.pinnedSet.has(d.id)) return;
             d.fx = null;
             d.fy = null;
-            pinnedSet.delete(d.id);
+            pinSystem.pinnedSet.delete(d.id);
             setPinVisual(d.id, false);
             sim!.alpha(0.15).restart();
           });
@@ -419,10 +351,10 @@ export default function AuthorEgoNetwork({ authorId, authorName, dataPath, unive
         // Tick
         sim.on("tick", () => {
           linkSel
-            .attr("x1", (d) => (d.source as Node).x!)
-            .attr("y1", (d) => (d.source as Node).y!)
-            .attr("x2", (d) => (d.target as Node).x!)
-            .attr("y2", (d) => (d.target as Node).y!);
+            .attr("x1", (d) => (d.source as EgoNode).x!)
+            .attr("y1", (d) => (d.source as EgoNode).y!)
+            .attr("x2", (d) => (d.target as EgoNode).x!)
+            .attr("y2", (d) => (d.target as EgoNode).y!);
           nodeSel.attr("transform", (d) => `translate(${d.x},${d.y})`);
         });
 
@@ -445,14 +377,7 @@ export default function AuthorEgoNetwork({ authorId, authorName, dataPath, unive
               .attr("r", 5)
               .attr("cx", 5)
               .attr("cy", 0)
-              .attr("fill", () => {
-                if (visual.texture === "none") {
-                  return visual.color;
-                } else {
-                  const patternId = `ego-pattern-${institution.replace(/[^a-zA-Z0-9]/g, "-")}`;
-                  return `url(#${patternId})`;
-                }
-              })
+              .attr("fill", () => getFillForUniversity(`ego-${institution}`, egoInstitutionVisuals))
               .attr("opacity", 0.85);
 
             // Institution name
@@ -468,7 +393,7 @@ export default function AuthorEgoNetwork({ authorId, authorName, dataPath, unive
 
     return () => {
       sim?.stop();
-      d3.select("#ego-tooltip").remove();
+      removeTooltip("ego-tooltip");
     };
   }, [authorId, authorName, router, dataPath, universityColorMap]);
 

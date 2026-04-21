@@ -4,11 +4,14 @@ import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import * as d3 from "d3";
 import styles from "./ScatterplotView.module.css";
+import { visualPalette, getTextureStrokeColor } from "../lib/visualPalette";
 import {
-  visualPalette,
-  getTextureStrokeForVariable,
-  getTextureStrokeColor,
-} from "../lib/visualPalette";
+  Institution,
+  createTooltip,
+  createTexturePatterns,
+  getFillForUniversity,
+  createUniversityVisualMapping,
+} from "./shared";
 
 interface Author {
   author_id: string;
@@ -29,14 +32,6 @@ interface Author {
 
 interface AuthorWithOcclusionOffset extends Author {
   occlusionXOffset: number;
-}
-
-interface Institution {
-  id: string;
-  name: string;
-  label_name?: string;
-  country_code: string;
-  ICI: number;
 }
 
 interface ScatterplotViewProps {
@@ -130,20 +125,13 @@ export default function ScatterplotView({
     console.log(universityColorMap);
 
     // Use persistent color mapping based on totalACI ranking
-    const universityVisuals = new Map(
-      topUniversities.map((uni) => {
-        // Try to get color from map using fullName, label_name, or display name
-        const paletteItem = universityColorMap.get(uni.fullName) ||
-                           universityColorMap.get(uni.label_name || '') ||
-                           universityColorMap.get(uni.name);
-
-        if (paletteItem) {
-          // Use the palette item directly from the map
-          return [uni.name, paletteItem];
-        }
-        // Fallback to first palette item if not found
-        return [uni.name, visualPalette[0]];
-      }),
+    const universityVisuals = createUniversityVisualMapping(
+      topUniversities.map(uni => ({
+        name: uni.name,
+        fullName: uni.fullName,
+        label_name: uni.label_name,
+      })),
+      universityColorMap
     );
 
     // Count how many authors from each university are actually displayed
@@ -159,18 +147,9 @@ export default function ScatterplotView({
       );
     });
 
-    // Helper function to get fill value (solid color or pattern URL)
-    const getFillForUniversity = (universityName: string): string => {
-      const visual = universityVisuals.get(universityName);
-      if (!visual) return "#808080"; // Fallback gray
-
-      if (visual.texture === "none") {
-        return visual.color;
-      } else {
-        const patternId = `pattern-${universityName.replace(/[^a-zA-Z0-9]/g, "-")}`;
-        return `url(#${patternId})`;
-      }
-    };
+    // Helper function to get fill value (solid color or pattern URL) - using shared utility
+    const getUniversityFill = (universityName: string): string =>
+      getFillForUniversity(universityName, universityVisuals);
 
     const uniList = topUniversities.map((uni) => ({
       name: uni.name,
@@ -213,119 +192,8 @@ export default function ScatterplotView({
       .attr("width", width)
       .attr("height", height);
 
-    // Create texture patterns for each university that needs one
-    universityVisuals.forEach((visual, universityName) => {
-      if (visual.texture === "none") return;
-
-      const patternId = `pattern-${universityName.replace(/[^a-zA-Z0-9]/g, "-")}`;
-      const strokeColor = getTextureStrokeForVariable(visual);
-
-      // Small repeating pattern that works well for circles of all sizes
-      const pattern = defs
-        .append("pattern")
-        .attr("id", patternId)
-        .attr("patternUnits", "userSpaceOnUse")
-        .attr("width", 8)
-        .attr("height", 8);
-
-      // Background color
-      pattern
-        .append("rect")
-        .attr("width", 8)
-        .attr("height", 8)
-        .attr("fill", visual.color);
-
-      // Add lines based on texture type
-      if (visual.texture === "vertical") {
-        // Vertical stripes
-        pattern
-          .append("line")
-          .attr("x1", 2)
-          .attr("y1", 0)
-          .attr("x2", 2)
-          .attr("y2", 8)
-          .attr("stroke", strokeColor)
-          .attr("stroke-width", 2);
-        pattern
-          .append("line")
-          .attr("x1", 6)
-          .attr("y1", 0)
-          .attr("x2", 6)
-          .attr("y2", 8)
-          .attr("stroke", strokeColor)
-          .attr("stroke-width", 2);
-      } else if (visual.texture === "horizontal") {
-        // Horizontal stripes
-        pattern
-          .append("line")
-          .attr("x1", 0)
-          .attr("y1", 2)
-          .attr("x2", 8)
-          .attr("y2", 2)
-          .attr("stroke", strokeColor)
-          .attr("stroke-width", 2);
-        pattern
-          .append("line")
-          .attr("x1", 0)
-          .attr("y1", 6)
-          .attr("x2", 8)
-          .attr("y2", 6)
-          .attr("stroke", strokeColor)
-          .attr("stroke-width", 2);
-      } else if (visual.texture === "diagonal") {
-        // Diagonal stripes (45 degree)
-        pattern
-          .append("line")
-          .attr("x1", 0)
-          .attr("y1", 0)
-          .attr("x2", 8)
-          .attr("y2", 8)
-          .attr("stroke", strokeColor)
-          .attr("stroke-width", 2);
-        pattern
-          .append("line")
-          .attr("x1", -2)
-          .attr("y1", 6)
-          .attr("x2", 2)
-          .attr("y2", 10)
-          .attr("stroke", strokeColor)
-          .attr("stroke-width", 2);
-        pattern
-          .append("line")
-          .attr("x1", 6)
-          .attr("y1", -2)
-          .attr("x2", 10)
-          .attr("y2", 2)
-          .attr("stroke", strokeColor)
-          .attr("stroke-width", 2);
-      } else if (visual.texture === "dots") {
-        // Dot pattern - 4 dots in a grid
-        pattern
-          .append("circle")
-          .attr("cx", 2)
-          .attr("cy", 2)
-          .attr("r", 1)
-          .attr("fill", strokeColor);
-        pattern
-          .append("circle")
-          .attr("cx", 6)
-          .attr("cy", 2)
-          .attr("r", 1)
-          .attr("fill", strokeColor);
-        pattern
-          .append("circle")
-          .attr("cx", 2)
-          .attr("cy", 6)
-          .attr("r", 1)
-          .attr("fill", strokeColor);
-        pattern
-          .append("circle")
-          .attr("cx", 6)
-          .attr("cy", 6)
-          .attr("r", 1)
-          .attr("fill", strokeColor);
-      }
-    });
+    // Create texture patterns using shared utility
+    createTexturePatterns(defs, universityVisuals);
 
     const svg = svgEl
       .append("g")
@@ -631,19 +499,8 @@ export default function ScatterplotView({
     }
 
     if (!tooltipRef.current) {
-      tooltipRef.current = d3
-        .select("body")
-        .append("div")
-        .style("position", "absolute")
-        .style("background", "rgba(0, 0, 0, 0.8)")
-        .style("color", "white")
-        .style("padding", "8px")
-        .style("border-radius", "4px")
-        .style("font-size", "12px")
-        .style("font-family", "Outfit, system-ui, sans-serif")
-        .style("pointer-events", "none")
-        .style("opacity", 0)
-        .style("z-index", "1000");
+      tooltipRef.current = createTooltip("scatter-tooltip")
+        .style("font-family", "Outfit, system-ui, sans-serif");
     }
     const tooltip = tooltipRef.current;
 
@@ -667,7 +524,7 @@ export default function ScatterplotView({
           d.last_known_institution?.label_name ||
           d.last_known_institution?.display_name ||
           "Unknown";
-        return getFillForUniversity(institutionName);
+        return getUniversityFill(institutionName);
       })
       .attr("stroke", "rgba(255,255,255,0.7)")
       .attr("stroke-width", 0.8)

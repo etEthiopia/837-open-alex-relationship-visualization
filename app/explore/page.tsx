@@ -141,7 +141,7 @@ function ExploreContent() {
 
   // Load authors data
   useEffect(() => {
-    fetch(`${dataPath}/authors.json`)
+    fetch(`${dataPath}/authors_canadian.json`)
       .then((res) => res.json())
       .then((data: Author[]) => {
         setAuthors(data);

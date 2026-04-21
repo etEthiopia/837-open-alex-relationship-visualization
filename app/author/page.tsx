@@ -95,29 +95,9 @@ const IconCite = () => (
     <path d="M3 7h5v5H3V7zm0 0a5 5 0 0 1 5-5M12 7h5v5h-5V7zm0 0a5 5 0 0 1 5-5"/>
   </svg>
 );
-const IconH = () => (
-  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round">
-    <line x1="5" y1="4" x2="5" y2="16"/>
-    <line x1="15" y1="4" x2="15" y2="16"/>
-    <line x1="5" y1="10" x2="15" y2="10"/>
-  </svg>
-);
-const IconI10 = () => (
-  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="10" cy="10" r="7"/>
-    <line x1="10" y1="9" x2="10" y2="14"/>
-    <circle cx="10" cy="6.5" r="0.5" fill="currentColor" strokeWidth="0"/>
-  </svg>
-);
 const IconBolt = () => (
   <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
     <path d="M11.5 2L4 11h6.5L8.5 18 16 9h-6.5L11.5 2z"/>
-  </svg>
-);
-const IconTrend = () => (
-  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
-    <polyline points="2,14 7,8 11,12 18,5"/>
-    <polyline points="14,5 18,5 18,9"/>
   </svg>
 );
 
@@ -313,8 +293,11 @@ function AuthorContent() {
   }, [dataPath]);
 
   useEffect(() => {
-    if (!authorId) { setLoading(false); return; }
-    fetch(`${dataPath}/authors.json`)
+    if (!authorId) {
+      Promise.resolve().then(() => setLoading(false));
+      return;
+    }
+    fetch(`${dataPath}/authors_canadian.json`)
       .then((r) => r.json())
       .then((data: Author[]) => {
         const found = data.find((a) => a.author_id === `https://openalex.org/${authorId}`);
@@ -381,7 +364,7 @@ function AuthorContent() {
     return (
       <div className={styles.page}>
         <div className={styles.emptyState}>
-          <p>Author not found</p>
+          <p>Researcher not found</p>
           <Link href={backHref} className={styles.ctaSecondary}>← Back to Explore</Link>
         </div>
       </div>

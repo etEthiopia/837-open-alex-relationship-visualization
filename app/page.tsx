@@ -1,13 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import Link from "next/link";
 import styles from "./page.module.css";
 
 export default function Home() {
   const cursorGlowRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
-  const [mounted, setMounted] = useState(false);
 
   // Cursor spotlight
   useEffect(() => {
@@ -70,14 +69,6 @@ export default function Home() {
             </Link>
           </div>
         </div>
-
-        {/* Scroll indicator */}
-        {/* {mounted && (
-          <div className={styles.scrollHint}>
-            <span>Scroll</span>
-            <div className={styles.scrollLine} />
-          </div>
-        )} */}
       </section>
 
       {/* ── Features ── */}
@@ -90,7 +81,7 @@ export default function Home() {
             {[
               { num: "01", title: "Scatterplot Analysis", body: "Compare researchers across institutions by publications, citations, and author citation index. Spot outliers, find rising stars." },
               { num: "02", title: "Network Mapping", body: "Visualize co-authorship as a live force-directed graph. Watch institutional clusters form in real time." },
-              { num: "03", title: "Author Profiles", body: "Dive deep into any researcher — h-index, research topics, citation trends by year, and full institutional history." },
+              { num: "03", title: "Researcher Profiles", body: "Dive deep into any researcher — h-index, research topics, citation trends by year, and full institutional history." },
             ].map((f) => (
               <div key={f.num} className={`${styles.featureCard} reveal`} ref={addRef}>
                 <span className={styles.featureNum}>{f.num}</span>
