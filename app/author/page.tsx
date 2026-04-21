@@ -291,7 +291,6 @@ function AuthorContent() {
     fetch(`${dataPath}/institutions_canadian.json`)
       .then((res) => res.json())
       .then((data: Institution[]) => {
-        console.log(data.map((uni) => `${uni.name} - totalACI: ${uni.totalACI} - ICI: ${uni.ICI}`));
         // Create persistent color mapping based on totalACI ranking
         // Map directly to palette items (index in sorted institutions array)
         const colorMap = new Map<string, typeof visualPalette[0]>();
