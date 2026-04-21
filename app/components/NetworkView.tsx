@@ -639,6 +639,11 @@ export default function NetworkView({
     type SimulationNode = Node | MatrixNode;
     const allNodes: SimulationNode[] = [...regularNodes, ...matrixNodes];
 
+    // ────────────────────────────────────────────────────────────────
+    // Force 1: University Centroid Gravitational Pull
+    // Formula: F_centroid = 0.25 × α × (C - P)
+    // where C = centroid position, P = node position, α = cooling factor
+    // ────────────────────────────────────────────────────────────────
     function clusterForce(alpha: number) {
       const strength = 0.25; // Slightly increased for tighter clusters
       allNodes.forEach((d) => {
@@ -692,6 +697,15 @@ export default function NetworkView({
       });
     }
 
+    // ────────────────────────────────────────────────────────────────
+    // Force 2: Connection Pull (Link Force)
+    // Formula: F_link = s × (d_ideal - d_actual)
+    // where:
+    //   d_ideal = 120 × max(0.6, 1 - value/100)  [adaptive ideal distance]
+    //   s = strength = { 3×power  if cross-university
+    //                  { power    if same-university
+    //   power = edgeStrength === "none" ? 0.3 : min(0.5, value/100)
+    // ────────────────────────────────────────────────────────────────
     const simulation = d3
       .forceSimulation<SimulationNode>(allNodes)
       .force(
@@ -712,8 +726,8 @@ export default function NetworkView({
       const targetInst = "authors" in d.target ? d.target.institution : d.target.institution;
 
       // Base link strength
-      const power = edgeStrength === "none" ? 0.3 : Math.min(0.5, d.value / 100); 
-      
+      const power = edgeStrength === "none" ? 0.3 : Math.min(0.5, d.value / 100);
+
       // If external, boost the power significantly so it can fight the cluster force
       return sourceInst !== targetInst ? power * 3 : power;
     }),
