@@ -242,12 +242,14 @@ function buildChart(
     leg.append("text").attr("x", 64).attr("y", 9).style("font-size", "9px").style("fill", "rgba(0,0,0,0.45)").style("font-family", "var(--font-geist-mono), monospace").text("Field");
   } else {
     const val = (d: YearPoint) => mode === "total" ? d.total : d.field;
+    const barColor = mode === "field" ? "#a0a0a0" : color;
+    const barOpacity = mode === "field" ? 0.85 : 0.85;
 
     const bars = svg.selectAll("rect.bar").data(data).enter()
       .append("rect").attr("class", "bar")
       .attr("x", (d) => x(String(d.year))!)
       .attr("y", innerH).attr("width", x.bandwidth()).attr("height", 0)
-      .attr("fill", color).attr("rx", 4).style("cursor", "pointer").attr("opacity", 0.85);
+      .attr("fill", barColor).attr("rx", 4).style("cursor", "pointer").attr("opacity", barOpacity);
     bars.transition().duration(700).delay((_, i) => i * 60).ease(d3.easeCubicOut)
       .attr("y", (d) => y(val(d))).attr("height", (d) => innerH - y(val(d)));
 
@@ -257,7 +259,7 @@ function buildChart(
         tooltip.style("opacity", "1").html(`<strong>${d.year}</strong> &nbsp; ${val(d).toLocaleString()}`);
       })
       .on("mousemove", (event) => tooltip.style("left", event.pageX + 12 + "px").style("top", event.pageY - 32 + "px"))
-      .on("mouseout", function () { d3.select(this).attr("opacity", 0.85); tooltip.style("opacity", "0"); });
+      .on("mouseout", function () { d3.select(this).attr("opacity", barOpacity); tooltip.style("opacity", "0"); });
   }
 }
 
@@ -334,7 +336,7 @@ function AuthorContent() {
         field: spy[String(d.year)]?.field_citations ?? 0,
       }));
     if (!data.length) return;
-    buildChart(citationsRef.current, data, citationsMode, "rgba(0,0,0,0.55)", "tt-citations");
+    buildChart(citationsRef.current, data, citationsMode, "rgba(0,0,0,0.75)", "tt-citations");
     return () => { d3.select("#tt-citations").remove(); };
   }, [author, citationsMode]);
 
@@ -351,7 +353,7 @@ function AuthorContent() {
         field: spy[String(d.year)]?.field_papers ?? 0,
       }));
     if (!data.length) return;
-    buildChart(worksRef.current, data, worksMode, "rgba(0,0,0,0.55)", "tt-works");
+    buildChart(worksRef.current, data, worksMode, "rgba(0,0,0,0.75)", "tt-works");
     return () => { d3.select("#tt-works").remove(); };
   }, [author, worksMode]);
 
