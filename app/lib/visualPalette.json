@@ -1,0 +1,802 @@
+[
+  {
+    "index": 1,
+    "color": "#0957D0",
+    "colorName": "Blue",
+    "texture": "none",
+    "luminance": "dark",
+    "description": "Blue (solid)"
+  },
+  {
+    "index": 2,
+    "color": "#eac54d",
+    "colorName": "Yellow",
+    "texture": "none",
+    "luminance": "light",
+    "description": "Yellow (solid)"
+  },
+  {
+    "index": 3,
+    "color": "#1e9114",
+    "colorName": "Green",
+    "texture": "none",
+    "luminance": "dark",
+    "description": "Green (solid)"
+  },
+  {
+    "index": 4,
+    "color": "#d12727",
+    "colorName": "Red",
+    "texture": "none",
+    "luminance": "dark",
+    "description": "Red (solid)"
+  },
+  {
+    "index": 5,
+    "color": "#b6a77f",
+    "colorName": "Beige",
+    "texture": "none",
+    "luminance": "light",
+    "description": "Beige (solid)"
+  },
+  {
+    "index": 6,
+    "color": "#fc8888",
+    "colorName": "Pink",
+    "texture": "none",
+    "luminance": "light",
+    "description": "Pink (solid)"
+  },
+  {
+    "index": 7,
+    "color": "#521e89",
+    "colorName": "Purple",
+    "texture": "none",
+    "luminance": "dark",
+    "description": "Purple (solid)"
+  },
+  {
+    "index": 8,
+    "color": "#a3c683",
+    "colorName": "Lemon Green",
+    "texture": "none",
+    "luminance": "light",
+    "description": "Lemon Green (solid)"
+  },
+  {
+    "index": 9,
+    "color": "#c98226",
+    "colorName": "Orange",
+    "texture": "none",
+    "luminance": "light",
+    "description": "Orange (solid)"
+  },
+  {
+    "index": 10,
+    "color": "#24807E",
+    "colorName": "Cyan",
+    "texture": "none",
+    "luminance": "dark",
+    "description": "Cyan (solid)"
+  },
+  {
+    "index": 11,
+    "color": "#5ec9ff",
+    "colorName": "Sky Blue",
+    "texture": "none",
+    "luminance": "light",
+    "description": "Sky Blue (solid)"
+  },
+  {
+    "index": 12,
+    "color": "#663c26",
+    "colorName": "Brown",
+    "texture": "none",
+    "luminance": "dark",
+    "description": "Brown (solid)"
+  },
+  {
+    "index": 13,
+    "color": "#0957D0",
+    "colorName": "Blue",
+    "texture": "vertical",
+    "luminance": "dark",
+    "description": "Blue + vertical"
+  },
+  {
+    "index": 14,
+    "color": "#eac54d",
+    "colorName": "Yellow",
+    "texture": "horizontal",
+    "luminance": "light",
+    "description": "Yellow + horizontal"
+  },
+  {
+    "index": 15,
+    "color": "#1e9114",
+    "colorName": "Green",
+    "texture": "diagonal",
+    "luminance": "dark",
+    "description": "Green + diagonal"
+  },
+  {
+    "index": 16,
+    "color": "#d12727",
+    "colorName": "Red",
+    "texture": "dots",
+    "luminance": "dark",
+    "description": "Red + dots"
+  },
+  {
+    "index": 17,
+    "color": "#b6a77f",
+    "colorName": "Beige",
+    "texture": "vertical",
+    "luminance": "light",
+    "description": "Beige + vertical"
+  },
+  {
+    "index": 18,
+    "color": "#fc8888",
+    "colorName": "Pink",
+    "texture": "horizontal",
+    "luminance": "light",
+    "description": "Pink + horizontal"
+  },
+  {
+    "index": 19,
+    "color": "#521e89",
+    "colorName": "Purple",
+    "texture": "diagonal",
+    "luminance": "dark",
+    "description": "Purple + diagonal"
+  },
+  {
+    "index": 20,
+    "color": "#a3c683",
+    "colorName": "Lemon Green",
+    "texture": "dots",
+    "luminance": "light",
+    "description": "Lemon Green + dots"
+  },
+  {
+    "index": 21,
+    "color": "#c98226",
+    "colorName": "Orange",
+    "texture": "vertical",
+    "luminance": "light",
+    "description": "Orange + vertical"
+  },
+  {
+    "index": 22,
+    "color": "#24807E",
+    "colorName": "Cyan",
+    "texture": "horizontal",
+    "luminance": "dark",
+    "description": "Cyan + horizontal"
+  },
+  {
+    "index": 23,
+    "color": "#5ec9ff",
+    "colorName": "Sky Blue",
+    "texture": "diagonal",
+    "luminance": "light",
+    "description": "Sky Blue + diagonal"
+  },
+  {
+    "index": 24,
+    "color": "#663c26",
+    "colorName": "Brown",
+    "texture": "dots",
+    "luminance": "dark",
+    "description": "Brown + dots"
+  },
+  {
+    "index": 25,
+    "color": "#0957D0",
+    "colorName": "Blue",
+    "texture": "horizontal",
+    "luminance": "dark",
+    "description": "Blue + horizontal"
+  },
+  {
+    "index": 26,
+    "color": "#eac54d",
+    "colorName": "Yellow",
+    "texture": "diagonal",
+    "luminance": "light",
+    "description": "Yellow + diagonal"
+  },
+  {
+    "index": 27,
+    "color": "#1e9114",
+    "colorName": "Green",
+    "texture": "dots",
+    "luminance": "dark",
+    "description": "Green + dots"
+  },
+  {
+    "index": 28,
+    "color": "#d12727",
+    "colorName": "Red",
+    "texture": "vertical",
+    "luminance": "dark",
+    "description": "Red + vertical"
+  },
+  {
+    "index": 29,
+    "color": "#b6a77f",
+    "colorName": "Beige",
+    "texture": "horizontal",
+    "luminance": "light",
+    "description": "Beige + horizontal"
+  },
+  {
+    "index": 30,
+    "color": "#fc8888",
+    "colorName": "Pink",
+    "texture": "diagonal",
+    "luminance": "light",
+    "description": "Pink + diagonal"
+  },
+  {
+    "index": 31,
+    "color": "#521e89",
+    "colorName": "Purple",
+    "texture": "dots",
+    "luminance": "dark",
+    "description": "Purple + dots"
+  },
+  {
+    "index": 32,
+    "color": "#a3c683",
+    "colorName": "Lemon Green",
+    "texture": "vertical",
+    "luminance": "light",
+    "description": "Lemon Green + vertical"
+  },
+  {
+    "index": 33,
+    "color": "#c98226",
+    "colorName": "Orange",
+    "texture": "horizontal",
+    "luminance": "light",
+    "description": "Orange + horizontal"
+  },
+  {
+    "index": 34,
+    "color": "#24807E",
+    "colorName": "Cyan",
+    "texture": "diagonal",
+    "luminance": "dark",
+    "description": "Cyan + diagonal"
+  },
+  {
+    "index": 35,
+    "color": "#5ec9ff",
+    "colorName": "Sky Blue",
+    "texture": "dots",
+    "luminance": "light",
+    "description": "Sky Blue + dots"
+  },
+  {
+    "index": 36,
+    "color": "#663c26",
+    "colorName": "Brown",
+    "texture": "vertical",
+    "luminance": "dark",
+    "description": "Brown + vertical"
+  },
+  {
+    "index": 37,
+    "color": "#0957D0",
+    "colorName": "Blue",
+    "texture": "diagonal",
+    "luminance": "dark",
+    "description": "Blue + diagonal"
+  },
+  {
+    "index": 38,
+    "color": "#eac54d",
+    "colorName": "Yellow",
+    "texture": "dots",
+    "luminance": "light",
+    "description": "Yellow + dots"
+  },
+  {
+    "index": 39,
+    "color": "#1e9114",
+    "colorName": "Green",
+    "texture": "vertical",
+    "luminance": "dark",
+    "description": "Green + vertical"
+  },
+  {
+    "index": 40,
+    "color": "#d12727",
+    "colorName": "Red",
+    "texture": "horizontal",
+    "luminance": "dark",
+    "description": "Red + horizontal"
+  },
+  {
+    "index": 41,
+    "color": "#b6a77f",
+    "colorName": "Beige",
+    "texture": "diagonal",
+    "luminance": "light",
+    "description": "Beige + diagonal"
+  },
+  {
+    "index": 42,
+    "color": "#fc8888",
+    "colorName": "Pink",
+    "texture": "dots",
+    "luminance": "light",
+    "description": "Pink + dots"
+  },
+  {
+    "index": 43,
+    "color": "#521e89",
+    "colorName": "Purple",
+    "texture": "vertical",
+    "luminance": "dark",
+    "description": "Purple + vertical"
+  },
+  {
+    "index": 44,
+    "color": "#a3c683",
+    "colorName": "Lemon Green",
+    "texture": "horizontal",
+    "luminance": "light",
+    "description": "Lemon Green + horizontal"
+  },
+  {
+    "index": 45,
+    "color": "#c98226",
+    "colorName": "Orange",
+    "texture": "diagonal",
+    "luminance": "light",
+    "description": "Orange + diagonal"
+  },
+  {
+    "index": 46,
+    "color": "#24807E",
+    "colorName": "Cyan",
+    "texture": "dots",
+    "luminance": "dark",
+    "description": "Cyan + dots"
+  },
+  {
+    "index": 47,
+    "color": "#5ec9ff",
+    "colorName": "Sky Blue",
+    "texture": "vertical",
+    "luminance": "light",
+    "description": "Sky Blue + vertical"
+  },
+  {
+    "index": 48,
+    "color": "#663c26",
+    "colorName": "Brown",
+    "texture": "horizontal",
+    "luminance": "dark",
+    "description": "Brown + horizontal"
+  },
+  {
+    "index": 49,
+    "color": "#0957D0",
+    "colorName": "Blue",
+    "texture": "dots",
+    "luminance": "dark",
+    "description": "Blue + dots"
+  },
+  {
+    "index": 50,
+    "color": "#eac54d",
+    "colorName": "Yellow",
+    "texture": "vertical",
+    "luminance": "light",
+    "description": "Yellow + vertical"
+  },
+  {
+    "index": 51,
+    "color": "#1e9114",
+    "colorName": "Green",
+    "texture": "horizontal",
+    "luminance": "dark",
+    "description": "Green + horizontal"
+  },
+  {
+    "index": 52,
+    "color": "#d12727",
+    "colorName": "Red",
+    "texture": "diagonal",
+    "luminance": "dark",
+    "description": "Red + diagonal"
+  },
+  {
+    "index": 53,
+    "color": "#b6a77f",
+    "colorName": "Beige",
+    "texture": "dots",
+    "luminance": "light",
+    "description": "Beige + dots"
+  },
+  {
+    "index": 54,
+    "color": "#fc8888",
+    "colorName": "Pink",
+    "texture": "vertical",
+    "luminance": "light",
+    "description": "Pink + vertical"
+  },
+  {
+    "index": 55,
+    "color": "#521e89",
+    "colorName": "Purple",
+    "texture": "horizontal",
+    "luminance": "dark",
+    "description": "Purple + horizontal"
+  },
+  {
+    "index": 56,
+    "color": "#a3c683",
+    "colorName": "Lemon Green",
+    "texture": "diagonal",
+    "luminance": "light",
+    "description": "Lemon Green + diagonal"
+  },
+  {
+    "index": 57,
+    "color": "#c98226",
+    "colorName": "Orange",
+    "texture": "dots",
+    "luminance": "light",
+    "description": "Orange + dots"
+  },
+  {
+    "index": 58,
+    "color": "#24807E",
+    "colorName": "Cyan",
+    "texture": "vertical",
+    "luminance": "dark",
+    "description": "Cyan + vertical"
+  },
+  {
+    "index": 59,
+    "color": "#5ec9ff",
+    "colorName": "Sky Blue",
+    "texture": "horizontal",
+    "luminance": "light",
+    "description": "Sky Blue + horizontal"
+  },
+  {
+    "index": 60,
+    "color": "#663c26",
+    "colorName": "Brown",
+    "texture": "diagonal",
+    "luminance": "dark",
+    "description": "Brown + diagonal"
+  },
+  {
+    "index": 61,
+    "color": "#0047c0",
+    "colorName": "Blue variant 1",
+    "texture": "horizontal",
+    "luminance": "dark",
+    "description": "Blue variant + horizontal"
+  },
+  {
+    "index": 62,
+    "color": "#aaaa38",
+    "colorName": "Yellow variant 1",
+    "texture": "diagonal",
+    "luminance": "light",
+    "description": "Yellow variant + diagonal"
+  },
+  {
+    "index": 63,
+    "color": "#0e8104",
+    "colorName": "Green variant 1",
+    "texture": "dots",
+    "luminance": "dark",
+    "description": "Green variant + dots"
+  },
+  {
+    "index": 64,
+    "color": "#c11717",
+    "colorName": "Red variant 1",
+    "texture": "vertical",
+    "luminance": "dark",
+    "description": "Red variant + vertical"
+  },
+  {
+    "index": 65,
+    "color": "#a6976f",
+    "colorName": "Beige variant 1",
+    "texture": "horizontal",
+    "luminance": "light",
+    "description": "Beige variant + horizontal"
+  },
+  {
+    "index": 66,
+    "color": "#ec7878",
+    "colorName": "Pink variant 1",
+    "texture": "diagonal",
+    "luminance": "light",
+    "description": "Pink variant + diagonal"
+  },
+  {
+    "index": 67,
+    "color": "#420e79",
+    "colorName": "Purple variant 1",
+    "texture": "dots",
+    "luminance": "dark",
+    "description": "Purple variant + dots"
+  },
+  {
+    "index": 68,
+    "color": "#94dd51",
+    "colorName": "Lemon Green variant 1",
+    "texture": "vertical",
+    "luminance": "light",
+    "description": "Lemon Green variant + vertical"
+  },
+  {
+    "index": 69,
+    "color": "#b97216",
+    "colorName": "Orange variant 1",
+    "texture": "horizontal",
+    "luminance": "light",
+    "description": "Orange variant + horizontal"
+  },
+  {
+    "index": 70,
+    "color": "#14706e",
+    "colorName": "Cyan variant 1",
+    "texture": "diagonal",
+    "luminance": "dark",
+    "description": "Cyan variant + diagonal"
+  },
+  {
+    "index": 71,
+    "color": "#4eb9ef",
+    "colorName": "Sky Blue variant 1",
+    "texture": "dots",
+    "luminance": "light",
+    "description": "Sky Blue variant + dots"
+  },
+  {
+    "index": 72,
+    "color": "#562c16",
+    "colorName": "Brown variant 1",
+    "texture": "vertical",
+    "luminance": "dark",
+    "description": "Brown variant + vertical"
+  },
+  {
+    "index": 73,
+    "color": "#1a68e1",
+    "colorName": "Blue variant 2",
+    "texture": "diagonal",
+    "luminance": "dark",
+    "description": "Blue variant + diagonal"
+  },
+  {
+    "index": 74,
+    "color": "#cbcb59",
+    "colorName": "Yellow variant 2",
+    "texture": "dots",
+    "luminance": "light",
+    "description": "Yellow variant + dots"
+  },
+  {
+    "index": 75,
+    "color": "#2fa225",
+    "colorName": "Green variant 2",
+    "texture": "vertical",
+    "luminance": "dark",
+    "description": "Green variant + vertical"
+  },
+  {
+    "index": 76,
+    "color": "#e23838",
+    "colorName": "Red variant 2",
+    "texture": "horizontal",
+    "luminance": "dark",
+    "description": "Red variant + horizontal"
+  },
+  {
+    "index": 77,
+    "color": "#c7b890",
+    "colorName": "Beige variant 2",
+    "texture": "diagonal",
+    "luminance": "light",
+    "description": "Beige variant + diagonal"
+  },
+  {
+    "index": 78,
+    "color": "#ff9999",
+    "colorName": "Pink variant 2",
+    "texture": "dots",
+    "luminance": "light",
+    "description": "Pink variant + dots"
+  },
+  {
+    "index": 79,
+    "color": "#632f9a",
+    "colorName": "Purple variant 2",
+    "texture": "vertical",
+    "luminance": "dark",
+    "description": "Purple variant + vertical"
+  },
+  {
+    "index": 80,
+    "color": "#b5fe72",
+    "colorName": "Lemon Green variant 2",
+    "texture": "horizontal",
+    "luminance": "light",
+    "description": "Lemon Green variant + horizontal"
+  },
+  {
+    "index": 81,
+    "color": "#da9337",
+    "colorName": "Orange variant 2",
+    "texture": "diagonal",
+    "luminance": "light",
+    "description": "Orange variant + diagonal"
+  },
+  {
+    "index": 82,
+    "color": "#35918f",
+    "colorName": "Cyan variant 2",
+    "texture": "dots",
+    "luminance": "dark",
+    "description": "Cyan variant + dots"
+  },
+  {
+    "index": 83,
+    "color": "#6fdaff",
+    "colorName": "Sky Blue variant 2",
+    "texture": "vertical",
+    "luminance": "light",
+    "description": "Sky Blue variant + vertical"
+  },
+  {
+    "index": 84,
+    "color": "#774d37",
+    "colorName": "Brown variant 2",
+    "texture": "horizontal",
+    "luminance": "dark",
+    "description": "Brown variant + horizontal"
+  },
+  {
+    "index": 85,
+    "color": "#0045be",
+    "colorName": "Blue variant 3",
+    "texture": "dots",
+    "luminance": "dark",
+    "description": "Blue variant + dots"
+  },
+  {
+    "index": 86,
+    "color": "#a8a836",
+    "colorName": "Yellow variant 3",
+    "texture": "vertical",
+    "luminance": "light",
+    "description": "Yellow variant + vertical"
+  },
+  {
+    "index": 87,
+    "color": "#0c7f02",
+    "colorName": "Green variant 3",
+    "texture": "horizontal",
+    "luminance": "dark",
+    "description": "Green variant + horizontal"
+  },
+  {
+    "index": 88,
+    "color": "#bf1515",
+    "colorName": "Red variant 3",
+    "texture": "diagonal",
+    "luminance": "dark",
+    "description": "Red variant + diagonal"
+  },
+  {
+    "index": 89,
+    "color": "#a4956d",
+    "colorName": "Beige variant 3",
+    "texture": "dots",
+    "luminance": "light",
+    "description": "Beige variant + dots"
+  },
+  {
+    "index": 90,
+    "color": "#ea7676",
+    "colorName": "Pink variant 3",
+    "texture": "vertical",
+    "luminance": "light",
+    "description": "Pink variant + vertical"
+  },
+  {
+    "index": 91,
+    "color": "#400c77",
+    "colorName": "Purple variant 3",
+    "texture": "horizontal",
+    "luminance": "dark",
+    "description": "Purple variant + horizontal"
+  },
+  {
+    "index": 92,
+    "color": "#92db4f",
+    "colorName": "Lemon Green variant 3",
+    "texture": "diagonal",
+    "luminance": "light",
+    "description": "Lemon Green variant + diagonal"
+  },
+  {
+    "index": 93,
+    "color": "#b77014",
+    "colorName": "Orange variant 3",
+    "texture": "dots",
+    "luminance": "light",
+    "description": "Orange variant + dots"
+  },
+  {
+    "index": 94,
+    "color": "#126e6c",
+    "colorName": "Cyan variant 3",
+    "texture": "vertical",
+    "luminance": "dark",
+    "description": "Cyan variant + vertical"
+  },
+  {
+    "index": 95,
+    "color": "#4cb7ed",
+    "colorName": "Sky Blue variant 3",
+    "texture": "horizontal",
+    "luminance": "light",
+    "description": "Sky Blue variant + horizontal"
+  },
+  {
+    "index": 96,
+    "color": "#542a14",
+    "colorName": "Brown variant 3",
+    "texture": "diagonal",
+    "luminance": "dark",
+    "description": "Brown variant + diagonal"
+  },
+  {
+    "index": 97,
+    "color": "#1c6ae3",
+    "colorName": "Blue variant 4",
+    "texture": "vertical",
+    "luminance": "dark",
+    "description": "Blue variant + vertical"
+  },
+  {
+    "index": 98,
+    "color": "#cdcd5b",
+    "colorName": "Yellow variant 4",
+    "texture": "horizontal",
+    "luminance": "light",
+    "description": "Yellow variant + horizontal"
+  },
+  {
+    "index": 99,
+    "color": "#31a427",
+    "colorName": "Green variant 4",
+    "texture": "diagonal",
+    "luminance": "dark",
+    "description": "Green variant + diagonal"
+  },
+  {
+    "index": 100,
+    "color": "#e43a3a",
+    "colorName": "Red variant 4",
+    "texture": "dots",
+    "luminance": "dark",
+    "description": "Red variant + dots"
+  }
+]

@@ -1,352 +1,25 @@
 [
   {
-    "author_id": "https://openalex.org/A5028426177",
-    "orcid": "https://orcid.org/0000-0001-6346-6930",
-    "display_name": "Lei Ren",
+    "author_id": "https://openalex.org/A5060713232",
+    "orcid": "https://orcid.org/0000-0002-6390-0933",
+    "display_name": "M. Jamal Deen",
     "institutions": [
       {
-        "id": "https://openalex.org/I82880672",
-        "display_name": "Beihang University",
-        "ror": "https://ror.org/00wk2mp56",
-        "country_code": "CN",
+        "id": "https://openalex.org/I98251732",
+        "display_name": "McMaster University",
+        "ror": "https://ror.org/02fa3aq29",
+        "country_code": "CA",
         "type": "education",
         "lineage": [
-          "https://openalex.org/I82880672"
-        ]
-      },
-      {
-        "id": "https://openalex.org/I4210142539",
-        "display_name": "Guangdong Institute of Intelligent Manufacturing",
-        "ror": "https://ror.org/049jpjz09",
-        "country_code": "CN",
-        "type": "facility",
-        "lineage": [
-          "https://openalex.org/I4210142539"
+          "https://openalex.org/I98251732"
         ]
       }
     ],
     "countries": [
-      "CN"
+      "CA"
     ],
     "affiliations": [
-      "School of Automation Science and Electrical Engineering, Beihang University, Beijing, China",
-      "State Key Laboratory of Intelligent Manufacturing Systems Technology, Beijing, China",
-      "Zhongguancun Laboratory, Beijing, China"
-    ],
-    "field_citations": 75,
-    "field_papers": 1,
-    "field_papers_first_authorship": 1,
-    "field_citations_first_authorship": 75,
-    "stats_per_year": {
-      "2024": {
-        "field_citations": 75,
-        "field_papers": 1,
-        "field_citations_first_authorship": 75,
-        "field_papers_first_authorship": 1
-      }
-    },
-    "works_count": 208,
-    "cited_by_count": 8446,
-    "summary_stats": {
-      "2yr_mean_citedness": 6.52,
-      "h_index": 44,
-      "i10_index": 89
-    },
-    "topics": [
-      {
-        "id": "https://openalex.org/T10763",
-        "display_name": "Digital Transformation in Industry",
-        "count": 55,
-        "subfield": {
-          "id": "https://openalex.org/subfields/2209",
-          "display_name": "Industrial and Manufacturing Engineering"
-        },
-        "field": {
-          "id": "https://openalex.org/fields/22",
-          "display_name": "Engineering"
-        },
-        "domain": {
-          "id": "https://openalex.org/domains/3",
-          "display_name": "Physical Sciences"
-        }
-      },
-      {
-        "id": "https://openalex.org/T11159",
-        "display_name": "Manufacturing Process and Optimization",
-        "count": 21,
-        "subfield": {
-          "id": "https://openalex.org/subfields/2209",
-          "display_name": "Industrial and Manufacturing Engineering"
-        },
-        "field": {
-          "id": "https://openalex.org/fields/22",
-          "display_name": "Engineering"
-        },
-        "domain": {
-          "id": "https://openalex.org/domains/3",
-          "display_name": "Physical Sciences"
-        }
-      },
-      {
-        "id": "https://openalex.org/T12594",
-        "display_name": "Collaboration in agile enterprises",
-        "count": 16,
-        "subfield": {
-          "id": "https://openalex.org/subfields/1405",
-          "display_name": "Management of Technology and Innovation"
-        },
-        "field": {
-          "id": "https://openalex.org/fields/14",
-          "display_name": "Business, Management and Accounting"
-        },
-        "domain": {
-          "id": "https://openalex.org/domains/2",
-          "display_name": "Social Sciences"
-        }
-      },
-      {
-        "id": "https://openalex.org/T10101",
-        "display_name": "Cloud Computing and Resource Management",
-        "count": 15,
-        "subfield": {
-          "id": "https://openalex.org/subfields/1710",
-          "display_name": "Information Systems"
-        },
-        "field": {
-          "id": "https://openalex.org/fields/17",
-          "display_name": "Computer Science"
-        },
-        "domain": {
-          "id": "https://openalex.org/domains/3",
-          "display_name": "Physical Sciences"
-        }
-      },
-      {
-        "id": "https://openalex.org/T10876",
-        "display_name": "Fault Detection and Control Systems",
-        "count": 14,
-        "subfield": {
-          "id": "https://openalex.org/subfields/2207",
-          "display_name": "Control and Systems Engineering"
-        },
-        "field": {
-          "id": "https://openalex.org/fields/22",
-          "display_name": "Engineering"
-        },
-        "domain": {
-          "id": "https://openalex.org/domains/3",
-          "display_name": "Physical Sciences"
-        }
-      }
-    ],
-    "x_concepts": [
-      {
-        "id": "41008148",
-        "wikidata": "https://www.wikidata.org/wiki/Q21198",
-        "display_name": "Computer science",
-        "score": 0.9148683547973633
-      },
-      {
-        "id": "79974875",
-        "wikidata": "https://www.wikidata.org/wiki/Q483639",
-        "display_name": "Cloud computing",
-        "score": 0.9020224809646606
-      },
-      {
-        "id": "154945302",
-        "wikidata": "https://www.wikidata.org/wiki/Q11660",
-        "display_name": "Artificial intelligence",
-        "score": 0.7815687656402588
-      },
-      {
-        "id": "127413603",
-        "wikidata": "https://www.wikidata.org/wiki/Q11023",
-        "display_name": "Engineering",
-        "score": 0.5160050392150879
-      },
-      {
-        "id": "111919701",
-        "wikidata": "https://www.wikidata.org/wiki/Q9135",
-        "display_name": "Operating system",
-        "score": 0.461783230304718
-      }
-    ],
-    "counts_by_year": [
-      {
-        "year": 1991,
-        "works_count": 1,
-        "oa_works_count": 0,
-        "cited_by_count": 0
-      },
-      {
-        "year": 2006,
-        "works_count": 1,
-        "oa_works_count": 0,
-        "cited_by_count": 49
-      },
-      {
-        "year": 2007,
-        "works_count": 4,
-        "oa_works_count": 0,
-        "cited_by_count": 19
-      },
-      {
-        "year": 2008,
-        "works_count": 4,
-        "oa_works_count": 0,
-        "cited_by_count": 29
-      },
-      {
-        "year": 2009,
-        "works_count": 3,
-        "oa_works_count": 1,
-        "cited_by_count": 5
-      },
-      {
-        "year": 2010,
-        "works_count": 12,
-        "oa_works_count": 1,
-        "cited_by_count": 63
-      },
-      {
-        "year": 2011,
-        "works_count": 10,
-        "oa_works_count": 2,
-        "cited_by_count": 229
-      },
-      {
-        "year": 2012,
-        "works_count": 10,
-        "oa_works_count": 0,
-        "cited_by_count": 884
-      },
-      {
-        "year": 2013,
-        "works_count": 6,
-        "oa_works_count": 0,
-        "cited_by_count": 394
-      },
-      {
-        "year": 2014,
-        "works_count": 9,
-        "oa_works_count": 0,
-        "cited_by_count": 402
-      },
-      {
-        "year": 2015,
-        "works_count": 8,
-        "oa_works_count": 1,
-        "cited_by_count": 200
-      },
-      {
-        "year": 2016,
-        "works_count": 4,
-        "oa_works_count": 1,
-        "cited_by_count": 57
-      },
-      {
-        "year": 2017,
-        "works_count": 11,
-        "oa_works_count": 0,
-        "cited_by_count": 421
-      },
-      {
-        "year": 2018,
-        "works_count": 17,
-        "oa_works_count": 4,
-        "cited_by_count": 1490
-      },
-      {
-        "year": 2019,
-        "works_count": 13,
-        "oa_works_count": 1,
-        "cited_by_count": 1237
-      },
-      {
-        "year": 2020,
-        "works_count": 7,
-        "oa_works_count": 0,
-        "cited_by_count": 1276
-      },
-      {
-        "year": 2021,
-        "works_count": 11,
-        "oa_works_count": 8,
-        "cited_by_count": 501
-      },
-      {
-        "year": 2022,
-        "works_count": 13,
-        "oa_works_count": 1,
-        "cited_by_count": 520
-      },
-      {
-        "year": 2023,
-        "works_count": 14,
-        "oa_works_count": 4,
-        "cited_by_count": 344
-      },
-      {
-        "year": 2024,
-        "works_count": 22,
-        "oa_works_count": 3,
-        "cited_by_count": 257
-      },
-      {
-        "year": 2025,
-        "works_count": 28,
-        "oa_works_count": 10,
-        "cited_by_count": 69
-      }
-    ],
-    "works_api_url": "https://api.openalex.org/works?filter=author.id:A5028426177",
-    "updated_date": "2026-03-19T12:22:12",
-    "created_date": "2016-06-24T00:00:00",
-    "last_known_institution": {
-      "id": "https://openalex.org/I82880672",
-      "ror": "https://ror.org/00wk2mp56",
-      "display_name": "Beihang University",
-      "country_code": "CN",
-      "type": "education",
-      "lineage": [
-        "https://openalex.org/I82880672"
-      ],
-      "shortand_name": "Beihang"
-    },
-    "aci": 25.01
-  },
-  {
-    "author_id": "https://openalex.org/A5043973941",
-    "orcid": "https://orcid.org/0000-0003-3027-8567",
-    "display_name": "Jiabao Dong",
-    "institutions": [
-      {
-        "id": "https://openalex.org/I82880672",
-        "display_name": "Beihang University",
-        "ror": "https://ror.org/00wk2mp56",
-        "country_code": "CN",
-        "type": "education",
-        "lineage": [
-          "https://openalex.org/I82880672"
-        ]
-      },
-      {
-        "id": "https://openalex.org/I4210142539",
-        "display_name": "Guangdong Institute of Intelligent Manufacturing",
-        "ror": "https://ror.org/049jpjz09",
-        "country_code": "CN",
-        "type": "facility",
-        "lineage": [
-          "https://openalex.org/I4210142539"
-        ]
-      }
-    ],
-    "countries": [
-      "CN"
-    ],
-    "affiliations": [
-      "School of Automation Science and Electrical Engineering, Beihang University, Beijing, China",
-      "State Key Laboratory of Intelligent Manufacturing Systems Technology, Beijing, China"
+      "Department of Electrical and Computer Engineering, McMaster University, Hamilton, ON, Canada"
     ],
     "field_citations": 75,
     "field_papers": 1,
@@ -360,86 +33,18 @@
         "field_papers_first_authorship": 0
       }
     },
-    "works_count": 19,
-    "cited_by_count": 1224,
+    "works_count": 808,
+    "cited_by_count": 23513,
     "summary_stats": {
-      "2yr_mean_citedness": 11.357142857142858,
-      "h_index": 9,
-      "i10_index": 9
+      "2yr_mean_citedness": 5.596153846153846,
+      "h_index": 79,
+      "i10_index": 374
     },
     "topics": [
       {
-        "id": "https://openalex.org/T10653",
-        "display_name": "Robot Manipulation and Learning",
-        "count": 4,
-        "subfield": {
-          "id": "https://openalex.org/subfields/2207",
-          "display_name": "Control and Systems Engineering"
-        },
-        "field": {
-          "id": "https://openalex.org/fields/22",
-          "display_name": "Engineering"
-        },
-        "domain": {
-          "id": "https://openalex.org/domains/3",
-          "display_name": "Physical Sciences"
-        }
-      },
-      {
-        "id": "https://openalex.org/T10763",
-        "display_name": "Digital Transformation in Industry",
-        "count": 4,
-        "subfield": {
-          "id": "https://openalex.org/subfields/2209",
-          "display_name": "Industrial and Manufacturing Engineering"
-        },
-        "field": {
-          "id": "https://openalex.org/fields/22",
-          "display_name": "Engineering"
-        },
-        "domain": {
-          "id": "https://openalex.org/domains/3",
-          "display_name": "Physical Sciences"
-        }
-      },
-      {
-        "id": "https://openalex.org/T11741",
-        "display_name": "Flexible and Reconfigurable Manufacturing Systems",
-        "count": 2,
-        "subfield": {
-          "id": "https://openalex.org/subfields/2209",
-          "display_name": "Industrial and Manufacturing Engineering"
-        },
-        "field": {
-          "id": "https://openalex.org/fields/22",
-          "display_name": "Engineering"
-        },
-        "domain": {
-          "id": "https://openalex.org/domains/3",
-          "display_name": "Physical Sciences"
-        }
-      },
-      {
-        "id": "https://openalex.org/T12784",
-        "display_name": "Modular Robots and Swarm Intelligence",
-        "count": 2,
-        "subfield": {
-          "id": "https://openalex.org/subfields/2210",
-          "display_name": "Mechanical Engineering"
-        },
-        "field": {
-          "id": "https://openalex.org/fields/22",
-          "display_name": "Engineering"
-        },
-        "domain": {
-          "id": "https://openalex.org/domains/3",
-          "display_name": "Physical Sciences"
-        }
-      },
-      {
-        "id": "https://openalex.org/T10018",
-        "display_name": "Advancements in Battery Materials",
-        "count": 1,
+        "id": "https://openalex.org/T10558",
+        "display_name": "Advancements in Semiconductor Devices and Circuit Design",
+        "count": 197,
         "subfield": {
           "id": "https://openalex.org/subfields/2208",
           "display_name": "Electrical and Electronic Engineering"
@@ -452,164 +57,202 @@
           "id": "https://openalex.org/domains/3",
           "display_name": "Physical Sciences"
         }
+      },
+      {
+        "id": "https://openalex.org/T10472",
+        "display_name": "Semiconductor materials and devices",
+        "count": 148,
+        "subfield": {
+          "id": "https://openalex.org/subfields/2208",
+          "display_name": "Electrical and Electronic Engineering"
+        },
+        "field": {
+          "id": "https://openalex.org/fields/22",
+          "display_name": "Engineering"
+        },
+        "domain": {
+          "id": "https://openalex.org/domains/3",
+          "display_name": "Physical Sciences"
+        }
+      },
+      {
+        "id": "https://openalex.org/T10187",
+        "display_name": "Radio Frequency Integrated Circuit Design",
+        "count": 112,
+        "subfield": {
+          "id": "https://openalex.org/subfields/2208",
+          "display_name": "Electrical and Electronic Engineering"
+        },
+        "field": {
+          "id": "https://openalex.org/fields/22",
+          "display_name": "Engineering"
+        },
+        "domain": {
+          "id": "https://openalex.org/domains/3",
+          "display_name": "Physical Sciences"
+        }
+      },
+      {
+        "id": "https://openalex.org/T10022",
+        "display_name": "Semiconductor Quantum Structures and Devices",
+        "count": 78,
+        "subfield": {
+          "id": "https://openalex.org/subfields/3107",
+          "display_name": "Atomic and Molecular Physics, and Optics"
+        },
+        "field": {
+          "id": "https://openalex.org/fields/31",
+          "display_name": "Physics and Astronomy"
+        },
+        "domain": {
+          "id": "https://openalex.org/domains/3",
+          "display_name": "Physical Sciences"
+        }
+      },
+      {
+        "id": "https://openalex.org/T11472",
+        "display_name": "Analytical Chemistry and Sensors",
+        "count": 66,
+        "subfield": {
+          "id": "https://openalex.org/subfields/1502",
+          "display_name": "Bioengineering"
+        },
+        "field": {
+          "id": "https://openalex.org/fields/15",
+          "display_name": "Chemical Engineering"
+        },
+        "domain": {
+          "id": "https://openalex.org/domains/3",
+          "display_name": "Physical Sciences"
+        }
       }
     ],
     "x_concepts": [
       {
+        "id": "192562407",
+        "wikidata": "https://www.wikidata.org/wiki/Q228736",
+        "display_name": "Materials science",
+        "score": 0.944061279296875
+      },
+      {
         "id": "41008148",
         "wikidata": "https://www.wikidata.org/wiki/Q21198",
         "display_name": "Computer science",
-        "score": 0.7833472490310669
+        "score": 0.9286538362503052
       },
       {
-        "id": "154945302",
-        "wikidata": "https://www.wikidata.org/wiki/Q11660",
-        "display_name": "Artificial intelligence",
-        "score": 0.6265000104904175
+        "id": "121332964",
+        "wikidata": "https://www.wikidata.org/wiki/Q413",
+        "display_name": "Physics",
+        "score": 0.8441663980484009
       },
       {
-        "id": "26517878",
-        "wikidata": "https://www.wikidata.org/wiki/Q228039",
-        "display_name": "Key (lock)",
-        "score": 0.6169999837875366
+        "id": "49040817",
+        "wikidata": "https://www.wikidata.org/wiki/Q193091",
+        "display_name": "Optoelectronics",
+        "score": 0.7851718664169312
       },
       {
         "id": "127413603",
         "wikidata": "https://www.wikidata.org/wiki/Q11023",
         "display_name": "Engineering",
-        "score": 0.41950559616088867
-      },
-      {
-        "id": "111919701",
-        "wikidata": "https://www.wikidata.org/wiki/Q9135",
-        "display_name": "Operating system",
-        "score": 0.10603004693984985
+        "score": 0.5180161595344543
       }
     ],
     "counts_by_year": [
       {
-        "year": 2020,
-        "works_count": 1,
-        "oa_works_count": 0,
-        "cited_by_count": 628
-      },
-      {
-        "year": 2021,
-        "works_count": 1,
-        "oa_works_count": 0,
-        "cited_by_count": 281
-      },
-      {
-        "year": 2022,
-        "works_count": 1,
-        "oa_works_count": 0,
-        "cited_by_count": 38
-      },
-      {
-        "year": 2023,
-        "works_count": 2,
-        "oa_works_count": 1,
-        "cited_by_count": 118
+        "year": 2025,
+        "works_count": 35,
+        "oa_works_count": 15,
+        "cited_by_count": 71
       },
       {
         "year": 2024,
-        "works_count": 7,
-        "oa_works_count": 0,
-        "cited_by_count": 130
-      },
-      {
-        "year": 2025,
-        "works_count": 5,
-        "oa_works_count": 1,
-        "cited_by_count": 29
-      },
-      {
-        "year": 2026,
-        "works_count": 2,
-        "oa_works_count": 1,
-        "cited_by_count": 0
+        "works_count": 17,
+        "oa_works_count": 6,
+        "cited_by_count": 220
       }
     ],
-    "works_api_url": "https://api.openalex.org/works?filter=author.id:A5043973941",
+    "works_api_url": "https://api.openalex.org/works?filter=author.id:A5060713232",
     "updated_date": "2026-03-19T12:22:12",
-    "created_date": "2025-10-10T00:00:00",
+    "created_date": "2016-06-24T00:00:00",
     "last_known_institution": {
-      "id": "https://openalex.org/I82880672",
-      "ror": "https://ror.org/00wk2mp56",
-      "display_name": "Beihang University",
-      "country_code": "CN",
+      "id": "https://openalex.org/I98251732",
+      "ror": "https://ror.org/02fa3aq29",
+      "display_name": "McMaster University",
+      "country_code": "CA",
       "type": "education",
       "lineage": [
-        "https://openalex.org/I82880672"
+        "https://openalex.org/I98251732"
       ],
-      "shortand_name": "Beihang"
+      "shortand_name": "Mac",
+      "label_name": "McMaster U."
     },
-    "aci": 10.01
+    "aci": 20.01
   },
   {
-    "author_id": "https://openalex.org/A5100418969",
-    "orcid": "https://orcid.org/0000-0003-1989-6102",
-    "display_name": "Zhang Li",
+    "author_id": "https://openalex.org/A5004949089",
+    "orcid": "https://orcid.org/0000-0003-2657-0485",
+    "display_name": "Robert Soden",
     "institutions": [
       {
-        "id": "https://openalex.org/I4210142539",
-        "display_name": "Guangdong Institute of Intelligent Manufacturing",
-        "ror": "https://ror.org/049jpjz09",
-        "country_code": "CN",
-        "type": "facility",
-        "lineage": [
-          "https://openalex.org/I4210142539"
-        ]
-      },
-      {
-        "id": "https://openalex.org/I82880672",
-        "display_name": "Beihang University",
-        "ror": "https://ror.org/00wk2mp56",
-        "country_code": "CN",
+        "id": "https://openalex.org/I185261750",
+        "display_name": "University of Toronto",
+        "ror": "https://ror.org/03dbr7087",
+        "country_code": "CA",
         "type": "education",
         "lineage": [
-          "https://openalex.org/I82880672"
+          "https://openalex.org/I185261750"
         ]
       }
     ],
     "countries": [
-      "CN"
+      "CA"
     ],
     "affiliations": [
-      "School of Automation Science and Electrical Engineering, Beihang University, Beijing, China",
-      "State Key Laboratory of Intelligent Manufacturing Systems Technology, Beijing, China"
+      "University of Toronto",
+      "Computer Science &amp; School of the Environment, University of Toronto, Canada",
+      "University of Toronto, Canada",
+      "University of Toronto, Toronto, ON, Canada",
+      "University of Toronto, Toronto, USA"
     ],
-    "field_citations": 75,
-    "field_papers": 1,
-    "field_papers_first_authorship": 0,
-    "field_citations_first_authorship": 0,
+    "field_citations": 81,
+    "field_papers": 6,
+    "field_papers_first_authorship": 1,
+    "field_citations_first_authorship": 69,
     "stats_per_year": {
       "2024": {
-        "field_citations": 75,
-        "field_papers": 1,
+        "field_citations": 81,
+        "field_papers": 4,
+        "field_citations_first_authorship": 69,
+        "field_papers_first_authorship": 1
+      },
+      "2025": {
+        "field_citations": 0,
+        "field_papers": 2,
         "field_citations_first_authorship": 0,
         "field_papers_first_authorship": 0
       }
     },
-    "works_count": 1798,
-    "cited_by_count": 18355,
+    "works_count": 104,
+    "cited_by_count": 1658,
     "summary_stats": {
-      "2yr_mean_citedness": 3.3121387283236996,
-      "h_index": 64,
-      "i10_index": 278
+      "2yr_mean_citedness": 4.46875,
+      "h_index": 22,
+      "i10_index": 39
     },
     "topics": [
       {
-        "id": "https://openalex.org/T14474",
-        "display_name": "Industrial Technology and Control Systems",
-        "count": 173,
+        "id": "https://openalex.org/T10803",
+        "display_name": "Innovative Human-Technology Interaction",
+        "count": 37,
         "subfield": {
-          "id": "https://openalex.org/subfields/2207",
-          "display_name": "Control and Systems Engineering"
+          "id": "https://openalex.org/subfields/1709",
+          "display_name": "Human-Computer Interaction"
         },
         "field": {
-          "id": "https://openalex.org/fields/22",
-          "display_name": "Engineering"
+          "id": "https://openalex.org/fields/17",
+          "display_name": "Computer Science"
         },
         "domain": {
           "id": "https://openalex.org/domains/3",
@@ -617,71 +260,71 @@
         }
       },
       {
-        "id": "https://openalex.org/T10763",
-        "display_name": "Digital Transformation in Industry",
-        "count": 151,
+        "id": "https://openalex.org/T10747",
+        "display_name": "Disaster Management and Resilience",
+        "count": 27,
         "subfield": {
-          "id": "https://openalex.org/subfields/2209",
-          "display_name": "Industrial and Manufacturing Engineering"
+          "id": "https://openalex.org/subfields/3312",
+          "display_name": "Sociology and Political Science"
         },
         "field": {
-          "id": "https://openalex.org/fields/22",
-          "display_name": "Engineering"
+          "id": "https://openalex.org/fields/33",
+          "display_name": "Social Sciences"
         },
         "domain": {
-          "id": "https://openalex.org/domains/3",
-          "display_name": "Physical Sciences"
+          "id": "https://openalex.org/domains/2",
+          "display_name": "Social Sciences"
         }
       },
       {
-        "id": "https://openalex.org/T13717",
-        "display_name": "Advanced Algorithms and Applications",
-        "count": 144,
+        "id": "https://openalex.org/T10757",
+        "display_name": "Geographic Information Systems Studies",
+        "count": 12,
         "subfield": {
-          "id": "https://openalex.org/subfields/2207",
-          "display_name": "Control and Systems Engineering"
+          "id": "https://openalex.org/subfields/3305",
+          "display_name": "Geography, Planning and Development"
         },
         "field": {
-          "id": "https://openalex.org/fields/22",
-          "display_name": "Engineering"
+          "id": "https://openalex.org/fields/33",
+          "display_name": "Social Sciences"
         },
         "domain": {
-          "id": "https://openalex.org/domains/3",
-          "display_name": "Physical Sciences"
+          "id": "https://openalex.org/domains/2",
+          "display_name": "Social Sciences"
         }
       },
       {
-        "id": "https://openalex.org/T14270",
-        "display_name": "Simulation and Modeling Applications",
-        "count": 117,
+        "id": "https://openalex.org/T11980",
+        "display_name": "Human Mobility and Location-Based Analysis",
+        "count": 10,
         "subfield": {
-          "id": "https://openalex.org/subfields/2207",
-          "display_name": "Control and Systems Engineering"
+          "id": "https://openalex.org/subfields/3313",
+          "display_name": "Transportation"
         },
         "field": {
-          "id": "https://openalex.org/fields/22",
-          "display_name": "Engineering"
+          "id": "https://openalex.org/fields/33",
+          "display_name": "Social Sciences"
         },
         "domain": {
-          "id": "https://openalex.org/domains/3",
-          "display_name": "Physical Sciences"
+          "id": "https://openalex.org/domains/2",
+          "display_name": "Social Sciences"
         }
       },
       {
-        "id": "https://openalex.org/T14225",
-        "display_name": "Advanced Sensor and Control Systems",
-        "count": 116,
+        "id": "https://openalex.org/T14147",
+        "display_name": "Innovative Approaches in Technology and Social Development",
+        "count": 10,
         "subfield": {
-          "id": "https://openalex.org/subfields/2207",
-          "display_name": "Control and Systems Engineering"
+          "id": "https://openalex.org/subfields/1405",
+          "display_name": "Management of Technology and Innovation"
         },
         "field": {
-          "id": "https://openalex.org/fields/22",
-          "display_name": "Engineering"
+          "id": "https://openalex.org/fields/14",
+          "display_name": "Business, Management and Accounting"
         },
         "domain": {
-          "id": "https://openalex.org/domains/3",
-          "display_name": "Physical Sciences"
+          "id": "https://openalex.org/domains/2",
+          "display_name": "Social Sciences"
         }
       }
     ],
@@ -690,265 +333,219 @@
         "id": "41008148",
         "wikidata": "https://www.wikidata.org/wiki/Q21198",
         "display_name": "Computer science",
-        "score": 0.9424240589141846
+        "score": 0.7650270462036133
       },
       {
-        "id": "111919701",
-        "wikidata": "https://www.wikidata.org/wiki/Q9135",
-        "display_name": "Operating system",
-        "score": 0.8248363733291626
+        "id": "144024400",
+        "wikidata": "https://www.wikidata.org/wiki/Q21201",
+        "display_name": "Sociology",
+        "score": 0.6899922490119934
       },
       {
-        "id": "154945302",
-        "wikidata": "https://www.wikidata.org/wiki/Q11660",
-        "display_name": "Artificial intelligence",
-        "score": 0.810699999332428
+        "id": "17744445",
+        "wikidata": "https://www.wikidata.org/wiki/Q36442",
+        "display_name": "Political science",
+        "score": 0.543367326259613
       },
       {
         "id": "127413603",
         "wikidata": "https://www.wikidata.org/wiki/Q11023",
         "display_name": "Engineering",
-        "score": 0.8011998534202576
+        "score": 0.36022067070007324
       },
       {
-        "id": "33923547",
-        "wikidata": "https://www.wikidata.org/wiki/Q395",
-        "display_name": "Mathematics",
-        "score": 0.7880030870437622
+        "id": "199539241",
+        "wikidata": "https://www.wikidata.org/wiki/Q7748",
+        "display_name": "Law",
+        "score": 0.24054941534996033
       }
     ],
     "counts_by_year": [
       {
-        "year": 1980,
-        "works_count": 1,
-        "oa_works_count": 0,
-        "cited_by_count": 3
-      },
-      {
-        "year": 1983,
-        "works_count": 1,
+        "year": 2026,
+        "works_count": 4,
         "oa_works_count": 0,
         "cited_by_count": 0
-      },
-      {
-        "year": 1987,
-        "works_count": 1,
-        "oa_works_count": 0,
-        "cited_by_count": 0
-      },
-      {
-        "year": 1990,
-        "works_count": 1,
-        "oa_works_count": 0,
-        "cited_by_count": 2
-      },
-      {
-        "year": 1992,
-        "works_count": 2,
-        "oa_works_count": 0,
-        "cited_by_count": 5
-      },
-      {
-        "year": 1993,
-        "works_count": 1,
-        "oa_works_count": 0,
-        "cited_by_count": 31
-      },
-      {
-        "year": 1996,
-        "works_count": 2,
-        "oa_works_count": 0,
-        "cited_by_count": 0
-      },
-      {
-        "year": 1998,
-        "works_count": 1,
-        "oa_works_count": 0,
-        "cited_by_count": 3
-      },
-      {
-        "year": 1999,
-        "works_count": 13,
-        "oa_works_count": 1,
-        "cited_by_count": 4
-      },
-      {
-        "year": 2000,
-        "works_count": 30,
-        "oa_works_count": 0,
-        "cited_by_count": 19
-      },
-      {
-        "year": 2001,
-        "works_count": 32,
-        "oa_works_count": 0,
-        "cited_by_count": 12
-      },
-      {
-        "year": 2002,
-        "works_count": 53,
-        "oa_works_count": 0,
-        "cited_by_count": 71
-      },
-      {
-        "year": 2003,
-        "works_count": 56,
-        "oa_works_count": 0,
-        "cited_by_count": 41
-      },
-      {
-        "year": 2004,
-        "works_count": 43,
-        "oa_works_count": 1,
-        "cited_by_count": 120
-      },
-      {
-        "year": 2005,
-        "works_count": 43,
-        "oa_works_count": 0,
-        "cited_by_count": 93
-      },
-      {
-        "year": 2006,
-        "works_count": 54,
-        "oa_works_count": 2,
-        "cited_by_count": 86
-      },
-      {
-        "year": 2007,
-        "works_count": 55,
-        "oa_works_count": 0,
-        "cited_by_count": 98
-      },
-      {
-        "year": 2008,
-        "works_count": 81,
-        "oa_works_count": 1,
-        "cited_by_count": 142
-      },
-      {
-        "year": 2009,
-        "works_count": 74,
-        "oa_works_count": 1,
-        "cited_by_count": 96
-      },
-      {
-        "year": 2010,
-        "works_count": 84,
-        "oa_works_count": 4,
-        "cited_by_count": 347
-      },
-      {
-        "year": 2011,
-        "works_count": 91,
-        "oa_works_count": 5,
-        "cited_by_count": 1152
-      },
-      {
-        "year": 2012,
-        "works_count": 87,
-        "oa_works_count": 5,
-        "cited_by_count": 2269
-      },
-      {
-        "year": 2013,
-        "works_count": 81,
-        "oa_works_count": 4,
-        "cited_by_count": 980
-      },
-      {
-        "year": 2014,
-        "works_count": 83,
-        "oa_works_count": 11,
-        "cited_by_count": 2493
-      },
-      {
-        "year": 2015,
-        "works_count": 60,
-        "oa_works_count": 14,
-        "cited_by_count": 1269
-      },
-      {
-        "year": 2016,
-        "works_count": 108,
-        "oa_works_count": 9,
-        "cited_by_count": 1049
-      },
-      {
-        "year": 2017,
-        "works_count": 83,
-        "oa_works_count": 7,
-        "cited_by_count": 724
-      },
-      {
-        "year": 2018,
-        "works_count": 71,
-        "oa_works_count": 27,
-        "cited_by_count": 2047
-      },
-      {
-        "year": 2019,
-        "works_count": 51,
-        "oa_works_count": 12,
-        "cited_by_count": 773
-      },
-      {
-        "year": 2020,
-        "works_count": 48,
-        "oa_works_count": 15,
-        "cited_by_count": 1036
-      },
-      {
-        "year": 2021,
-        "works_count": 63,
-        "oa_works_count": 22,
-        "cited_by_count": 757
-      },
-      {
-        "year": 2022,
-        "works_count": 79,
-        "oa_works_count": 29,
-        "cited_by_count": 1463
-      },
-      {
-        "year": 2023,
-        "works_count": 92,
-        "oa_works_count": 41,
-        "cited_by_count": 597
-      },
-      {
-        "year": 2024,
-        "works_count": 95,
-        "oa_works_count": 43,
-        "cited_by_count": 440
       },
       {
         "year": 2025,
-        "works_count": 76,
-        "oa_works_count": 40,
-        "cited_by_count": 133
+        "works_count": 13,
+        "oa_works_count": 4,
+        "cited_by_count": 14
       },
       {
-        "year": 2026,
-        "works_count": 2,
-        "oa_works_count": 1,
-        "cited_by_count": 0
+        "year": 2024,
+        "works_count": 15,
+        "oa_works_count": 10,
+        "cited_by_count": 129
       }
     ],
-    "works_api_url": "https://api.openalex.org/works?filter=author.id:A5100418969",
-    "updated_date": "2026-03-19T12:22:12",
-    "created_date": "2016-06-24T00:00:00",
+    "works_api_url": "https://api.openalex.org/works?filter=author.id:A5004949089",
+    "updated_date": "2026-03-17T12:22:38",
+    "created_date": "2017-05-12T00:00:00",
     "last_known_institution": {
-      "id": "https://openalex.org/I19880235",
-      "ror": "https://ror.org/010pmpe69",
-      "display_name": "Lomonosov Moscow State University",
-      "country_code": "RU",
+      "id": "https://openalex.org/I185261750",
+      "ror": "https://ror.org/03dbr7087",
+      "display_name": "University of Toronto",
+      "country_code": "CA",
       "type": "education",
       "lineage": [
-        "https://openalex.org/I19880235"
+        "https://openalex.org/I185261750"
       ],
-      "shortand_name": null
+      "shortand_name": "U of T",
+      "label_name": "U. of Toronto"
     },
-    "aci": 10.01
+    "aci": 23.79
+  },
+  {
+    "author_id": "https://openalex.org/A5099683664",
+    "orcid": "https://orcid.org/0009-0006-2561-801X",
+    "display_name": "Macy Takaffoli",
+    "institutions": [
+      {
+        "id": "https://openalex.org/I151746483",
+        "display_name": "University of Waterloo",
+        "ror": "https://ror.org/01aff2v68",
+        "country_code": "CA",
+        "type": "education",
+        "lineage": [
+          "https://openalex.org/I151746483"
+        ]
+      }
+    ],
+    "countries": [
+      "CA"
+    ],
+    "affiliations": [
+      "University of Waterloo, Canada"
+    ],
+    "field_citations": 50,
+    "field_papers": 1,
+    "field_papers_first_authorship": 1,
+    "field_citations_first_authorship": 50,
+    "stats_per_year": {
+      "2024": {
+        "field_citations": 50,
+        "field_papers": 1,
+        "field_citations_first_authorship": 50,
+        "field_papers_first_authorship": 1
+      }
+    },
+    "works_count": 1,
+    "cited_by_count": 50,
+    "summary_stats": {
+      "2yr_mean_citedness": 50.0,
+      "h_index": 1,
+      "i10_index": 1
+    },
+    "topics": [
+      {
+        "id": "https://openalex.org/T10803",
+        "display_name": "Innovative Human-Technology Interaction",
+        "count": 1,
+        "subfield": {
+          "id": "https://openalex.org/subfields/1709",
+          "display_name": "Human-Computer Interaction"
+        },
+        "field": {
+          "id": "https://openalex.org/fields/17",
+          "display_name": "Computer Science"
+        },
+        "domain": {
+          "id": "https://openalex.org/domains/3",
+          "display_name": "Physical Sciences"
+        }
+      },
+      {
+        "id": "https://openalex.org/T14074",
+        "display_name": "Persona Design and Applications",
+        "count": 1,
+        "subfield": {
+          "id": "https://openalex.org/subfields/1709",
+          "display_name": "Human-Computer Interaction"
+        },
+        "field": {
+          "id": "https://openalex.org/fields/17",
+          "display_name": "Computer Science"
+        },
+        "domain": {
+          "id": "https://openalex.org/domains/3",
+          "display_name": "Physical Sciences"
+        }
+      },
+      {
+        "id": "https://openalex.org/T14147",
+        "display_name": "Innovative Approaches in Technology and Social Development",
+        "count": 1,
+        "subfield": {
+          "id": "https://openalex.org/subfields/1405",
+          "display_name": "Management of Technology and Innovation"
+        },
+        "field": {
+          "id": "https://openalex.org/fields/14",
+          "display_name": "Business, Management and Accounting"
+        },
+        "domain": {
+          "id": "https://openalex.org/domains/2",
+          "display_name": "Social Sciences"
+        }
+      }
+    ],
+    "x_concepts": [
+      {
+        "id": "39890363",
+        "wikidata": "https://www.wikidata.org/wiki/Q36108",
+        "display_name": "Generative grammar",
+        "score": 0.6194948554039001
+      },
+      {
+        "id": "41008148",
+        "wikidata": "https://www.wikidata.org/wiki/Q21198",
+        "display_name": "Computer science",
+        "score": 0.5730982422828674
+      },
+      {
+        "id": "201025465",
+        "wikidata": "https://www.wikidata.org/wiki/Q11248500",
+        "display_name": "User experience design",
+        "score": 0.5011451244354248
+      },
+      {
+        "id": "107457646",
+        "wikidata": "https://www.wikidata.org/wiki/Q207434",
+        "display_name": "Human–computer interaction",
+        "score": 0.4717593789100647
+      },
+      {
+        "id": "154945302",
+        "wikidata": "https://www.wikidata.org/wiki/Q11660",
+        "display_name": "Artificial intelligence",
+        "score": 0.2897295355796814
+      }
+    ],
+    "counts_by_year": [
+      {
+        "year": 2024,
+        "works_count": 1,
+        "oa_works_count": 0,
+        "cited_by_count": 50
+      }
+    ],
+    "works_api_url": "https://api.openalex.org/works?filter=author.id:A5099683664",
+    "updated_date": "2026-03-14T12:21:31",
+    "created_date": "2025-10-10T00:00:00",
+    "last_known_institution": {
+      "id": "https://openalex.org/I151746483",
+      "ror": "https://ror.org/01aff2v68",
+      "display_name": "University of Waterloo",
+      "country_code": "CA",
+      "type": "education",
+      "lineage": [
+        "https://openalex.org/I151746483"
+      ],
+      "shortand_name": "UW",
+      "label_name": "U. of Waterloo"
+    },
+    "aci": 13.85
   }
 ]

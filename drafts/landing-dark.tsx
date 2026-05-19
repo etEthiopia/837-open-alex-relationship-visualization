@@ -1,16 +1,17 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import styles from "./page.module.css";
 
 export default function Home() {
   const cursorGlowRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
+  const [mounted, setMounted] = useState(false);
 
   // Cursor spotlight
   useEffect(() => {
-    // setMounted(true);
+    setMounted(true);
     const hero = heroRef.current;
     const glow = cursorGlowRef.current;
     if (!hero || !glow) return;
@@ -69,6 +70,14 @@ export default function Home() {
             </Link>
           </div>
         </div>
+
+        {/* Scroll indicator */}
+        {mounted && (
+          <div className={styles.scrollHint}>
+            <span>Scroll</span>
+            <div className={styles.scrollLine} />
+          </div>
+        )}
       </section>
 
       {/* ── Features ── */}
